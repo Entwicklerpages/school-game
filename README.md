@@ -1,4 +1,14 @@
-# school-game
-A school game project.
+# School project: Game Development
 
-Hier laufen die Ideen zusammen https://piratenpad.de/p/RPG-school-game lass deiner Fantasie freien lauf...
+## Description
+Coming soon.
+
+## External resources
+* [Collection of Ideas](https://piratenpad.de/p/RPG-school-game)
+
+## Dependencies
+* libGDX (Apache 2.0)
+
+## License
+
+This software is licensed under the GPL-3.0. More information can be found in the LICENSE file.
