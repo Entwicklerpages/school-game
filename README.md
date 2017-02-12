@@ -3,6 +3,8 @@
 ## Description
 Coming soon.
 
+_Warning: All code comments are for convince in German._
+
 ## External resources
 * [Collection of Ideas](https://piratenpad.de/p/RPG-school-game)
 
