@@ -9,6 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "School Game";
 		config.useGL30 = false;
+		config.forceExit = true;
 		new LwjglApplication(new SchoolGame(), config);
 	}
 }
