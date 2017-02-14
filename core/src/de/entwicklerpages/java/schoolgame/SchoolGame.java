@@ -2,6 +2,8 @@ package de.entwicklerpages.java.schoolgame;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -12,6 +14,8 @@ import de.entwicklerpages.java.schoolgame.menu.Splashscreen;
 public class SchoolGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private Viewport viewport;
+
+	private InputMultiplexer inputMultiplexer;
 
 	private GameState gameState;
 
@@ -30,6 +34,9 @@ public class SchoolGame implements ApplicationListener {
 
 		gameState = new Splashscreen();
 		gameState.create(this);
+
+		inputMultiplexer = new InputMultiplexer();
+		Gdx.input.setInputProcessor(inputMultiplexer);
 
 		Gdx.app.getApplicationLogger().log("INFO", "Finished.");
 	}
@@ -87,6 +94,17 @@ public class SchoolGame implements ApplicationListener {
 		gameState.dispose();
 
 		Gdx.app.getApplicationLogger().log("INFO", "Finished.");
+		Gdx.app.getApplicationLogger().log("INFO", "Quit.");
+	}
+
+	public void addInputProcessor(InputProcessor inputProcessor)
+	{
+		inputMultiplexer.addProcessor(inputProcessor);
+	}
+
+	public void removeInputProccessor(InputProcessor inputProcessor)
+	{
+		inputMultiplexer.removeProcessor(inputProcessor);
 	}
 
 	public void setGameState(GameState newState)
@@ -98,10 +116,16 @@ public class SchoolGame implements ApplicationListener {
 
 		gameState.dispose();
 
+		inputMultiplexer.clear();
+
 		camera.position.set(0, 0, 0);
 
 		gameState = newState;
 
 		gameState.create(this);
+
+		if (gameState instanceof InputProcessor) {
+			inputMultiplexer.addProcessor((InputProcessor) gameState);
+		}
 	}
 }
