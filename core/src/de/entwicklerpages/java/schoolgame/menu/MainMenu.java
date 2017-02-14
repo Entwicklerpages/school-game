@@ -37,6 +37,12 @@ public class MainMenu extends MenuState {
 
         MenuEntry credits = new MenuEntry("credits");
         credits.setActiveColor(Color.GREEN);
+        credits.setCallback(new MenuCallback() {
+            @Override
+            public void run() {
+                game.setGameState(new Credits());
+            }
+        });
 
         MenuEntry quit = new MenuEntry("beenden");
         quit.setActiveColor(Color.RED);
