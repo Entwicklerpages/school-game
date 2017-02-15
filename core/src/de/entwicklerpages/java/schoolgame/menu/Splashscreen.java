@@ -24,7 +24,7 @@ public class Splashscreen implements GameState {
         this.game = game;
         batch = new SpriteBatch();
 
-        Texture splashImg = new Texture(Gdx.files.internal("misc/splashscreen.jpg"));
+        Texture splashImg = new Texture(Gdx.files.internal("misc/splashscreen.png"));
         screenSprite = new Sprite(splashImg);
         screenSprite.setPosition(-screenSprite.getWidth() / 2, -screenSprite.getHeight() / 2);
         screenSprite.setAlpha(0);
