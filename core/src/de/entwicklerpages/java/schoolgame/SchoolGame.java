@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -16,6 +17,7 @@ public class SchoolGame implements ApplicationListener {
 	private Viewport viewport;
 
 	private InputMultiplexer inputMultiplexer;
+	private Preferences preferences;
 
 	private GameState gameState;
 
@@ -37,6 +39,16 @@ public class SchoolGame implements ApplicationListener {
 
 		inputMultiplexer = new InputMultiplexer();
 		Gdx.input.setInputProcessor(inputMultiplexer);
+
+		preferences = Gdx.app.getPreferences("de.entwicklerpages.java.schoolgame");
+
+		if (shouldBeFullscreen())
+		{
+			Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+		} else if (preferences.contains("window_width") && preferences.contains("window_height")) {
+			Gdx.graphics.setWindowedMode(preferences.getInteger("window_width"), preferences.getInteger("window_height"));
+		}
+		Gdx.graphics.setVSync(shouldVSync());
 
 		Gdx.app.getApplicationLogger().log("INFO", "Finished.");
 	}
@@ -75,6 +87,11 @@ public class SchoolGame implements ApplicationListener {
  	 */
     @Override
 	public void pause() {
+		if (!Gdx.graphics.isFullscreen()) {
+			preferences.putInteger("window_width", Gdx.graphics.getWidth());
+			preferences.putInteger("window_height", Gdx.graphics.getHeight());
+		}
+		preferences.flush();
 	}
 
 	/**
@@ -127,5 +144,30 @@ public class SchoolGame implements ApplicationListener {
 		if (gameState instanceof InputProcessor) {
 			inputMultiplexer.addProcessor((InputProcessor) gameState);
 		}
+	}
+
+	public Preferences getPreferences()
+	{
+		return preferences;
+	}
+
+	public boolean shouldBeFullscreen()
+	{
+		return preferences.getBoolean("fullscreen", false);
+	}
+
+	public void setFullscreen(boolean fullscreen)
+	{
+		preferences.putBoolean("fullscreen", fullscreen);
+	}
+
+	public boolean shouldVSync()
+	{
+		return preferences.getBoolean("vsync", false);
+	}
+
+	public void setVSync(boolean vsync)
+	{
+		preferences.putBoolean("vsync", vsync);
 	}
 }

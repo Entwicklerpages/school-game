@@ -31,7 +31,7 @@ public class MainMenu extends MenuState {
         options.setCallback(new MenuCallback() {
             @Override
             public void run() {
-                Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+                game.setGameState(new OptionsMenu());
             }
         });
 
