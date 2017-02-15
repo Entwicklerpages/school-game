@@ -77,8 +77,7 @@ public class OptionsMenu extends MenuState {
         delete.setCallback(new MenuCallback() {
             @Override
             public void run() {
-                game.getPreferences().clear();
-                game.getPreferences().flush();
+                game.setGameState(new DeleteDataMenu());
             }
         });
 
