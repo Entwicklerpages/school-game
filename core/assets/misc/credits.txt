@@ -1,0 +1,42 @@
+!# School-Game
+
+
+
+
+
+
+Entwickelt von Team {hier Team-Name}
+
+# Programmierung
+
+Nicolas Hollmann
+Spirupi
+
+# Grafik, Design & Level
+
+Ominöse Katze
+
+# Basierend auf
+
+libGDX
+gdx-ai
+gdx-tools
+gdx-box2d
+gdx-controllers
+
+# Software
+
+Android Studio
+GitHub
+
+# Rezept #1
+
+4cl Tequila
+Orangensaft zum Auffüllen
+2cl Grenadine
+
+
+
+
+
+# Vielen Dank!

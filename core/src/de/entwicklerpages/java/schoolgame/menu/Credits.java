@@ -1,9 +1,18 @@
 package de.entwicklerpages.java.schoolgame.menu;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Align;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
@@ -13,10 +22,33 @@ public class Credits implements GameState, InputProcessor {
     private SpriteBatch batch;
     private SchoolGame game;
 
+    private BitmapFont font;
+    private GlyphLayout fontLayout;
+
+    private float offset = 0;
+    private float timer = 1.5f;
+
+    private List<CreditLine>creditLines = new ArrayList<CreditLine>();
+
     @Override
     public void create(SchoolGame game) {
         this.game = game;
         batch = new SpriteBatch();
+
+        font = new BitmapFont();
+
+        font.getData().setScale(4); // TODO: Bessere Font erzeugen
+
+        fontLayout = new GlyphLayout();
+
+        offset -= Gdx.graphics.getHeight() / 2 - 35;
+
+        FileHandle credits = Gdx.files.internal("misc/credits.txt");
+
+        if (credits.exists() && !credits.isDirectory())
+        {
+            prepareCredits(credits);
+        }
     }
 
     @Override
@@ -24,17 +56,44 @@ public class Credits implements GameState, InputProcessor {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
+        fontLayout.setText(font, "ESC", Color.DARK_GRAY, 50, Align.center, false);
+        font.draw(batch, fontLayout, -camera.viewportWidth / 2 + 50, camera.viewportHeight / 2 - 10);
+
+        int y = (int) camera.viewportHeight / 2 - 35 + (int)offset;
+
+        for (CreditLine line: creditLines) {
+
+            fontLayout.setText(font, line.getLine(), line.getColor(), camera.viewportWidth, Align.center, false);
+            font.draw(batch, fontLayout, -camera.viewportWidth / 2, y);
+            y -= 65;
+        }
+
         batch.end();
     }
 
     @Override
     public void update(float deltaTime) {
 
+        if (timer > 0)
+        {
+            timer -= deltaTime;
+        }
+        else
+        {
+            offset += deltaTime * 60;
+
+            if (offset > creditLines.size() * 65 + 80) {
+                game.setGameState(new MainMenu());
+            }
+        }
     }
 
     @Override
     public void dispose() {
         batch.dispose();
+        font.dispose();
+
+        creditLines.clear();
     }
 
     @Override
@@ -42,10 +101,38 @@ public class Credits implements GameState, InputProcessor {
         return "CREDITS";
     }
 
+    private void prepareCredits(FileHandle creditsFile)
+    {
+        creditLines.clear();
+
+        String credits = creditsFile.readString();
+
+        String[] lines = credits.split("\n");
+
+        for (String line: lines) {
+            line = line.trim();
+            int header = 0;
+
+            if (line.startsWith("#"))
+            {
+                header = 1;
+                line = line.substring(1).trim();
+            }
+
+            if (line.startsWith("!#"))
+            {
+                header = 2;
+                line = line.substring(2).trim();
+            }
+
+            creditLines.add(new CreditLine(line, header));
+        }
+    }
+
     @Override
     public boolean keyDown(int keycode) {
 
-        if (keycode == Input.Keys.ENTER)
+        if (keycode == Input.Keys.ESCAPE)
         {
             game.setGameState(new MainMenu());
             return true;
@@ -87,5 +174,44 @@ public class Credits implements GameState, InputProcessor {
     @Override
     public boolean scrolled(int amount) {
         return false;
+    }
+
+    protected class CreditLine {
+        private String line;
+        private boolean heading;
+        private boolean topHeading;
+
+        public CreditLine(String line, int heading) {
+            this.line = line;
+
+            this.heading = false;
+            this.topHeading = false;
+
+            switch (heading)
+            {
+                case 1:
+                    this.heading = true;
+                    break;
+                case 2:
+                    this.topHeading = true;
+                    break;
+            }
+        }
+
+        public String getLine() {
+            return line;
+        }
+
+        public Color getColor() {
+            if (heading)
+            {
+                return Color.LIME;
+            }
+            if (topHeading)
+            {
+                return Color.GOLDENROD;
+            }
+            return Color.WHITE;
+        }
     }
 }
