@@ -63,19 +63,34 @@ public abstract class MenuState implements GameState, InputProcessor {
         int y = (int) camera.viewportHeight / 2 - 35;
 
         for (MenuEntry entry: entries) {
-            Color entryColor = entry.getColor();
 
-            if (entry == activeEntry)
+            if (entry.isCustomRendering())
             {
-                entryColor = entry.getActiveColor();
+                entry.render(camera, y, activeEntry, game, localeBundle, deltaTime);
+            } else {
+                defaultRender(camera, entry, y);
             }
 
-            fontLayout.setText(font, localeBundle.get(entry.getLabel()), entryColor, camera.viewportWidth, Align.center, false);
-            font.draw(batch, fontLayout, -camera.viewportWidth / 2, y);
-            y -= 65;
+            y -= entry.getHeight();
         }
 
         batch.end();
+    }
+
+    protected void defaultRender(OrthographicCamera camera, MenuEntry entry, int y)
+    {
+        Color entryColor = entry.getColor();
+        if (entry == activeEntry)
+        {
+            entryColor = entry.getActiveColor();
+        }
+        if (!entry.isEnabled())
+        {
+            entryColor = entry.getDisabledColor();
+        }
+
+        fontLayout.setText(font, localeBundle.get(entry.getLabel()), entryColor, camera.viewportWidth, Align.center, false);
+        font.draw(batch, fontLayout, -camera.viewportWidth / 2, y);
     }
 
     @Override
@@ -87,7 +102,7 @@ public abstract class MenuState implements GameState, InputProcessor {
         if (entry == null) return; // ArrayList erlaubt null. Wir wollen das aber nicht.
         entries.add(entry);
 
-        if (entries.size() == 1) // Der erste Eintrag wird automatisch ausgewählt.
+        if (activeEntry == null && entry.isEnabled()) // Der erste Eintrag wird automatisch ausgewählt.
         {
             activeEntry = entry;
         }
@@ -95,6 +110,17 @@ public abstract class MenuState implements GameState, InputProcessor {
 
     protected final void nextEntry()
     {
+        if (checkAllDisabled())
+        {
+            activeEntry = null;
+            return;
+        }
+
+        if (activeEntry == null && entries.size() > 0)
+        {
+            activeEntry = entries.get(0);
+        }
+
         int index = entries.indexOf(activeEntry);
 
         index++;
@@ -102,10 +128,26 @@ public abstract class MenuState implements GameState, InputProcessor {
         if (index >= entries.size()) index = 0;
 
         activeEntry = entries.get(index);
+
+        if (!activeEntry.isEnabled())
+        {
+            nextEntry();
+        }
     }
 
     protected final void previousEntry()
     {
+        if (checkAllDisabled())
+        {
+            activeEntry = null;
+            return;
+        }
+
+        if (activeEntry == null && entries.size() > 0)
+        {
+            activeEntry = entries.get(0);
+        }
+
         int index = entries.indexOf(activeEntry);
 
         index--;
@@ -113,6 +155,22 @@ public abstract class MenuState implements GameState, InputProcessor {
         if (index < 0) index = entries.size() - 1;
 
         activeEntry = entries.get(index);
+
+        if (!activeEntry.isEnabled())
+        {
+            previousEntry();
+        }
+    }
+
+    private final boolean checkAllDisabled()
+    {
+        boolean allDisabled = true;
+        for (MenuEntry entry : entries)
+        {
+            allDisabled = allDisabled && !entry.isEnabled();
+        }
+
+        return allDisabled;
     }
 
     @Override
@@ -141,9 +199,9 @@ public abstract class MenuState implements GameState, InputProcessor {
             return true;
         }
 
-        if (keycode == Input.Keys.ENTER || keycode == Input.Keys.BUTTON_A)
+        if (keycode == Input.Keys.ENTER || keycode == Input.Keys.SPACE)
         {
-            if (activeEntry.getCallback() != null)
+            if (activeEntry != null && activeEntry.isEnabled() && activeEntry.getCallback() != null)
             {
                 activeEntry.getCallback().run();
             }
@@ -191,8 +249,12 @@ public abstract class MenuState implements GameState, InputProcessor {
     class MenuEntry {
         private MenuCallback callback;
         private String label;
+        private boolean enabled = true;
+        private boolean customRendering = false;
         private Color color = Color.WHITE;
         private Color activeColor = Color.RED;
+        private Color disabledColor = Color.GRAY;
+        private int height = 65;
 
         public MenuEntry()
         {
@@ -235,6 +297,102 @@ public abstract class MenuState implements GameState, InputProcessor {
 
         public void setActiveColor(Color activeColor) {
             this.activeColor = activeColor;
+        }
+
+        public Color getDisabledColor() {
+            return disabledColor;
+        }
+
+        public void setDisabledColor(Color disabledColor) {
+            this.disabledColor = disabledColor;
+        }
+
+        public boolean isEnabled() {
+            return enabled;
+        }
+
+        public void setEnabled(boolean enabled) {
+            this.enabled = enabled;
+        }
+
+        public boolean isCustomRendering() {
+            return customRendering;
+        }
+
+        protected void setCustomRendering(boolean customRendering) {
+            this.customRendering = customRendering;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        protected void setHeight(int height) {
+            this.height = height;
+        }
+
+        public void render(OrthographicCamera camera, int y, MenuEntry activeEntry, SchoolGame game, I18NBundle localeBundle, float deltaTime) {
+        }
+    }
+
+    class MenuSpacer extends MenuEntry {
+
+        public MenuSpacer(int height)
+        {
+            setEnabled(false);
+            setCustomRendering(true);
+            setHeight(height);
+        }
+    }
+
+    class MenuLabel extends MenuEntry {
+
+        private GlyphLayout fontLayout;
+        private BitmapFont font;
+
+        public MenuLabel(String label)
+        {
+            super(label);
+
+            setEnabled(false);
+            setCustomRendering(true);
+
+            fontLayout = new GlyphLayout();
+        }
+
+        public void render(OrthographicCamera camera, int y, MenuEntry activeEntry, SchoolGame game, I18NBundle localeBundle, float deltaTime) {
+
+            if (font == null)
+                font = game.getDefaultFont();
+
+            fontLayout.setText(font, localeBundle.get(getLabel()), getColor(), camera.viewportWidth, Align.center, false);
+            font.draw(batch, fontLayout, -camera.viewportWidth / 2, y);
+        }
+    }
+
+    class MenuTitle extends MenuEntry {
+
+        private GlyphLayout fontLayout;
+        private BitmapFont font;
+
+        public MenuTitle(String label)
+        {
+            super(label);
+
+            setEnabled(false);
+            setCustomRendering(true);
+            setHeight(85);
+
+            fontLayout = new GlyphLayout();
+        }
+
+        public void render(OrthographicCamera camera, int y, MenuEntry activeEntry, SchoolGame game, I18NBundle localeBundle, float deltaTime) {
+
+            if (font == null)
+                font = game.getTitleFont();
+
+            fontLayout.setText(font, localeBundle.get(getLabel()), getColor(), camera.viewportWidth, Align.center, false);
+            font.draw(batch, fontLayout, -camera.viewportWidth / 2, y);
         }
     }
 

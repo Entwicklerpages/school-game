@@ -132,7 +132,7 @@ public class Credits implements GameState, InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
 
-        if (keycode == Input.Keys.ESCAPE)
+        if (keycode == Input.Keys.ESCAPE || keycode == Input.Keys.SPACE)
         {
             game.setGameState(new MainMenu());
             return true;

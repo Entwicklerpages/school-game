@@ -21,6 +21,7 @@ public class SchoolGame implements ApplicationListener {
 	private Preferences preferences;
 	private BitmapFont defaultFont;
 	private BitmapFont longTextFont;
+	private BitmapFont titleFont;
 
 	private GameState gameState;
 
@@ -47,6 +48,7 @@ public class SchoolGame implements ApplicationListener {
 		//defaultFont.getData().setScale(4); // Skalierung (sollte vermieden werden)
 
 		longTextFont = new BitmapFont(Gdx.files.internal("font/VT323_30.fnt"), false);
+		titleFont = new BitmapFont(Gdx.files.internal("font/VT323_76.fnt"), false);
 
 		preferences = Gdx.app.getPreferences("de.entwicklerpages.java.schoolgame");
 
@@ -120,6 +122,7 @@ public class SchoolGame implements ApplicationListener {
 
 		defaultFont.dispose();
 		longTextFont.dispose();
+		titleFont.dispose();
 
 		Gdx.app.getApplicationLogger().log("INFO", "Finished.");
 		Gdx.app.getApplicationLogger().log("INFO", "Quit.");
@@ -190,5 +193,10 @@ public class SchoolGame implements ApplicationListener {
 	public BitmapFont getLongTextFont()
 	{
 		return longTextFont;
+	}
+
+	public BitmapFont getTitleFont()
+	{
+		return titleFont;
 	}
 }

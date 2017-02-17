@@ -26,6 +26,9 @@ public class LoadGameMenu extends MenuState {
             }
         });
 
+        MenuLabel label = new MenuLabel("auswaehlen");
+        label.setColor(Color.LIGHT_GRAY);
+
         MenuEntry loadGame1 = new MenuEntry("slot_1");
         loadGame1.setActiveColor(Color.GREEN);
 
@@ -41,7 +44,11 @@ public class LoadGameMenu extends MenuState {
         MenuEntry loadGame5 = new MenuEntry("slot_5");
         loadGame5.setActiveColor(Color.GREEN);
 
+        addEntry(new MenuSpacer(20));
         addEntry(back);
+        addEntry(new MenuSpacer(40));
+        addEntry(label);
+        addEntry(new MenuSpacer(10));
         addEntry(loadGame1);
         addEntry(loadGame2);
         addEntry(loadGame3);

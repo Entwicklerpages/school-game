@@ -17,6 +17,10 @@ public class MainMenu extends MenuState {
 
     @Override
     void setupMenu() {
+
+        MenuTitle title = new MenuTitle("titel");
+        title.setColor(Color.CORAL);
+
         MenuEntry newGame = new MenuEntry("neues_spiel");
         newGame.setActiveColor(Color.GREEN);
 
@@ -56,6 +60,9 @@ public class MainMenu extends MenuState {
             }
         });
 
+        addEntry(new MenuSpacer(40));
+        addEntry(title);
+        addEntry(new MenuSpacer(40));
         addEntry(newGame);
         addEntry(loadGame);
         addEntry(options);
