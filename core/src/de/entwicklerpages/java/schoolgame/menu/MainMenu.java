@@ -1,10 +1,7 @@
 package de.entwicklerpages.java.schoolgame.menu;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.Color;
-
-import de.entwicklerpages.java.schoolgame.SchoolGame;
 
 public class MainMenu extends MenuState {
 
@@ -25,6 +22,12 @@ public class MainMenu extends MenuState {
 
         MenuEntry loadGame = new MenuEntry("spiel_laden");
         loadGame.setActiveColor(Color.GREEN);
+        loadGame.setCallback(new MenuCallback() {
+            @Override
+            public void run() {
+                game.setGameState(new LoadGameMenu());
+            }
+        });
 
         MenuEntry options = new MenuEntry("optionen");
         options.setActiveColor(Color.GREEN);

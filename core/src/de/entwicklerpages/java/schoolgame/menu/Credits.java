@@ -57,8 +57,8 @@ public class Credits implements GameState, InputProcessor {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
-        fontLayout.setText(font, "ESC", Color.DARK_GRAY, 50, Align.center, false);
-        font.draw(batch, fontLayout, -camera.viewportWidth / 2 + 15, camera.viewportHeight / 2 - 10);
+        fontLayout.setText(font, "ESC", Color.DARK_GRAY, 50, Align.left, false);
+        font.draw(batch, fontLayout, -camera.viewportWidth / 2 + 5, camera.viewportHeight / 2 - 10);
 
         int y = (int) camera.viewportHeight / 2 - 35 + (int)offset;
 

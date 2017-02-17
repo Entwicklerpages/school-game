@@ -129,13 +129,13 @@ public abstract class MenuState implements GameState, InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
 
-        if (keycode == Input.Keys.UP || keycode == Input.Keys.W || keycode == Input.Keys.DPAD_UP)
+        if (keycode == Input.Keys.UP || keycode == Input.Keys.W)
         {
             previousEntry();
             return true;
         }
 
-        if (keycode == Input.Keys.DOWN || keycode == Input.Keys.S || keycode == Input.Keys.DPAD_DOWN)
+        if (keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
         {
             nextEntry();
             return true;
