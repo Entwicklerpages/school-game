@@ -66,7 +66,7 @@ public abstract class MenuState implements GameState, InputProcessor {
 
             if (entry.isCustomRendering())
             {
-                entry.render(camera, y, activeEntry, game, localeBundle, deltaTime);
+                entry.render(camera, batch, y, activeEntry, game, localeBundle, deltaTime);
             } else {
                 defaultRender(camera, entry, y);
             }
@@ -247,7 +247,7 @@ public abstract class MenuState implements GameState, InputProcessor {
     }
 
     class MenuEntry {
-        private MenuCallback callback;
+        private MenuCallback callback = null;
         private String label;
         private boolean enabled = true;
         private boolean customRendering = false;
@@ -258,7 +258,6 @@ public abstract class MenuState implements GameState, InputProcessor {
 
         public MenuEntry()
         {
-            callback = null;
             this.setLabel("");
         }
 
@@ -331,7 +330,7 @@ public abstract class MenuState implements GameState, InputProcessor {
             this.height = height;
         }
 
-        public void render(OrthographicCamera camera, int y, MenuEntry activeEntry, SchoolGame game, I18NBundle localeBundle, float deltaTime) {
+        public void render(OrthographicCamera camera, SpriteBatch batch, int y, MenuEntry activeEntry, SchoolGame game, I18NBundle localeBundle, float deltaTime) {
         }
     }
 
@@ -360,7 +359,7 @@ public abstract class MenuState implements GameState, InputProcessor {
             fontLayout = new GlyphLayout();
         }
 
-        public void render(OrthographicCamera camera, int y, MenuEntry activeEntry, SchoolGame game, I18NBundle localeBundle, float deltaTime) {
+        public void render(OrthographicCamera camera, SpriteBatch batch, int y, MenuEntry activeEntry, SchoolGame game, I18NBundle localeBundle, float deltaTime) {
 
             if (font == null)
                 font = game.getDefaultFont();
@@ -386,7 +385,7 @@ public abstract class MenuState implements GameState, InputProcessor {
             fontLayout = new GlyphLayout();
         }
 
-        public void render(OrthographicCamera camera, int y, MenuEntry activeEntry, SchoolGame game, I18NBundle localeBundle, float deltaTime) {
+        public void render(OrthographicCamera camera, SpriteBatch batch, int y, MenuEntry activeEntry, SchoolGame game, I18NBundle localeBundle, float deltaTime) {
 
             if (font == null)
                 font = game.getTitleFont();

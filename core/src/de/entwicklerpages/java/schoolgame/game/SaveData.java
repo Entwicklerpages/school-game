@@ -134,7 +134,7 @@ public class SaveData {
             savedSlots.add(new SaveData(game, slot));
         }
 
-        return (SaveData[]) savedSlots.toArray();
+        return savedSlots.toArray(new SaveData[savedSlots.size()]);
     }
 
     public enum Slot
