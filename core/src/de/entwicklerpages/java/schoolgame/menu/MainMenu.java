@@ -23,6 +23,12 @@ public class MainMenu extends MenuState {
 
         MenuEntry newGame = new MenuEntry("neues_spiel");
         newGame.setActiveColor(Color.GREEN);
+        newGame.setCallback(new MenuCallback() {
+            @Override
+            public void run() {
+                game.setGameState(new NewGameMenu());
+            }
+        });
 
         MenuEntry loadGame = new MenuEntry("spiel_laden");
         loadGame.setActiveColor(Color.GREEN);
@@ -62,7 +68,7 @@ public class MainMenu extends MenuState {
 
         addEntry(new MenuSpacer(40));
         addEntry(title);
-        addEntry(new MenuSpacer(40));
+        addEntry(new MenuSpacer(70));
         addEntry(newGame);
         addEntry(loadGame);
         addEntry(options);

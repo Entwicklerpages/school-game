@@ -18,6 +18,9 @@ public class OptionsMenu extends MenuState {
 
     @Override
     void setupMenu() {
+        MenuTitle label = new MenuTitle("titel");
+        label.setColor(Color.CORAL);
+
         MenuEntry back = new MenuEntry("zurueck");
         back.setActiveColor(Color.YELLOW);
         back.setCallback(new MenuCallback() {
@@ -82,6 +85,8 @@ public class OptionsMenu extends MenuState {
         });
 
         addEntry(new MenuSpacer(40));
+        addEntry(label);
+        addEntry(new MenuSpacer(20));
         addEntry(back);
         addEntry(new MenuSpacer(60));
         addEntry(fullscreen);

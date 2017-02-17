@@ -13,11 +13,10 @@ import java.util.concurrent.TimeUnit;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
-public class LoadGameMenu extends MenuState {
-
+public class NewGameMenu extends MenuState {
     @Override
     public String getStateName() {
-        return "LOAD_GAME_MENU";
+        return "NEW_GAME_MENU";
     }
 
     @Override
@@ -36,7 +35,7 @@ public class LoadGameMenu extends MenuState {
             }
         });
 
-        MenuLabel label = new MenuLabel("auswaehlen_laden");
+        MenuLabel label = new MenuLabel("auswaehlen_neu");
         label.setColor(Color.LIGHT_GRAY);
 
         addEntry(new MenuSpacer(15));
@@ -48,14 +47,16 @@ public class LoadGameMenu extends MenuState {
         SaveData[] allData = SaveData.getAll(game);
 
         for (SaveData data: allData) {
-            MenuLoadSlot loadGameSlot = new MenuLoadSlot("slot", "slot_detail", data);
-            loadGameSlot.setActiveColor(Color.GREEN);
-            addEntry(loadGameSlot);
+            MenuNewSlot newGameSlot = new MenuNewSlot("slot", "slot_detail", data);
+            newGameSlot.setActiveColor(Color.GREEN);
+            newGameSlot.setDisabledColor(Color.RED);
+
+            addEntry(newGameSlot);
         }
 
     }
 
-    class MenuLoadSlot extends MenuEntry {
+    class MenuNewSlot extends MenuEntry {
         private GlyphLayout fontLayout;
         private BitmapFont font;
         private BitmapFont fontSmall;
@@ -70,14 +71,13 @@ public class LoadGameMenu extends MenuState {
         private String levelName;
         private String playTime;
 
-        public MenuLoadSlot(String label, String detail, SaveData saveData)
+        public MenuNewSlot(String label, String detail, SaveData saveData)
         {
             super(label);
 
             this.saveData = saveData;
             this.detail = detail;
 
-            setEnabled(saveData.isUsed());
             setCustomRendering(true);
 
             setHeight(100);
@@ -112,10 +112,10 @@ public class LoadGameMenu extends MenuState {
             if (this == activeEntry)
             {
                 entryColor = getActiveColor();
-            }
-            if (!isEnabled())
-            {
-                entryColor = getDisabledColor();
+                if (used == 1)
+                {
+                    entryColor = getDisabledColor();
+                }
             }
 
             if (font == null)
