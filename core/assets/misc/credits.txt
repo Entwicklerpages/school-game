@@ -5,19 +5,17 @@
 
 
 
+
 Entwickelt von Team {hier Team-Name}
 
 # Programmierung
-
 Nicolas Hollmann
 Spirupi
 
 # Grafik, Design & Level
-
 Ominöse Katze
 
 # Basierend auf
-
 libGDX
 gdx-ai
 gdx-tools
@@ -25,15 +23,18 @@ gdx-box2d
 gdx-controllers
 
 # Software
-
 Android Studio
 GitHub
+Tiled
 
 # Rezept #1
-
 4cl Tequila
 Orangensaft zum Auffüllen
 2cl Grenadine
+
+# Schriftart
+VT323 (Google Fonts)
+von Peter Hull
 
 
 

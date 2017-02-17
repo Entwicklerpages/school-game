@@ -7,6 +7,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -18,6 +19,8 @@ public class SchoolGame implements ApplicationListener {
 
 	private InputMultiplexer inputMultiplexer;
 	private Preferences preferences;
+	private BitmapFont defaultFont;
+	private BitmapFont longTextFont;
 
 	private GameState gameState;
 
@@ -39,6 +42,11 @@ public class SchoolGame implements ApplicationListener {
 
 		inputMultiplexer = new InputMultiplexer();
 		Gdx.input.setInputProcessor(inputMultiplexer);
+
+		defaultFont = new BitmapFont(Gdx.files.internal("font/VT323_60.fnt"), false);
+		//defaultFont.getData().setScale(4); // Skalierung (sollte vermieden werden)
+
+		longTextFont = new BitmapFont(Gdx.files.internal("font/VT323_30.fnt"), false);
 
 		preferences = Gdx.app.getPreferences("de.entwicklerpages.java.schoolgame");
 
@@ -110,6 +118,9 @@ public class SchoolGame implements ApplicationListener {
 
 		gameState.dispose();
 
+		defaultFont.dispose();
+		longTextFont.dispose();
+
 		Gdx.app.getApplicationLogger().log("INFO", "Finished.");
 		Gdx.app.getApplicationLogger().log("INFO", "Quit.");
 	}
@@ -169,5 +180,15 @@ public class SchoolGame implements ApplicationListener {
 	public void setVSync(boolean vsync)
 	{
 		preferences.putBoolean("vsync", vsync);
+	}
+
+	public BitmapFont getDefaultFont()
+	{
+		return defaultFont;
+	}
+
+	public BitmapFont getLongTextFont()
+	{
+		return longTextFont;
 	}
 }

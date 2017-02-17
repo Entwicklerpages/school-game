@@ -19,6 +19,9 @@ import de.entwicklerpages.java.schoolgame.SchoolGame;
 
 public class Credits implements GameState, InputProcessor {
 
+    private static final int FONT_HEIGHT = 55;
+    private static final int SCROLL_SPEED = 60;
+
     private SpriteBatch batch;
     private SchoolGame game;
 
@@ -35,9 +38,7 @@ public class Credits implements GameState, InputProcessor {
         this.game = game;
         batch = new SpriteBatch();
 
-        font = new BitmapFont();
-
-        font.getData().setScale(4); // TODO: Bessere Font erzeugen
+        font = game.getDefaultFont();
 
         fontLayout = new GlyphLayout();
 
@@ -57,7 +58,7 @@ public class Credits implements GameState, InputProcessor {
         batch.begin();
 
         fontLayout.setText(font, "ESC", Color.DARK_GRAY, 50, Align.center, false);
-        font.draw(batch, fontLayout, -camera.viewportWidth / 2 + 50, camera.viewportHeight / 2 - 10);
+        font.draw(batch, fontLayout, -camera.viewportWidth / 2 + 15, camera.viewportHeight / 2 - 10);
 
         int y = (int) camera.viewportHeight / 2 - 35 + (int)offset;
 
@@ -65,7 +66,7 @@ public class Credits implements GameState, InputProcessor {
 
             fontLayout.setText(font, line.getLine(), line.getColor(), camera.viewportWidth, Align.center, false);
             font.draw(batch, fontLayout, -camera.viewportWidth / 2, y);
-            y -= 65;
+            y -= FONT_HEIGHT;
         }
 
         batch.end();
@@ -80,9 +81,9 @@ public class Credits implements GameState, InputProcessor {
         }
         else
         {
-            offset += deltaTime * 60;
+            offset += deltaTime * SCROLL_SPEED;
 
-            if (offset > creditLines.size() * 65 + 80) {
+            if (offset > creditLines.size() * FONT_HEIGHT + 80) {
                 game.setGameState(new MainMenu());
             }
         }
@@ -91,7 +92,6 @@ public class Credits implements GameState, InputProcessor {
     @Override
     public void dispose() {
         batch.dispose();
-        font.dispose();
 
         creditLines.clear();
     }

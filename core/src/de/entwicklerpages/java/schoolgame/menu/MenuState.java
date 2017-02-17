@@ -43,9 +43,7 @@ public abstract class MenuState implements GameState, InputProcessor {
         this.setupMenu();
 
         batch = new SpriteBatch();
-        font = new BitmapFont();
-
-        font.getData().setScale(4); // TODO: Bessere Font erzeugen
+        font = game.getDefaultFont();
 
         fontLayout = new GlyphLayout();
 
@@ -123,7 +121,6 @@ public abstract class MenuState implements GameState, InputProcessor {
 
         entries.clear();
 
-        font.dispose();
         batch.dispose();
 
         Gdx.app.getApplicationLogger().log("INFO", "Menu leave.");
