@@ -81,7 +81,9 @@ public class OptionsMenu extends MenuState {
             }
         });
 
+        addEntry(new MenuSpacer(40));
         addEntry(back);
+        addEntry(new MenuSpacer(60));
         addEntry(fullscreen);
         addEntry(vsync);
         addEntry(delete);

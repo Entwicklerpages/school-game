@@ -17,6 +17,9 @@ public class DeleteDataMenu extends MenuState {
 
     @Override
     void setupMenu() {
+        MenuLabel label = new MenuLabel("sicher");
+        label.setColor(Color.ROYAL);
+
         MenuEntry back = new MenuEntry("abbrechen");
         back.setActiveColor(Color.GREEN);
         back.setCallback(new MenuCallback() {
@@ -37,6 +40,9 @@ public class DeleteDataMenu extends MenuState {
             }
         });
 
+        addEntry(new MenuSpacer(150));
+        addEntry(label);
+        addEntry(new MenuSpacer(40));
         addEntry(back);
         addEntry(delete);
     }
