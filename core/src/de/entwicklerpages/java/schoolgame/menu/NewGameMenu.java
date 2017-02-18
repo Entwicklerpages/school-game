@@ -56,9 +56,7 @@ public class NewGameMenu extends MenuState {
                 public void run() {
                     if (data.isUsed())
                     {
-                        // TODO fragen ob Daten gelöscht werden sollen
-                        data.reset();
-                        game.setGameState(new LevelManager(data.getSlot()));
+                        game.setGameState(new OverwriteSlotMenu(data));
                     } else {
                         game.setGameState(new LevelManager(data.getSlot()));
                     }
