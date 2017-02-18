@@ -48,10 +48,12 @@ public class OptionsMenu extends MenuState {
                     }
 
                     game.setFullscreen(false);
+                    Gdx.input.setCursorCatched(false);
                     Gdx.graphics.setWindowedMode(width, height);
                 } else {
                     fullscreen.setLabel("fullscreen_on");
                     game.setFullscreen(true);
+                    Gdx.input.setCursorCatched(true);
                     Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
                 }
             }

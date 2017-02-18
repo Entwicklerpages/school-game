@@ -55,6 +55,7 @@ public class SchoolGame implements ApplicationListener {
 		if (shouldBeFullscreen())
 		{
 			Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+			Gdx.input.setCursorCatched(true);
 		} else if (preferences.contains("window_width") && preferences.contains("window_height")) {
 			Gdx.graphics.setWindowedMode(preferences.getInteger("window_width"), preferences.getInteger("window_height"));
 		}
@@ -102,6 +103,8 @@ public class SchoolGame implements ApplicationListener {
 			preferences.putInteger("window_height", Gdx.graphics.getHeight());
 		}
 		preferences.flush();
+
+		Gdx.input.setCursorCatched(false);
 	}
 
 	/**
