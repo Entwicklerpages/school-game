@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.I18NBundle;
 import java.util.concurrent.TimeUnit;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
+import de.entwicklerpages.java.schoolgame.game.LevelManager;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
 public class LoadGameMenu extends MenuState {
@@ -47,9 +48,16 @@ public class LoadGameMenu extends MenuState {
 
         SaveData[] allData = SaveData.getAll(game);
 
-        for (SaveData data: allData) {
+        for (final SaveData data: allData) {
             MenuLoadSlot loadGameSlot = new MenuLoadSlot("slot", "slot_detail", data);
             loadGameSlot.setActiveColor(Color.GREEN);
+            loadGameSlot.setCallback(new MenuCallback() {
+                @Override
+                public void run() {
+                    game.setGameState(new LevelManager(data.getSlot()));
+                }
+            });
+
             addEntry(loadGameSlot);
         }
 

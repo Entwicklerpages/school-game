@@ -71,6 +71,7 @@ public class SaveData {
         playerName = "";
         male = false;
         playTime = 0;
+        levelName = "";
 
         prefs.remove(slot.name() + PLAYER_NAME);
         prefs.remove(slot.name() + MALE);
