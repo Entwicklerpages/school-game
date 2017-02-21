@@ -65,6 +65,30 @@ public class LevelManager implements GameState {
         }
     }
 
+    private Level createLevelWithName(String name)
+    {
+        name = name.toLowerCase();
+
+        if (!levelMap.containsKey(name))
+        {
+            Gdx.app.error("ERROR", "Level " + name + " is unknown.");
+            return null;
+        }
+
+        Class<? extends Level> levelClass = levelMap.get(name);
+
+        Level level = null;
+
+        try {
+            level = levelClass.newInstance();
+        } catch (Exception e) {
+            Gdx.app.error("ERROR", "Exception while creating level instance of " + name, e);
+            // e.printStackTrace();
+        }
+
+        return level;
+    }
+
     @Override
     public void create(SchoolGame game) {
         this.game = game;
