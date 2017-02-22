@@ -4,6 +4,8 @@ package de.entwicklerpages.java.schoolgame.menu;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
+
 public class DeleteDataMenu extends MenuState {
     @Override
     public String getStateName() {
@@ -22,7 +24,7 @@ public class DeleteDataMenu extends MenuState {
 
         MenuEntry back = new MenuEntry("abbrechen");
         back.setActiveColor(Color.GREEN);
-        back.setCallback(new MenuCallback() {
+        back.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 game.setGameState(new OptionsMenu());
@@ -31,7 +33,7 @@ public class DeleteDataMenu extends MenuState {
 
         MenuEntry delete = new MenuEntry("wirklich_loeschen");
         delete.setActiveColor(Color.RED);
-        delete.setCallback(new MenuCallback() {
+        delete.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 game.getPreferences().clear();

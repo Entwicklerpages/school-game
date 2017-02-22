@@ -18,6 +18,7 @@ import java.util.List;
 
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 
 public abstract class MenuState implements GameState, InputProcessor {
 
@@ -57,8 +58,6 @@ public abstract class MenuState implements GameState, InputProcessor {
     public void render(OrthographicCamera camera, float deltaTime) {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-
-        // TODO: Bessere Positionierung von Einträgen
 
         int y = (int) camera.viewportHeight / 2 - 35;
 
@@ -247,7 +246,7 @@ public abstract class MenuState implements GameState, InputProcessor {
     }
 
     class MenuEntry {
-        private MenuCallback callback = null;
+        private ActionCallback callback = null;
         private String label;
         private boolean enabled = true;
         private boolean customRendering = false;
@@ -266,11 +265,11 @@ public abstract class MenuState implements GameState, InputProcessor {
             this.setLabel(label);
         }
 
-        public MenuCallback getCallback() {
+        public ActionCallback getCallback() {
             return callback;
         }
 
-        public void setCallback(MenuCallback callback) {
+        public void setCallback(ActionCallback callback) {
             this.callback = callback;
         }
 
@@ -374,8 +373,7 @@ public abstract class MenuState implements GameState, InputProcessor {
         private GlyphLayout fontLayout;
         private BitmapFont font;
 
-        public MenuTitle(String label)
-        {
+        public MenuTitle(String label) {
             super(label);
 
             setEnabled(false);
@@ -393,9 +391,5 @@ public abstract class MenuState implements GameState, InputProcessor {
             fontLayout.setText(font, localeBundle.get(getLabel()), getColor(), camera.viewportWidth, Align.center, false);
             font.draw(batch, fontLayout, -camera.viewportWidth / 2, y);
         }
-    }
-
-    interface MenuCallback {
-        void run();
     }
 }

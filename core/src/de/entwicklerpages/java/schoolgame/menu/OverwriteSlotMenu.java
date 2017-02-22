@@ -2,6 +2,7 @@ package de.entwicklerpages.java.schoolgame.menu;
 
 import com.badlogic.gdx.graphics.Color;
 
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.LevelManager;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
@@ -36,7 +37,7 @@ public class OverwriteSlotMenu extends MenuState {
 
         MenuEntry back = new MenuEntry("abbrechen");
         back.setActiveColor(Color.GREEN);
-        back.setCallback(new MenuCallback() {
+        back.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 game.setGameState(new NewGameMenu());
@@ -45,7 +46,7 @@ public class OverwriteSlotMenu extends MenuState {
 
         MenuEntry overwrite = new MenuEntry("sicher");
         overwrite.setActiveColor(Color.RED);
-        overwrite.setCallback(new MenuCallback() {
+        overwrite.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 saveData.reset();

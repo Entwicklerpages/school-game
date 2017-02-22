@@ -2,7 +2,11 @@ package de.entwicklerpages.java.schoolgame.menu;
 
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
+import de.entwicklerpages.java.schoolgame.common.CheatDetector;
 
 public class OptionsMenu extends MenuState {
 
@@ -23,17 +27,17 @@ public class OptionsMenu extends MenuState {
 
         MenuEntry back = new MenuEntry("zurueck");
         back.setActiveColor(Color.YELLOW);
-        back.setCallback(new MenuCallback() {
+        back.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 game.setGameState(new MainMenu());
                 game.getPreferences().flush();
-        }
+            }
         });
 
         final MenuEntry fullscreen = new MenuEntry(Gdx.graphics.isFullscreen() ? "fullscreen_on" : "fullscreen_off");
         fullscreen.setActiveColor(Color.YELLOW);
-        fullscreen.setCallback(new MenuCallback() {
+        fullscreen.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 if (Gdx.graphics.isFullscreen())
@@ -61,7 +65,7 @@ public class OptionsMenu extends MenuState {
 
         final MenuEntry vsync = new MenuEntry(game.shouldVSync() ? "vsync_on" : "vsync_off");
         vsync.setActiveColor(Color.YELLOW);
-        vsync.setCallback(new MenuCallback() {
+        vsync.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 if (game.shouldVSync())
@@ -79,12 +83,38 @@ public class OptionsMenu extends MenuState {
 
         MenuEntry delete = new MenuEntry("alles_loeschen");
         delete.setActiveColor(Color.RED);
-        delete.setCallback(new MenuCallback() {
+        delete.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 game.setGameState(new DeleteDataMenu());
             }
         });
+
+        CheatDetector cheatDetector = new CheatDetector();
+
+        // Hier wird eine absolut zufällige Sequenz festgelegt, um die Cheats vor normalen Spielern zu verstecken.
+        cheatDetector.setKeySequence(new int[] {
+                Input.Keys.UP,
+                Input.Keys.UP,
+                Input.Keys.DOWN,
+                Input.Keys.DOWN,
+                Input.Keys.LEFT,
+                Input.Keys.RIGHT,
+                Input.Keys.LEFT,
+                Input.Keys.RIGHT,
+                Input.Keys.B,
+                Input.Keys.A
+        });
+
+        cheatDetector.setCallback(new ActionCallback() {
+            @Override
+            public void run() {
+                game.setGameState(new Splashscreen());
+                // TODO Zu einem Cheatmenü wechseln
+            }
+        });
+
+        game.addInputProcessor(cheatDetector);
 
         addEntry(new MenuSpacer(40));
         addEntry(label);

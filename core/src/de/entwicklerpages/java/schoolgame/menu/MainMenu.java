@@ -3,6 +3,8 @@ package de.entwicklerpages.java.schoolgame.menu;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
+
 public class MainMenu extends MenuState {
 
     @Override
@@ -23,7 +25,7 @@ public class MainMenu extends MenuState {
 
         MenuEntry newGame = new MenuEntry("neues_spiel");
         newGame.setActiveColor(Color.GREEN);
-        newGame.setCallback(new MenuCallback() {
+        newGame.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 game.setGameState(new NewGameMenu());
@@ -32,7 +34,7 @@ public class MainMenu extends MenuState {
 
         MenuEntry loadGame = new MenuEntry("spiel_laden");
         loadGame.setActiveColor(Color.GREEN);
-        loadGame.setCallback(new MenuCallback() {
+        loadGame.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 game.setGameState(new LoadGameMenu());
@@ -41,7 +43,7 @@ public class MainMenu extends MenuState {
 
         MenuEntry options = new MenuEntry("optionen");
         options.setActiveColor(Color.GREEN);
-        options.setCallback(new MenuCallback() {
+        options.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 game.setGameState(new OptionsMenu());
@@ -50,7 +52,7 @@ public class MainMenu extends MenuState {
 
         MenuEntry credits = new MenuEntry("credits");
         credits.setActiveColor(Color.GREEN);
-        credits.setCallback(new MenuCallback() {
+        credits.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 game.setGameState(new Credits());
@@ -59,7 +61,7 @@ public class MainMenu extends MenuState {
 
         MenuEntry quit = new MenuEntry("beenden");
         quit.setActiveColor(Color.RED);
-        quit.setCallback(new MenuCallback() {
+        quit.setCallback(new ActionCallback() {
             @Override
             public void run() {
                 Gdx.app.exit();
