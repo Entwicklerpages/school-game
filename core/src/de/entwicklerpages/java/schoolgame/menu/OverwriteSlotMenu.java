@@ -3,7 +3,6 @@ package de.entwicklerpages.java.schoolgame.menu;
 import com.badlogic.gdx.graphics.Color;
 
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
-import de.entwicklerpages.java.schoolgame.game.LevelManager;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
 
@@ -50,7 +49,7 @@ public class OverwriteSlotMenu extends MenuState {
             @Override
             public void run() {
                 saveData.reset();
-                game.setGameState(new LevelManager(saveData.getSlot()));
+                game.setGameState(new CreateGameSlot(saveData.getSlot()));
             }
         });
 

@@ -59,7 +59,7 @@ public class NewGameMenu extends MenuState {
                     {
                         game.setGameState(new OverwriteSlotMenu(data));
                     } else {
-                        game.setGameState(new LevelManager(data.getSlot()));
+                        game.setGameState(new CreateGameSlot(data.getSlot()));
                     }
                 }
             });

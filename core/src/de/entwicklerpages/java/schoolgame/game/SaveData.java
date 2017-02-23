@@ -14,6 +14,7 @@ public class SaveData {
     private static final String MALE = "_MALE";
     private static final String PLAY_TIME = "_PLAY_TIME";
     private static final String LEVEL_NAME = "_LEVEL_NAME";
+    private static final String LEVEL_ID = "_LEVEL_ID";
 
     private Preferences prefs;
     private Slot slot;
@@ -22,6 +23,7 @@ public class SaveData {
     private boolean male = false;
     private long playTime = 0;
     private String levelName = "";
+    private String levelId = "";
 
     private long startTime = 0;
 
@@ -43,6 +45,7 @@ public class SaveData {
         male = prefs.getBoolean(slot.name() + MALE, false);
         playTime = prefs.getLong(slot.name() + PLAY_TIME, 0);
         levelName = prefs.getString(slot.name() + LEVEL_NAME, "");
+        levelId = prefs.getString(slot.name() + LEVEL_ID, "");
     }
 
     public void save(Slot slot)
@@ -60,6 +63,7 @@ public class SaveData {
         prefs.putBoolean(slot.name() + MALE, male);
         prefs.putLong(slot.name() + PLAY_TIME, playTime);
         prefs.putString(slot.name() + LEVEL_NAME, levelName);
+        prefs.putString(slot.name() + LEVEL_ID, levelId);
         prefs.flush();
 
         startTime = TimeUtils.millis();
@@ -72,11 +76,13 @@ public class SaveData {
         male = false;
         playTime = 0;
         levelName = "";
+        levelId = "";
 
         prefs.remove(slot.name() + PLAYER_NAME);
         prefs.remove(slot.name() + MALE);
         prefs.remove(slot.name() + PLAY_TIME);
         prefs.remove(slot.name() + LEVEL_NAME);
+        prefs.remove(slot.name() + LEVEL_ID);
         prefs.flush();
     }
 
@@ -110,6 +116,14 @@ public class SaveData {
 
     public void setLevelName(String levelName) {
         this.levelName = levelName;
+    }
+
+    public String getLevelId() {
+        return levelId;
+    }
+
+    public void setLevelId(String levelId) {
+        this.levelId = levelId;
     }
 
     public Slot getSlot() {
