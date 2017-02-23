@@ -109,8 +109,7 @@ public class OptionsMenu extends MenuState {
         cheatDetector.setCallback(new ActionCallback() {
             @Override
             public void run() {
-                game.setGameState(new Splashscreen());
-                // TODO Zu einem Cheatmenü wechseln
+                game.setGameState(new CheatMainMenu());
             }
         });
 
