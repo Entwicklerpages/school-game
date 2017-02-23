@@ -44,13 +44,24 @@ public class SchoolGame implements ApplicationListener {
 		inputMultiplexer = new InputMultiplexer();
 		Gdx.input.setInputProcessor(inputMultiplexer);
 
-		defaultFont = new BitmapFont(Gdx.files.internal("font/VT323_60.fnt"), false);
+		preferences = Gdx.app.getPreferences("de.entwicklerpages.java.schoolgame");
+
+		String fontName = "Niconne";
+		if (!preferences.contains("use_pixel_font")) {
+			preferences.putBoolean("use_pixel_font", false);
+			preferences.flush();
+		}
+
+		if (preferences.getBoolean("use_pixel_font", false))
+		{
+			fontName = "VT323";
+		}
+
+		defaultFont = new BitmapFont(Gdx.files.internal("font/" + fontName + "_60.fnt"), false);
 		//defaultFont.getData().setScale(4); // Skalierung (sollte vermieden werden)
 
-		longTextFont = new BitmapFont(Gdx.files.internal("font/VT323_30.fnt"), false);
-		titleFont = new BitmapFont(Gdx.files.internal("font/VT323_76.fnt"), false);
-
-		preferences = Gdx.app.getPreferences("de.entwicklerpages.java.schoolgame");
+		longTextFont = new BitmapFont(Gdx.files.internal("font/" + fontName + "_30.fnt"), false);
+		titleFont = new BitmapFont(Gdx.files.internal("font/" + fontName + "_76.fnt"), false);
 
 		if (shouldBeFullscreen())
 		{
