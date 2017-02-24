@@ -43,7 +43,7 @@ public class LevelManager implements GameState, InputProcessor {
     {
         Gdx.app.log("INFO", "Load Levels ...");
 
-        Reflections reflections = new Reflections(this.getClass().getPackage().getName() + ".levels");
+        Reflections reflections = new Reflections(LevelManager.class.getPackage().getName() + ".levels");
         Set<Class<? extends Level>> levels = reflections.getSubTypesOf(Level.class);
 
         for (Class<? extends Level> level: levels) {
