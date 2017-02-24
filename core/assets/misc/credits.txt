@@ -33,11 +33,11 @@ Orangensaft zum Auffüllen
 2cl Grenadine
 
 # Schriftart
+Cormorant Upright (OFL, Google Fonts)
+von Christian Thalmann
+
 VT323 (OFL, Google Fonts)
 von Peter Hull
-
-Niconne (OFL, Google Fonts)
-von Vernon Adams
 
 
 

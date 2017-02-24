@@ -46,7 +46,7 @@ public class SchoolGame implements ApplicationListener {
 
         preferences = Gdx.app.getPreferences("de.entwicklerpages.java.schoolgame");
 
-        String fontName = "Niconne";
+        String fontName = "Cormorant";
         if (!preferences.contains("use_pixel_font")) {
             preferences.putBoolean("use_pixel_font", false);
             preferences.flush();
