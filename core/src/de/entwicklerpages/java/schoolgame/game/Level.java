@@ -10,6 +10,8 @@ public abstract class Level {
 
     private LevelManager manager;
 
+    private LevelState levelState = LevelState.INTRO;
+
     // BASE METHODS
 
     public final void create(SchoolGame game, LevelManager manager)
@@ -73,4 +75,12 @@ public abstract class Level {
     // ABSTRACT METHODS
 
     public abstract String getTitle();
+
+    private enum LevelState
+    {
+        INTRO,
+        PLAYING,
+        PAUSE,
+        OUTRO
+    }
 }
