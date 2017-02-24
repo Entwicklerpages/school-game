@@ -20,13 +20,13 @@ import de.entwicklerpages.java.schoolgame.menu.MainMenu;
 
 public class LevelManager implements GameState, InputProcessor {
 
-    private SaveData saveData;
-    private SchoolGame game;
-    private SaveData.Slot lastSlot;
+    protected SaveData saveData;
+    protected SchoolGame game;
+    protected SaveData.Slot lastSlot;
 
-    private Map<String, Class<? extends Level>> levelMap = new HashMap<String, Class<? extends Level>>();
+    protected Map<String, Class<? extends Level>> levelMap = new HashMap<String, Class<? extends Level>>();
 
-    private Level activeLevel = null;
+    protected Level activeLevel = null;
 
     public LevelManager(SaveData.Slot slot)
     {
@@ -78,7 +78,7 @@ public class LevelManager implements GameState, InputProcessor {
         Gdx.app.log("INFO", "Finished. Found " + levelMap.size() + " Levels.");
     }
 
-    private Level createLevelWithName(String name)
+    protected Level createLevelWithName(String name)
     {
         name = name.toLowerCase();
 

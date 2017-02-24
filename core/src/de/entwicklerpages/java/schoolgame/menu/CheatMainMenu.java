@@ -42,7 +42,7 @@ public class CheatMainMenu extends MenuState {
         modSaveData.setCallback(new ActionCallback() {
             @Override
             public void run() {
-                game.setGameState(new Credits());
+                game.setGameState(new CheatSlotSelectionMenu());
             }
         });
 
@@ -59,6 +59,7 @@ public class CheatMainMenu extends MenuState {
         addEntry(new MenuSpacer(70));
         addEntry(immortality);
         addEntry(modSaveData);
+        addEntry(new MenuSpacer(25));
         addEntry(back);
     }
 }
