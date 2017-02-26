@@ -42,7 +42,7 @@ public abstract class Level {
         player = new Player(saveData.getPlayerName(), saveData.isMale());
 
         tileMap = new TmxMapLoader().load(Gdx.files.internal("maps/test.tmx").path());
-        tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap);
+        tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap, 1f);
     }
 
     public final void update(float deltaTime)

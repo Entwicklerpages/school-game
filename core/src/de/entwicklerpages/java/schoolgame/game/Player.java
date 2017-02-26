@@ -2,10 +2,13 @@ package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.MathUtils;
 
 public class Player {
 
-    private static final float SPEED = 50f;
+    private static final float SPEED = 60f;
+    private static final float ACCELERATION = 0.3f;
+    private static final float RUN_FACTOR = 3f;
 
     private int health;
     private String name;
@@ -110,17 +113,24 @@ public class Player {
             deltaX += SPEED;
         }
 
-        if (deltaX != 0)
+        if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
+        {
+            deltaX *= RUN_FACTOR;
+            deltaY *= RUN_FACTOR;
+        }
+
+        if (!MathUtils.isZero(deltaX))
         {
             orientation = deltaX > 0 ? EntityOrientation.LOOK_RIGHT : EntityOrientation.LOOK_LEFT;
         }
 
-        if (deltaY != 0)
+        if (!MathUtils.isZero(deltaY))
         {
             orientation = deltaY > 0 ? EntityOrientation.LOOK_BACKWARD : EntityOrientation.LOOK_FORWARD;
         }
 
-        
+        lastDeltaX = MathUtils.lerp(lastDeltaX, deltaX, ACCELERATION);
+        lastDeltaY = MathUtils.lerp(lastDeltaY, deltaY, ACCELERATION);
 
         this.posX += lastDeltaX * deltaTime;
         this.posY += lastDeltaY * deltaTime;
