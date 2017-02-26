@@ -125,12 +125,12 @@ public class LevelManager implements GameState, InputProcessor {
         saveData.setLevelName(activeLevel.getTitle());
         saveData.save(null);
 
-        activeLevel.create(game, this);
+        activeLevel.create(game, this, saveData);
     }
 
     @Override
     public void render(OrthographicCamera camera, float deltaTime) {
-        activeLevel.render(camera, deltaTime);
+        activeLevel.render(deltaTime);
     }
 
     @Override
@@ -166,7 +166,7 @@ public class LevelManager implements GameState, InputProcessor {
 
         activeLevel = newLevel;
 
-        activeLevel.create(game, this);
+        activeLevel.create(game, this, saveData);
 
         Gdx.app.log("INFO", "Finished.");
     }
@@ -183,22 +183,12 @@ public class LevelManager implements GameState, InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-
-        if (keycode == Input.Keys.ESCAPE)
-        {
-            game.setGameState(new MainMenu());
-            return true;
-
-            // TODO Ingame Menü
-        }
-
         return activeLevel.keyDown(keycode);
     }
 
     @Override
     public boolean keyUp(int keycode) {
-
-        return activeLevel.keyUp(keycode);
+        return false;
     }
 
     @Override
