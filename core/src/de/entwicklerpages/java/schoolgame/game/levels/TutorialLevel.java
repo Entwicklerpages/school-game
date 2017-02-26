@@ -6,5 +6,9 @@ import de.entwicklerpages.java.schoolgame.game.Level;
 public class TutorialLevel extends Level {
     public static final String LEVEL_NAME = "tutorial";
 
+    @Override
+    public String getTitle() {
+        return "Tutorial";
+    }
 }
 

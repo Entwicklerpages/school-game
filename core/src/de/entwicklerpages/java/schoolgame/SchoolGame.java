@@ -174,6 +174,10 @@ public class SchoolGame implements ApplicationListener {
         }
     }
 
+    public OrthographicCamera getCamera() {
+        return camera;
+    }
+
     public Preferences getPreferences()
     {
         return preferences;
