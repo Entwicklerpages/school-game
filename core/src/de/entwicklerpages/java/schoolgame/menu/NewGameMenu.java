@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
-import de.entwicklerpages.java.schoolgame.game.LevelManager;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
 public class NewGameMenu extends MenuState {

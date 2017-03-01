@@ -4,7 +4,6 @@ package de.entwicklerpages.java.schoolgame.game;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.utils.TimeUtils;
 
-import java.sql.Time;
 import java.util.ArrayList;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
