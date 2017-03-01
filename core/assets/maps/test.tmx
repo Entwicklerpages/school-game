@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="4">
+ <tileset firstgid="1" source="../tilemap/test.tsx"/>
+ <layer name="Hintergrund" width="80" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztm9tOwzAMQAOTuE0Cxh0Gk2DsAcr+//dwNSIsK0nttGnS1A/nYVPaZqeu46TZxhizScglcAVcJ75Orai/PP5OgNM/zgr4Hbl4AB6Bp0jvc4/dI+AYWKg/8wy8CFgD58AFsBRey8ZtV+za+8NBeg+H5h34ELDt4Y+LPT+HVH2Q+vsEvoFdQf7ugBsP94X525LPJfgLnT91H2rzR8es0vz9mMP4sC/I36v5HyfeyDVL8+eD5sXc48fU/NG4HMPfynSPF1Pxl+P5DcVkaf6+zOH55NKM0HdcP/vGi5R9wHN0Ti2/YLbz5fJUsRbyldIfnmNyavkls91YtX9uf3iO6crFlFtmO9dxY/lbkWuWkv9KxOXP10b9hf3hGnrMHDwGeO1r7fjOtfYl9Vf6+ksfcO3omz/j+cuWeV5JLk6Vg3P5o/Vkg9py/c0Fl79QW/Xn92fnyb6cp/7C/jjrD+pP7o+uPeTuc0mk9mdrIW7dMzVS+mvd7SOOmxIxa18x98b6c9XmtcZmX/B71YZ8pzmV7w/7aePdvoex8xpJTM8Jlz/rUL3F+1Nk/tr6W8eIeH8ag3HgsWJuMYj36VIk+3ZDMehau60FvM+UItl3imOQ1tB4n05tz/dQ/nAM+vY34fq6FlL48+1rqs3d0P58c+wavVnwPnGK9D8PiqIoiqIoSje/zO3AzQ==
+  </data>
+ </layer>
+ <objectgroup name="Objekte">
+  <object id="3" name="Spielerstart" type="Start" x="238.667" y="230.667">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <layer name="Vordergrund" width="80" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2jESg0AIhWFvktLOeP/TWWTS6SQqLu/B//U6sAusOk4T4GsdfB36WLIDGCwq33fQfQDEUD3vzsSlmgM+qs39Cvm8sgMw9d37OTUKuOjQZ0+ev0d95jSDz65Pt/dLAH05zXKM5V4bVb5NVMkjS+T6ZexFdh9Sf7iLGgLuyT4HcOzq3vC9SYNDbznEWNU/a88zDoAoT80TlTmlEkekvXOiYp7wFv0s6favhVpP8k8TflGr2ZFU3n0z41BZgwwdar9DjgC0bcaKCPk=
+  </data>
+ </layer>
+</map>

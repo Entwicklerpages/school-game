@@ -104,7 +104,11 @@ public abstract class Level {
 
     protected final void changeLevel(String newLevel)
     {
-        manager.changeLevel(newLevel);
+        if (getOutroCutScene() == null)
+            manager.changeLevel(newLevel);
+        else {
+            levelState = LevelState.OUTRO;
+        }
     }
 
     // ABSTRACT METHODS

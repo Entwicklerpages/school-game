@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 
 import org.reflections.Reflections;
@@ -61,7 +62,11 @@ public class LevelManager implements GameState, InputProcessor {
                         {
                             Gdx.app.error("ERROR", "Level " + level.getSimpleName() + " uses a LEVEL_NAME (" + key + ") which is already in use.");
                         } else {
-                            levelMap.put(key, level);
+                            if (hasParameterlessPublicConstructor(level)) {
+                                levelMap.put(key, level);
+                            } else {
+                                Gdx.app.error("ERROR", "Level " + level.getSimpleName() + " has no public, parameterless constructor.");
+                            }
                         }
 
                     } catch (IllegalAccessException ignored) {
@@ -76,6 +81,16 @@ public class LevelManager implements GameState, InputProcessor {
         }
 
         Gdx.app.log("INFO", "Finished. Found " + levelMap.size() + " Levels.");
+    }
+
+    private boolean hasParameterlessPublicConstructor(Class<? extends Level> level)
+    {
+        for (Constructor<?> constructor : level.getConstructors()) {
+            if (constructor.getParameterTypes().length == 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     protected Level createLevelWithName(String name)
