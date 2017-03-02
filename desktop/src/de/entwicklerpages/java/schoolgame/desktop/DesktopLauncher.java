@@ -4,6 +4,7 @@ import com.badlogic.gdx.Files;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -25,6 +26,9 @@ public class DesktopLauncher {
             {
                 logPath = System.getProperty("user.home") + "/" + basePath;
             }
+
+            // Verzeichnis anlegen wenn es nicht existiert
+            new File(logPath).mkdirs();
 
             FileOutputStream fout = new FileOutputStream(logPath + "application.log");
             FileOutputStream ferr = new FileOutputStream(logPath + "error.log");
