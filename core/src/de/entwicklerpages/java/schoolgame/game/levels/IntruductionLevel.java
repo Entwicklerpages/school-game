@@ -6,6 +6,10 @@ import de.entwicklerpages.java.schoolgame.game.Level;
 public class IntruductionLevel extends Level {
     public static final String LEVEL_NAME = "introduction";
 
+    public IntruductionLevel() {
+        super("introduction");
+    }
+
     @Override
     public String getTitle() {
         return "Einführung";
