@@ -5,8 +5,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.I18NBundle;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
@@ -87,6 +89,20 @@ public abstract class Level {
     private OrthogonalTiledMapRenderer tileMapRenderer;
 
     /**
+     * Die Breite der Map.
+     *
+     * @see Level#parseMap()
+     */
+    private float mapWidth;
+
+    /**
+     * Die Höhe der Map.
+     *
+     * @see Level#parseMap()
+     */
+    private float mapHeight;
+
+    /**
      * Repräsentiert den Spieler, wird auch für die Kamerasteuerung verwendet.
      */
     private Player player;
@@ -153,8 +169,7 @@ public abstract class Level {
 
         player.update(deltaTime);
 
-        camera.position.set(player.getPosX(), player.getPosY(), 0);
-        camera.update();
+        setCameraInBounds();
     }
 
     /**
@@ -335,7 +350,10 @@ public abstract class Level {
      */
     private void parseMap()
     {
+        TiledMapTileLayer firstLayer = (TiledMapTileLayer) tileMap.getLayers().get(0);
 
+        mapWidth = firstLayer.getWidth() * firstLayer.getTileWidth();
+        mapHeight = firstLayer.getHeight() * firstLayer.getTileHeight();
     }
 
     /**
@@ -351,6 +369,32 @@ public abstract class Level {
         parseMap();
 
         tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap, 1f);
+    }
+
+    /**
+     * Setzt die Kamera auf die Spielerposition.
+     * Sollte die Kamera den Rand der Karte erreichen, wird sie gestoppt.
+     */
+    private void setCameraInBounds()
+    {
+        float cameraHalfWidth = camera.viewportWidth * .5f;
+        float cameraHalfHeight = camera.viewportHeight * .5f;
+
+        float camX = player.getPosX();
+        float camY = player.getPosY();
+
+        if (cameraHalfWidth < mapWidth - cameraHalfWidth)
+            camX = MathUtils.clamp(camX, cameraHalfWidth, mapWidth - cameraHalfWidth);
+        else
+            camX = mapWidth / 2;
+
+        if (cameraHalfHeight < mapHeight - cameraHalfHeight)
+            camY = MathUtils.clamp(camY, cameraHalfHeight, mapHeight - cameraHalfHeight);
+        else
+            camY = mapHeight / 2;
+
+        camera.position.set(camX, camY, 0);
+        camera.update();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
