@@ -5,7 +5,11 @@ import com.badlogic.gdx.graphics.Color;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.CheatManager;
 
-
+/**
+ * Das Cheatmenü. Sollte vom normalem Spieler nicht benutzt bzw. gefunden werden.
+ *
+ * @author nico
+ */
 public class CheatMainMenu extends MenuState {
     @Override
     public String getStateName() {
@@ -17,6 +21,13 @@ public class CheatMainMenu extends MenuState {
         return "Cheats";
     }
 
+    /**
+     * Erstellt die entsprechende Menüstruktur und legt die Callbacks fest.
+     *
+     * * Unsterblichkeit
+     * * Speicherstand manipulieren
+     * * Zurück
+     */
     @Override
     void setupMenu() {
         MenuTitle title = new MenuTitle("titel");

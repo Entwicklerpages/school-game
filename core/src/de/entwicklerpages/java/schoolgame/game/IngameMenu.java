@@ -16,12 +16,17 @@ import com.badlogic.gdx.utils.I18NBundle;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 
+/**
+ * Stellt im Spiel ein Menü dar.
+ * Ist eng mit der {@link Level} Klasse verknüpft.
+ *
+ * @author nico
+ */
 public class IngameMenu {
 
     private static final String[] ENTRIES = new String[]{"weiter", "mainmenu", "beenden"};
     private static final float WIDTH = 450f;
     private static final float HEIGHT = 420f;
-    private static final float QUESTION_HEIGHT = 440f;
 
     private SchoolGame game;
     private Level level;
@@ -122,8 +127,6 @@ public class IngameMenu {
 
     public void render(OrthographicCamera camera)
     {
-        float height = (menuMode == MenuMode.MODE_PAUSE) ? HEIGHT : QUESTION_HEIGHT;
-
         // Kameraprojektion anpassen
         projection.set(camera.projection).translate(-camera.viewportWidth / 2f, -camera.viewportHeight / 2f, 0f);
 
@@ -131,7 +134,7 @@ public class IngameMenu {
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
         float x = camera.viewportWidth / 2f - WIDTH / 2f;
-        float y = camera.viewportHeight / 2f - height / 2f;
+        float y = camera.viewportHeight / 2f - HEIGHT / 2f;
 
         shapeRenderer.setProjectionMatrix(projection);
 
@@ -143,7 +146,7 @@ public class IngameMenu {
         shapeRenderer.rect(0f, 0f, camera.viewportWidth, camera.viewportHeight);
 
         shapeRenderer.setColor(0.0f, 0.1f, 0.15f, 0.75f);
-        shapeRenderer.rect(x, y, WIDTH, height);
+        shapeRenderer.rect(x, y, WIDTH, HEIGHT);
 
         shapeRenderer.end();
 
@@ -152,7 +155,7 @@ public class IngameMenu {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
         shapeRenderer.setColor(Color.WHITE);
-        shapeRenderer.rect(x, y, WIDTH, height);
+        shapeRenderer.rect(x, y, WIDTH, HEIGHT);
 
         shapeRenderer.end();
 
@@ -202,7 +205,7 @@ public class IngameMenu {
         batch.setProjectionMatrix(projection);
         batch.begin();
 
-        float y = camera.viewportHeight - (camera.viewportHeight - QUESTION_HEIGHT) / 2f;
+        float y = camera.viewportHeight - (camera.viewportHeight - HEIGHT) / 2f;
 
         y -= 45;
 

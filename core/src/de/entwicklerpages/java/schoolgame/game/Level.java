@@ -1,6 +1,5 @@
 package de.entwicklerpages.java.schoolgame.game;
 
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
@@ -12,30 +11,113 @@ import com.badlogic.gdx.utils.I18NBundle;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 
+/**
+ * Basisklasse für alle Level
+ * Regelt den Spielablauf
+ *
+ * @author nico
+ */
 public abstract class Level {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Zugriff auf die Spielinstanz
+     *
+     * @see SchoolGame
+     */
     protected SchoolGame game;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // INTERNE EIGENSCHAFTEN
+
+    /**
+     * Zugriff auf den LevelManager
+     *
+     * @see LevelManager
+     */
     private LevelManager manager;
 
+    /**
+     * Aktueller Spielzustand
+     *
+     * @see LevelState
+     */
     private LevelState levelState = LevelState.INTRO;
 
+    /**
+     * Zugriff auf häufig benötigte Texte
+     *
+     * Wird zum Beispiel vom Ingame Menü verwendet.
+     *
+     * @see IngameMenu
+     */
     private I18NBundle localeBundle;
+
+    /**
+     * Wird über dem Spiel eingeblendet um das Spiel zu pausieren oder zu beenden.
+     */
     private IngameMenu ingameMenu;
 
+    /**
+     * Gibt dem Level überall zugriff auf die Kamerainstanz des Spieles.
+     *
+     * @see SchoolGame#getCamera()
+     */
     private OrthographicCamera camera;
 
+    /**
+     * Speichert den Namen der Map, die zu dem entsprechendem Level gehört.
+     * Wird im Konstruktor gesetzt.
+     */
     private String mapName;
+
+    /**
+     * Speichert die tileMap, die für dieses Level benutzt wird.
+     */
     private TiledMap tileMap;
+
+    /**
+     * Rendert die tileMap des Levels
+     *
+     * @see Level#tileMap
+     */
     private OrthogonalTiledMapRenderer tileMapRenderer;
 
+    /**
+     * Repräsentiert den Spieler, wird auch für die Kamerasteuerung verwendet.
+     */
     private Player player;
 
-    // BASE METHODS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // BASIS METHODEN
+
+    /**
+     * Geschützter Konstruktor
+     * Er zwingt die abgeleiteten Klassen dazu, einen eigenen Konstruktor zu definieren.
+     * Diese können dann super("name"); aufrufen, um die Map zu laden.
+     *
+     * @param map Den Namen der Map, die geladen werden soll
+     */
     protected Level(String map)
     {
         mapName = map;
     }
 
+    /**
+     * Wird automatisch vom LevelManager aufgerufen, wenn ein Level geladen werden soll.
+     * Hier werden die Eigenschaften der Klasse initialisiert.
+     *
+     * @param game Zugriff auf die Spielinstanz
+     * @param manager Zugriff auf den LevelManager
+     * @param saveData Zugriff auf die Spielerdaten
+     */
     public final void create(SchoolGame game, LevelManager manager, SaveData saveData)
     {
         Gdx.app.log("INFO", "Load level " + mapName + " ...");
@@ -53,23 +135,18 @@ public abstract class Level {
         FileHandle baseFileHandle = Gdx.files.internal("I18n/Game");
         localeBundle = I18NBundle.createBundle(baseFileHandle);
 
-        FileHandle mapFile = Gdx.files.internal("maps/" + mapName + ".tmx");
-
-        if (!mapFile.exists() || mapFile.isDirectory())
-        {
-            Gdx.app.error("ERROR", "The map file " + mapName + ".tmx doesn't exists!");
-            manager.exitToMenu();
-            return;
-        }
-
-        tileMap = new TmxMapLoader().load(mapFile.path());
-        tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap, 1f);
+        initMap();
 
         ingameMenu = new IngameMenu(game, this);
 
         Gdx.app.log("INFO", "Level loaded.");
     }
 
+    /**
+     * Wird in jedem Frame einmal aufgerufen um Berechnungen durchzuführen.
+     *
+     * @param deltaTime Die Zeit, die seit dem letztem Frame vergangen ist
+     */
     public final void update(float deltaTime)
     {
         if (levelState != LevelState.PLAYING) return;
@@ -80,6 +157,11 @@ public abstract class Level {
         camera.update();
     }
 
+    /**
+     * Wird bei jedem Frame einmal aufgerufen um das Spiel zu zeichnen.
+     *
+     * @param deltaTime Die Zeit, die seit dem letztem Frame vergangen ist
+     */
     public final void render(float deltaTime)
     {
         tileMapRenderer.setView(camera);
@@ -89,6 +171,10 @@ public abstract class Level {
             ingameMenu.render(camera);
     }
 
+    /**
+     * Wird aufgerufen, wenn das Level beendet werden soll.
+     * Hier werden nicht mehr benötigte Resourcen freigegeben.
+     */
     public final void dispose()
     {
         if (tileMapRenderer != null)
@@ -98,6 +184,12 @@ public abstract class Level {
             tileMap.dispose();
     }
 
+    /**
+     * Wird immer aufgerufen, wenn der Spieler eine Taste runter drückt.
+     *
+     * @param keycode Der Tastencode der Taste, die gedrückt wurde
+     * @return true wenn es eine Aktion auf dieses Event gab.
+     */
     public final boolean keyDown(int keycode)
     {
         if (keycode == Input.Keys.ESCAPE)
@@ -120,40 +212,62 @@ public abstract class Level {
         return false;
     }
 
-    // NORMAL METHODS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // ÜBERSCHREIBBARE METHODEN
 
+    /**
+     * Erlaubt einem abgeleitetem Level, eine Intro CutScene festzulegen.
+     * @return Die CutScene, die angezeigt werden soll, sonst null
+     */
     public CutScene getIntroCutScene()
     {
         return null;
     }
 
+    /**
+     * Erlaubt einem abgeleitetem Level, eine Outro CutScene festzulegen.
+     * @return Die CutScene, die angezeigt werden soll, sonst null
+     */
     public CutScene getOutroCutScene()
     {
         return null;
     }
 
-    // FINAL METHODS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // AKTIONS METHODEN
 
+    /**
+     * Beendet das Level und springt zum Menü.
+     * Ist nur eine Weiterleitung zum LevelManager
+     *
+     * @see LevelManager#exitToMenu()
+     */
     public final void exitToMenu()
     {
         manager.exitToMenu();
     }
+
+    /**
+     * Beendet das Level und springt in die Credits.
+     * Ist nur eine Weiterleitung zum LevelManager.
+     * Besonders praktisch für die letzten Level eines Story-Strangs.
+     *
+     * @see LevelManager#exitToCredits()
+     */
     public final void exitToCredits()
     {
         manager.exitToCredits();
     }
-    public final void setPause() {
-        levelState = LevelState.PAUSE;
-    }
-    public final void setPlaying() {
-        levelState = LevelState.PLAYING;
-    }
 
-    public final I18NBundle getLocaleBundle()
-    {
-        return localeBundle;
-    }
-
+    /**
+     * Wechselt das Level.
+     * Wenn es eine OutroCutScene gibt wird diese zuvor gezeigt.
+     *
+     * @param newLevel Das Level, zu dem gewechselt werden soll
+     *
+     * @see LevelManager#changeLevel(String)
+     * @see Level#getOutroCutScene()
+     */
     protected final void changeLevel(String newLevel)
     {
         if (getOutroCutScene() == null)
@@ -163,10 +277,100 @@ public abstract class Level {
         }
     }
 
-    // ABSTRACT METHODS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // GETTER UND SETTER
 
+    /**
+     * Gibt das allgemeine Übersetzungspaket für Level zurück.
+     *
+     * @return das Übersetzungspaket für Level
+     */
+    public final I18NBundle getLocaleBundle()
+    {
+        return localeBundle;
+    }
+
+    /**
+     * Lässt zu, dass das Spiel auch von außen pausiert werden kann.
+     */
+    public final void setPause() {
+        levelState = LevelState.PAUSE;
+    }
+
+    /**
+     * Lässt zu, dass das Spiel auch von außen fortgesetzt werden kann (z.B. aus dem Ingame Menü)
+     *
+     * @see IngameMenu
+     */
+    public final void setPlaying() {
+        levelState = LevelState.PLAYING;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // INTERNE METHODEN
+
+    /**
+     * Lädt die Map aus der Datei in den Speicher.
+     *
+     * Wird von {@link #initMap()} aufgerufen.
+     */
+    private void loadMap()
+    {
+        FileHandle mapFile = Gdx.files.internal("maps/" + mapName + ".tmx");
+
+        if (!mapFile.exists() || mapFile.isDirectory())
+        {
+            Gdx.app.error("ERROR", "The map file " + mapName + ".tmx doesn't exists!");
+            manager.exitToMenu();
+            return;
+        }
+
+        tileMap = new TmxMapLoader().load(mapFile.path());
+    }
+
+    /**
+     * Parst die Map und sucht nach Objekten und Animationen.
+     *
+     * Wird von {@link #initMap()} aufgerufen.
+     */
+    private void parseMap()
+    {
+
+    }
+
+    /**
+     * Initialisiert die Map.
+     * Ruft in erster Linie nur andere Methoden auf.
+     *
+     * @see Level#loadMap()
+     * @see Level#parseMap()
+     */
+    private void initMap()
+    {
+        loadMap();
+        parseMap();
+
+        tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap, 1f);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // ABSTRAKTE METHODEN
+
+    /**
+     * Gibt den Titel des Levels zurück.
+     *
+     * @return Der Titel des Levels
+     */
     public abstract String getTitle();
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // ENDE
+
+    /**
+     * Definiert die möglichen Zustände eines Levels.
+     *
+     * @author nico
+     */
     private enum LevelState
     {
         INTRO,

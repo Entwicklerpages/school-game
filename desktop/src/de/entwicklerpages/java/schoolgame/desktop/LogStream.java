@@ -4,10 +4,46 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * Fasst zwei OutputStreams zusammen.
+ * Wird benutzt um Logs sowohl in der Konsole auszugeben, als auch in einer Datei zu speichern.
+ *
+ * @author nico
+ */
 public class LogStream extends OutputStream {
-    OutputStream consoleStream;
-    OutputStream logStream;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Speichert, ob der erfasste Log Pfad absolut oder relativ zum Home-Verzeichnis ist.
+     *
+     * @see LogStream#getBasePath(String)
+     * @see LogStream#pathIsAbsolute()
+     */
+    private static boolean absolutePath = false;
+
+    /**
+     * Der OutputStream, der die Logs in die Konsole leitet.
+     */
+    private OutputStream consoleStream;
+
+    /**
+     * Der OutputStream, der die Logs in eine Datei leitet.
+     */
+    private OutputStream logStream;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Standardkonstruktor, legt die Streams fest.
+     *
+     * @param consoleStream Der Konsolen Stream
+     * @param logStream Der Datei Stream
+     */
     public LogStream(OutputStream consoleStream, OutputStream logStream)
     {
         this.consoleStream = consoleStream;
@@ -49,9 +85,14 @@ public class LogStream extends OutputStream {
         logStream.close();
     }
 
-    private static boolean absolutePath = false;
-
-    // TODO: Auf Windows und Linux testen!
+    /**
+     * Berechnet den Pfad für Logs und Spieldaten.
+     *
+     * @param game Name des Spielverzeichnisses
+     * @return der betriebssystemspeziefische Pfad
+     *
+     * TODO: Auf Windows und Linux testen!
+     */
     public static String getBasePath(String game)
     {
         String os = System.getProperty("os.name").toLowerCase();
@@ -76,6 +117,16 @@ public class LogStream extends OutputStream {
         return base;
     }
 
+    /**
+     * Gibt zurück, ob der berechnete Pfad absolut oder relativ ist.
+     *
+     * WICHTIG: Erst muss {@link #getBasePath(String)} aufgerufen werden!
+     *
+     * @return true wenn der Pfad absolut ist, sonst false
+     *
+     * @see LogStream#absolutePath
+     * @see LogStream#getBasePath(String)
+     */
     public static boolean pathIsAbsolute()
     {
         return absolutePath;

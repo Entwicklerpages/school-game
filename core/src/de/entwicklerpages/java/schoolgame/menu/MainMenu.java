@@ -5,6 +5,11 @@ import com.badlogic.gdx.graphics.Color;
 
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 
+/**
+ * Das Hauptmenü des Spiels.
+ *
+ * @author nico
+ */
 public class MainMenu extends MenuState {
 
     @Override
@@ -17,6 +22,15 @@ public class MainMenu extends MenuState {
         return "MainMenu";
     }
 
+    /**
+     * Erstellt die entsprechende Menüstruktur und legt die Callbacks fest.
+     *
+     * * Neues Spiel
+     * * Spiel laden
+     * * Optionen
+     * * Credits
+     * * Beenden
+     */
     @Override
     void setupMenu() {
 

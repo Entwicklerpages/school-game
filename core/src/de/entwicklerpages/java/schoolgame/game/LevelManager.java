@@ -19,14 +19,47 @@ import de.entwicklerpages.java.schoolgame.menu.MainMenu;
 
 public class LevelManager implements GameState, InputProcessor {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Erlaubt Zugriff auf die Spielerdaten.
+     *
+     * @see SaveData
+     */
     protected SaveData saveData;
+
+    /**
+     * Erlaubt Zugriff auf die Spielinstanz.
+     */
     protected SchoolGame game;
+
+    /**
+     * Legt fest, welcher Slot zuletzt zum Speichern benutzt wurde.
+     */
     protected SaveData.Slot lastSlot;
 
+    /**
+     * Speichert die Liste aller verfügbarer Level.
+     */
     protected Map<String, Class<? extends Level>> levelMap = new HashMap<String, Class<? extends Level>>();
 
-    protected Level activeLevel = null;
+    /**
+     * Das aktuelle Level.
+     */
+    private Level activeLevel = null;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Standardkonstruktor.
+     * Stößt das Laden der Level an.
+     *
+     * @param slot der Slot, der zum Laden/Speichern benutzt werden soll.
+     */
     public LevelManager(SaveData.Slot slot)
     {
         Gdx.app.log("INFO", "Init Level Manager ...");
@@ -38,6 +71,12 @@ public class LevelManager implements GameState, InputProcessor {
         Gdx.app.log("INFO", "Level Manager finished.");
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // REFLECTION
+
+    /**
+     * Lädt alle verfügbaren Level mithilfe von Reflection.
+     */
     private void mapAllLevels()
     {
         Gdx.app.log("INFO", "Load Levels ...");
@@ -81,6 +120,13 @@ public class LevelManager implements GameState, InputProcessor {
         Gdx.app.log("INFO", "Finished. Found " + levelMap.size() + " Levels.");
     }
 
+    /**
+     * Hilfsmethode, die prüft, ob eine Klasse einen Konstruktor hat,
+     * der öffentlich ist und keine Parameter erwartet.
+     *
+     * @param level die Levelklasse, die geprüft werden soll
+     * @return true wenn die Klasse einen solchen Konstruktor hat
+     */
     private boolean hasParameterlessPublicConstructor(Class<? extends Level> level)
     {
         for (Constructor<?> constructor : level.getConstructors()) {
@@ -91,6 +137,13 @@ public class LevelManager implements GameState, InputProcessor {
         return false;
     }
 
+    /**
+     * Erzeigt einen Level mit einem entsprechenden Namen.
+     * Gelingt nur, wenn das Level erfolgreich in die Levelliste aufgenommen werden konnte.
+     *
+     * @param name der Name des Levels
+     * @return eine Instanz des Levels
+     */
     protected Level createLevelWithName(String name)
     {
         name = name.toLowerCase();
@@ -115,6 +168,16 @@ public class LevelManager implements GameState, InputProcessor {
         return level;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // BASISMETHODEN
+
+    /**
+     * Bereitet ein Level vor, geladen zu werden.
+     *
+     * @param game zeigt auf das SchoolGame, dass das Spiel verwaltet.
+     *
+     * @see Level#create(SchoolGame, LevelManager, SaveData)
+     */
     @Override
     public void create(SchoolGame game) {
         this.game = game;
@@ -141,16 +204,38 @@ public class LevelManager implements GameState, InputProcessor {
         activeLevel.create(game, this, saveData);
     }
 
+    /**
+     * Rendert das aktive Level.
+     *
+     * @param camera  die aktuelle Kamera
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     *
+     * @see Level#render(float)
+     */
     @Override
     public void render(OrthographicCamera camera, float deltaTime) {
         activeLevel.render(deltaTime);
     }
 
+    /**
+     * Wird bei jedem Frame aufgerufen.
+     * Das Ereignis wird an das aktive Level weitergeleitet.
+     *
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     *
+     * @see Level#update(float)
+     */
     @Override
     public void update(float deltaTime) {
         activeLevel.update(deltaTime);
     }
 
+    /**
+     * Wird aufgerufen, wenn das Spiel beendet wird bzw. der Spieler ins Hauptmenü geht.
+     * Wenn ein Level aktiv ist, wird dessen dispose Methode aufgerufen.
+     *
+     * @see Level#dispose()
+     */
     @Override
     public void dispose() {
         if (activeLevel != null)
@@ -159,6 +244,18 @@ public class LevelManager implements GameState, InputProcessor {
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // AKTIONS METHODEN
+
+    /**
+     * Wechselt das aktive Level.
+     * Dabei wird das neue Level im Slot gespeichert.
+     *
+     * @param levelId die ID des neuen Levels
+     *
+     * @see SaveData
+     * @see Level
+     */
     public void changeLevel(String levelId)
     {
         Gdx.app.log("INFO", "Change level ...");
@@ -184,16 +281,39 @@ public class LevelManager implements GameState, InputProcessor {
         Gdx.app.log("INFO", "Finished.");
     }
 
+    /**
+     * Beendet das Spiel und wechselt ins Hauptmenü.
+     * Wird vermutlich von einem Level aus aufgerufen.
+     *
+     * @see Level#exitToMenu()
+     */
     public void exitToMenu()
     {
         game.setGameState(new MainMenu());
     }
 
+    /**
+     * Beendet das Spiel und wechselt in die Credits.
+     * Wird vermutlich von einem Level aus aufgerufen.
+     *
+     * @see Level#exitToCredits()
+     */
     public void exitToCredits()
     {
         game.setGameState(new Credits());
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // EINGABE EVENT METHODEN
+
+    /**
+     * Leitet Tastatureingaben an das aktive Level weiter.
+     *
+     * @param keycode der Tastencode, der gedrückten Taste
+     * @return true, wenn das Ereignis benutzt wurde, sonst false
+     *
+     * @see Level#keyDown(int)
+     */
     @Override
     public boolean keyDown(int keycode) {
         return activeLevel.keyDown(keycode);
@@ -234,6 +354,14 @@ public class LevelManager implements GameState, InputProcessor {
         return false;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // ANDERE METHODEN
+
+    /**
+     * Gibt den Namen des aktuellen Zustands zurück
+     *
+     * @return der Name dieses Zustands
+     */
     @Override
     public String getStateName() {
         return "LEVEL_MANAGER";

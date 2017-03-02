@@ -2,6 +2,7 @@ package de.entwicklerpages.java.schoolgame.game;
 
 /**
  * Gibt die Ausrichtung des Spielers oder eines Entities an.
+ *
  * @author nico
  * @see Player
  */

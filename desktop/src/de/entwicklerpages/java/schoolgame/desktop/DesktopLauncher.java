@@ -11,7 +11,21 @@ import java.io.PrintStream;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 
+/**
+ * Desktop Starter für das Spiel. Basiert auf dem libgdx Template.
+ *
+ * @author nico
+ */
 public class DesktopLauncher {
+
+    /**
+     * Einstiegspunkt für das Program. Initialisiert das Spiel und gibt die Kontrolle weiter
+     * an eine {@link SchoolGame} Instanz.
+     *
+     * @param arg der Argumentvektor. Wird nicht benutzt.
+     *
+     * @see SchoolGame
+     */
     public static void main (String[] arg) {
 
         String basePath = LogStream.getBasePath("schoolgame");
