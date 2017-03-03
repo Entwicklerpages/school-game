@@ -105,7 +105,7 @@ public class LogStream extends OutputStream {
 
             if (appdata != null)
             {
-                base = appdata + File.pathSeparator + game + File.pathSeparator;
+                base = appdata + File.separator + game + File.separator;
                 absolutePath = true;
             }
         }
