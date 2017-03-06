@@ -7,7 +7,7 @@
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="3" name="Spielerstart" type="Start" x="238.667" y="230.667">
+  <object id="3" name="Spielerstart" type="Start" x="1166.67" y="752">
    <ellipse/>
   </object>
  </objectgroup>

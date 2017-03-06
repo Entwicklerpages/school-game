@@ -2,6 +2,9 @@ package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 
 public class Player {
@@ -22,6 +25,8 @@ public class Player {
 
     private EntityOrientation orientation;
 
+    private ShapeRenderer shapeRenderer;
+
     public Player(String name, boolean male) {
         this.health = 100;
         this.name = name;
@@ -29,6 +34,8 @@ public class Player {
         this.posX = 0;
         this.posY = 0;
         this.orientation = EntityOrientation.LOOK_FORWARD;
+
+        shapeRenderer = new ShapeRenderer();
     }
 
     public int getHealth() {
@@ -134,5 +141,19 @@ public class Player {
 
         this.posX += lastDeltaX * deltaTime;
         this.posY += lastDeltaY * deltaTime;
+    }
+
+    public void render(OrthographicCamera camera, float deltaTime)
+    {
+        shapeRenderer.setProjectionMatrix(camera.combined);
+        shapeRenderer.setColor(Color.RED);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.circle(posX, posY, 16);
+        shapeRenderer.end();
+    }
+
+    public void dispose()
+    {
+        shapeRenderer.dispose();
     }
 }
