@@ -366,12 +366,23 @@ public abstract class Level {
         mapWidth = firstLayer.getWidth() * firstLayer.getTileWidth();
         mapHeight = firstLayer.getHeight() * firstLayer.getTileHeight();
 
-        Iterator<MapObject> objects = tileMap.getLayers().get("Objekte").getObjects().iterator();
+        Iterator<MapObject> objects = tileMap.getLayers().get(LevelConstants.TMX_OBJECT_LAYER).getObjects().iterator();
         while (objects.hasNext())
         {
             MapObject tileObject = objects.next();
 
-            if (tileObject.getName().equals("Spielerstart"))
+            Gdx.app.log("LEVEL", "Found object '" + tileObject.getName() + "'");
+
+            Iterator<String> props = tileObject.getProperties().getKeys();
+
+            while (props.hasNext())
+            {
+                String key = props.next();
+                Gdx.app.log("LEVEL", "Property: " + key + " - " + tileObject.getProperties().get(key).toString());
+            }
+
+            if (tileObject.getProperties().containsKey("type")
+                    && tileObject.getProperties().get("type", String.class).equals(LevelConstants.TMX_START_POSITION))
             {
                 EllipseMapObject start = (EllipseMapObject) tileObject;
                 player.setPosition(start.getEllipse().x, start.getEllipse().y);
@@ -444,5 +455,13 @@ public abstract class Level {
         PLAYING,
         PAUSE,
         OUTRO
+    }
+
+    private final class LevelConstants
+    {
+        static final String TMX_OBJECT_LAYER = "Objekte";
+        static final String TMX_START_POSITION = "Start";
+
+        private LevelConstants() {}
     }
 }
