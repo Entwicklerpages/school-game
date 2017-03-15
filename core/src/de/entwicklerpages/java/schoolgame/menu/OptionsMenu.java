@@ -81,6 +81,22 @@ public class OptionsMenu extends MenuState {
             }
         });
 
+        final MenuEntry music = new MenuEntry(!game.getAudioManager().isMusicMuted() ? "music_on" : "music_off");
+        music.setActiveColor(Color.YELLOW);
+        music.setCallback(new ActionCallback() {
+            @Override
+            public void run() {
+                if (!game.getAudioManager().isMusicMuted())
+                {
+                    music.setLabel("music_off");
+                    game.getAudioManager().setMuteMusic(true);
+                } else {
+                    music.setLabel("music_on");
+                    game.getAudioManager().setMuteMusic(false);
+                }
+            }
+        });
+
         MenuEntry delete = new MenuEntry("alles_loeschen");
         delete.setActiveColor(Color.RED);
         delete.setCallback(new ActionCallback() {
@@ -122,6 +138,7 @@ public class OptionsMenu extends MenuState {
         addEntry(new MenuSpacer(60));
         addEntry(fullscreen);
         addEntry(vsync);
+        addEntry(music);
         addEntry(delete);
     }
 }
