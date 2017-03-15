@@ -3,6 +3,7 @@ package de.entwicklerpages.java.schoolgame.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.utils.Disposable;
 
 import org.reflections.Reflections;
 
@@ -17,7 +18,7 @@ import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.menu.Credits;
 import de.entwicklerpages.java.schoolgame.menu.MainMenu;
 
-public class LevelManager implements GameState, InputProcessor {
+public class LevelManager implements GameState, InputProcessor, Disposable {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<level>
+<level atlas="tutorial">
     <characters>
         <character>
             <id>tutorial</id>
@@ -10,7 +10,7 @@
     <dialogs>
         <dialog name="intro">
             <statement talking="tutorial">
-                <character position="right">tutorial</character>
+                <display position="right">tutorial</display>
                 <sound>Pling.wav</sound>
                 <texts>
                     <text>Hallo #{PLAYER}!</text>

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
     elementFormDefault="qualified">
-    <xs:element name="level" type="levelType" />
+    <xs:element name="level" >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="characters" type="charactersType" />
+                <xs:element name="dialogs" type="dialogsType" />
+            </xs:sequence>
+            <xs:attribute name="atlas" type="xs:string" use="required" />
+        </xs:complexType>
+    </xs:element>
     <xs:complexType name="charactersType">
         <xs:sequence>
             <xs:element name="character" maxOccurs="unbounded" minOccurs="1" type="characterType" />
@@ -42,12 +50,6 @@
     <xs:complexType name="textsType">
         <xs:sequence>
             <xs:element name="text" maxOccurs="unbounded" minOccurs="1" type="xs:string" />
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="levelType">
-        <xs:sequence>
-            <xs:element name="characters" type="charactersType" />
-            <xs:element name="dialogs" type="dialogsType" />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="playerType">
