@@ -11,8 +11,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
-import de.entwicklerpages.java.schoolgame.tools.dialog.DialogEditor;
-import de.entwicklerpages.java.schoolgame.tools.log.LogReaderPanel;
+import de.entwicklerpages.java.schoolgame.tools.filedata.ConfigEditorPanel;
+import de.entwicklerpages.java.schoolgame.tools.filedata.LogReaderPanel;
 
 
 public class ToolsLauncher extends JFrame {
@@ -61,6 +61,7 @@ public class ToolsLauncher extends JFrame {
 
         tabbedPane.addTab("Application Log", new LogReaderPanel("application.log"));
         tabbedPane.addTab("Error Log", new LogReaderPanel("error.log"));
+        tabbedPane.addTab("Config Editor", new ConfigEditorPanel());
         tabbedPane.addTab("Dialog Editor", new JPanel());
 
         add(tabbedPane);

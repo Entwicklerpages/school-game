@@ -1,4 +1,4 @@
-package de.entwicklerpages.java.schoolgame.tools.log;
+package de.entwicklerpages.java.schoolgame.tools.filedata;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
+import de.entwicklerpages.java.schoolgame.tools.PathHelper;
 
 
 public class LogReaderPanel extends JPanel implements ActionListener {
@@ -25,7 +27,7 @@ public class LogReaderPanel extends JPanel implements ActionListener {
     {
         super(new BorderLayout());
 
-        String logPath = getBasePath("schoolgame");
+        String logPath = PathHelper.getBasePath();
         logFile = new File(logPath + logFileName);
 
         textArea = new JTextArea("Keine Logs geladen!");
@@ -56,37 +58,6 @@ public class LogReaderPanel extends JPanel implements ActionListener {
         } catch (Exception e) {
             textArea.setText("Die Logdatei kann nicht geladen werden:\n" + e.getMessage());
         }
-    }
-
-    private String getBasePath(String game)
-    {
-        String os = System.getProperty("os.name").toLowerCase();
-
-        String base = ".prefs/" + game + "/";
-
-        boolean absolutePath = false;
-
-        if (os.contains("win"))
-        {
-            String appdata = System.getenv("APPDATA");
-
-            if (appdata != null)
-            {
-                base = appdata + File.separator + game + File.separator;
-                absolutePath = true;
-            }
-        }
-        else if (os.contains("mac"))
-        {
-            base = "Library/Application Support/" + game + "/";
-        }
-
-        if (!absolutePath)
-        {
-            base = System.getProperty("user.home") + File.separator + base;
-        }
-
-        return base;
     }
 
     @Override
