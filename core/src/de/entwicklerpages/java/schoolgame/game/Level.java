@@ -155,7 +155,7 @@ public abstract class Level implements Disposable {
         this.levelManager = manager;
 
         try {
-            this.dialogManager = new DialogManager(mapName);
+            this.dialogManager = new DialogManager(game, mapName);
         } catch (Exception e) {
             Gdx.app.error("ERROR", "Abort level loading!");
             levelManager.exitToMenu();
