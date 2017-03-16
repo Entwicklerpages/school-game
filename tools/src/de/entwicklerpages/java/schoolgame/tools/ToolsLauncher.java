@@ -5,20 +5,35 @@ import java.awt.Toolkit;
 import java.util.Random;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+
+import de.entwicklerpages.java.schoolgame.tools.dialog.DialogEditor;
+import de.entwicklerpages.java.schoolgame.tools.log.LogReaderPanel;
 
 
 public class ToolsLauncher extends JFrame {
+
+    private final static int FRAME_WIDTH = 500;
+    private final static int FRAME_HEIGHT = 400;
+
+    private JTabbedPane tabbedPane = null;
 
     public ToolsLauncher()
     {
         super("School Game Tools");
 
-        setSize(300, 400);
+        setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        setMaximumSize(new Dimension(FRAME_WIDTH + 200, FRAME_HEIGHT + 100));
+        setMinimumSize(new Dimension(FRAME_WIDTH - 50, FRAME_HEIGHT - 100));
         randomPosition();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        fillWindow();
 
         setVisible(true);
     }
@@ -40,7 +55,26 @@ public class ToolsLauncher extends JFrame {
         setLocation(x, y);
     }
 
+    private void fillWindow()
+    {
+        tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
+
+        tabbedPane.addTab("Application Log", new LogReaderPanel("application.log"));
+        tabbedPane.addTab("Error Log", new LogReaderPanel("error.log"));
+        tabbedPane.addTab("Dialog Editor", new JPanel());
+
+        add(tabbedPane);
+    }
+
     public static void main(String[] args)  throws Exception {
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 new ToolsLauncher();
