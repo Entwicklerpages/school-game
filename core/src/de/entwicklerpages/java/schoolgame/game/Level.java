@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.I18NBundle;
 
 import java.util.Iterator;
@@ -23,7 +24,7 @@ import de.entwicklerpages.java.schoolgame.SchoolGame;
  *
  * @author nico
  */
-public abstract class Level {
+public abstract class Level implements Disposable {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
@@ -44,7 +45,15 @@ public abstract class Level {
      *
      * @see LevelManager
      */
-    private LevelManager manager;
+    private LevelManager levelManager;
+
+    /**
+     * DialogManager um Dialoge anzuzeigen.
+     *
+     * @see DialogManager
+     * @see CutScene
+     */
+    private DialogManager dialogManager;
 
     /**
      * Aktueller Spielzustand
@@ -143,7 +152,15 @@ public abstract class Level {
         Gdx.app.log("INFO", "Load level " + mapName + " ...");
 
         this.game = game;
-        this.manager = manager;
+        this.levelManager = manager;
+
+        try {
+            this.dialogManager = new DialogManager(mapName);
+        } catch (Exception e) {
+            Gdx.app.error("ERROR", "Abort level loading!");
+            levelManager.exitToMenu();
+            return;
+        }
 
         if (this.getIntroCutScene() == null)
             levelState = LevelState.PLAYING;
@@ -152,8 +169,7 @@ public abstract class Level {
 
         player = new Player(saveData.getPlayerName(), saveData.isMale());
 
-        FileHandle baseFileHandle = Gdx.files.internal("I18n/Game");
-        localeBundle = I18NBundle.createBundle(baseFileHandle);
+        localeBundle = I18NBundle.createBundle(Gdx.files.internal("I18n/Game"));
 
         initMap();
 
@@ -270,7 +286,7 @@ public abstract class Level {
      */
     public final void exitToMenu()
     {
-        manager.exitToMenu();
+        levelManager.exitToMenu();
     }
 
     /**
@@ -282,7 +298,7 @@ public abstract class Level {
      */
     public final void exitToCredits()
     {
-        manager.exitToCredits();
+        levelManager.exitToCredits();
     }
 
     /**
@@ -297,7 +313,7 @@ public abstract class Level {
     protected final void changeLevel(String newLevel)
     {
         if (getOutroCutScene() == null)
-            manager.changeLevel(newLevel);
+            levelManager.changeLevel(newLevel);
         else {
             levelState = LevelState.OUTRO;
         }
@@ -347,7 +363,7 @@ public abstract class Level {
         if (!mapFile.exists() || mapFile.isDirectory())
         {
             Gdx.app.error("ERROR", "The map file " + mapName + ".tmx doesn't exists!");
-            manager.exitToMenu();
+            levelManager.exitToMenu();
             return;
         }
 
