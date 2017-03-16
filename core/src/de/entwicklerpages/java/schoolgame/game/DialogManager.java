@@ -13,8 +13,10 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
+import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.game.dialog.DialogType;
 import de.entwicklerpages.java.schoolgame.game.dialog.Level;
+import de.entwicklerpages.java.schoolgame.game.dialog.StatementType;
 
 /**
  * Lädt eine Dialogdatei und zeigt Dialoge bei Bedarf an.
@@ -25,8 +27,19 @@ public class DialogManager {
 
     private final static String SCHEMA_XSD = "dialog/dialog.xsd";
 
-    public DialogManager(String dialogFileName) throws Exception {
+    /**
+     * Zugriff auf die Spielinstanz
+     *
+     * @see SchoolGame
+     */
+    protected SchoolGame game;
+
+    private Level dialogRoot;
+
+    public DialogManager(SchoolGame game, String dialogFileName) throws Exception {
         Gdx.app.log("INFO", "Start loading dialog file " + dialogFileName);
+
+        this.game = game;
 
         loadDialogFile(dialogFileName);
 
@@ -58,15 +71,19 @@ public class DialogManager {
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         unmarshaller.setSchema(dialogSchema);
 
-        Level level = (Level) unmarshaller.unmarshal(dialogFile.read());
+        dialogRoot = (Level) unmarshaller.unmarshal(dialogFile.read());
 
-        Gdx.app.log("TEST", "ATLAS: " + level.getAtlas());
-
-        for (DialogType dialog : level.getDialogs().getDialog())
+        for (DialogType dialog : dialogRoot.getDialogs().getDialog())
         {
-            Gdx.app.log("TEST", "Found dialog: " + dialog.getName());
+            for (StatementType statement : dialog.getStatement())
+            {
+                Gdx.app.log("DIALOG", "Statement Start");
+                for (String text : statement.getTexts().getText())
+                {
+                    Gdx.app.log("DIALOG", "Text: " + text);
+                }
+            }
         }
-
     }
 
     private Schema getSchema(FileHandle dialogFile) throws Exception {
