@@ -6,6 +6,7 @@ public class DialogEditor extends JPanel {
 
     public DialogEditor()
     {
+        super();
     }
 
 }

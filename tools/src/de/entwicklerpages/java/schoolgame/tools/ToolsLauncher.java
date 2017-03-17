@@ -5,12 +5,12 @@ import java.awt.Toolkit;
 import java.util.Random;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
+import de.entwicklerpages.java.schoolgame.tools.dialog.DialogEditor;
 import de.entwicklerpages.java.schoolgame.tools.filedata.ConfigEditorPanel;
 import de.entwicklerpages.java.schoolgame.tools.filedata.LogReaderPanel;
 
@@ -19,8 +19,6 @@ public class ToolsLauncher extends JFrame {
 
     private final static int FRAME_WIDTH = 500;
     private final static int FRAME_HEIGHT = 400;
-
-    private JTabbedPane tabbedPane = null;
 
     public ToolsLauncher()
     {
@@ -57,12 +55,13 @@ public class ToolsLauncher extends JFrame {
 
     private void fillWindow()
     {
-        tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
 
         tabbedPane.addTab("Application Log", new LogReaderPanel("application.log"));
         tabbedPane.addTab("Error Log", new LogReaderPanel("error.log"));
         tabbedPane.addTab("Config Editor", new ConfigEditorPanel());
-        tabbedPane.addTab("Dialog Editor", new JPanel());
+        tabbedPane.addTab("Dialog Editor", new DialogEditor());
+        tabbedPane.addTab("Über", new AboutPanel());
 
         add(tabbedPane);
     }
