@@ -14,7 +14,6 @@ import javax.xml.validation.SchemaFactory;
 
 import de.entwicklerpages.java.schoolgame.game.dialog.Level;
 
-// TODO Load dialog schema file
 public final class DialogDataHelper {
     private DialogDataHelper() {}
 
@@ -41,6 +40,8 @@ public final class DialogDataHelper {
 
         Marshaller marshaller = getJaxbContext().createMarshaller();
         marshaller.setSchema(getSchema());
+        marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
         marshaller.marshal(root, dialogFile);
     }
@@ -67,8 +68,7 @@ public final class DialogDataHelper {
             return null;
 
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema schema = factory.newSchema(schemaFile);
 
-        return schema;
+        return factory.newSchema(schemaFile);
     }
 }

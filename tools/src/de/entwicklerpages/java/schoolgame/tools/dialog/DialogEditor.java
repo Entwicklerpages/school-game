@@ -26,12 +26,14 @@ import de.entwicklerpages.java.schoolgame.game.dialog.Level;
 public class DialogEditor extends JPanel implements ActionListener {
 
     private Level level = null;
+    private File lastDir = null;
 
     private JTree treeView = null;
     private JButton saveButton = null;
     private JButton loadButton = null;
 
     private JPanel containerPanel = new JPanel();
+    private FileFilter filter = new FileNameExtensionFilter("Dialog XML Datei", "xml");
 
     private DefaultMutableTreeNode root = null;
 
@@ -57,6 +59,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
         saveButton = new JButton("Speichern");
         saveButton.addActionListener(this);
+        saveButton.setEnabled(false);
 
         saveBar.add(loadButton);
         saveBar.add(saveButton);
@@ -98,23 +101,74 @@ public class DialogEditor extends JPanel implements ActionListener {
 
     private void loadLevel()
     {
-        FileFilter filter = new FileNameExtensionFilter("Dialog XML Datei", "xml");
-        JFileChooser chooser = new JFileChooser(DialogDataHelper.getAssetDirIfFound());
+        JFileChooser chooser = new JFileChooser(lastDir == null ? DialogDataHelper.getAssetDirIfFound() : lastDir);
         chooser.addChoosableFileFilter(filter);
         chooser.setAcceptAllFileFilterUsed(true);
+        chooser.setMultiSelectionEnabled(false);
 
         int result = chooser.showOpenDialog(this);
 
         if (result == JFileChooser.APPROVE_OPTION)
         {
+            saveButton.setEnabled(false);
             level = null;
             File selectedFile = chooser.getSelectedFile();
             try {
                 level = DialogDataHelper.getDialogRoot(selectedFile);
+                lastDir = selectedFile.getParentFile();
+                saveButton.setEnabled(true);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Beim Laden ist ein Fehler aufgetreten!\n" + e.getLocalizedMessage(), "Fehler!", JOptionPane.OK_OPTION);
             }
             rebuildTree();
+        }
+    }
+
+    private void saveFile()
+    {
+        if (level == null)
+        {
+            JOptionPane.showMessageDialog(this, "Erstellen oder laden Sie zuerst ein Level, bevor sie es speichern!\n", "Fehler!", JOptionPane.OK_OPTION);
+            return;
+        }
+
+        JFileChooser chooser = new JFileChooser(lastDir == null ? DialogDataHelper.getAssetDirIfFound() : lastDir);
+        chooser.addChoosableFileFilter(filter);
+        chooser.setAcceptAllFileFilterUsed(true);
+        chooser.setMultiSelectionEnabled(false);
+
+        int result = chooser.showSaveDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION)
+        {
+            File selectedFile = chooser.getSelectedFile();
+
+            if (!selectedFile.getAbsolutePath().endsWith(".xml"))
+                selectedFile = new File(selectedFile.getAbsolutePath() + ".xml");
+
+            if (selectedFile.exists() && selectedFile.isDirectory())
+            {
+                JOptionPane.showMessageDialog(this, "Es existiert dort bereits ein Verzeichnis mit diesem Namen!\n", "Fehler!", JOptionPane.OK_OPTION);
+                return;
+            }
+
+            if (selectedFile.exists())
+            {
+                result = JOptionPane.showConfirmDialog(this, "Achtung!\n" +
+                        "Es existiert bereits eine Datei mit diesem Namen.\n" +
+                        "Wollen Sie wirklich die vorhandene Datei unwiederruflich überschreiben?", "Datei überschreiben", JOptionPane.YES_NO_OPTION);
+
+                if (result == JOptionPane.NO_OPTION) {
+                    return;
+                }
+            }
+
+            try {
+                DialogDataHelper.saveDialogRoot(selectedFile, level);
+                lastDir = selectedFile.getParentFile();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Beim Speichern ist ein Fehler aufgetreten!\n" + e.getLocalizedMessage(), "Fehler!", JOptionPane.OK_OPTION);
+            }
         }
     }
 
@@ -135,6 +189,10 @@ public class DialogEditor extends JPanel implements ActionListener {
             } else {
                 loadLevel();
             }
+        }
+        else if (event.getSource() == saveButton)
+        {
+            saveFile();
         }
     }
 }
