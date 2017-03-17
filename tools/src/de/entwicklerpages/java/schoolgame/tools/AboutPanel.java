@@ -2,7 +2,6 @@ package de.entwicklerpages.java.schoolgame.tools;
 
 import java.awt.Color;
 import java.awt.Desktop;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
