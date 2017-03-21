@@ -17,15 +17,15 @@ import de.entwicklerpages.java.schoolgame.tools.filedata.LogReaderPanel;
 
 public class ToolsLauncher extends JFrame {
 
-    private final static int FRAME_WIDTH = 500;
-    private final static int FRAME_HEIGHT = 400;
+    private final static int FRAME_WIDTH = 520;
+    private final static int FRAME_HEIGHT = 420;
 
     public ToolsLauncher()
     {
         super("School Game Tools");
 
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        setMaximumSize(new Dimension(FRAME_WIDTH + 200, FRAME_HEIGHT + 100));
+        setMaximumSize(new Dimension(FRAME_WIDTH + 350, FRAME_HEIGHT + 200));
         setMinimumSize(new Dimension(FRAME_WIDTH - 50, FRAME_HEIGHT - 100));
         randomPosition();
 
