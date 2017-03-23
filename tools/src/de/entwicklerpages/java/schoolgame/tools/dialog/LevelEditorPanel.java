@@ -55,6 +55,7 @@ public class LevelEditorPanel extends BasePanel implements ActionListener {
         gbc.gridy++;
         gbc.gridx = 0;
         gbc.gridwidth = 2;
+        gbc.insets.top = 20;
         saveButton = new JButton("Übernehmen");
         saveButton.addActionListener(this);
         editor.add(saveButton, gbc);

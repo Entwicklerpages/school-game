@@ -95,11 +95,13 @@ public class CharacterEditorPanel extends BasePanel implements ActionListener {
         gbc.gridy++;
         gbc.gridx = 0;
         gbc.gridwidth = 2;
+        gbc.insets.top = 20;
         saveButton = new JButton("Übernehmen");
         saveButton.addActionListener(this);
         editor.add(saveButton, gbc);
 
         gbc.gridy++;
+        gbc.insets.top = 0;
         removeButton = new MetalGradientButton("Charakter entfernen");
         removeButton.addActionListener(this);
         removeButton.setBackground(Color.RED.darker());

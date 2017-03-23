@@ -405,12 +405,12 @@ public class DialogEditor extends JPanel implements ActionListener {
 
         @Override
         public JPanel getEditor() {
-            return null;
+            return new StatementEditorPanel(DialogEditor.this, this);
         }
 
         @Override
         public String toString() {
-            return statement.getTalking().length() == 0 ? "Statement" : "Statement by " + statement.getTalking();
+            return statement.getTalking().length() == 0 ? "Statement" : "Statement von " + statement.getTalking();
         }
     }
 
@@ -435,7 +435,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
         @Override
         public JPanel getEditor() {
-            return null;
+            return new TextEditorPanel(DialogEditor.this, this);
         }
 
         @Override
