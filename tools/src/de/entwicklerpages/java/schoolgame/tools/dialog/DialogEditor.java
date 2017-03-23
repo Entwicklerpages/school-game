@@ -381,7 +381,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
         @Override
         public JPanel getEditor() {
-            return new DialogEditorPanel(this);
+            return new DialogEditorPanel(DialogEditor.this, this);
         }
 
         @Override
