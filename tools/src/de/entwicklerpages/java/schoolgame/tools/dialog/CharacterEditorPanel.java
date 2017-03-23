@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import de.entwicklerpages.java.schoolgame.game.dialog.CharacterType;
@@ -53,6 +54,7 @@ public class CharacterEditorPanel extends BasePanel implements ActionListener {
     private JPanel buildEditor(CharacterType character)
     {
         JPanel editor = new JPanel(new GridBagLayout());
+        editor.setBorder(new EmptyBorder(10, 30, 10, 30));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;

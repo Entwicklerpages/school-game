@@ -105,7 +105,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
                     if (path.getPathCount() == 1)
                     {
-                        replaceView(emptyPanel);
+                        replaceView(new LevelEditorPanel(DialogEditor.this, level));
                     }
                     else if (path.getPathCount() == 2)
                     {
