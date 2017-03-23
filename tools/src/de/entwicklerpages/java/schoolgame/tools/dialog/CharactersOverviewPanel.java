@@ -7,24 +7,24 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import de.entwicklerpages.java.schoolgame.game.dialog.CharacterType;
 import de.entwicklerpages.java.schoolgame.game.dialog.CharactersType;
 
 
-public class CharactersPanel extends JPanel implements ActionListener {
-
-    private DialogEditor editor;
+public class CharactersOverviewPanel extends BasePanel implements ActionListener {
 
     private CharactersType characters;
+    private DefaultMutableTreeNode charactersNode;
 
     private JButton addCharacterButton;
 
-    public CharactersPanel(DialogEditor editor, CharactersType characters)
+    public CharactersOverviewPanel(DialogEditor editor, DefaultMutableTreeNode charactersNode, CharactersType characters)
     {
-        super(new BorderLayout());
+        super(new BorderLayout(), editor);
 
-        this.editor = editor;
+        this.charactersNode = charactersNode;
         this.characters = characters;
 
         add(new JLabel("Anzahl Charaktere: " + this.characters.getCharacter().size(), JLabel.CENTER), BorderLayout.NORTH);
@@ -46,7 +46,8 @@ public class CharactersPanel extends JPanel implements ActionListener {
             newCharacter.setImage("no");
 
             this.characters.getCharacter().add(newCharacter);
-            this.editor.rebuildTree();
+            charactersNode.add(editor.new CharacterNode(newCharacter));
+            this.editor.updateTree(charactersNode);
         }
     }
 }

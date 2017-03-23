@@ -17,16 +17,21 @@ import de.entwicklerpages.java.schoolgame.tools.filedata.LogReaderPanel;
 
 public class ToolsLauncher extends JFrame {
 
-    private final static int FRAME_WIDTH = 520;
-    private final static int FRAME_HEIGHT = 420;
+    private final static int FRAME_WIDTH = 470;
+    private final static int FRAME_HEIGHT = 320;
+
+    private Dimension screenSize = null;
 
     public ToolsLauncher()
     {
         super("School Game Tools");
 
-        setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        setMaximumSize(new Dimension(FRAME_WIDTH + 350, FRAME_HEIGHT + 200));
-        setMinimumSize(new Dimension(FRAME_WIDTH - 50, FRAME_HEIGHT - 100));
+        int startWidth = Math.round((float)getScreenSize().getWidth() * 0.4f);
+        int startHeight = Math.round((float)getScreenSize().getHeight() * 0.4f);
+
+        setSize(startWidth, startHeight);
+        setMaximumSize(new Dimension(getScreenSize().width - 50, getScreenSize().height - 80));
+        setMinimumSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         randomPosition();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -36,20 +41,26 @@ public class ToolsLauncher extends JFrame {
         setVisible(true);
     }
 
+    private Dimension getScreenSize()
+    {
+        if (screenSize == null)
+            screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        return screenSize;
+    }
+
     private void randomPosition()
     {
         Random r = new Random();
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension d = tk.getScreenSize();
+        Dimension d = getScreenSize();
 
-        int width = Math.round((float)d.getWidth() * 0.6f);
-        int height = Math.round((float)d.getHeight() * 0.6f);
+        int width = Math.round((float)d.getWidth() * 0.65f) - getWidth();
+        int height = Math.round((float)d.getHeight() * 0.65f) - getHeight();
 
         int x = Math.round((float)d.getWidth() * 0.15f);
         int y = Math.round((float)d.getHeight() * 0.1f);
 
-        x += r.nextInt(width - getWidth());
-        y += r.nextInt(height - getHeight());
+        x += width < 5 ? 0 : r.nextInt(width);
+        y += height < 5 ? 0 : r.nextInt(height);
         setLocation(x, y);
     }
 

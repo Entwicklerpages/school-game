@@ -103,7 +103,7 @@ public class DialogEditor extends JPanel implements ActionListener {
                     replaceView(emptyPanel);
                 } else {
 
-                    if (path.getPathCount() == 1) // Definitiv Level
+                    if (path.getPathCount() == 1)
                     {
                         replaceView(emptyPanel);
                     }
@@ -112,17 +112,17 @@ public class DialogEditor extends JPanel implements ActionListener {
                         DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
                         if (node.getUserObject().equals(TREE_CHARACTER))
                         {
-                            replaceView(new CharactersPanel(DialogEditor.this, level.getCharacters()));
+                            replaceView(new CharactersOverviewPanel(DialogEditor.this, node, level.getCharacters()));
                         } else {
-                            replaceView(new DialogsPanel(DialogEditor.this, level.getDialogs()));
+                            replaceView(new DialogsOverviewPanel(DialogEditor.this, node, level.getDialogs()));
                         }
                     }
                     else if (path.getPathCount() >= 3)
                     {
                         DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
-                        if (node.getUserObject() instanceof NodeData)
+                        if (node instanceof NodeData)
                         {
-                            NodeData data = (NodeData) node.getUserObject();
+                            NodeData data = (NodeData) node;
                             JPanel editor = data.getEditor();
                             if (editor != null)
                             {
@@ -137,7 +137,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
     private void fillCreateLevelPanel()
     {
-        createLevelPanel = new JPanel(new GridLayout(6, 1));
+        createLevelPanel = new JPanel(new BorderLayout());
 
         JButton createLevelButton = new JButton("Neues Level anlegen");
         createLevelButton.addActionListener(new ActionListener() {
@@ -148,12 +148,8 @@ public class DialogEditor extends JPanel implements ActionListener {
             }
         });
 
-        createLevelPanel.add(new JLabel("Du musst zuerst ein leeres Level anlegen."));
-        createLevelPanel.add(new JPanel());
-        createLevelPanel.add(new JPanel());
-        createLevelPanel.add(createLevelButton);
-        createLevelPanel.add(new JPanel());
-        createLevelPanel.add(new JPanel());
+        createLevelPanel.add(new JLabel("Du musst zuerst ein leeres Level anlegen.", JLabel.CENTER), BorderLayout.CENTER);
+        createLevelPanel.add(createLevelButton, BorderLayout.SOUTH);
     }
 
     private void buildLevel()
@@ -200,7 +196,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
         List<CharacterType> characters = level.getCharacters().getCharacter();
         for (CharacterType character : characters) {
-            charactersNode.add(new DefaultMutableTreeNode(new CharacterNode(character)));
+            charactersNode.add(new CharacterNode(character));
         }
 
         DefaultMutableTreeNode dialogsNode = new DefaultMutableTreeNode(TREE_DIALOG);
@@ -208,19 +204,19 @@ public class DialogEditor extends JPanel implements ActionListener {
 
         List<DialogType> dialogs = level.getDialogs().getDialog();
         for (DialogType dialog : dialogs) {
-            DefaultMutableTreeNode dialogTreeNode = new DefaultMutableTreeNode(new DialogNode(dialog));
+            DefaultMutableTreeNode dialogTreeNode = new DialogNode(dialog);
             dialogsNode.add(dialogTreeNode);
 
             List<StatementType> statements = dialog.getStatement();
             for (StatementType statement : statements)
             {
-                DefaultMutableTreeNode statementTreeNode = new DefaultMutableTreeNode(new StatementNode(dialog, statement));
+                DefaultMutableTreeNode statementTreeNode = new StatementNode(dialog, statement);
                 dialogTreeNode.add(statementTreeNode);
 
                 List<String> texts = statement.getTexts().getText();
                 for (String text : texts)
                 {
-                    statementTreeNode.add(new DefaultMutableTreeNode(new TextNode(dialog, statement, text, texts.indexOf(text))));
+                    statementTreeNode.add(new TextNode(dialog, statement, text, texts.indexOf(text)));
                 }
             }
         }
@@ -228,16 +224,16 @@ public class DialogEditor extends JPanel implements ActionListener {
 
     public void rebuildTree()
     {
-        TreePath oldPath = treeView.getSelectionPath();
-
         buildTree();
 
         if (treeView != null)
             ((DefaultTreeModel) treeView.getModel()).reload(root);
+    }
 
-        treeView.expandPath(oldPath);
-        treeView.scrollPathToVisible(oldPath);
-        treeView.setSelectionPath(oldPath);
+    public void updateTree(DefaultMutableTreeNode node)
+    {
+        ((DefaultTreeModel) treeView.getModel()).nodeChanged(node);
+        ((DefaultTreeModel) treeView.getModel()).reload(node);
     }
 
     private void loadLevel()
@@ -264,6 +260,11 @@ public class DialogEditor extends JPanel implements ActionListener {
             }
             rebuildTree();
         }
+    }
+
+    public Level getLevel()
+    {
+        return level;
     }
 
     private void saveFile()
@@ -338,7 +339,7 @@ public class DialogEditor extends JPanel implements ActionListener {
         }
     }
 
-    public abstract class NodeData
+    public abstract class NodeData extends DefaultMutableTreeNode
     {
         public abstract JPanel getEditor();
     }
@@ -357,7 +358,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
         @Override
         public JPanel getEditor() {
-            return new CharacterEditorPanel(this);
+            return new CharacterEditorPanel(DialogEditor.this, this);
         }
 
         @Override

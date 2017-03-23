@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import de.entwicklerpages.java.schoolgame.game.dialog.DialogType;
 import de.entwicklerpages.java.schoolgame.game.dialog.DialogsType;
@@ -14,19 +15,18 @@ import de.entwicklerpages.java.schoolgame.game.dialog.StatementType;
 import de.entwicklerpages.java.schoolgame.game.dialog.TextsType;
 
 
-public class DialogsPanel extends JPanel implements ActionListener {
-
-    private DialogEditor editor;
+public class DialogsOverviewPanel extends BasePanel implements ActionListener {
 
     private DialogsType dialogs;
+    private DefaultMutableTreeNode dialogsNode;
 
     private JButton addDialogButton;
 
-    public DialogsPanel(DialogEditor editor, DialogsType dialogs)
+    public DialogsOverviewPanel(DialogEditor editor, DefaultMutableTreeNode dialogsNode, DialogsType dialogs)
     {
-        super(new BorderLayout());
+        super(new BorderLayout(), editor);
 
-        this.editor = editor;
+        this.dialogsNode = dialogsNode;
         this.dialogs = dialogs;
 
         add(new JLabel("Anzahl Dialoge: " + this.dialogs.getDialog().size(), JLabel.CENTER), BorderLayout.NORTH);
@@ -44,18 +44,23 @@ public class DialogsPanel extends JPanel implements ActionListener {
         {
             DialogType newDialog = new DialogType();
             newDialog.setName("neu");
+            DefaultMutableTreeNode newDialogNode = editor.new DialogNode(newDialog);
 
             StatementType newStatement = new StatementType();
             newStatement.setTalking("");
+            DefaultMutableTreeNode statementNode = editor.new StatementNode(newDialog, newStatement);
+            newDialogNode.add(statementNode);
 
             TextsType newText = new TextsType();
             newText.getText().add("");
+            statementNode.add(editor.new TextNode(newDialog, newStatement, "", 0));
 
             newStatement.setTexts(newText);
             newDialog.getStatement().add(newStatement);
 
             this.dialogs.getDialog().add(newDialog);
-            this.editor.rebuildTree();
+            dialogsNode.add(newDialogNode);
+            this.editor.updateTree(dialogsNode);
         }
     }
 }

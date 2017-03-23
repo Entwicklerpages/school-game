@@ -1,9 +1,14 @@
 package de.entwicklerpages.java.schoolgame.tools.dialog;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -13,12 +18,14 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import de.entwicklerpages.java.schoolgame.game.dialog.CharacterType;
 
-public class CharacterEditorPanel extends JPanel implements ActionListener {
+public class CharacterEditorPanel extends BasePanel implements ActionListener {
 
     private DialogEditor.CharacterNode characterNode = null;
 
@@ -26,12 +33,17 @@ public class CharacterEditorPanel extends JPanel implements ActionListener {
     private JTextField titleTextField;
     private JCheckBox imageCheckbox;
     private JButton saveButton;
+    private JButton removeButton;
 
-    public CharacterEditorPanel(DialogEditor.CharacterNode characterNode)
+    private boolean canRemove = true;
+
+    public CharacterEditorPanel(DialogEditor editor, DialogEditor.CharacterNode characterNode)
     {
-        super(new BorderLayout());
+        super(new BorderLayout(), editor);
 
         this.characterNode = characterNode;
+
+        canRemove = editor.getLevel().getCharacters().getCharacter().size() > 1;
 
         add(new JLabel("Charakter Editor: " + characterNode.getCharacter().getId()), BorderLayout.NORTH);
 
@@ -85,6 +97,13 @@ public class CharacterEditorPanel extends JPanel implements ActionListener {
         saveButton.addActionListener(this);
         editor.add(saveButton, gbc);
 
+        gbc.gridy++;
+        removeButton = new MetalGradientButton("Charakter entfernen");
+        removeButton.addActionListener(this);
+        removeButton.setBackground(Color.RED.darker());
+        removeButton.setEnabled(canRemove);
+        editor.add(removeButton, gbc);
+
         return editor;
     }
 
@@ -108,11 +127,25 @@ public class CharacterEditorPanel extends JPanel implements ActionListener {
             saveTitle();
             saveImage();
         }
+        else if (event.getSource() == removeButton && canRemove)
+        {
+            int result = JOptionPane.showConfirmDialog(this, "Achtung!\n" +
+                    "Wollen Sie wirklich diesen Charakter (" + characterNode.getCharacter().getId() + ") löschen?", "Charakter löschen", JOptionPane.YES_NO_OPTION);
+
+            if (result == JOptionPane.YES_OPTION)
+            {
+                editor.getLevel().getCharacters().getCharacter().remove(characterNode.getCharacter());
+                DefaultMutableTreeNode parent = (DefaultMutableTreeNode)characterNode.getParent();
+                parent.remove(characterNode);
+                editor.updateTree(parent);
+            }
+        }
     }
 
     private void saveId()
     {
         characterNode.getCharacter().setId(idTextField.getText());
+        updateTree(characterNode);
     }
 
     private void saveTitle()
