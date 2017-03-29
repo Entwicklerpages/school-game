@@ -61,6 +61,14 @@ project(":core") {
     }
 }
 
+project(":tools") {
+    apply plugin: "java"
+
+    dependencies {
+        compile project(":jaxb")
+    }
+}
+
 project(":jaxb") {
     apply plugin: "java"
 }
