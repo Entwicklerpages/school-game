@@ -241,6 +241,19 @@ public class DialogEditor extends JPanel implements ActionListener {
         ((DefaultTreeModel) treeView.getModel()).reload(node);
     }
 
+    public void updateTextNodes(StatementNode statementNode)
+    {
+        List<String> textList = statementNode.getStatement().getTexts().getText();
+        textList.clear();
+
+        for (int i = 0; i < statementNode.getChildCount(); i++)
+        {
+            TextNode textNode = (TextNode) statementNode.getChildAt(i);
+            textList.add(textNode.getText());
+            textNode.setId(i);
+        }
+    }
+
     private void loadLevel()
     {
         JFileChooser chooser = new JFileChooser(lastDir == null ? DialogDataHelper.getAssetDirIfFound() : lastDir);
@@ -448,8 +461,18 @@ public class DialogEditor extends JPanel implements ActionListener {
             this.id = id;
         }
 
+        public void setText(String text)
+        {
+            this.text = text;
+        }
+
         public String getText() {
             return text;
+        }
+
+        public void setId(int id)
+        {
+            this.id = id;
         }
 
         public int getId() {

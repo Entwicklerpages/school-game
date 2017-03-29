@@ -19,7 +19,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 public class TextEditorPanel extends BasePanel implements ActionListener {
     private DialogEditor.TextNode textNode = null;
-    private List<String> textList;
     private boolean canRemove = true;
 
     private JTextField contentTextField;
@@ -31,9 +30,8 @@ public class TextEditorPanel extends BasePanel implements ActionListener {
         super(new BorderLayout(), editor);
 
         this.textNode = textNode;
-        this.textList = textNode.getStatement().getTexts().getText();
 
-        canRemove = textList.size() > 1;
+        canRemove = textNode.getStatement().getTexts().getText().size() > 1;
 
         add(new JLabel("Text Editor: " + this.textNode.getDialog().getName()), BorderLayout.NORTH);
 
@@ -89,9 +87,9 @@ public class TextEditorPanel extends BasePanel implements ActionListener {
 
             if (result == JOptionPane.YES_OPTION)
             {
-                textList.remove(textNode.getId());
                 DefaultMutableTreeNode parent = (DefaultMutableTreeNode) textNode.getParent();
                 parent.remove(textNode);
+                editor.updateTextNodes((DialogEditor.StatementNode) parent);
                 editor.updateTree(parent);
             }
         }
@@ -99,7 +97,7 @@ public class TextEditorPanel extends BasePanel implements ActionListener {
 
     private void saveText()
     {
-        textList.remove(textNode.getId());
-        textList.add(textNode.getId(), contentTextField.getText());
+        textNode.setText(contentTextField.getText());
+        this.editor.updateTextNodes((DialogEditor.StatementNode) textNode.getParent());
     }
 }
