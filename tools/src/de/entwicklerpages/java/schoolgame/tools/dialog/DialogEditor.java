@@ -40,6 +40,7 @@ public class DialogEditor extends JPanel implements ActionListener {
     private File lastDir = null;
 
     private JTree treeView = null;
+    private JButton newButton = null;
     private JButton saveButton = null;
     private JButton loadButton = null;
 
@@ -71,6 +72,9 @@ public class DialogEditor extends JPanel implements ActionListener {
 
         JPanel saveBar = new JPanel(new GridLayout(1, 2));
 
+        newButton = new JButton("Neu");
+        newButton.addActionListener(this);
+
         loadButton = new JButton("Laden");
         loadButton.addActionListener(this);
 
@@ -78,6 +82,7 @@ public class DialogEditor extends JPanel implements ActionListener {
         saveButton.addActionListener(this);
         saveButton.setEnabled(false);
 
+        saveBar.add(newButton);
         saveBar.add(loadButton);
         saveBar.add(saveButton);
 
@@ -317,7 +322,25 @@ public class DialogEditor extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == loadButton)
+        if (event.getSource() == newButton)
+        {
+            if (level != null)
+            {
+                int result = JOptionPane.showConfirmDialog(this, "Achtung!\n" +
+                        "Es wird ein neues Level erstellt.\n" +
+                        "Ungespeicherte Änderungen gehen verloren!\n" +
+                        "Wollen Sie wirklich ein neues Level erstellen?", "Neues Level", JOptionPane.YES_NO_OPTION);
+
+                if (result == JOptionPane.YES_OPTION) {
+                    buildLevel();
+                    treeView.setSelectionRow(0);
+                }
+            } else {
+                buildLevel();
+                treeView.setSelectionRow(0);
+            }
+        }
+        else if (event.getSource() == loadButton)
         {
             if (level != null)
             {
