@@ -28,7 +28,7 @@ public class LevelEditorPanel extends BasePanel implements ActionListener {
 
         this.level = level;
 
-        add(new JLabel("Level Editor"), BorderLayout.NORTH);
+        add(new JLabel("Level Editor", JLabel.CENTER), BorderLayout.NORTH);
 
         add(buildEditor(), BorderLayout.CENTER);
     }

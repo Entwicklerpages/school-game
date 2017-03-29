@@ -148,7 +148,12 @@ public class CharacterEditorPanel extends BasePanel implements ActionListener {
 
     private void saveId()
     {
-        characterNode.getCharacter().setId(idTextField.getText());
+        String idText = idTextField.getText();
+
+        if (idText.isEmpty()) idText = "leer";
+        if (idText.equals("#player#")) idText = "player";
+
+        characterNode.getCharacter().setId(idText);
         updateTree(characterNode);
     }
 
