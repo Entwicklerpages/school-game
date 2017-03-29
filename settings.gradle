@@ -1,1 +1,1 @@
-include 'desktop', 'core', 'jaxb'
+include 'desktop', 'core', 'tools', 'jaxb'

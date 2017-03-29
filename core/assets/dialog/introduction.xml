@@ -55,14 +55,14 @@
             </statement>
             <statement talking="#player#">
                 <player position="right" />
-                <display position="right">peter</display>
+                <display position="left">peter</display>
                 <texts>
                     <text>Was ist den hier los?</text>
                 </texts>
             </statement>
             <statement talking="peter">
                 <player position="right" />
-                <display position="right">peter</display>
+                <display position="left">peter</display>
                 <texts>
                     <text>Sie hat mich vollkommen umsonst durch das ganze Dorf gejagt!</text>
                 </texts>
