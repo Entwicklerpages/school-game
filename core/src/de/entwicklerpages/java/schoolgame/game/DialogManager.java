@@ -144,7 +144,9 @@ public class DialogManager {
             if (dialogType.getName().equals(dialogName))
             {
                 activeDialog = dialogType;
-                nextLine();
+                activeText = 0;      // Diese Zeilen sind eigentlich redundant, allerdings stellen wir damit sicher,
+                activeStatement = 0; // Das ein neuer Dialog wirklich von vorne startet.
+                prepareText();
                 return;
             }
         }
@@ -182,6 +184,11 @@ public class DialogManager {
             }
         }
 
+        prepareText();
+    }
+
+    private void prepareText()
+    {
         talking = activeDialog.getStatement().get(activeStatement).getTalking();
 
         CharacterType character = characterMap.get(talking);
@@ -190,7 +197,8 @@ public class DialogManager {
         else
             Gdx.app.error("WARNING", "There is no character '" + talking + "' who can talk in '" + activeDialog.getName() + "', statement: " + activeStatement);
 
-        lines = activeDialog.getStatement().get(activeStatement).getTexts().getText().get(activeText).split("(\\|br\\|)+");
+        String nextText = activeDialog.getStatement().get(activeStatement).getTexts().getText().get(activeText);
+        lines = nextText.replaceAll("(#\\{PLAYER\\})", playerName).split("(\\|br\\|)+");
 
         if (lines.length > 3)
         {

@@ -65,6 +65,13 @@ public abstract class Level implements Disposable {
     private LevelState levelState = LevelState.INTRO;
 
     /**
+     * Die aktive CutScene
+     *
+     * @see CutScene
+     */
+    private CutScene activeCutScene;
+
+    /**
      * Zugriff auf häufig benötigte Texte
      *
      * Wird zum Beispiel vom Ingame Menü verwendet.
@@ -164,7 +171,8 @@ public abstract class Level implements Disposable {
             return;
         }
 
-        if (this.getIntroCutScene() == null)
+        activeCutScene = this.getIntroCutScene();
+        if (activeCutScene == null)
             levelState = LevelState.PLAYING;
         else
         {
@@ -174,10 +182,11 @@ public abstract class Level implements Disposable {
                 public void run()
                 {
                     levelState = LevelState.PLAYING;
+                    activeCutScene = null;
                 }
             });
 
-            dialogManager.startDialog(this.getIntroCutScene().getDialogId());
+            dialogManager.startDialog(activeCutScene.getDialogId());
         }
 
         camera = game.getCamera();
@@ -338,7 +347,8 @@ public abstract class Level implements Disposable {
      */
     protected final void changeLevel(final String newLevel)
     {
-        if (getOutroCutScene() == null)
+        activeCutScene = this.getOutroCutScene();
+        if (activeCutScene == null)
             levelManager.changeLevel(newLevel);
         else {
             levelState = LevelState.OUTRO;
@@ -352,7 +362,7 @@ public abstract class Level implements Disposable {
                 }
             });
 
-            dialogManager.startDialog(this.getOutroCutScene().getDialogId());
+            dialogManager.startDialog(activeCutScene.getDialogId());
         }
     }
 
