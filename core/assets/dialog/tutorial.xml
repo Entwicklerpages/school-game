@@ -11,7 +11,7 @@
         <dialog name="intro">
             <statement talking="tutorial">
                 <display position="right">tutorial</display>
-                <sound>Pling.wav</sound>
+                <sound>pling.wav</sound>
                 <texts>
                     <text>Hallo #{PLAYER}!</text>
                     <text>Willkommen bei School-Game,|br|dem BESTEM Fantasy-Game das du je spielen wirst.</text>

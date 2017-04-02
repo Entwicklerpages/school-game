@@ -25,6 +25,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
+import de.entwicklerpages.java.schoolgame.AudioManager;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.common.InputHelper;
@@ -67,6 +68,7 @@ public class DialogManager {
     private String[] lines = null;
     private int activeStatement = 0;
     private int activeText = 0;
+    private AudioManager.SoundKey statementSound = null;
 
     public DialogManager(SchoolGame game, String dialogFileName, String playerName) throws Exception {
         Gdx.app.log("INFO", "Start loading dialog file " + dialogFileName);
@@ -161,6 +163,12 @@ public class DialogManager {
 
     private void nextLine()
     {
+        if (statementSound != null)
+        {
+            game.getAudioManager().unloadSound(statementSound);
+            statementSound = null;
+        }
+
         activeText++;
         int textSize = activeDialog.getStatement().get(activeStatement).getTexts().getText().size();
 
@@ -189,6 +197,16 @@ public class DialogManager {
 
     private void prepareText()
     {
+        if (activeText == 0)
+        {
+            String soundName = activeDialog.getStatement().get(activeStatement).getSound();
+            if (soundName != null && !soundName.isEmpty())
+            {
+                statementSound = game.getAudioManager().createSound("dialog", soundName);
+                game.getAudioManager().playSound(statementSound);
+            }
+        }
+
         talking = activeDialog.getStatement().get(activeStatement).getTalking();
 
         CharacterType character = characterMap.get(talking);

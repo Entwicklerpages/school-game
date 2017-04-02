@@ -133,7 +133,7 @@ public class AudioManager implements Disposable {
 
     public void playSound(SoundKey soundKey, float volume)
     {
-        if (muteSound) return;
+        if (muteSound || soundKey == null) return;
 
         String soundId = soundKey.getSoundId();
 
@@ -148,6 +148,8 @@ public class AudioManager implements Disposable {
 
     public void unloadSound(SoundKey soundKey)
     {
+        if (soundKey == null) return;
+
         String soundId = soundKey.getSoundId();
         if (soundMap.containsKey(soundId))
         {
