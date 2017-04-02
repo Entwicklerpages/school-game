@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.EllipseMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.utils.I18NBundle;
 import java.util.Iterator;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 
 /**
  * Basisklasse für alle Level
@@ -155,7 +157,7 @@ public abstract class Level implements Disposable {
         this.levelManager = manager;
 
         try {
-            this.dialogManager = new DialogManager(game, mapName);
+            this.dialogManager = new DialogManager(game, mapName, saveData.getPlayerName());
         } catch (Exception e) {
             Gdx.app.error("ERROR", "Abort level loading!");
             levelManager.exitToMenu();
@@ -164,6 +166,19 @@ public abstract class Level implements Disposable {
 
         if (this.getIntroCutScene() == null)
             levelState = LevelState.PLAYING;
+        else
+        {
+            dialogManager.setFinishedCallback(new ActionCallback()
+            {
+                @Override
+                public void run()
+                {
+                    levelState = LevelState.PLAYING;
+                }
+            });
+
+            dialogManager.startDialog(this.getIntroCutScene().getDialogId());
+        }
 
         camera = game.getCamera();
 
@@ -201,10 +216,16 @@ public abstract class Level implements Disposable {
      */
     public final void render(float deltaTime)
     {
-        tileMapRenderer.setView(camera);
-        tileMapRenderer.render();
+        if (levelState != LevelState.INTRO && levelState != LevelState.OUTRO)
+        {
+            tileMapRenderer.setView(camera);
+            tileMapRenderer.render();
 
-        player.render(camera, deltaTime);
+            player.render(camera, deltaTime);
+        }
+
+        if (dialogManager.isPlaying())
+            dialogManager.render(camera, deltaTime);
 
         if (levelState == LevelState.PAUSE)
             ingameMenu.render(camera);
@@ -248,6 +269,9 @@ public abstract class Level implements Disposable {
             return true;
         }
 
+        if (dialogManager.isPlaying())
+            return  dialogManager.handleInput(keycode);
+
         if (levelState == LevelState.PAUSE)
             return ingameMenu.handleInput(keycode);
 
@@ -261,6 +285,7 @@ public abstract class Level implements Disposable {
      * Erlaubt einem abgeleitetem Level, eine Intro CutScene festzulegen.
      * @return Die CutScene, die angezeigt werden soll, sonst null
      */
+    @SuppressWarnings("SameReturnValue")
     public CutScene getIntroCutScene()
     {
         return null;
@@ -270,6 +295,7 @@ public abstract class Level implements Disposable {
      * Erlaubt einem abgeleitetem Level, eine Outro CutScene festzulegen.
      * @return Die CutScene, die angezeigt werden soll, sonst null
      */
+    @SuppressWarnings("SameReturnValue")
     public CutScene getOutroCutScene()
     {
         return null;
@@ -310,12 +336,23 @@ public abstract class Level implements Disposable {
      * @see LevelManager#changeLevel(String)
      * @see Level#getOutroCutScene()
      */
-    protected final void changeLevel(String newLevel)
+    protected final void changeLevel(final String newLevel)
     {
         if (getOutroCutScene() == null)
             levelManager.changeLevel(newLevel);
         else {
             levelState = LevelState.OUTRO;
+
+            dialogManager.setFinishedCallback(new ActionCallback()
+            {
+                @Override
+                public void run()
+                {
+                    levelManager.changeLevel(newLevel);
+                }
+            });
+
+            dialogManager.startDialog(this.getOutroCutScene().getDialogId());
         }
     }
 
@@ -367,7 +404,11 @@ public abstract class Level implements Disposable {
             return;
         }
 
-        tileMap = new TmxMapLoader().load(mapFile.path());
+        TmxMapLoader.Parameters mapLoaderParameters = new TmxMapLoader.Parameters();
+        mapLoaderParameters.textureMagFilter = Texture.TextureFilter.Nearest;
+        mapLoaderParameters.textureMinFilter = Texture.TextureFilter.Nearest;
+
+        tileMap = new TmxMapLoader().load(mapFile.path(), mapLoaderParameters);
     }
 
     /**

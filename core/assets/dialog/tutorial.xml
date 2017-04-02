@@ -14,8 +14,8 @@
                 <sound>Pling.wav</sound>
                 <texts>
                     <text>Hallo #{PLAYER}!</text>
-                    <text>Willkommen bei School-Game, dem BESTEM Fantasy-Game das du je spielen wirst.</text>
-                    <text>Bevor du aber mit dem Spiel beginnst, soll dich dieses kleine Tutorial mit der Steuerung vertraut machen.</text>
+                    <text>Willkommen bei School-Game,|br|dem BESTEM Fantasy-Game das du je spielen wirst.</text>
+                    <text>Bevor du aber mit dem Spiel beginnst,|br|soll dich dieses kleine Tutorial mit der Steuerung|br|vertraut machen.</text>
                     <text>Fangen wir an!</text>
                 </texts>
             </statement>
