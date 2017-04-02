@@ -2,7 +2,13 @@ package de.entwicklerpages.java.schoolgame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.utils.Disposable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * AudioManager
@@ -20,6 +26,25 @@ public class AudioManager implements Disposable {
      * @see SchoolGame
      */
     private SchoolGame game;
+
+    /**
+     * Speichert alle geladenen Sound-Instanzen.
+     */
+    private Map<String, Sound> soundMap;
+
+    /**
+     * Speichert eine Liste von Sounds, die automtisch beim Beenden entladen werden sollen.
+     * Nicht die schönste Art, allerdings vereinfacht das den Umgang mit Sounds,
+     * die über mehrere Szenen hinweg genutzt werden.
+     *
+     * @see de.entwicklerpages.java.schoolgame.menu.MenuState
+     */
+    private List<SoundKey> autoUnloadSounds;
+
+    /**
+     * Sind Sounds stumm?
+     */
+    private boolean muteSound;
 
     /**
      * Ist die Musik stumm (gestoppt)?
@@ -72,6 +97,65 @@ public class AudioManager implements Disposable {
         this.game = game;
 
         muteMusic = game.getPreferences().getBoolean("mute_music", false);
+        muteSound = game.getPreferences().getBoolean("mute_sound", false);
+
+        soundMap = new HashMap<String, Sound>();
+        autoUnloadSounds = new ArrayList<SoundKey>();
+    }
+
+    public SoundKey createSound(String group, String name)
+    {
+        return createSound(group, name, false);
+    }
+
+    public SoundKey createSound(String group, String name, boolean autoUnload)
+    {
+        String soundId = group + "/" +name;
+
+        if (soundMap.containsKey(soundId))
+            return new SoundKey(soundId);
+
+        Sound sound = Gdx.audio.newSound(Gdx.files.internal("sound/" + soundId));
+        soundMap.put(soundId, sound);
+
+        SoundKey soundKey = new SoundKey(soundId);
+
+        if (autoUnload)
+            autoUnloadSounds.add(soundKey);
+
+        return soundKey;
+    }
+
+    public void playSound(SoundKey soundKey)
+    {
+        playSound(soundKey, 1.0f);
+    }
+
+    public void playSound(SoundKey soundKey, float volume)
+    {
+        if (muteSound) return;
+
+        String soundId = soundKey.getSoundId();
+
+        if (!soundMap.containsKey(soundId))
+        {
+            Gdx.app.error("WARNING", "The sound " + soundId + " was not loaded!");
+            return;
+        }
+
+        soundMap.get(soundId).play(volume);
+    }
+
+    public void unloadSound(SoundKey soundKey)
+    {
+        String soundId = soundKey.getSoundId();
+        if (soundMap.containsKey(soundId))
+        {
+            Sound sound = soundMap.get(soundId);
+            sound.stop();
+            sound.dispose();
+            soundMap.remove(soundId);
+        }
     }
 
     /**
@@ -178,6 +262,8 @@ public class AudioManager implements Disposable {
     {
         if (music != null)
         {
+            resetFade();
+
             music.stop();
             music.dispose();
             music = null;
@@ -197,7 +283,7 @@ public class AudioManager implements Disposable {
         {
             fade -= deltaTime;
 
-            music.setVolume(relativeMusicVolume * (Math.max(fade, 0.0f)/fadeTime)); // Math.max verhindert, dass die Lautstärke negativ wird.
+            music.setVolume(relativeMusicVolume * (Math.max(fade, 0.0f) / fadeTime)); // Math.max verhindert, dass die Lautstärke negativ wird.
 
             if (fade <= 0.05f)
             {
@@ -210,11 +296,41 @@ public class AudioManager implements Disposable {
 
     /**
      * Wird aufgerufen, wenn der AudioManager nicht mehr benötigt wird.
-     * Sollte noch Musik geladen sein, wird sie gestoppt und entladen.
+     * Sollten noch Musik oder Sounds geladen sein, werden sie gestoppt und entladen.
      */
     public void dispose()
     {
         stopMusic();
+
+        for (SoundKey soundKey : autoUnloadSounds)
+        {
+            unloadSound(soundKey);
+        }
+
+        if (!soundMap.isEmpty())
+        {
+            Gdx.app.log("DEBUG", "Some sounds (" + soundMap.size() + ") weren't unloaded by their creators!");
+
+            for (Map.Entry<String, Sound> sound : soundMap.entrySet())
+            {
+                Gdx.app.log("DEBUG", "Auto unloading: " + sound.getKey());
+                sound.getValue().stop();
+                sound.getValue().dispose();
+            }
+        }
+    }
+
+    public boolean isSoundMuted()
+    {
+        return muteSound;
+    }
+
+    public void setMuteSound(boolean muteSound)
+    {
+        this.muteSound = muteSound;
+
+        game.getPreferences().putBoolean("mute_sound", muteSound);
+        game.getPreferences().flush();
     }
 
     /**
@@ -250,5 +366,20 @@ public class AudioManager implements Disposable {
      */
     public boolean isMusicMuted() {
         return muteMusic;
+    }
+
+    public class SoundKey
+    {
+        private String soundId;
+
+        protected SoundKey(String soundId)
+        {
+            this.soundId = soundId;
+        }
+
+        protected String getSoundId()
+        {
+            return soundId;
+        }
     }
 }

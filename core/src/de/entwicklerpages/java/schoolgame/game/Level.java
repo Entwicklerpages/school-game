@@ -163,6 +163,8 @@ public abstract class Level implements Disposable {
         this.game = game;
         this.levelManager = manager;
 
+        this.game.getAudioManager().selectMusic(null);
+
         try {
             this.dialogManager = new DialogManager(game, mapName, saveData.getPlayerName());
         } catch (Exception e) {
