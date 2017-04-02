@@ -19,6 +19,7 @@ import java.util.List;
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
+import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
 public abstract class MenuState implements GameState, InputProcessor {
 
@@ -186,19 +187,19 @@ public abstract class MenuState implements GameState, InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
 
-        if (keycode == Input.Keys.UP || keycode == Input.Keys.W)
+        if (InputHelper.checkKeys(keycode, Input.Keys.UP, Input.Keys.W))
         {
             previousEntry();
             return true;
         }
 
-        if (keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
+        if (InputHelper.checkKeys(keycode, Input.Keys.DOWN, Input.Keys.S))
         {
             nextEntry();
             return true;
         }
 
-        if (keycode == Input.Keys.ENTER || keycode == Input.Keys.SPACE)
+        if (InputHelper.checkKeys(keycode, Input.Keys.ENTER, Input.Keys.SPACE))
         {
             if (activeEntry != null && activeEntry.isEnabled() && activeEntry.getCallback() != null)
             {

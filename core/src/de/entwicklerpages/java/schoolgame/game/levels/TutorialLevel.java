@@ -1,5 +1,6 @@
 package de.entwicklerpages.java.schoolgame.game.levels;
 
+import de.entwicklerpages.java.schoolgame.game.CutScene;
 import de.entwicklerpages.java.schoolgame.game.Level;
 
 /**
@@ -16,12 +17,24 @@ public class TutorialLevel extends Level {
     public static final String LEVEL_NAME = "tutorial";
 
     public TutorialLevel() {
-        super("test");
+        super("tutorial");
     }
 
     @Override
     public String getTitle() {
         return "Tutorial";
+    }
+
+    @Override
+    public CutScene getIntroCutScene()
+    {
+        return new CutScene(null, "intro");
+    }
+
+    @Override
+    public CutScene getOutroCutScene()
+    {
+        return new CutScene(null, "outro");
     }
 }
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level atlas="introduction">
+    <characters>
+        <character>
+            <id>peter</id>
+            <title>Peter</title>
+            <image>yes</image>
+        </character>
+        <character>
+            <id>fee_froh</id>
+            <title>Fee</title>
+            <image>yes</image>
+        </character>
+        <character>
+            <id>fee_normal</id>
+            <title>Fee</title>
+            <image>yes</image>
+        </character>
+    </characters>
+    <dialogs>
+        <dialog name="kiosk1">
+            <statement talking="peter">
+                <player position="left" />
+                <display position="right">peter</display>
+                <sound>Hello.wav</sound>
+                <texts>
+                    <text>Hallo #{PLAYER}!</text>
+                    <text>Ich bin Peter.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left" />
+                <display position="right">peter</display>
+                <texts>
+                    <text>Hallo Peter!</text>
+                    <text>Woher kennst du meinen Namen?</text>
+                </texts>
+            </statement>
+            <statement talking="peter">
+                <player position="left" />
+                <display position="right">peter</display>
+                <texts>
+                    <text>Das willst du garnicht wissen. Glaub mir.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="bar1">
+            <statement talking="peter">
+                <display position="left">peter</display>
+                <display position="right">fee_normal</display>
+                <texts>
+                    <text>WAS ZUR HÖLLE SOLLTE DAS??</text>
+                    <text>Wie kannst du es nur wagen?!</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="right" />
+                <display position="left">peter</display>
+                <texts>
+                    <text>Was ist den hier los?</text>
+                </texts>
+            </statement>
+            <statement talking="peter">
+                <player position="right" />
+                <display position="left">peter</display>
+                <texts>
+                    <text>Sie hat mich vollkommen umsonst durch das ganze Dorf gejagt!</text>
+                </texts>
+            </statement>
+            <statement talking="peter">
+                <display position="left">peter</display>
+                <display position="right">fee_normal</display>
+                <texts>
+                    <text>Dafür bekommst du richtig Ärger, Fee!</text>
+                </texts>
+            </statement>
+            <statement talking="fee_froh">
+                <display position="left">peter</display>
+                <display position="right">fee_froh</display>
+                <texts>
+                    <text>Hi hi</text>
+                    <text>Das hast du verdient!</text>
+                    <text>Letzte Woche hast du mir mein essen geklaut.</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
+</level>

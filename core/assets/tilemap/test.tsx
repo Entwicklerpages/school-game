@@ -10,37 +10,24 @@
  <tile id="0" terrain="0,0,0,1"/>
  <tile id="1" terrain="0,0,1,1"/>
  <tile id="2" terrain="0,0,1,0"/>
- <tile id="3">
-  <properties>
-   <property name="animation" value="wasser"/>
-  </properties>
- </tile>
- <tile id="4">
-  <properties>
-   <property name="animation" value="wasser"/>
-  </properties>
- </tile>
  <tile id="5" terrain="0,0,0,3"/>
  <tile id="6" terrain="0,0,3,3"/>
  <tile id="7" terrain="0,0,3,0"/>
  <tile id="8" terrain="0,1,0,1"/>
  <tile id="9" terrain="1,1,1,1"/>
  <tile id="10" terrain="1,0,1,0"/>
- <tile id="11">
-  <properties>
-   <property name="animation" value="wasser"/>
-  </properties>
- </tile>
  <tile id="12">
-  <properties>
-   <property name="animation" value="wasser"/>
-  </properties>
+  <objectgroup draworder="index"/>
  </tile>
  <tile id="13" terrain="0,3,0,3"/>
  <tile id="14" terrain="3,3,3,3">
-  <properties>
-   <property name="animation" value="wasser"/>
-  </properties>
+  <animation>
+   <frame tileid="14" duration="150"/>
+   <frame tileid="3" duration="150"/>
+   <frame tileid="4" duration="150"/>
+   <frame tileid="11" duration="150"/>
+   <frame tileid="12" duration="150"/>
+  </animation>
  </tile>
  <tile id="15" terrain="3,0,3,0"/>
  <tile id="16" terrain="0,1,0,0"/>

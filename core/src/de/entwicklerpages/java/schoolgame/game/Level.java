@@ -4,14 +4,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.objects.EllipseMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.I18NBundle;
 
+import java.util.Iterator;
+
 import de.entwicklerpages.java.schoolgame.SchoolGame;
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 
 /**
  * Basisklasse für alle Level
@@ -19,7 +26,7 @@ import de.entwicklerpages.java.schoolgame.SchoolGame;
  *
  * @author nico
  */
-public abstract class Level {
+public abstract class Level implements Disposable {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
@@ -40,7 +47,15 @@ public abstract class Level {
      *
      * @see LevelManager
      */
-    private LevelManager manager;
+    private LevelManager levelManager;
+
+    /**
+     * DialogManager um Dialoge anzuzeigen.
+     *
+     * @see DialogManager
+     * @see CutScene
+     */
+    private DialogManager dialogManager;
 
     /**
      * Aktueller Spielzustand
@@ -48,6 +63,13 @@ public abstract class Level {
      * @see LevelState
      */
     private LevelState levelState = LevelState.INTRO;
+
+    /**
+     * Die aktive CutScene
+     *
+     * @see CutScene
+     */
+    private CutScene activeCutScene;
 
     /**
      * Zugriff auf häufig benötigte Texte
@@ -139,17 +161,39 @@ public abstract class Level {
         Gdx.app.log("INFO", "Load level " + mapName + " ...");
 
         this.game = game;
-        this.manager = manager;
+        this.levelManager = manager;
 
-        if (this.getIntroCutScene() == null)
+        try {
+            this.dialogManager = new DialogManager(game, mapName, saveData.getPlayerName());
+        } catch (Exception e) {
+            Gdx.app.error("ERROR", "Abort level loading!");
+            levelManager.exitToMenu();
+            return;
+        }
+
+        activeCutScene = this.getIntroCutScene();
+        if (activeCutScene == null)
             levelState = LevelState.PLAYING;
+        else
+        {
+            dialogManager.setFinishedCallback(new ActionCallback()
+            {
+                @Override
+                public void run()
+                {
+                    levelState = LevelState.PLAYING;
+                    activeCutScene = null;
+                }
+            });
+
+            dialogManager.startDialog(activeCutScene.getDialogId());
+        }
 
         camera = game.getCamera();
 
         player = new Player(saveData.getPlayerName(), saveData.isMale());
 
-        FileHandle baseFileHandle = Gdx.files.internal("I18n/Game");
-        localeBundle = I18NBundle.createBundle(baseFileHandle);
+        localeBundle = I18NBundle.createBundle(Gdx.files.internal("I18n/Game"));
 
         initMap();
 
@@ -167,6 +211,8 @@ public abstract class Level {
     {
         if (levelState != LevelState.PLAYING) return;
 
+        // AnimatedTiledMapTile.updateAnimationBaseTime();
+
         player.update(deltaTime);
 
         setCameraInBounds();
@@ -179,8 +225,16 @@ public abstract class Level {
      */
     public final void render(float deltaTime)
     {
-        tileMapRenderer.setView(camera);
-        tileMapRenderer.render();
+        if (levelState != LevelState.INTRO && levelState != LevelState.OUTRO)
+        {
+            tileMapRenderer.setView(camera);
+            tileMapRenderer.render();
+
+            player.render(camera, deltaTime);
+        }
+
+        if (dialogManager.isPlaying())
+            dialogManager.render(camera, deltaTime);
 
         if (levelState == LevelState.PAUSE)
             ingameMenu.render(camera);
@@ -194,6 +248,9 @@ public abstract class Level {
     {
         if (tileMapRenderer != null)
             tileMapRenderer.dispose();
+
+        if (player != null)
+            player.dispose();
 
         if (tileMap != null)
             tileMap.dispose();
@@ -221,6 +278,9 @@ public abstract class Level {
             return true;
         }
 
+        if (dialogManager.isPlaying())
+            return  dialogManager.handleInput(keycode);
+
         if (levelState == LevelState.PAUSE)
             return ingameMenu.handleInput(keycode);
 
@@ -234,6 +294,7 @@ public abstract class Level {
      * Erlaubt einem abgeleitetem Level, eine Intro CutScene festzulegen.
      * @return Die CutScene, die angezeigt werden soll, sonst null
      */
+    @SuppressWarnings("SameReturnValue")
     public CutScene getIntroCutScene()
     {
         return null;
@@ -243,6 +304,7 @@ public abstract class Level {
      * Erlaubt einem abgeleitetem Level, eine Outro CutScene festzulegen.
      * @return Die CutScene, die angezeigt werden soll, sonst null
      */
+    @SuppressWarnings("SameReturnValue")
     public CutScene getOutroCutScene()
     {
         return null;
@@ -259,7 +321,7 @@ public abstract class Level {
      */
     public final void exitToMenu()
     {
-        manager.exitToMenu();
+        levelManager.exitToMenu();
     }
 
     /**
@@ -271,7 +333,7 @@ public abstract class Level {
      */
     public final void exitToCredits()
     {
-        manager.exitToCredits();
+        levelManager.exitToCredits();
     }
 
     /**
@@ -283,12 +345,24 @@ public abstract class Level {
      * @see LevelManager#changeLevel(String)
      * @see Level#getOutroCutScene()
      */
-    protected final void changeLevel(String newLevel)
+    protected final void changeLevel(final String newLevel)
     {
-        if (getOutroCutScene() == null)
-            manager.changeLevel(newLevel);
+        activeCutScene = this.getOutroCutScene();
+        if (activeCutScene == null)
+            levelManager.changeLevel(newLevel);
         else {
             levelState = LevelState.OUTRO;
+
+            dialogManager.setFinishedCallback(new ActionCallback()
+            {
+                @Override
+                public void run()
+                {
+                    levelManager.changeLevel(newLevel);
+                }
+            });
+
+            dialogManager.startDialog(activeCutScene.getDialogId());
         }
     }
 
@@ -306,14 +380,14 @@ public abstract class Level {
     }
 
     /**
-     * Lässt zu, dass das Spiel auch von außen pausiert werden kann.
+     * Lässt zu, dass das Spiel auch von Außen pausiert werden kann.
      */
     public final void setPause() {
         levelState = LevelState.PAUSE;
     }
 
     /**
-     * Lässt zu, dass das Spiel auch von außen fortgesetzt werden kann (z.B. aus dem Ingame Menü)
+     * Lässt zu, dass das Spiel auch von Außen fortgesetzt werden kann (z.B. aus dem Ingame Menü)
      *
      * @see IngameMenu
      */
@@ -336,11 +410,15 @@ public abstract class Level {
         if (!mapFile.exists() || mapFile.isDirectory())
         {
             Gdx.app.error("ERROR", "The map file " + mapName + ".tmx doesn't exists!");
-            manager.exitToMenu();
+            levelManager.exitToMenu();
             return;
         }
 
-        tileMap = new TmxMapLoader().load(mapFile.path());
+        TmxMapLoader.Parameters mapLoaderParameters = new TmxMapLoader.Parameters();
+        mapLoaderParameters.textureMagFilter = Texture.TextureFilter.Nearest;
+        mapLoaderParameters.textureMinFilter = Texture.TextureFilter.Nearest;
+
+        tileMap = new TmxMapLoader().load(mapFile.path(), mapLoaderParameters);
     }
 
     /**
@@ -354,6 +432,29 @@ public abstract class Level {
 
         mapWidth = firstLayer.getWidth() * firstLayer.getTileWidth();
         mapHeight = firstLayer.getHeight() * firstLayer.getTileHeight();
+
+        Iterator<MapObject> objects = tileMap.getLayers().get(LevelConstants.TMX_OBJECT_LAYER).getObjects().iterator();
+        while (objects.hasNext())
+        {
+            MapObject tileObject = objects.next();
+
+            Gdx.app.log("LEVEL", "Found object '" + tileObject.getName() + "'");
+
+            Iterator<String> props = tileObject.getProperties().getKeys();
+
+            while (props.hasNext())
+            {
+                String key = props.next();
+                Gdx.app.log("LEVEL", "Property: " + key + " - " + tileObject.getProperties().get(key).toString());
+            }
+
+            if (tileObject.getProperties().containsKey("type")
+                    && tileObject.getProperties().get("type", String.class).equals(LevelConstants.TMX_START_POSITION))
+            {
+                EllipseMapObject start = (EllipseMapObject) tileObject;
+                player.setPosition(start.getEllipse().x, start.getEllipse().y);
+            }
+        }
     }
 
     /**
@@ -421,5 +522,13 @@ public abstract class Level {
         PLAYING,
         PAUSE,
         OUTRO
+    }
+
+    private final class LevelConstants
+    {
+        static final String TMX_OBJECT_LAYER = "Objekte";
+        static final String TMX_START_POSITION = "Start";
+
+        private LevelConstants() {}
     }
 }

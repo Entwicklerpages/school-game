@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level atlas="tutorial">
+    <characters>
+        <character>
+            <id>tutorial</id>
+            <title>Tutorial</title>
+            <image>no</image>
+        </character>
+    </characters>
+    <dialogs>
+        <dialog name="intro">
+            <statement talking="tutorial">
+                <display position="right">tutorial</display>
+                <sound>Pling.wav</sound>
+                <texts>
+                    <text>Hallo #{PLAYER}!</text>
+                    <text>Willkommen bei School-Game,|br|dem BESTEM Fantasy-Game das du je spielen wirst.</text>
+                    <text>Bevor du aber mit dem Spiel beginnst,|br|soll dich dieses kleine Tutorial mit der Steuerung|br|vertraut machen.</text>
+                    <text>Fangen wir an!</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="outro">
+            <statement talking="tutorial">
+                <display position="right">tutorial</display>
+                <texts>
+                    <text>Bravo #{PLAYER}, du hast das Tutorial geschafft!</text>
+                    <text>Ab jetzt bist du auf dich alleine gestellt. Es geht nun direkt los mit dem Spiel.</text>
+                    <text>Viel Spaß!</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
+</level>
