@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.I18NBundle;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.entwicklerpages.java.schoolgame.AudioManager;
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
@@ -30,6 +31,9 @@ public abstract class MenuState implements GameState, InputProcessor {
     private BitmapFont font;
     private GlyphLayout fontLayout;
     private I18NBundle localeBundle;
+
+    private AudioManager.SoundKey selectSound;
+    private AudioManager.SoundKey changeSound;
 
     protected SchoolGame game;
 
@@ -48,6 +52,9 @@ public abstract class MenuState implements GameState, InputProcessor {
         font = game.getDefaultFont();
 
         fontLayout = new GlyphLayout();
+
+        selectSound = game.getAudioManager().createSound("menu", "select.wav", true);
+        changeSound = game.getAudioManager().createSound("menu", "change.wav", true);
 
         FileHandle baseFileHandle = Gdx.files.internal("I18n/" + getI18nName());
         localeBundle = I18NBundle.createBundle(baseFileHandle);
@@ -189,18 +196,21 @@ public abstract class MenuState implements GameState, InputProcessor {
 
         if (InputHelper.checkKeys(keycode, Input.Keys.UP, Input.Keys.W))
         {
+            game.getAudioManager().playSound(changeSound);
             previousEntry();
             return true;
         }
 
         if (InputHelper.checkKeys(keycode, Input.Keys.DOWN, Input.Keys.S))
         {
+            game.getAudioManager().playSound(changeSound);
             nextEntry();
             return true;
         }
 
         if (InputHelper.checkKeys(keycode, Input.Keys.ENTER, Input.Keys.SPACE))
         {
+            game.getAudioManager().playSound(selectSound);
             if (activeEntry != null && activeEntry.isEnabled() && activeEntry.getCallback() != null)
             {
                 activeEntry.getCallback().run();

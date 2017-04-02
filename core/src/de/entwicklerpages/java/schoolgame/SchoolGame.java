@@ -22,6 +22,7 @@ public class SchoolGame implements ApplicationListener {
     private BitmapFont defaultFont;
     private BitmapFont longTextFont;
     private BitmapFont titleFont;
+    private AudioManager audioManager;
 
     private GameState gameState;
 
@@ -72,6 +73,9 @@ public class SchoolGame implements ApplicationListener {
         }
         Gdx.graphics.setVSync(shouldVSync());
 
+        audioManager = new AudioManager(this);
+        audioManager.selectMusic("zakarra_menu", 0f); // Nur als Test
+
         Gdx.app.getApplicationLogger().log("INFO", "Finished.");
     }
 
@@ -92,15 +96,19 @@ public class SchoolGame implements ApplicationListener {
     @Override
     public void render() {
 
+        float deltaTime = Gdx.graphics.getDeltaTime();
+
+        audioManager.update(deltaTime);
+
         camera.update();
 
-        gameState.update(Gdx.graphics.getDeltaTime());
+        gameState.update(deltaTime);
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
-        gameState.render(camera, Gdx.graphics.getDeltaTime());
+        gameState.render(camera, deltaTime);
     }
 
     /***
@@ -137,6 +145,8 @@ public class SchoolGame implements ApplicationListener {
         defaultFont.dispose();
         longTextFont.dispose();
         titleFont.dispose();
+
+        audioManager.dispose();
 
         Gdx.app.getApplicationLogger().log("INFO", "Finished.");
         Gdx.app.getApplicationLogger().log("INFO", "Quit.");
@@ -181,6 +191,10 @@ public class SchoolGame implements ApplicationListener {
     public Preferences getPreferences()
     {
         return preferences;
+    }
+
+    public AudioManager getAudioManager() {
+        return audioManager;
     }
 
     public boolean shouldBeFullscreen()
