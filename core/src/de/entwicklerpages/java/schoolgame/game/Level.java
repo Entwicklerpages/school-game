@@ -290,11 +290,32 @@ public abstract class Level implements Disposable {
             return true;
         }
 
+        if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
+        {
+            return player.keyDown(keycode);
+        }
+
         if (dialogManager.isPlaying())
             return  dialogManager.handleInput(keycode);
 
         if (levelState == LevelState.PAUSE)
             return ingameMenu.handleInput(keycode);
+
+        return false;
+    }
+
+    /**
+     * Wird immer aufgerufen, wenn der Spieler eine Taste los lässt.
+     *
+     * @param keycode Der Tastencode der Taste, die losgelassen wurde
+     * @return true wenn es eine Aktion auf dieses Event gab.
+     */
+    public final boolean keyUp(int keycode)
+    {
+        if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
+        {
+            return player.keyUp(keycode);
+        }
 
         return false;
     }

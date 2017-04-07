@@ -322,7 +322,7 @@ public class LevelManager implements GameState, InputProcessor, Disposable {
 
     @Override
     public boolean keyUp(int keycode) {
-        return false;
+        return activeLevel.keyUp(keycode);
     }
 
     @Override
