@@ -293,24 +293,34 @@ public abstract class Level implements Disposable {
     // ÜBERSCHREIBBARE METHODEN
 
     /**
-     * Erlaubt einem abgeleitetem Level, eine Intro CutScene festzulegen.
+     * Erlaubt einem abgeleitetem Level eine Intro CutScene festzulegen.
      * @return Die CutScene, die angezeigt werden soll, sonst null
      */
     @SuppressWarnings("SameReturnValue")
-    public CutScene getIntroCutScene()
+    protected CutScene getIntroCutScene()
     {
         return null;
     }
 
     /**
-     * Erlaubt einem abgeleitetem Level, eine Outro CutScene festzulegen.
+     * Erlaubt einem abgeleitetem Level eine Outro CutScene festzulegen.
      * @return Die CutScene, die angezeigt werden soll, sonst null
      */
     @SuppressWarnings("SameReturnValue")
-    public CutScene getOutroCutScene()
+    protected CutScene getOutroCutScene()
     {
         return null;
     }
+
+    /**
+     * Erlaubt einem abgeleitetem Level vor dem Laden der Map Aktionen durchzuführen.
+     */
+    protected void onPrepare() {}
+
+    /**
+     * Erlaubt einem abgeleitetem Level nach dem Laden der Map Aktionen durchzuführen.
+     */
+    protected void onLoaded() {}
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // AKTIONS METHODEN
@@ -468,10 +478,14 @@ public abstract class Level implements Disposable {
      */
     private void initMap()
     {
+        onPrepare();
+
         loadMap();
         parseMap();
 
         tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap, 1f);
+
+        onLoaded();
     }
 
     /**
