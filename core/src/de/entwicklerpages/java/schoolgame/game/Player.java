@@ -6,12 +6,16 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.TimeUtils;
+
+import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
 public class Player {
 
     private static final float SPEED = 60f;
     private static final float ACCELERATION = 0.3f;
     private static final float RUN_FACTOR = 3f;
+    private static final long LONG_ATTACK_TIME = 1700L;
 
     private int health;
     private String name;
@@ -22,6 +26,8 @@ public class Player {
 
     private float lastDeltaX = 0;
     private float lastDeltaY = 0;
+
+    private long attackStart = -1;
 
     private EntityOrientation orientation;
 
@@ -150,6 +156,48 @@ public class Player {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.circle(posX, posY, 16);
         shapeRenderer.end();
+        shapeRenderer.setColor(Color.BLUE);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.circle(posX, posY + 12, 8);
+        shapeRenderer.end();
+    }
+
+    public boolean keyDown(int keycode)
+    {
+        if (keycode == Input.Keys.SPACE)
+        {
+            // Attack
+            Gdx.app.log("INFO", "Start Attack");
+            attackStart = TimeUtils.millis();
+            return true;
+        }
+        else if (InputHelper.checkKeys(keycode, Input.Keys.E, Input.Keys.ENTER))
+        {
+            // Interaction
+            Gdx.app.log("INFO", "Interaction");
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean keyUp(int keycode)
+    {
+        if (keycode == Input.Keys.SPACE && attackStart > 0)
+        {
+            // Attack
+
+            if (TimeUtils.timeSinceMillis(attackStart) >= LONG_ATTACK_TIME)
+            {
+                Gdx.app.log("INFO", "Stop Long Attack");
+            } else {
+                Gdx.app.log("INFO", "Stop Short Attack");
+            }
+
+            attackStart = -1;
+            return true;
+        }
+        return false;
     }
 
     public void dispose()
