@@ -2,9 +2,10 @@ package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
@@ -27,11 +28,18 @@ public class Player {
     private float lastDeltaX = 0;
     private float lastDeltaY = 0;
 
+    private float maxX;
+    private float maxY;
+
     private long attackStart = -1;
 
     private EntityOrientation orientation;
 
-    private ShapeRenderer shapeRenderer;
+    private SpriteBatch batch;
+    private TextureAtlas playerAtlas;
+    private TextureRegion playerFront;
+    private TextureRegion playerSide;
+    private TextureRegion playerBack;
 
     public Player(String name, boolean male) {
         this.health = 100;
@@ -41,7 +49,14 @@ public class Player {
         this.posY = 0;
         this.orientation = EntityOrientation.LOOK_FORWARD;
 
-        shapeRenderer = new ShapeRenderer();
+        String player = "player_" + (this.male ? "m" : "f");
+
+        batch = new SpriteBatch();
+
+        playerAtlas = new TextureAtlas(Gdx.files.internal("data/graphics/packed/" + player + ".atlas"));
+        playerFront = playerAtlas.findRegion(player + "_front");
+        playerSide = playerAtlas.findRegion(player + "_side");
+        playerBack = playerAtlas.findRegion(player + "_back");
     }
 
     public int getHealth() {
@@ -97,6 +112,12 @@ public class Player {
         this.orientation = orientation;
     }
 
+    public void setMaxMapDimension(float maxX, float maxY)
+    {
+        this.maxX = maxX;
+        this.maxY = maxY;
+    }
+
     public void setPosition(float posX, float posY) {
         this.posX = posX;
         this.posY = posY;
@@ -147,19 +168,53 @@ public class Player {
 
         this.posX += lastDeltaX * deltaTime;
         this.posY += lastDeltaY * deltaTime;
+
+        if (this.posX - playerSide.getRegionWidth() / 2 < 5) this.posX = playerSide.getRegionWidth() / 2 + 5;
+        if (this.posY < 5) this.posY = 5;
+
+        if (this.posX + playerSide.getRegionWidth() / 2 > maxX - 5) this.posX = maxX - playerSide.getRegionWidth() / 2 - 5;
+        if (this.posY + playerSide.getRegionHeight() / 2 > maxY - 5) this.posY = maxY - playerSide.getRegionHeight() / 2 - 5;
     }
 
     public void render(OrthographicCamera camera, float deltaTime)
     {
-        shapeRenderer.setProjectionMatrix(camera.combined);
-        shapeRenderer.setColor(Color.RED);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.circle(posX, posY, 16);
-        shapeRenderer.end();
-        shapeRenderer.setColor(Color.BLUE);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.circle(posX, posY + 12, 8);
-        shapeRenderer.end();
+        batch.setProjectionMatrix(camera.combined);
+
+        batch.begin();
+
+        TextureRegion region = null;
+        float scaleX = 1f;
+
+        switch (orientation)
+        {
+            case LOOK_FORWARD:
+                region = playerFront;
+                break;
+            case LOOK_LEFT:
+                region = playerSide;
+                scaleX = -1f;
+                break;
+            case LOOK_BACKWARD:
+                region = playerBack;
+                scaleX = -1f;
+                break;
+            case LOOK_RIGHT:
+                region = playerSide;
+                break;
+        }
+
+        batch.draw(region,                                      // TextureRegion (front, back, side)
+                posX - playerSide.getRegionWidth() / 2,         // Offset to the X position (character center)
+                posY,                                           // Y position is at the foots
+                playerSide.getRegionWidth() / 2,                // Origin X (important for flipping)
+                playerSide.getRegionHeight(),                   // Origin Y
+                playerSide.getRegionWidth(),                    // Width
+                playerSide.getRegionHeight(),                   // Height
+                scaleX,                                         // Scale X (-1 to flip)
+                1f,                                             // Scale Y
+                0f);                                            // Rotation
+
+        batch.end();
     }
 
     public boolean keyDown(int keycode)
@@ -202,6 +257,7 @@ public class Player {
 
     public void dispose()
     {
-        shapeRenderer.dispose();
+        playerAtlas.dispose();
+        batch.dispose();
     }
 }

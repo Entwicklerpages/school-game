@@ -548,6 +548,8 @@ public abstract class Level implements Disposable {
         loadMap();
         parseMap();
 
+        player.setMaxMapDimension(mapWidth, mapHeight);
+
         worldObjectManager.finishInit();
 
         tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap, 1f);
