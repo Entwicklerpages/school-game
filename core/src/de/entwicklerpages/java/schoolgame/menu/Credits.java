@@ -45,7 +45,7 @@ public class Credits implements GameState, InputProcessor {
 
         offset -= Gdx.graphics.getHeight() / 2 - 35;
 
-        FileHandle credits = Gdx.files.internal("misc/credits.txt");
+        FileHandle credits = Gdx.files.internal("data/misc/credits.txt");
 
         if (credits.exists() && !credits.isDirectory())
         {

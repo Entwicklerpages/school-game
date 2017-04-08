@@ -2,6 +2,7 @@ package de.entwicklerpages.java.schoolgame.game.levels;
 
 import de.entwicklerpages.java.schoolgame.game.CutScene;
 import de.entwicklerpages.java.schoolgame.game.Level;
+import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
 
 /**
  * Tutorial Level
@@ -35,6 +36,12 @@ public class TutorialLevel extends Level {
     public CutScene getOutroCutScene()
     {
         return new CutScene(null, "outro");
+    }
+
+    @Override
+    protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
+    {
+
     }
 }
 

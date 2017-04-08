@@ -1,10 +1,13 @@
 apply plugin: "java"
 
+import com.badlogic.gdx.tools.texturepacker.TexturePacker
+
 sourceCompatibility = 1.6
 sourceSets.main.java.srcDirs = [ "src/" ]
 
 project.ext.mainClassName = "de.entwicklerpages.java.schoolgame.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../core/assets");
+project.ext.texturePacker = [ "core/assets/data/graphics/base/", "core/assets/data/graphics/packed/"]
 
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
@@ -19,9 +22,23 @@ task dist(type: Jar) {
     from files(sourceSets.main.output.resourcesDir)
     from {configurations.compile.collect {zipTree(it)}}
     from files(project.assetsDir);
- 
+
+    exclude('data/**/README.txt')
+    exclude('data/graphics/base/')
+
     manifest {
         attributes 'Main-Class': project.mainClassName
+    }
+}
+
+task texturePacker << {
+    if (project.ext.has('texturePacker')) {
+
+        new File(texturePacker[0]).eachDir() { dir ->
+            println dir.getPath()
+            logger.info "Calling TexturePacker: " + texturePacker
+            TexturePacker.process(dir.getPath(), texturePacker[1], dir.getName())
+        }
     }
 }
 

@@ -5,8 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.objects.EllipseMapObject;
+import com.badlogic.gdx.maps.objects.*;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -56,6 +57,13 @@ public abstract class Level implements Disposable {
      * @see CutScene
      */
     private DialogManager dialogManager;
+
+    /**
+     * WorldObjectManager um Objekte aus der Map zu verwalten.
+     *
+     * @see WorldObjectManager
+     */
+    private WorldObjectManager worldObjectManager;
 
     /**
      * Aktueller Spielzustand
@@ -173,6 +181,8 @@ public abstract class Level implements Disposable {
             return;
         }
 
+        this.worldObjectManager = new WorldObjectManager(game);
+
         activeCutScene = this.getIntroCutScene();
         if (activeCutScene == null)
             levelState = LevelState.PLAYING;
@@ -195,7 +205,7 @@ public abstract class Level implements Disposable {
 
         player = new Player(saveData.getPlayerName(), saveData.isMale());
 
-        localeBundle = I18NBundle.createBundle(Gdx.files.internal("I18n/Game"));
+        localeBundle = I18NBundle.createBundle(Gdx.files.internal("data/I18n/Game"));
 
         initMap();
 
@@ -280,6 +290,11 @@ public abstract class Level implements Disposable {
             return true;
         }
 
+        if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
+        {
+            return player.keyDown(keycode);
+        }
+
         if (dialogManager.isPlaying())
             return  dialogManager.handleInput(keycode);
 
@@ -289,28 +304,54 @@ public abstract class Level implements Disposable {
         return false;
     }
 
+    /**
+     * Wird immer aufgerufen, wenn der Spieler eine Taste los lässt.
+     *
+     * @param keycode Der Tastencode der Taste, die losgelassen wurde
+     * @return true wenn es eine Aktion auf dieses Event gab.
+     */
+    public final boolean keyUp(int keycode)
+    {
+        if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
+        {
+            return player.keyUp(keycode);
+        }
+
+        return false;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // ÜBERSCHREIBBARE METHODEN
 
     /**
-     * Erlaubt einem abgeleitetem Level, eine Intro CutScene festzulegen.
+     * Erlaubt einem abgeleitetem Level eine Intro CutScene festzulegen.
      * @return Die CutScene, die angezeigt werden soll, sonst null
      */
     @SuppressWarnings("SameReturnValue")
-    public CutScene getIntroCutScene()
+    protected CutScene getIntroCutScene()
     {
         return null;
     }
 
     /**
-     * Erlaubt einem abgeleitetem Level, eine Outro CutScene festzulegen.
+     * Erlaubt einem abgeleitetem Level eine Outro CutScene festzulegen.
      * @return Die CutScene, die angezeigt werden soll, sonst null
      */
     @SuppressWarnings("SameReturnValue")
-    public CutScene getOutroCutScene()
+    protected CutScene getOutroCutScene()
     {
         return null;
     }
+
+    /**
+     * Erlaubt einem abgeleitetem Level vor dem Laden der Map Aktionen durchzuführen.
+     */
+    protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig) {}
+
+    /**
+     * Erlaubt einem abgeleitetem Level nach dem Laden der Map Aktionen durchzuführen.
+     */
+    protected void onLoaded() {}
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // AKTIONS METHODEN
@@ -407,7 +448,7 @@ public abstract class Level implements Disposable {
      */
     private void loadMap()
     {
-        FileHandle mapFile = Gdx.files.internal("maps/" + mapName + ".tmx");
+        FileHandle mapFile = Gdx.files.internal("data/maps/" + mapName + ".tmx");
 
         if (!mapFile.exists() || mapFile.isDirectory())
         {
@@ -435,28 +476,58 @@ public abstract class Level implements Disposable {
         mapWidth = firstLayer.getWidth() * firstLayer.getTileWidth();
         mapHeight = firstLayer.getHeight() * firstLayer.getTileHeight();
 
-        Iterator<MapObject> objects = tileMap.getLayers().get(LevelConstants.TMX_OBJECT_LAYER).getObjects().iterator();
+        MapLayer objectLayer = tileMap.getLayers().get(LevelConstants.TMX_OBJECT_LAYER);
+
+        if (objectLayer == null)
+        {
+            Gdx.app.log("ERROR", "Missing object layer!");
+            levelManager.exitToMenu();
+            return;
+        }
+
+        Iterator<MapObject> objects = objectLayer.getObjects().iterator();
         while (objects.hasNext())
         {
             MapObject tileObject = objects.next();
 
             Gdx.app.log("LEVEL", "Found object '" + tileObject.getName() + "'");
 
+            /*
+            // Testcode um alle Eigenschaften auszugeben.
             Iterator<String> props = tileObject.getProperties().getKeys();
-
             while (props.hasNext())
             {
                 String key = props.next();
                 Gdx.app.log("LEVEL", "Property: " + key + " - " + tileObject.getProperties().get(key).toString());
             }
+            */
 
-            if (tileObject.getProperties().containsKey("type")
-                    && tileObject.getProperties().get("type", String.class).equals(LevelConstants.TMX_START_POSITION))
+            if (tileObject.getProperties().containsKey("type"))
             {
-                EllipseMapObject start = (EllipseMapObject) tileObject;
-                player.setPosition(start.getEllipse().x, start.getEllipse().y);
+                String type = tileObject.getProperties().get(LevelConstants.TMX_TYPE, String.class);
+                if (type.equals(LevelConstants.TMX_TYPE_START_POSITION) && tileObject instanceof EllipseMapObject)
+                {
+                    EllipseMapObject start = (EllipseMapObject) tileObject;
+                    player.setPosition(start.getEllipse().x, start.getEllipse().y);
+                }
+                else if (type.equals(LevelConstants.TMX_TYPE_WORLD_OBJECT)) {
+
+                    if (!tileObject.getName().isEmpty() &&
+                        (tileObject instanceof EllipseMapObject || tileObject instanceof RectangleMapObject ||
+                         tileObject instanceof PolygonMapObject || tileObject instanceof PolylineMapObject))
+                    {
+                        worldObjectManager.initObject(tileObject.getName(), tileObject);
+                    } else {
+                        Gdx.app.log("WARNING", "Missing object name or wrong class.");
+                    }
+                } else {
+                    Gdx.app.log("LEVEL", "Object: " + tileObject.getName() + " -> Unkown type: " + type);
+                }
+            } else {
+                Gdx.app.log("LEVEL", "Object: " + tileObject.getName() + " -> Missing type!");
             }
         }
+        tileMap.getLayers().remove(objectLayer);
     }
 
     /**
@@ -468,10 +539,20 @@ public abstract class Level implements Disposable {
      */
     private void initMap()
     {
+        WorldObjectManager.WorldObjectConfig config = worldObjectManager.createConfig();
+
+        onPrepare(config);
+
+        worldObjectManager.lockConfig();
+
         loadMap();
         parseMap();
 
+        worldObjectManager.finishInit();
+
         tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap, 1f);
+
+        onLoaded();
     }
 
     /**
@@ -529,7 +610,9 @@ public abstract class Level implements Disposable {
     private final class LevelConstants
     {
         static final String TMX_OBJECT_LAYER = "Objekte";
-        static final String TMX_START_POSITION = "Start";
+        static final String TMX_TYPE = "type";
+        static final String TMX_TYPE_START_POSITION = "Start";
+        static final String TMX_TYPE_WORLD_OBJECT = "Welt";
 
         private LevelConstants() {}
     }

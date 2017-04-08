@@ -10,22 +10,19 @@
   <object id="3" name="Spielerstart" type="Start" x="1166.67" y="752">
    <ellipse/>
   </object>
-  <object id="4" name="Chaos Trigger" type="Trigger" x="374.667" y="593.333" width="406.667" height="313.333"/>
-  <object id="5" name="Intro Dialog" type="Dialog" x="944" y="662.667" width="57.3333" height="49.3333">
+  <object id="4" name="Chaos Trigger" type="Welt" x="374.667" y="593.333" width="406.667" height="313.333"/>
+  <object id="5" name="Intro Dialog" type="Welt" x="944" y="662.667" width="57.3333" height="49.3333">
    <properties>
     <property name="sequence" value="Intro"/>
    </properties>
   </object>
-  <object id="7" name="Storm Trigger" type="Trigger" x="637.333" y="1176" width="165.333" height="165.333">
+  <object id="7" name="Storm Trigger" type="Welt" x="637.333" y="1176" width="165.333" height="165.333">
    <ellipse/>
   </object>
-  <object id="8" name="Wobbel Trigger" type="Trigger" x="1496" y="308">
-   <properties>
-    <property name="action" value="bla"/>
-   </properties>
+  <object id="8" name="Wobbel Trigger" type="Welt" x="1496" y="308">
    <polygon points="0,0 -93.3333,114.667 49.3333,334.667 190.667,-44 292,296 300,-188 22.6667,-252 -246.667,-162.667"/>
   </object>
-  <object id="9" name="Gegener Pfad" type="Waypoints" x="1817.33" y="784">
+  <object id="9" name="Gegener Pfad" type="Welt" x="1817.33" y="784">
    <polyline points="0,0 -264,10.6667 -508,225.333 -760,354.667 -848,445.333 -865.333,626.667 -692,665.333 -486.667,573.333 -382.667,400 -313.333,348 -268,385.333 -265.333,504 -218.667,616 -117.333,717.333"/>
   </object>
  </objectgroup>

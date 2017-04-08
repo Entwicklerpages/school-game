@@ -58,7 +58,7 @@ public class CreateGameSlot implements GameState, InputProcessor {
 
         fontLayout = new GlyphLayout();
 
-        FileHandle baseFileHandle = Gdx.files.internal("I18n/GameMenu");
+        FileHandle baseFileHandle = Gdx.files.internal("data/I18n/GameMenu");
         localeBundle = I18NBundle.createBundle(baseFileHandle);
     }
 
