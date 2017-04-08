@@ -51,7 +51,7 @@ public class CheatLevelSelection extends LevelManager {
 
         fontLayout = new GlyphLayout();
 
-        FileHandle baseFileHandle = Gdx.files.internal("I18n/Cheats");
+        FileHandle baseFileHandle = Gdx.files.internal("data/I18n/Cheats");
         localeBundle = I18NBundle.createBundle(baseFileHandle);
 
         Set<String> levelIdSet = levelMap.keySet();
