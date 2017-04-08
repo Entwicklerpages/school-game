@@ -17,7 +17,7 @@ While we are developing this game for school, we can't accept any contribution. 
 * [Tiled Map Editor](http://www.mapeditor.org)
 
 ## Dependencies
-* libGDX (Apache 2.0)
+* [libGDX](http://libgdx.badlogicgames.com) (Apache 2.0) \[[GitHub](https://github.com/libgdx/libgdx)\]
 
 ## License
 This software is licensed under the GPL-3.0. More information can be found in the LICENSE file.
