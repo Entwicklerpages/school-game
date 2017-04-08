@@ -50,7 +50,7 @@ public final class DialogDataHelper {
     {
         File workingDir = new File(System.getProperty("user.dir"));
 
-        File dialogAssetDir = new File(workingDir.getAbsolutePath() + File.separator + "core" + File.separator + "assets" + File.separator + "dialog");
+        File dialogAssetDir = new File(workingDir.getAbsolutePath() + File.separator + "core" + File.separator + "assets" + File.separator + "data" + File.separator + "dialog");
 
         if (dialogAssetDir.exists() && dialogAssetDir.isDirectory())
         {

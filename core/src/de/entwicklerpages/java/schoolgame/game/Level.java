@@ -205,7 +205,7 @@ public abstract class Level implements Disposable {
 
         player = new Player(saveData.getPlayerName(), saveData.isMale());
 
-        localeBundle = I18NBundle.createBundle(Gdx.files.internal("I18n/Game"));
+        localeBundle = I18NBundle.createBundle(Gdx.files.internal("data/I18n/Game"));
 
         initMap();
 
@@ -448,7 +448,7 @@ public abstract class Level implements Disposable {
      */
     private void loadMap()
     {
-        FileHandle mapFile = Gdx.files.internal("maps/" + mapName + ".tmx");
+        FileHandle mapFile = Gdx.files.internal("data/maps/" + mapName + ".tmx");
 
         if (!mapFile.exists() || mapFile.isDirectory())
         {

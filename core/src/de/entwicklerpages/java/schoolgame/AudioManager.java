@@ -115,7 +115,7 @@ public class AudioManager implements Disposable {
         if (soundMap.containsKey(soundId))
             return new SoundKey(soundId);
 
-        Sound sound = Gdx.audio.newSound(Gdx.files.internal("sound/" + soundId));
+        Sound sound = Gdx.audio.newSound(Gdx.files.internal("data/sound/" + soundId));
         soundMap.put(soundId, sound);
 
         SoundKey soundKey = new SoundKey(soundId);
@@ -237,7 +237,7 @@ public class AudioManager implements Disposable {
         musicName = name;
         if (muteMusic) return;
 
-        music = Gdx.audio.newMusic(Gdx.files.internal("music/" + name + ".ogg"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("data/music/" + name + ".ogg"));
         music.setLooping(true);
         music.setVolume(relativeMusicVolume);
         music.play();

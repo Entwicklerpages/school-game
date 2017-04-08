@@ -56,7 +56,7 @@ public abstract class MenuState implements GameState, InputProcessor {
         selectSound = game.getAudioManager().createSound("menu", "select.wav", true);
         changeSound = game.getAudioManager().createSound("menu", "change.wav", true);
 
-        FileHandle baseFileHandle = Gdx.files.internal("I18n/" + getI18nName());
+        FileHandle baseFileHandle = Gdx.files.internal("data/I18n/" + getI18nName());
         localeBundle = I18NBundle.createBundle(baseFileHandle);
 
         Gdx.app.getApplicationLogger().log("INFO", "Menu finished...");
