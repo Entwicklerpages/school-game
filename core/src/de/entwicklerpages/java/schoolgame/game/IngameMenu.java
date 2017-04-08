@@ -28,7 +28,6 @@ public class IngameMenu {
     private static final float WIDTH = 450f;
     private static final float HEIGHT = 420f;
 
-    private SchoolGame game;
     private Level level;
     private BitmapFont titleFont;
     private BitmapFont textFont;
@@ -45,7 +44,6 @@ public class IngameMenu {
 
     public IngameMenu(SchoolGame game, Level level)
     {
-        this.game = game;
         this.level = level;
 
         titleFont = game.getTitleFont();

@@ -16,9 +16,11 @@ import com.badlogic.gdx.utils.I18NBundle;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.entwicklerpages.java.schoolgame.AudioManager;
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
+import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
 public abstract class MenuState implements GameState, InputProcessor {
 
@@ -29,6 +31,9 @@ public abstract class MenuState implements GameState, InputProcessor {
     private BitmapFont font;
     private GlyphLayout fontLayout;
     private I18NBundle localeBundle;
+
+    private AudioManager.SoundKey selectSound;
+    private AudioManager.SoundKey changeSound;
 
     protected SchoolGame game;
 
@@ -47,6 +52,9 @@ public abstract class MenuState implements GameState, InputProcessor {
         font = game.getDefaultFont();
 
         fontLayout = new GlyphLayout();
+
+        selectSound = game.getAudioManager().createSound("menu", "select.wav", true);
+        changeSound = game.getAudioManager().createSound("menu", "change.wav", true);
 
         FileHandle baseFileHandle = Gdx.files.internal("I18n/" + getI18nName());
         localeBundle = I18NBundle.createBundle(baseFileHandle);
@@ -186,20 +194,23 @@ public abstract class MenuState implements GameState, InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
 
-        if (keycode == Input.Keys.UP || keycode == Input.Keys.W)
+        if (InputHelper.checkKeys(keycode, Input.Keys.UP, Input.Keys.W))
         {
+            game.getAudioManager().playSound(changeSound);
             previousEntry();
             return true;
         }
 
-        if (keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
+        if (InputHelper.checkKeys(keycode, Input.Keys.DOWN, Input.Keys.S))
         {
+            game.getAudioManager().playSound(changeSound);
             nextEntry();
             return true;
         }
 
-        if (keycode == Input.Keys.ENTER || keycode == Input.Keys.SPACE)
+        if (InputHelper.checkKeys(keycode, Input.Keys.ENTER, Input.Keys.SPACE))
         {
+            game.getAudioManager().playSound(selectSound);
             if (activeEntry != null && activeEntry.isEnabled() && activeEntry.getCallback() != null)
             {
                 activeEntry.getCallback().run();
