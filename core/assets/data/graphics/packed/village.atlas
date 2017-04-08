@@ -1,0 +1,34 @@
+
+village.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+altes_paerchen
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+heilerin_fortitura
+  rotate: false
+  xy: 68, 2
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+kind_maedchen_hinten
+  rotate: false
+  xy: 102, 2
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+kind_maedchen_vorne
+  rotate: false
+  xy: 136, 2
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1

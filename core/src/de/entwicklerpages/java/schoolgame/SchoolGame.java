@@ -58,11 +58,11 @@ public class SchoolGame implements ApplicationListener {
             fontName = "VT323";
         }
 
-        defaultFont = new BitmapFont(Gdx.files.internal("font/" + fontName + "_60.fnt"), false);
+        defaultFont = new BitmapFont(Gdx.files.internal("data/font/" + fontName + "_60.fnt"), false);
         //defaultFont.getData().setScale(4); // Skalierung (sollte vermieden werden)
 
-        longTextFont = new BitmapFont(Gdx.files.internal("font/" + fontName + "_30.fnt"), false);
-        titleFont = new BitmapFont(Gdx.files.internal("font/" + fontName + "_76.fnt"), false);
+        longTextFont = new BitmapFont(Gdx.files.internal("data/font/" + fontName + "_30.fnt"), false);
+        titleFont = new BitmapFont(Gdx.files.internal("data/font/" + fontName + "_76.fnt"), false);
 
         if (shouldBeFullscreen())
         {

@@ -39,7 +39,7 @@ import de.entwicklerpages.java.schoolgame.game.dialog.Level;
  */
 public class DialogManager {
 
-    private final static String SCHEMA_XSD = "dialog/dialog.xsd";
+    private final static String SCHEMA_XSD = "data/dialog/dialog.xsd";
     private static final float HEIGHT = 220f;
 
     /**
@@ -91,7 +91,7 @@ public class DialogManager {
     }
 
     private void loadDialogFile(String fileName) throws Exception {
-        FileHandle dialogFile = Gdx.files.internal("dialog/" + fileName + ".xml");
+        FileHandle dialogFile = Gdx.files.internal("data/dialog/" + fileName + ".xml");
 
         if (!dialogFile.exists() || dialogFile.isDirectory())
         {
