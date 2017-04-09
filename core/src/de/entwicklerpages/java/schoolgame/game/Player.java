@@ -159,7 +159,7 @@ public class Player {
         {
             diagonalSwitchTimer += deltaTime;
 
-            if (diagonalSwitchTimer <= 0)
+            if (diagonalSwitchTimer < 0f)
             {
                 deltaX = 0f;
             } else {
@@ -170,6 +170,8 @@ public class Player {
                     diagonalSwitchTimer = -DIAGONAL_SWITCH_TIME;
                 }
             }
+        } else {
+            diagonalSwitchTimer = 0f;
         }
 
         if (!MathUtils.isZero(deltaX))
