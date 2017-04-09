@@ -13,9 +13,10 @@ import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
 public class Player {
 
-    private static final float SPEED = 60f;
+    private static final float SPEED = 120f;
     private static final float ACCELERATION = 0.3f;
-    private static final float RUN_FACTOR = 3f;
+    private static final float RUN_FACTOR = 1.5f;
+    private static final float DIAGONAL_SWITCH_TIME = 0.4f;
     private static final long LONG_ATTACK_TIME = 1700L;
 
     private int health;
@@ -34,6 +35,7 @@ public class Player {
     private long attackStart = -1;
 
     private EntityOrientation orientation;
+    private float diagonalSwitchTimer = 0f;
 
     private SpriteBatch batch;
     private TextureAtlas playerAtlas;
@@ -153,12 +155,28 @@ public class Player {
             deltaY *= RUN_FACTOR;
         }
 
+        if (!MathUtils.isZero(deltaX) && !MathUtils.isZero(deltaY))
+        {
+            diagonalSwitchTimer += deltaTime;
+
+            if (diagonalSwitchTimer <= 0)
+            {
+                deltaX = 0f;
+            } else {
+                deltaY = 0f;
+
+                if (diagonalSwitchTimer >= DIAGONAL_SWITCH_TIME)
+                {
+                    diagonalSwitchTimer = -DIAGONAL_SWITCH_TIME;
+                }
+            }
+        }
+
         if (!MathUtils.isZero(deltaX))
         {
             orientation = deltaX > 0 ? EntityOrientation.LOOK_RIGHT : EntityOrientation.LOOK_LEFT;
         }
-
-        if (!MathUtils.isZero(deltaY))
+        else if (!MathUtils.isZero(deltaY))
         {
             orientation = deltaY > 0 ? EntityOrientation.LOOK_BACKWARD : EntityOrientation.LOOK_FORWARD;
         }
