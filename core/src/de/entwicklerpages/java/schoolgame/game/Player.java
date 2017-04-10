@@ -7,24 +7,30 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.TimeUtils;
 
 import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
 public class Player {
 
-    private static final float SPEED = 120f;
-    private static final float ACCELERATION = 0.3f;
-    private static final float RUN_FACTOR = 1.5f;
+    private static final float SPEED = 3.25f;
+    private static final float ACCELERATION = 0.28f;
+    private static final float RUN_FACTOR = 2f;
     private static final float DIAGONAL_SWITCH_TIME = 0.4f;
+    private static final float CAGE_WIDTH = 20f;
     private static final long LONG_ATTACK_TIME = 1700L;
+
+    private Body playerBody;
 
     private int health;
     private String name;
     private boolean male;
-
-    private float posX;
-    private float posY;
 
     private float lastDeltaX = 0;
     private float lastDeltaY = 0;
@@ -43,12 +49,10 @@ public class Player {
     private TextureRegion playerSide;
     private TextureRegion playerBack;
 
-    public Player(String name, boolean male) {
+    public Player(World world, String name, boolean male) {
         this.health = 100;
         this.name = name;
         this.male = male;
-        this.posX = 0;
-        this.posY = 0;
         this.orientation = EntityOrientation.LOOK_FORWARD;
 
         String player = "player_" + (this.male ? "m" : "f");
@@ -59,6 +63,22 @@ public class Player {
         playerFront = playerAtlas.findRegion(player + "_front");
         playerSide = playerAtlas.findRegion(player + "_side");
         playerBack = playerAtlas.findRegion(player + "_back");
+
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.fixedRotation = true;
+
+        playerBody = world.createBody(bodyDef);
+
+        PolygonShape playerBox = Physics.createRectangle(32f, 20f, new Vector2(0f, 5f));
+
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = playerBox;
+        fixtureDef.density = 0.5f;
+        fixtureDef.friction = 0.4f;
+
+        playerBody.createFixture(fixtureDef);
+        playerBox.dispose();
     }
 
     public int getHealth() {
@@ -91,20 +111,14 @@ public class Player {
     }
 
     public float getPosX() {
-        return posX;
+        return playerBody.getPosition().x * Physics.PPM;
     }
 
-    public void setPosX(float posX) {
-        this.posX = posX;
-    }
 
     public float getPosY() {
-        return posY;
+        return playerBody.getPosition().y * Physics.PPM;
     }
 
-    public void setPosY(float posY) {
-        this.posY = posY;
-    }
 
     public EntityOrientation getOrientation() {
         return orientation;
@@ -118,11 +132,40 @@ public class Player {
     {
         this.maxX = maxX;
         this.maxY = maxY;
+
+        buildCage();
     }
 
     public void setPosition(float posX, float posY) {
-        this.posX = posX;
-        this.posY = posY;
+        this.playerBody.setTransform(posX * Physics.MPP, posY * Physics.MPP, 0f);
+    }
+
+    private void buildCage()
+    {
+        if (maxX <= 32f || maxY <= 32f) return; // Zu klein für den Spieler
+
+        BodyDef bodyWallDef = new BodyDef();
+        bodyWallDef.type = BodyDef.BodyType.StaticBody;
+
+        Body wallLeft = playerBody.getWorld().createBody(bodyWallDef);
+        Body wallRight = playerBody.getWorld().createBody(bodyWallDef);
+        Body wallTop = playerBody.getWorld().createBody(bodyWallDef);
+        Body wallBottom = playerBody.getWorld().createBody(bodyWallDef);
+
+        PolygonShape wallLeftBox = Physics.createRectangle(CAGE_WIDTH, maxY, new Vector2(-CAGE_WIDTH * 0.5f, maxY * 0.5f));
+        PolygonShape wallRightBox = Physics.createRectangle(CAGE_WIDTH, maxY, new Vector2(maxX + CAGE_WIDTH * 0.5f, maxY * 0.5f));
+        PolygonShape wallTopBox = Physics.createRectangle(maxX, CAGE_WIDTH, new Vector2(maxX * 0.5f, maxY + CAGE_WIDTH * 0.5f - 7f)); // -7f damit die Wand etwas weiter unten ist und der Spieler nicht so weit aus dem Bild raus ragt.
+        PolygonShape wallBottomBox = Physics.createRectangle(maxX, CAGE_WIDTH, new Vector2(maxX * 0.5f, -CAGE_WIDTH * 0.5f));
+
+        wallLeft.createFixture(wallLeftBox, 1f);
+        wallRight.createFixture(wallRightBox, 1f);
+        wallTop.createFixture(wallTopBox, 1f);
+        wallBottom.createFixture(wallBottomBox, 1f);
+
+        wallLeftBox.dispose();
+        wallRightBox.dispose();
+        wallTopBox.dispose();
+        wallBottomBox.dispose();
     }
 
     public void update(float deltaTime) {
@@ -186,20 +229,15 @@ public class Player {
         lastDeltaX = MathUtils.lerp(lastDeltaX, deltaX, ACCELERATION);
         lastDeltaY = MathUtils.lerp(lastDeltaY, deltaY, ACCELERATION);
 
-        this.posX += lastDeltaX * deltaTime;
-        this.posY += lastDeltaY * deltaTime;
-
-        if (this.posX - playerSide.getRegionWidth() / 2 < 5) this.posX = playerSide.getRegionWidth() / 2 + 5;
-        if (this.posY < 5) this.posY = 5;
-
-        if (this.posX + playerSide.getRegionWidth() / 2 > maxX - 5) this.posX = maxX - playerSide.getRegionWidth() / 2 - 5;
-        if (this.posY + playerSide.getRegionHeight() / 2 > maxY - 5) this.posY = maxY - playerSide.getRegionHeight() / 2 - 5;
+        playerBody.setLinearVelocity(lastDeltaX, lastDeltaY);
     }
 
     public void render(OrthographicCamera camera, float deltaTime)
     {
-        batch.setProjectionMatrix(camera.combined);
+        Vector2 pos = playerBody.getPosition();
+        pos.scl(Physics.PPM);
 
+        batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
         TextureRegion region = null;
@@ -224,8 +262,8 @@ public class Player {
         }
 
         batch.draw(region,                                      // TextureRegion (front, back, side)
-                posX - playerSide.getRegionWidth() / 2,         // Offset to the X position (character center)
-                posY,                                           // Y position is at the foots
+                pos.x - playerSide.getRegionWidth() / 2,        // Offset to the X position (character center)
+                pos.y,                                          // Y position is at the foots
                 playerSide.getRegionWidth() / 2,                // Origin X (important for flipping)
                 playerSide.getRegionHeight(),                   // Origin Y
                 playerSide.getRegionWidth(),                    // Width
@@ -241,14 +279,14 @@ public class Player {
     {
         if (keycode == Input.Keys.SPACE)
         {
-            // Attack
+            // Attacke
             Gdx.app.log("INFO", "Start Attack");
             attackStart = TimeUtils.millis();
             return true;
         }
         else if (InputHelper.checkKeys(keycode, Input.Keys.E, Input.Keys.ENTER))
         {
-            // Interaction
+            // Interaktion
             Gdx.app.log("INFO", "Interaction");
             return true;
         }
@@ -260,7 +298,7 @@ public class Player {
     {
         if (keycode == Input.Keys.SPACE && attackStart > 0)
         {
-            // Attack
+            // Attacke
 
             if (TimeUtils.timeSinceMillis(attackStart) >= LONG_ATTACK_TIME)
             {
