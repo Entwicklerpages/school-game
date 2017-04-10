@@ -69,6 +69,7 @@ public class Player {
         bodyDef.fixedRotation = true;
 
         playerBody = world.createBody(bodyDef);
+        playerBody.setUserData(this);
 
         PolygonShape playerBox = Physics.createRectangle(32f, 20f, new Vector2(0f, 5f));
 
@@ -76,8 +77,10 @@ public class Player {
         fixtureDef.shape = playerBox;
         fixtureDef.density = 0.5f;
         fixtureDef.friction = 0.4f;
+        fixtureDef.filter.categoryBits = Physics.CATEGORY_PLAYER;
+        fixtureDef.filter.maskBits = Physics.MASK_PLAYER;
 
-        playerBody.createFixture(fixtureDef);
+        playerBody.createFixture(fixtureDef).setUserData(this);
         playerBox.dispose();
     }
 
@@ -157,10 +160,30 @@ public class Player {
         PolygonShape wallTopBox = Physics.createRectangle(maxX, CAGE_WIDTH, new Vector2(maxX * 0.5f, maxY + CAGE_WIDTH * 0.5f - 7f)); // -7f damit die Wand etwas weiter unten ist und der Spieler nicht so weit aus dem Bild raus ragt.
         PolygonShape wallBottomBox = Physics.createRectangle(maxX, CAGE_WIDTH, new Vector2(maxX * 0.5f, -CAGE_WIDTH * 0.5f));
 
-        wallLeft.createFixture(wallLeftBox, 1f);
-        wallRight.createFixture(wallRightBox, 1f);
-        wallTop.createFixture(wallTopBox, 1f);
-        wallBottom.createFixture(wallBottomBox, 1f);
+        FixtureDef wallLeftFixture = new FixtureDef();
+        wallLeftFixture.shape = wallLeftBox;
+        wallLeftFixture.filter.categoryBits = Physics.CATEGORY_WORLD;
+        wallLeftFixture.filter.maskBits = Physics.MASK_WORLD;
+
+        FixtureDef wallRightFixture = new FixtureDef();
+        wallRightFixture.shape = wallRightBox;
+        wallRightFixture.filter.categoryBits = Physics.CATEGORY_WORLD;
+        wallRightFixture.filter.maskBits = Physics.MASK_WORLD;
+
+        FixtureDef wallTopFixture = new FixtureDef();
+        wallTopFixture.shape = wallTopBox;
+        wallTopFixture.filter.categoryBits = Physics.CATEGORY_WORLD;
+        wallTopFixture.filter.maskBits = Physics.MASK_WORLD;
+
+        FixtureDef wallBottomFixture = new FixtureDef();
+        wallBottomFixture.shape = wallBottomBox;
+        wallBottomFixture.filter.categoryBits = Physics.CATEGORY_WORLD;
+        wallBottomFixture.filter.maskBits = Physics.MASK_WORLD;
+
+        wallLeft.createFixture(wallLeftFixture);
+        wallRight.createFixture(wallRightFixture);
+        wallTop.createFixture(wallTopFixture);
+        wallBottom.createFixture(wallBottomFixture);
 
         wallLeftBox.dispose();
         wallRightBox.dispose();

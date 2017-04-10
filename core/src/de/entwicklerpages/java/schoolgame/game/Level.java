@@ -186,8 +186,9 @@ public abstract class Level implements Disposable {
         }
 
         physicalWorld = new World(new Vector2(0f, 0f), true);
+        physicalWorld.setContactListener(Physics.createContactListener());
 
-        this.worldObjectManager = new WorldObjectManager(game);
+        this.worldObjectManager = new WorldObjectManager(game, physicalWorld);
 
         activeCutScene = this.getIntroCutScene();
         if (activeCutScene == null)

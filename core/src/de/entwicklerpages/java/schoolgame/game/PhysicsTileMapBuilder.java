@@ -5,11 +5,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.*;
+import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.ChainShape;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
@@ -18,6 +21,8 @@ import com.badlogic.gdx.physics.box2d.World;
  * Übernommen von
  * http://gamedev.stackexchange.com/a/70448
  * und angepasst an die Bedürfnisse des Spiels.
+ *
+ * createCircle wurde selbst hinzugefügt.
  */
 public final class PhysicsTileMapBuilder
 {
@@ -61,13 +66,19 @@ public final class PhysicsTileMapBuilder
             bodyDef.type = BodyDef.BodyType.StaticBody;
 
             Body body = world.createBody(bodyDef);
-            body.createFixture(shape, 1f);
+
+            FixtureDef fixture = new FixtureDef();
+            fixture.shape = shape;
+            fixture.filter.categoryBits = Physics.CATEGORY_WORLD;
+            fixture.filter.maskBits = Physics.MASK_WORLD;
+
+            body.createFixture(fixture);
 
             shape.dispose();
         }
     }
 
-    private static PolygonShape createRectangle(RectangleMapObject rectObject)
+    public static PolygonShape createRectangle(RectangleMapObject rectObject)
     {
         Rectangle rectangle = rectObject.getRectangle();
 
@@ -76,7 +87,7 @@ public final class PhysicsTileMapBuilder
         return Physics.createRectangle(rectangle.width, rectangle.height, center);
     }
 
-    private static PolygonShape createPolygon(PolygonMapObject polyObject)
+    public static PolygonShape createPolygon(PolygonMapObject polyObject)
     {
         PolygonShape polygon = new PolygonShape();
 
@@ -100,7 +111,7 @@ public final class PhysicsTileMapBuilder
         return polygon;
     }
 
-    private static ChainShape createPolyline(PolylineMapObject polyObject)
+    public static ChainShape createPolyline(PolylineMapObject polyObject)
     {
         float[] vertices = polyObject.getPolyline().getTransformedVertices();
         Vector2[] worldVertices = new Vector2[vertices.length / 2];
@@ -116,5 +127,16 @@ public final class PhysicsTileMapBuilder
         chain.createChain(worldVertices);
 
         return chain;
+    }
+
+    public static CircleShape createCircle(EllipseMapObject ellipseObject)
+    {
+        Ellipse ellipse = ellipseObject.getEllipse();
+        CircleShape circle = new CircleShape();
+
+        circle.setPosition(new Vector2(ellipse.x + ellipse.width * 0.5f, ellipse.y + ellipse.height * 0.5f).scl(Physics.MPP));
+        circle.setRadius(Math.min(ellipse.width, ellipse.height) * 0.5f * Physics.MPP);
+
+        return circle;
     }
 }

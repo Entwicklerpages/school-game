@@ -1,8 +1,12 @@
 package de.entwicklerpages.java.schoolgame.game.levels;
 
+import com.badlogic.gdx.Gdx;
+
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.CutScene;
 import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
+import de.entwicklerpages.java.schoolgame.game.objects.Trigger;
 
 /**
  * Tutorial Level
@@ -41,7 +45,66 @@ public class TutorialLevel extends Level {
     @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
+        Trigger introDialogTrigger = new Trigger("Intro Dialog");
+        introDialogTrigger.setTriggerEntered(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                Gdx.app.log("DEBUG", "Trigger Intro Dialog Entered");
+            }
+        });
 
+        introDialogTrigger.setTriggerLeaved(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                Gdx.app.log("DEBUG", "Trigger Intro Dialog Leaved");
+            }
+        });
+
+        Trigger chaosTrigger = new Trigger("Chaos Trigger");
+        chaosTrigger.setTriggerEntered(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                Gdx.app.log("DEBUG", "Trigger Chaos Entered");
+            }
+        });
+
+        chaosTrigger.setTriggerLeaved(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                Gdx.app.log("DEBUG", "Trigger Chaos Leaved");
+            }
+        });
+
+        Trigger stormTrigger = new Trigger("Storm Trigger");
+        stormTrigger.setTriggerEntered(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                Gdx.app.log("DEBUG", "Trigger Storm Entered");
+            }
+        });
+
+        stormTrigger.setTriggerLeaved(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                Gdx.app.log("DEBUG", "Trigger Storm Leaved");
+            }
+        });
+
+        worldConfig.registerObject(introDialogTrigger);
+        worldConfig.registerObject(chaosTrigger);
+        worldConfig.registerObject(stormTrigger);
     }
 }
 
