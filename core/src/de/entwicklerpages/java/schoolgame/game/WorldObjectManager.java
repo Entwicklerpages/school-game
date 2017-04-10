@@ -3,6 +3,7 @@ package de.entwicklerpages.java.schoolgame.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.*;
+import com.badlogic.gdx.physics.box2d.World;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +27,12 @@ public class WorldObjectManager
     private WorldObjectConfig config;
     private List<WorldObject> worldObjects;
     private SchoolGame game;
+    private World physicalWorld;
 
-    public WorldObjectManager(SchoolGame game)
+    public WorldObjectManager(SchoolGame game, World physicalWorld)
     {
         this.game = game;
+        this.physicalWorld = physicalWorld;
 
         worldObjects = new ArrayList<WorldObject>();
     }
@@ -47,7 +50,9 @@ public class WorldObjectManager
         {
             if (worldObject.getObjectId().equals(objectId))
             {
+                worldObject.setWorldObjectManager(this);
                 worldObject.setRawObject(object);
+                worldObject.onInit();
                 worldObjects.add(worldObject);
                 config.getWorldObjects().remove(worldObject);
                 return;
@@ -88,6 +93,16 @@ public class WorldObjectManager
             config = new WorldObjectConfig();
         }
         return config;
+    }
+
+    public SchoolGame getGame()
+    {
+        return game;
+    }
+
+    public World getPhysicalWorld()
+    {
+        return physicalWorld;
     }
 
     public class WorldObjectConfig

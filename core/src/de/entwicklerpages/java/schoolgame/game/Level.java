@@ -13,10 +13,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.I18NBundle;
-
-import java.util.Iterator;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
@@ -132,6 +132,10 @@ public abstract class Level implements Disposable {
      */
     private float mapHeight;
 
+    private World physicalWorld;
+
+    private float physicsAccumulator;
+
     /**
      * Repräsentiert den Spieler, wird auch für die Kamerasteuerung verwendet.
      */
@@ -181,7 +185,10 @@ public abstract class Level implements Disposable {
             return;
         }
 
-        this.worldObjectManager = new WorldObjectManager(game);
+        physicalWorld = new World(new Vector2(0f, 0f), true);
+        physicalWorld.setContactListener(Physics.createContactListener());
+
+        this.worldObjectManager = new WorldObjectManager(game, physicalWorld);
 
         activeCutScene = this.getIntroCutScene();
         if (activeCutScene == null)
@@ -195,6 +202,7 @@ public abstract class Level implements Disposable {
                 {
                     levelState = LevelState.PLAYING;
                     activeCutScene = null;
+                    onStartPlaying();
                 }
             });
 
@@ -203,7 +211,7 @@ public abstract class Level implements Disposable {
 
         camera = game.getCamera();
 
-        player = new Player(saveData.getPlayerName(), saveData.isMale());
+        player = new Player(physicalWorld, saveData.getPlayerName(), saveData.isMale());
 
         localeBundle = I18NBundle.createBundle(Gdx.files.internal("data/I18n/Game"));
 
@@ -221,13 +229,12 @@ public abstract class Level implements Disposable {
      */
     public final void update(float deltaTime)
     {
-        if (levelState != LevelState.PLAYING) return;
+        setCameraInBounds();
 
-        // AnimatedTiledMapTile.updateAnimationBaseTime();
+        if (levelState != LevelState.PLAYING) return;
+        if (dialogManager.isPlaying()) return;
 
         player.update(deltaTime);
-
-        setCameraInBounds();
     }
 
     /**
@@ -250,6 +257,17 @@ public abstract class Level implements Disposable {
 
         if (levelState == LevelState.PAUSE)
             ingameMenu.render(camera);
+
+        if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
+        {
+            float frameTime = Math.min(deltaTime, 0.25f);
+            physicsAccumulator += frameTime;
+            while (physicsAccumulator >= LevelConstants.PHYSICS_TIME_STEP)
+            {
+                physicalWorld.step(LevelConstants.PHYSICS_TIME_STEP, LevelConstants.PHYSICS_VELOCITY_ITERATIONS, LevelConstants.PHYSICS_POSITION_ITERATIONS);
+                physicsAccumulator -= LevelConstants.PHYSICS_TIME_STEP;
+            }
+        }
     }
 
     /**
@@ -266,6 +284,9 @@ public abstract class Level implements Disposable {
 
         if (tileMap != null)
             tileMap.dispose();
+
+        if (physicalWorld != null)
+            physicalWorld.dispose();
     }
 
     /**
@@ -290,6 +311,9 @@ public abstract class Level implements Disposable {
             return true;
         }
 
+        if (levelState == LevelState.PAUSE)
+            return ingameMenu.handleInput(keycode);
+
         if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
         {
             return player.keyDown(keycode);
@@ -298,8 +322,6 @@ public abstract class Level implements Disposable {
         if (dialogManager.isPlaying())
             return  dialogManager.handleInput(keycode);
 
-        if (levelState == LevelState.PAUSE)
-            return ingameMenu.handleInput(keycode);
 
         return false;
     }
@@ -353,6 +375,11 @@ public abstract class Level implements Disposable {
      */
     protected void onLoaded() {}
 
+    /**
+     * Erlaubt einem abgeleitetem Level nach dem Intro Aktionen durchzuführen.
+     */
+    protected void onStartPlaying() {}
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // AKTIONS METHODEN
 
@@ -388,6 +415,7 @@ public abstract class Level implements Disposable {
      * @see LevelManager#changeLevel(String)
      * @see Level#getOutroCutScene()
      */
+    @SuppressWarnings("unused")
     protected final void changeLevel(final String newLevel)
     {
         activeCutScene = this.getOutroCutScene();
@@ -407,6 +435,19 @@ public abstract class Level implements Disposable {
 
             dialogManager.startDialog(activeCutScene.getDialogId());
         }
+    }
+
+    @SuppressWarnings("unused")
+    protected final void startDialog(String dialog)
+    {
+        startDialog(dialog, null);
+    }
+
+    protected final void startDialog(String dialog, ActionCallback finished)
+    {
+        dialogManager.setFinishedCallback(finished);
+
+        dialogManager.startDialog(dialog);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -465,7 +506,7 @@ public abstract class Level implements Disposable {
     }
 
     /**
-     * Parst die Map und sucht nach Objekten und Animationen.
+     * Parst die Map.
      *
      * Wird von {@link #initMap()} aufgerufen.
      */
@@ -476,6 +517,17 @@ public abstract class Level implements Disposable {
         mapWidth = firstLayer.getWidth() * firstLayer.getTileWidth();
         mapHeight = firstLayer.getHeight() * firstLayer.getTileHeight();
 
+        parseMapObjects();
+        parseMapCollisionTiles();
+    }
+
+    /**
+     * Parst die Map: Sucht nach Objekten.
+     *
+     * Wird von {@link #parseMap()} ()} aufgerufen.
+     */
+    private void parseMapObjects()
+    {
         MapLayer objectLayer = tileMap.getLayers().get(LevelConstants.TMX_OBJECT_LAYER);
 
         if (objectLayer == null)
@@ -485,11 +537,8 @@ public abstract class Level implements Disposable {
             return;
         }
 
-        Iterator<MapObject> objects = objectLayer.getObjects().iterator();
-        while (objects.hasNext())
+        for (MapObject tileObject : objectLayer.getObjects())
         {
-            MapObject tileObject = objects.next();
-
             Gdx.app.log("LEVEL", "Found object '" + tileObject.getName() + "'");
 
             /*
@@ -531,6 +580,20 @@ public abstract class Level implements Disposable {
     }
 
     /**
+     * Parst die Map: Sucht nach Objekten mit denen der Spieler oder andere Objekte kollidieren.
+     *
+     * Wird von {@link #parseMap()} ()} aufgerufen.
+     */
+    private void parseMapCollisionTiles()
+    {
+        MapLayer colLayer = tileMap.getLayers().get(LevelConstants.TMX_COLLISION_LAYER);
+
+        if (colLayer == null) return;
+
+        PhysicsTileMapBuilder.buildBodiesFromLayer(colLayer, physicalWorld);
+    }
+
+    /**
      * Initialisiert die Map.
      * Ruft in erster Linie nur andere Methoden auf.
      *
@@ -547,6 +610,8 @@ public abstract class Level implements Disposable {
 
         loadMap();
         parseMap();
+
+        player.setMaxMapDimension(mapWidth, mapHeight);
 
         worldObjectManager.finishInit();
 
@@ -607,12 +672,25 @@ public abstract class Level implements Disposable {
         OUTRO
     }
 
+    /**
+     * Definiert Konstanten
+     *
+     * @author nico
+     */
     private final class LevelConstants
     {
         static final String TMX_OBJECT_LAYER = "Objekte";
+        //static final String TMX_BACKGROUND_LAYER = "Hintergrund";
+        //static final String TMX_FOREGROUND_LAYER = "Vordergrund";
+        static final String TMX_COLLISION_LAYER = "Kollisionen";
+
         static final String TMX_TYPE = "type";
         static final String TMX_TYPE_START_POSITION = "Start";
         static final String TMX_TYPE_WORLD_OBJECT = "Welt";
+
+        static final float PHYSICS_TIME_STEP = 1/60f;
+        static final int PHYSICS_VELOCITY_ITERATIONS = 6;
+        static final int PHYSICS_POSITION_ITERATIONS = 2;
 
         private LevelConstants() {}
     }
