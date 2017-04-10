@@ -39,6 +39,8 @@ import de.entwicklerpages.java.schoolgame.game.dialog.Level;
  */
 public class DialogManager {
 
+    private final static Color ROYAL_DARK = new Color(0x2251ddff);
+
     private final static String SCHEMA_XSD = "data/dialog/dialog.xsd";
     private static final float HEIGHT = 220f;
 
@@ -244,7 +246,7 @@ public class DialogManager {
         shapeRenderer.setColor(0.0f, 0.0f, 0.0f, 0.4f);
         shapeRenderer.rect(0f, 0f, camera.viewportWidth, camera.viewportHeight);
 
-        shapeRenderer.setColor(0.0f, 0.13f, 0.18f, 0.8f);
+        shapeRenderer.setColor(1.0f, 0.93725f, 0.77647f, 1.0f);
         shapeRenderer.rect(0f, 0f, camera.viewportWidth, HEIGHT);
 
         shapeRenderer.end();
@@ -254,6 +256,9 @@ public class DialogManager {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
         shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.line(0f, HEIGHT + 1, camera.viewportWidth, HEIGHT + 1);
+
+        shapeRenderer.setColor(Color.BLACK);
         shapeRenderer.line(0f, HEIGHT, camera.viewportWidth, HEIGHT);
 
         shapeRenderer.end();
@@ -269,16 +274,16 @@ public class DialogManager {
 
         float y = camera.viewportHeight - (camera.viewportHeight - HEIGHT);
 
-        y -= 10f;
+        y -= 30f;
 
-        fontLayout.setText(textFont, talking, Color.CORAL, camera.viewportWidth - 60, Align.left, false);
+        fontLayout.setText(textFont, talking, ROYAL_DARK, camera.viewportWidth - 60, Align.left, false);
         textFont.draw(batch, fontLayout, 30, y);
 
-        y -= 60;
+        y -= 50;
 
         for (int i = 0; i < lines.length; i++)
         {
-            fontLayout.setText(textFont, lines[i], Color.WHITE, camera.viewportWidth - 60, Align.left, false);
+            fontLayout.setText(textFont, lines[i], Color.BLACK, camera.viewportWidth - 60, Align.left, false);
             textFont.draw(batch, fontLayout, 30, y);
 
             y -= 35f;
