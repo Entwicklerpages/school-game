@@ -1,6 +1,7 @@
 package de.entwicklerpages.java.schoolgame.game.levels;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.Timer;
 
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.CutScene;
@@ -20,6 +21,8 @@ import de.entwicklerpages.java.schoolgame.game.objects.Trigger;
 @SuppressWarnings("unused") // Dise Klasse wird über Reflection geladen
 public class TutorialLevel extends Level {
     public static final String LEVEL_NAME = "tutorial";
+
+    private boolean introDialog = false;
 
     public TutorialLevel() {
         super("tutorial");
@@ -43,6 +46,19 @@ public class TutorialLevel extends Level {
     }
 
     @Override
+    protected void onStartPlaying()
+    {
+        Timer.schedule(new Timer.Task()
+        {
+            @Override
+            public void run()
+            {
+                startDialog("bewegen");
+            }
+        }, 0.7f);
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
         Trigger introDialogTrigger = new Trigger("Intro Dialog");
@@ -51,18 +67,14 @@ public class TutorialLevel extends Level {
             @Override
             public void run()
             {
-                Gdx.app.log("DEBUG", "Trigger Intro Dialog Entered");
+                if (!introDialog)
+                {
+                    introDialog = true;
+                    startDialog("bewegen_fertig");
+                }
             }
         });
 
-        introDialogTrigger.setTriggerLeaved(new ActionCallback()
-        {
-            @Override
-            public void run()
-            {
-                Gdx.app.log("DEBUG", "Trigger Intro Dialog Leaved");
-            }
-        });
 
         Trigger chaosTrigger = new Trigger("Chaos Trigger");
         chaosTrigger.setTriggerEntered(new ActionCallback()
@@ -80,6 +92,7 @@ public class TutorialLevel extends Level {
             public void run()
             {
                 Gdx.app.log("DEBUG", "Trigger Chaos Leaved");
+                changeLevel("introduction");
             }
         });
 

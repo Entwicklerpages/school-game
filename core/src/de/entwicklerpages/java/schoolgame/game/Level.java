@@ -202,6 +202,7 @@ public abstract class Level implements Disposable {
                 {
                     levelState = LevelState.PLAYING;
                     activeCutScene = null;
+                    onStartPlaying();
                 }
             });
 
@@ -228,13 +229,12 @@ public abstract class Level implements Disposable {
      */
     public final void update(float deltaTime)
     {
-        if (levelState != LevelState.PLAYING) return;
+        setCameraInBounds();
 
-        // AnimatedTiledMapTile.updateAnimationBaseTime();
+        if (levelState != LevelState.PLAYING) return;
+        if (dialogManager.isPlaying()) return;
 
         player.update(deltaTime);
-
-        setCameraInBounds();
     }
 
     /**
@@ -258,7 +258,7 @@ public abstract class Level implements Disposable {
         if (levelState == LevelState.PAUSE)
             ingameMenu.render(camera);
 
-        if (levelState == LevelState.PLAYING)
+        if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
         {
             float frameTime = Math.min(deltaTime, 0.25f);
             physicsAccumulator += frameTime;
@@ -311,6 +311,9 @@ public abstract class Level implements Disposable {
             return true;
         }
 
+        if (levelState == LevelState.PAUSE)
+            return ingameMenu.handleInput(keycode);
+
         if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
         {
             return player.keyDown(keycode);
@@ -319,8 +322,6 @@ public abstract class Level implements Disposable {
         if (dialogManager.isPlaying())
             return  dialogManager.handleInput(keycode);
 
-        if (levelState == LevelState.PAUSE)
-            return ingameMenu.handleInput(keycode);
 
         return false;
     }
@@ -374,6 +375,11 @@ public abstract class Level implements Disposable {
      */
     protected void onLoaded() {}
 
+    /**
+     * Erlaubt einem abgeleitetem Level nach dem Intro Aktionen durchzuführen.
+     */
+    protected void onStartPlaying() {}
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // AKTIONS METHODEN
 
@@ -409,6 +415,7 @@ public abstract class Level implements Disposable {
      * @see LevelManager#changeLevel(String)
      * @see Level#getOutroCutScene()
      */
+    @SuppressWarnings("unused")
     protected final void changeLevel(final String newLevel)
     {
         activeCutScene = this.getOutroCutScene();
@@ -428,6 +435,19 @@ public abstract class Level implements Disposable {
 
             dialogManager.startDialog(activeCutScene.getDialogId());
         }
+    }
+
+    @SuppressWarnings("unused")
+    protected final void startDialog(String dialog)
+    {
+        startDialog(dialog, null);
+    }
+
+    protected final void startDialog(String dialog, ActionCallback finished)
+    {
+        dialogManager.setFinishedCallback(finished);
+
+        dialogManager.startDialog(dialog);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
