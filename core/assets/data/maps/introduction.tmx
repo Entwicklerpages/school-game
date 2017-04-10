@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="28">
+ <tileset firstgid="1" source="../tilemap/test.tsx"/>
+ <layer name="Hintergrund" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztl20LgjAQgFdBaUFpQVmRUNaH3v7/3+vEDobc3tTpJhOeD8Jkdz6ed8sZY7lF1sAGSCzv0xUxsARWDsQSfAQfIubA4k8UfHTGHjgAWUOPfdfW2H00xaYPvvZ4Is98HIGTAWdgAkyBmeFeWFdNasvENU/imY8rcDOgcDQ/3jVPphEvXpRPij583IEX8PDUh4wU2AI7gQdTHza9oI+idj8mHxTUZerDhpPgw00fH1b166+nPmTzlWj+aOvDRh6qeqj3FVd9tJmvTH3YzEPlo143Lvkov3v85tvMVy7h87wba8bgSrw6PFn1P9Ll3UN++L9XnTl98UH1MhmYs87akovl/PD9qfbwxQfVy2RgnDprqee6Bs9v1BnORx98L+NzE4E566ylnhuKVDOGoX0Egg+XGdrHDySn06A=
+  </data>
+ </layer>
+ <objectgroup name="Objekte">
+  <object id="10" name="Spielerstart" type="Start" x="283" y="282" width="10" height="10">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Kollisionen">
+  <object id="12" x="111" y="494.667" width="289.667" height="65.3333"/>
+  <object id="15" x="463.334" y="495.333" width="386" height="65"/>
+  <object id="16" x="783.733" y="175.667" width="64.8672" height="324.333"/>
+  <object id="17" x="1968.5" y="144.25" width="191.75" height="63.5"/>
+  <object id="18" x="1968.25" y="336.25" width="192.25" height="63.75"/>
+  <object id="19" x="2191" y="-1" width="65.9091" height="242"/>
+  <object id="20" x="2191" y="335.091" width="66.2727" height="308.909"/>
+  <object id="22" x="1904.75" y="399.75">
+   <polyline points="0,-0.75 -33.5,-0.75 -33.5,161.25"/>
+  </object>
+  <object id="23" x="2336.18" y="258.636">
+   <polygon points="-0.181818,-2.63636 -0.181818,61.3636 31.8182,61.3636 31.8182,93.3636 95.8182,93.3636 95.8182,-34.6364 31.8182,-34.6364 31.8182,-2.63636"/>
+  </object>
+  <object id="25" x="2817" y="228">
+   <polygon points="-1,-4 63,-4 63,28 95,28 95,92 63,92 63,124 -1,124"/>
+  </object>
+  <object id="26" x="2431.91" y="192.091" width="384" height="191.909"/>
+  <object id="27" x="784.083" y="-8.66667" width="63.875" height="120.542"/>
+ </objectgroup>
+ <layer name="Vordergrund" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+  </data>
+ </layer>
+</map>
