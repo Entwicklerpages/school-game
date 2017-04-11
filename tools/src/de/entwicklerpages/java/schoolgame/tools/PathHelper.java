@@ -7,7 +7,7 @@ public final class PathHelper {
 
     private final static String GAME_NAME = "schoolgame";
 
-    private PathHelper() {};
+    private PathHelper() {}
 
     public static String getBasePath()
     {

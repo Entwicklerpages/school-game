@@ -66,6 +66,7 @@ public class StatementEditorPanel extends BasePanel implements ActionListener
         add(editorScrollPane, BorderLayout.CENTER);
     }
 
+    @SuppressWarnings("unchecked")
     private JPanel buildEditor(StatementType statement)
     {
         displayMode = getDisplayMode(statement);
@@ -314,10 +315,10 @@ public class StatementEditorPanel extends BasePanel implements ActionListener
         }
     }
 
-    private PlayerType createPlayer(DisplayModePosition position)
+    private PlayerType createPlayer()
     {
         PlayerType player = new PlayerType();
-        player.setPosition(position.getXmlValue());
+        player.setPosition(DisplayModePosition.LEFT.getXmlValue());
         return player;
     }
 
@@ -344,12 +345,12 @@ public class StatementEditorPanel extends BasePanel implements ActionListener
                 break;
 
             case PLAYER_ONLY:
-                statement.setPlayer(createPlayer(DisplayModePosition.LEFT));
+                statement.setPlayer(createPlayer());
                 statement.getDisplay().clear();
                 break;
 
             case PLAYER_AND_CHARACTER:
-                statement.setPlayer(createPlayer(DisplayModePosition.LEFT));
+                statement.setPlayer(createPlayer());
                 statement.getDisplay().clear();
                 statement.getDisplay().add(createCharacter(DisplayModePosition.RIGHT));
                 break;
@@ -669,7 +670,7 @@ public class StatementEditorPanel extends BasePanel implements ActionListener
     {
         private int selectedIndex = -1;
 
-        private String[] talking = new String[]{
+        private final String[] talking = new String[]{
                 "Niemand",
                 "Spieler",
                 "Charakter 1",
@@ -804,7 +805,7 @@ public class StatementEditorPanel extends BasePanel implements ActionListener
 
     private class CharacterComboBoxModel implements ComboBoxModel
     {
-        private CharactersType characters;
+        private final CharactersType characters;
         private int selectedIndex = 0;
 
         public CharacterComboBoxModel()

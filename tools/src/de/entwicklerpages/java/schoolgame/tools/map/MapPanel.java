@@ -19,9 +19,9 @@ import de.entwicklerpages.java.schoolgame.tools.PathHelper;
 
 public class MapPanel extends JPanel implements ActionListener
 {
-    private JButton createButton;
+    private final JButton createButton;
 
-    private FileFilter filter = new FileNameExtensionFilter("Tiled Map Datei", "tmx");
+    private final FileFilter filter = new FileNameExtensionFilter("Tiled Map Datei", "tmx");
 
     public MapPanel()
     {

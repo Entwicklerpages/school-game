@@ -7,7 +7,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 public abstract class BasePanel extends JPanel {
 
-    protected DialogEditor editor;
+    protected final DialogEditor editor;
 
     public BasePanel(LayoutManager layoutManager, DialogEditor editor)
     {

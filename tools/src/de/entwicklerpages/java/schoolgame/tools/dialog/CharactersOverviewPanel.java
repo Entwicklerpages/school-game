@@ -15,10 +15,10 @@ import de.entwicklerpages.java.schoolgame.game.dialog.CharactersType;
 
 public class CharactersOverviewPanel extends BasePanel implements ActionListener {
 
-    private CharactersType characters;
-    private DefaultMutableTreeNode charactersNode;
+    private final CharactersType characters;
+    private final DefaultMutableTreeNode charactersNode;
 
-    private JButton addCharacterButton;
+    private final JButton addCharacterButton;
 
     public CharactersOverviewPanel(DialogEditor editor, DefaultMutableTreeNode charactersNode, CharactersType characters)
     {
