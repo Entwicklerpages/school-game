@@ -6,6 +6,11 @@
    eJztl20LgjAQgFdBaUFpQVmRUNaH3v7/3+vEDobc3tTpJhOeD8Jkdz6ed8sZY7lF1sAGSCzv0xUxsARWDsQSfAQfIubA4k8UfHTGHjgAWUOPfdfW2H00xaYPvvZ4Is98HIGTAWdgAkyBmeFeWFdNasvENU/imY8rcDOgcDQ/3jVPphEvXpRPij583IEX8PDUh4wU2AI7gQdTHza9oI+idj8mHxTUZerDhpPgw00fH1b166+nPmTzlWj+aOvDRh6qeqj3FVd9tJmvTH3YzEPlo143Lvkov3v85tvMVy7h87wba8bgSrw6PFn1P9Ll3UN++L9XnTl98UH1MhmYs87akovl/PD9qfbwxQfVy2RgnDprqee6Bs9v1BnORx98L+NzE4E566ylnhuKVDOGoX0Egg+XGdrHDySn06A=
   </data>
  </layer>
+ <layer name="Dekoration" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+  </data>
+ </layer>
  <objectgroup name="Objekte">
   <object id="10" name="Spielerstart" type="Start" x="283" y="282" width="10" height="10">
    <ellipse/>

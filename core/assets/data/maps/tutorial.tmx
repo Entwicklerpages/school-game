@@ -3,7 +3,12 @@
  <tileset firstgid="1" source="../tilemap/test.tsx"/>
  <layer name="Hintergrund" width="80" height="50">
   <data encoding="base64" compression="zlib">
-   eJztm9tOAyEQhtEmam2i1rNWm+jaC936/q/nNFmyI+EwuAss7n/xXXQzBfotGWBCt0qpbUIuiEviKnE//xX4K+PvhDjtOJvA7yjFPfFAPP7R+9zn7hFxTCzgz8sT8WywIZbEObGKbE/P29Dc1e9HQuw7zMkb8UF8deyIZoA/Kbp9CanGMJa/xvI5l79b4trBHfwF/fnaTz2GsfztVZ/7vgv6M9esGvx9qj73adqM/l5Uv068Gn3W4C9mfqRo37dewJ+btQqvF/A3rE/4c8P3z671IuUY+BldspdfCONcuTzV+/H5SumPnzEle/mVMC7X3r+0P37GtOVikxthnO17ufytjT5rzn+psflzxcCf3x/fQ+fMwTng9a2N5Zmt9hXrr+b6S4jD+fi9o7E8O6DrXzv1uxbhIyYXp8rBpfyZZ+aWxUr9zQWbP18s/Ln98TqXLefBn9+fC+1V1w5Lj3lKSPxx4A/+4G862Or7PtqR+wcAAAAAANOA39M1mfO9XSn8nqnJHO6dwh/81Qz8DYPfEzeJ/c8DAAAAAAAI8wOkBL1L
+   eJztm8luAyEMhmkjdYvUNm3TPZGqtId0ef/Xqw9BgyzMmEwMYeY/fIdIhOUD2YCYtXNubcg1cUPcGrczVuCvjr8z4nzHxRGMoxaPxBPxvKf3qa/dE+KUmMFfkhfilfFGXBJXxDyzPr9u+9aunx8NuXNYkg/ik/je8UVsBvjT4uvXYNWHQ/nbRH6X8vdA3Aks4a/XX6p+6z4cyt+v62LfX0V/PGe14G/rutjn+Sno7911eWLF2mzBX876sKg/lS/gT2bh+vMF/A1rE/5kwv2zlC8s+xCe0TV7+ZmynBTLreYn5cvSX3jG1Ozl58pypfb+tf2FZ8xYLObcK8vF/lfK34K12XL8sybmTyoDf2l/4R66ZAwuQSxPpvKQ9q5pLPcvOePkcd3j71CWGWPNicVWMbiWPz72MN63vFZK+UuVhT/ZnxTnw/MD/Mn+JLzXFfzt5W8suRL+jg/4G0bumbnlvRoAAAAAAJAJ3+lypvxuV0v4zpQzhXen8Ad/LQN/wwjfiXNyv3kAAAAAAAD9/ANtJ7Jj
+  </data>
+ </layer>
+ <layer name="Dekoration" width="80" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2jESg0AIhWFvktLOeP/TWWTS6SQqLu/B//U6sAusOk4T4GsdfB36WLIDGCwq33fQfQDEUD3vzsSlmgM+qs39Cvm8sgMw9d37OTUKuOjQZ0+ev0d95jSDz65Pt/dLAH05zXKM5V4bVb5NVMkjS+T6ZexFdh9Sf7iLGgLuyT4HcOzq3vC9SYNDbznEWNU/a88zDoAoT80TlTmlEkekvXOiYp7wFv0s6favhVpP8k8TflGr2ZFU3n0z41BZgwwdar9DjgC0bcaKCPk=
   </data>
  </layer>
  <objectgroup name="Objekte">
@@ -46,7 +51,7 @@
  </objectgroup>
  <layer name="Vordergrund" width="80" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt2jESg0AIhWFvktLOeP/TWWTS6SQqLu/B//U6sAusOk4T4GsdfB36WLIDGCwq33fQfQDEUD3vzsSlmgM+qs39Cvm8sgMw9d37OTUKuOjQZ0+ev0d95jSDz65Pt/dLAH05zXKM5V4bVb5NVMkjS+T6ZexFdh9Sf7iLGgLuyT4HcOzq3vC9SYNDbznEWNU/a88zDoAoT80TlTmlEkekvXOiYp7wFv0s6favhVpP8k8TflGr2ZFU3n0z41BZgwwdar9DjgC0bcaKCPk=
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
   </data>
  </layer>
 </map>
