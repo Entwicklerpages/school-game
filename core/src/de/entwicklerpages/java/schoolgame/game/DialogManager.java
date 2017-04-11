@@ -49,17 +49,17 @@ public class DialogManager {
      *
      * @see SchoolGame
      */
-    protected SchoolGame game;
+    protected final SchoolGame game;
 
     private ActionCallback finishedCallback = null;
 
-    private String playerName;
+    private final String playerName;
 
-    private BitmapFont textFont;
-    private GlyphLayout fontLayout;
-    private SpriteBatch batch;
-    private ShapeRenderer shapeRenderer;
-    private Matrix4 projection;
+    private final BitmapFont textFont;
+    private final GlyphLayout fontLayout;
+    private final SpriteBatch batch;
+    private final ShapeRenderer shapeRenderer;
+    private final Matrix4 projection;
 
     private Level dialogRoot;
 
@@ -281,9 +281,9 @@ public class DialogManager {
 
         y -= 50;
 
-        for (int i = 0; i < lines.length; i++)
+        for (String line : lines)
         {
-            fontLayout.setText(textFont, lines[i], Color.BLACK, camera.viewportWidth - 60, Align.left, false);
+            fontLayout.setText(textFont, line, Color.BLACK, camera.viewportWidth - 60, Align.left, false);
             textFont.draw(batch, fontLayout, 30, y);
 
             y -= 35f;

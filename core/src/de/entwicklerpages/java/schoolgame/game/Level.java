@@ -11,7 +11,6 @@ import com.badlogic.gdx.maps.objects.*;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -104,7 +103,7 @@ public abstract class Level implements Disposable {
      * Speichert den Namen der Map, die zu dem entsprechendem Level gehört.
      * Wird im Konstruktor gesetzt.
      */
-    private String mapName;
+    private final String mapName;
 
     /**
      * Speichert die tileMap, die für dieses Level benutzt wird.
@@ -624,7 +623,7 @@ public abstract class Level implements Disposable {
 
         worldObjectManager.finishInit();
 
-        TiledMapTileLayer decoTiledLayer = null;
+        TiledMapTileLayer decoTiledLayer;
         MapLayer decoLayer = tileMap.getLayers().get(LevelConstants.TMX_DECORATION_LAYER);
         if (decoLayer == null || !(decoLayer instanceof TiledMapTileLayer))
         {

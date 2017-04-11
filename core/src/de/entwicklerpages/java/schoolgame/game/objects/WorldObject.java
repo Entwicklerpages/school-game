@@ -11,7 +11,7 @@ import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
  */
 public abstract class WorldObject
 {
-    protected String objectId;
+    protected final String objectId;
     protected MapObject rawObject;
     protected WorldObjectManager worldObjectManager;
 

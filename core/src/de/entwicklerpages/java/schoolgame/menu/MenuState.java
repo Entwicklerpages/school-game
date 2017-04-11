@@ -169,7 +169,7 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
-    private final boolean checkAllDisabled()
+    private boolean checkAllDisabled()
     {
         boolean allDisabled = true;
         for (MenuEntry entry : entries)
@@ -356,7 +356,7 @@ public abstract class MenuState implements GameState, InputProcessor {
 
     class MenuLabel extends MenuEntry {
 
-        private GlyphLayout fontLayout;
+        private final GlyphLayout fontLayout;
         private BitmapFont font;
 
         public MenuLabel(String label)
@@ -381,7 +381,7 @@ public abstract class MenuState implements GameState, InputProcessor {
 
     class MenuTitle extends MenuEntry {
 
-        private GlyphLayout fontLayout;
+        private final GlyphLayout fontLayout;
         private BitmapFont font;
 
         public MenuTitle(String label) {

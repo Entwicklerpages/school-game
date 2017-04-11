@@ -8,7 +8,7 @@ import de.entwicklerpages.java.schoolgame.game.SaveData;
 
 public class OverwriteSlotMenu extends MenuState {
 
-    private SaveData saveData;
+    private final SaveData saveData;
 
     public OverwriteSlotMenu(SaveData data)
     {

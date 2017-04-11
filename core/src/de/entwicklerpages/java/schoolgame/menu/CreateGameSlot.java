@@ -79,10 +79,10 @@ public class CreateGameSlot implements GameState, InputProcessor {
                 renderName(camera, deltaTime);
                 break;
             case STEP_2_GENDER:
-                renderGender(camera, deltaTime);
+                renderGender(camera);
                 break;
             case STEP_3_TUTORIAL:
-                renderTutorial(camera, deltaTime);
+                renderTutorial(camera);
                 break;
             case STEP_4_START:
                 renderStart(camera);
@@ -113,7 +113,7 @@ public class CreateGameSlot implements GameState, InputProcessor {
         smallFont.draw(batch, fontLayout, -camera.viewportWidth / 2, -camera.viewportHeight / 2 + 70);
     }
 
-    public void renderGender(OrthographicCamera camera, float deltaTime)
+    public void renderGender(OrthographicCamera camera)
     {
         Color maleColor;
         Color femaleColor;
@@ -140,7 +140,7 @@ public class CreateGameSlot implements GameState, InputProcessor {
         smallFont.draw(batch, fontLayout, -camera.viewportWidth / 2, -camera.viewportHeight / 2 + 70);
     }
 
-    public void renderTutorial(OrthographicCamera camera, float deltaTime)
+    public void renderTutorial(OrthographicCamera camera)
     {
         Color yesColor;
         Color noColor;

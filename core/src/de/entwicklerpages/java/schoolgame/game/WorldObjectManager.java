@@ -2,7 +2,6 @@ package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.objects.*;
 import com.badlogic.gdx.physics.box2d.World;
 
 import java.util.ArrayList;
@@ -26,8 +25,8 @@ public class WorldObjectManager
 {
     private WorldObjectConfig config;
     private List<WorldObject> worldObjects;
-    private SchoolGame game;
-    private World physicalWorld;
+    private final SchoolGame game;
+    private final World physicalWorld;
 
     public WorldObjectManager(SchoolGame game, World physicalWorld)
     {

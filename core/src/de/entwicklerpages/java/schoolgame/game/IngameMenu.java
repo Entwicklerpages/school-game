@@ -28,15 +28,15 @@ public class IngameMenu {
     private static final float WIDTH = 450f;
     private static final float HEIGHT = 420f;
 
-    private Level level;
-    private BitmapFont titleFont;
-    private BitmapFont textFont;
-    private BitmapFont smallFont;
-    private GlyphLayout fontLayout;
-    private SpriteBatch batch;
-    private ShapeRenderer shapeRenderer;
-    private I18NBundle localeBundle;
-    private Matrix4 projection;
+    private final Level level;
+    private final BitmapFont titleFont;
+    private final BitmapFont textFont;
+    private final BitmapFont smallFont;
+    private final GlyphLayout fontLayout;
+    private final SpriteBatch batch;
+    private final ShapeRenderer shapeRenderer;
+    private final I18NBundle localeBundle;
+    private final Matrix4 projection;
 
     private int activeEntry = 0;
     private MenuMode menuMode = MenuMode.MODE_PAUSE;

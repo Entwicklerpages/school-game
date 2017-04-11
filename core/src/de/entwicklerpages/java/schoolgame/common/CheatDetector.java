@@ -92,10 +92,13 @@ public class CheatDetector extends InputAdapter {
      */
     private void shiftKeys(int keycode)
     {
+        /*
         for (int i = 0; i < previousKeys.length - 1; i++)
         {
             previousKeys[i] = previousKeys[i + 1];
         }
+        */
+        System.arraycopy(previousKeys, 1, previousKeys, 0, previousKeys.length - 1);
         previousKeys[previousKeys.length - 1] = keycode;
     }
 

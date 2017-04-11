@@ -25,7 +25,7 @@ public class AudioManager implements Disposable {
      *
      * @see SchoolGame
      */
-    private SchoolGame game;
+    private final SchoolGame game;
 
     /**
      * Speichert alle geladenen Sound-Instanzen.
@@ -372,7 +372,7 @@ public class AudioManager implements Disposable {
 
     public class SoundKey
     {
-        private String soundId;
+        private final String soundId;
 
         protected SoundKey(String soundId)
         {

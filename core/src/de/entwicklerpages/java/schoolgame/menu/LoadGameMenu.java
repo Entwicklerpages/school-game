@@ -65,18 +65,18 @@ public class LoadGameMenu extends MenuState {
     }
 
     class MenuLoadSlot extends MenuEntry {
-        private GlyphLayout fontLayout;
+        private final GlyphLayout fontLayout;
         private BitmapFont font;
         private BitmapFont fontSmall;
 
-        private SaveData saveData;
-        private String detail;
+        private final SaveData saveData;
+        private final String detail;
 
         private int used = 0;
         private int id = 0;
-        private String playerName;
-        private String gender;
-        private String levelName;
+        private final String playerName;
+        private final String gender;
+        private final String levelName;
         private String playTime;
 
         public MenuLoadSlot(String label, String detail, SaveData saveData)

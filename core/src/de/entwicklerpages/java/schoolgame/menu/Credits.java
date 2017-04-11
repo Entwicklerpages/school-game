@@ -178,7 +178,7 @@ public class Credits implements GameState, InputProcessor {
     }
 
     protected class CreditLine {
-        private String line;
+        private final String line;
         private boolean heading;
         private boolean topHeading;
 

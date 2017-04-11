@@ -80,11 +80,6 @@ public class CheatLevelSelection extends LevelManager {
     }
 
     @Override
-    public void dispose() {
-        super.dispose();
-    }
-
-    @Override
     public boolean keyDown(int keycode) {
 
         if (keycode == Input.Keys.ESCAPE)

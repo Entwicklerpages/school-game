@@ -35,7 +35,7 @@ public class SaveData {
      *
      * @see SchoolGame#getPreferences()
      */
-    private Preferences prefs;
+    private final Preferences prefs;
 
     /**
      * Speichert, in welchem Slot die Daten gesichert werden.
