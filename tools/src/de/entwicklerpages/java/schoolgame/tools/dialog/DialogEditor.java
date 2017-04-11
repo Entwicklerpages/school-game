@@ -30,6 +30,7 @@ import de.entwicklerpages.java.schoolgame.game.dialog.DialogType;
 import de.entwicklerpages.java.schoolgame.game.dialog.DialogsType;
 import de.entwicklerpages.java.schoolgame.game.dialog.Level;
 import de.entwicklerpages.java.schoolgame.game.dialog.StatementType;
+import de.entwicklerpages.java.schoolgame.tools.PathHelper;
 
 public class DialogEditor extends JPanel implements ActionListener {
 
@@ -256,7 +257,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
     private void loadLevel()
     {
-        JFileChooser chooser = new JFileChooser(lastDir == null ? DialogDataHelper.getAssetDirIfFound() : lastDir);
+        JFileChooser chooser = new JFileChooser(lastDir == null ? PathHelper.getDialogDirIfFound() : lastDir);
         chooser.addChoosableFileFilter(filter);
         chooser.setAcceptAllFileFilterUsed(true);
         chooser.setMultiSelectionEnabled(false);
@@ -293,7 +294,7 @@ public class DialogEditor extends JPanel implements ActionListener {
             return;
         }
 
-        JFileChooser chooser = new JFileChooser(lastDir == null ? DialogDataHelper.getAssetDirIfFound() : lastDir);
+        JFileChooser chooser = new JFileChooser(lastDir == null ? PathHelper.getDialogDirIfFound() : lastDir);
         chooser.addChoosableFileFilter(filter);
         chooser.setAcceptAllFileFilterUsed(true);
         chooser.setMultiSelectionEnabled(false);

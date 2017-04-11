@@ -116,7 +116,7 @@ public abstract class Level implements Disposable {
      *
      * @see Level#tileMap
      */
-    private OrthogonalTiledMapRenderer tileMapRenderer;
+    private ExtendedOrthogonalTiledMapRenderer tileMapRenderer;
 
     /**
      * Die Breite der Map.
@@ -244,19 +244,26 @@ public abstract class Level implements Disposable {
      */
     public final void render(float deltaTime)
     {
+        // SPIEL
+
         if (levelState != LevelState.INTRO && levelState != LevelState.OUTRO)
         {
             tileMapRenderer.setView(camera);
-            tileMapRenderer.render();
-
-            player.render(camera, deltaTime);
+            tileMapRenderer.renderAll(deltaTime);
         }
+
+        // DIALOGE
 
         if (dialogManager.isPlaying())
             dialogManager.render(camera, deltaTime);
 
+        // INGAME MENÜ
+
         if (levelState == LevelState.PAUSE)
             ingameMenu.render(camera);
+
+
+        // PHYSIK
 
         if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
         {
@@ -591,6 +598,8 @@ public abstract class Level implements Disposable {
         if (colLayer == null) return;
 
         PhysicsTileMapBuilder.buildBodiesFromLayer(colLayer, physicalWorld);
+
+        tileMap.getLayers().remove(colLayer);
     }
 
     /**
@@ -615,7 +624,19 @@ public abstract class Level implements Disposable {
 
         worldObjectManager.finishInit();
 
-        tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap, 1f);
+        TiledMapTileLayer decoTiledLayer = null;
+        MapLayer decoLayer = tileMap.getLayers().get(LevelConstants.TMX_DECORATION_LAYER);
+        if (decoLayer == null || !(decoLayer instanceof TiledMapTileLayer))
+        {
+            Gdx.app.error("ERROR", "Found no decoration layer!");
+            exitToMenu();
+            return;
+        } else {
+            decoTiledLayer = (TiledMapTileLayer) decoLayer;
+        }
+
+        tileMapRenderer = new ExtendedOrthogonalTiledMapRenderer(tileMap, decoTiledLayer);
+        tileMapRenderer.addDisplayObject(player);
 
         onLoaded();
     }
@@ -682,6 +703,7 @@ public abstract class Level implements Disposable {
         static final String TMX_OBJECT_LAYER = "Objekte";
         //static final String TMX_BACKGROUND_LAYER = "Hintergrund";
         //static final String TMX_FOREGROUND_LAYER = "Vordergrund";
+        static final String TMX_DECORATION_LAYER = "Dekoration";
         static final String TMX_COLLISION_LAYER = "Kollisionen";
 
         static final String TMX_TYPE = "type";
