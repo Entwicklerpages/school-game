@@ -131,8 +131,14 @@ public abstract class Level implements Disposable {
      */
     private float mapHeight;
 
+    /**
+     * Box2D Welt für Physikberechnungen
+     */
     private World physicalWorld;
 
+    /**
+     * Speichert die Restzeit für Physikberechnungen
+     */
     private float physicsAccumulator;
 
     /**
