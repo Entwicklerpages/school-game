@@ -2,6 +2,7 @@ package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -47,6 +48,12 @@ public class Player implements ExtendedMapDisplayObject {
     private final TextureRegion playerSide;
     private final TextureRegion playerBack;
 
+    private final Animation<TextureRegion> playerFrontWalk;
+    private final Animation<TextureRegion> playerSideWalk;
+    private final Animation<TextureRegion> playerBackWalk;
+
+    private float animationTime = 0f;
+
     public Player(World world, String name, boolean male) {
         this.health = 100;
         this.name = name;
@@ -59,6 +66,10 @@ public class Player implements ExtendedMapDisplayObject {
         playerFront = playerAtlas.findRegion(player + "_front");
         playerSide = playerAtlas.findRegion(player + "_side");
         playerBack = playerAtlas.findRegion(player + "_back");
+
+        playerFrontWalk = new Animation<TextureRegion>(1/5f, playerAtlas.findRegions(player + "_front_walk"), Animation.PlayMode.LOOP);
+        playerSideWalk = new Animation<TextureRegion>(1/5f, playerAtlas.findRegions(player + "_side_walk"), Animation.PlayMode.LOOP);
+        playerBackWalk = new Animation<TextureRegion>(1/5f, playerAtlas.findRegions(player + "_back_walk"), Animation.PlayMode.LOOP);
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -258,22 +269,30 @@ public class Player implements ExtendedMapDisplayObject {
 
         TextureRegion region = null;
         float scaleX = 1f;
+        boolean notMoving = MathUtils.isZero(lastDeltaX, 0.5f) && MathUtils.isZero(lastDeltaY, 0.5f);
+
+        if (notMoving)
+        {
+            animationTime = 0f;
+        } else {
+            animationTime += deltaTime;
+        }
 
         switch (orientation)
         {
             case LOOK_FORWARD:
-                region = playerFront;
+                region = notMoving ? playerFront : playerFrontWalk.getKeyFrame(animationTime);
                 break;
             case LOOK_LEFT:
-                region = playerSide;
+                region = notMoving ? playerSide : playerSideWalk.getKeyFrame(animationTime);
                 scaleX = -1f;
                 break;
             case LOOK_BACKWARD:
-                region = playerBack;
+                region = notMoving ? playerBack : playerBackWalk.getKeyFrame(animationTime);
                 scaleX = -1f;
                 break;
             case LOOK_RIGHT:
-                region = playerSide;
+                region = notMoving ? playerSide : playerSideWalk.getKeyFrame(animationTime);
                 break;
         }
 
