@@ -35,15 +35,50 @@ import static com.badlogic.gdx.graphics.g2d.Batch.Y4;
 
 
 /**
+ * Verbesserter Renderer. Dieser rendert auch gleich Objekte wieden Spieler mit.
+ * Dazu müssen diese sich als ExtendedMapDisplayObject registrieren.
+ *
+ * @see ExtendedMapDisplayObject
+ * @see ExtendedOrthogonalTiledMapRenderer#addDisplayObject(ExtendedMapDisplayObject)
+ *
  * @author nico
  */
 public class ExtendedOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Der Layer, in dem auch die Objekte angezeigt werden.
+     */
     private TiledMapTileLayer displayLayer;
+
+    /**
+     * Eine Liste aller Objekte die gerendert werden sollen.
+     */
     private Array<ExtendedMapDisplayObject> displayObjects;
+
+    /**
+     * Eine Liste aller Objekte, die innerhalb eines Frames noch nicht gerendert wurden.
+     */
     private Array<ExtendedMapDisplayObject> renderObjects;
+
+    /**
+     * Instanz eines Komperators. Dieser sortiert die Objekte nach deren Tiefe.
+     */
     private DepthComparator depthComparator;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Inititalisierung.
+     *
+     * @param map die Map, die gerendert werden soll
+     * @param displayLayer der Layer in der Map, in dem auch die Objekte gerendert werden
+     */
     public ExtendedOrthogonalTiledMapRenderer (TiledMap map, TiledMapTileLayer displayLayer) {
         super(map);
         this.displayLayer = displayLayer;
@@ -52,6 +87,11 @@ public class ExtendedOrthogonalTiledMapRenderer extends OrthogonalTiledMapRender
         this.depthComparator = new DepthComparator();
     }
 
+    /**
+     * Rendert alle Layer und alle Objekte
+     *
+     * @param deltaTime die Zeit, die seit dem letztem Frame vergangen ist
+     */
     public void renderAll(float deltaTime) {
         beginRender();
         for (MapLayer layer : map.getLayers()) {
@@ -72,16 +112,37 @@ public class ExtendedOrthogonalTiledMapRenderer extends OrthogonalTiledMapRender
         endRender();
     }
 
+    /**
+     * Fügt ein Objekt zum Rendern hinzu.
+     *
+     * @param newObject das neue Objekt
+     */
     public void addDisplayObject(ExtendedMapDisplayObject newObject)
     {
         displayObjects.add(newObject);
     }
 
-    public void removeDisplayObject(ExtendedMapDisplayObject newObject)
+    /**
+     * Entfernt ein Objekt.
+     *
+     * ACHTUNG: Es wird ein == vergleich und keine equals durchgeführt.
+     * Beim Entfernen MUSS es sich um die selbe Instanz handeln.
+     *
+     * @param removeObject das zu entfernende Objekt
+     */
+    public void removeDisplayObject(ExtendedMapDisplayObject removeObject)
     {
-        displayObjects.removeValue(newObject, true);
+        displayObjects.removeValue(removeObject, true);
     }
 
+    /**
+     * Zeigt die Ebene an, in der auch die Objekte gerendert werden.
+     * Der Code wurde vom OrthogonalTiledMapRenderer übernommen und in der
+     * Mitte angepasst um Objekte an der richtigen Stelle zu rendern.
+     *
+     * @param layer der Layer, der gerendert werden soll
+     * @param deltaTime die Zeit, die seit dem letztem Frame vergangen ist
+     */
     private void renderDisplayLayer(TiledMapTileLayer layer, float deltaTime)
     {
         final Color batchColor = batch.getColor();
@@ -102,6 +163,9 @@ public class ExtendedOrthogonalTiledMapRenderer extends OrthogonalTiledMapRender
         float y = row2 * layerTileHeight;
         float xStart = col1 * layerTileWidth;
         final float[] vertices = this.vertices;
+
+        // TODO Benchmark
+        //displayObjects.sort(depthComparator); // Möglicherweise sollte lieber die Hauptliste sortiert werden. Da die Position der Objekte oft gleich bleibt müssen seltener Objekte verschoben werden.
 
         renderObjects.addAll(displayObjects); // Nicht unbedingt die beste Methode aber es funktioniert.
         renderObjects.sort(depthComparator);
@@ -246,6 +310,14 @@ public class ExtendedOrthogonalTiledMapRenderer extends OrthogonalTiledMapRender
         renderObjects.clear();
     }
 
+    /**
+     * Vergleicht ExtendedMapDisplayObjects nach deren Y Position.
+     * Diese Position wird mit der Tiefe der Objekte gleichgesetzt.
+     *
+     * @see ExtendedMapDisplayObject#getPosY()
+     *
+     * @author nico
+     */
     private class DepthComparator implements Comparator<ExtendedMapDisplayObject>
     {
         @Override

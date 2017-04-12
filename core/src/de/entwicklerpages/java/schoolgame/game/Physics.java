@@ -8,10 +8,18 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 
 /**
+ * Regelt physikalische Abläufe im Spiel und stellt Hilfsfunktionen zur Verfügung.
+ *
  * @author nico
  */
 public final class Physics
 {
+
+    /**
+     * Privater Konstruktur.
+     *
+     * Alle Hilfsfunktionen sind statisch.
+     */
     private Physics() {}
 
     /**
@@ -34,23 +42,46 @@ public final class Physics
      */
     public static final float MPP = 1f / PPM;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static final short CATEGORY_PLAYER          = 0x0001;
     public static final short CATEGORY_WORLD           = 0x0002;
     public static final short CATEGORY_ENTITIES        = 0x0004;
     public static final short CATEGORY_TRIGGER         = 0x0008;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static final short MASK_PLAYER              = -1; // Alles
     public static final short MASK_WORLD               = CATEGORY_PLAYER | CATEGORY_ENTITIES;
     public static final short MASK_ENTITIES            = CATEGORY_PLAYER | CATEGORY_ENTITIES | CATEGORY_WORLD;
     public static final short MASK_TRIGGER             = CATEGORY_PLAYER;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Erstellt ein Shape in Form eines Rechtecks.
+     * Rechnet automatisch Pixel in Meter um.
+     *
+     * @param width die Breite
+     * @param height die Höhe
+     * @param center der Mittelpunkt als Koordinate
+     * @return ein Form mit den übergebenen Paramtern
+     */
     public static PolygonShape createRectangle(float width, float height, Vector2 center)
     {
         return createRectangle(width, height, center, 0f);
     }
 
+    /**
+     * Erstellt ein Shape in Form eines Rechtecks.
+     * Rechnet automatisch Pixel in Meter um.
+     *
+     * @param width die Breite
+     * @param height die Höhe
+     * @param center der Mittelpunkt als Koordinate
+     * @param angle der Winkel des Rechtecks
+     * @return ein Form mit den übergebenen Paramtern
+     */
     public static PolygonShape createRectangle(float width, float height, Vector2 center, float angle)
     {
         PolygonShape rectangle = new PolygonShape();
@@ -60,6 +91,15 @@ public final class Physics
         return rectangle;
     }
 
+    /**
+     * Erzeigt eine namenslose Klasse die ContactListener implementiert.
+     * Verarbeitet Kollisionen zwischen Objekten, wenn eines der beiden Objekte PhysicsListener
+     * implementiert.
+     *
+     * @see PhysicsListener
+     *
+     * @return ein ContactListener
+     */
     public static ContactListener createContactListener()
     {
         return new ContactListener()

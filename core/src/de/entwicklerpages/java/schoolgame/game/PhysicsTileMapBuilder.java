@@ -23,13 +23,25 @@ import com.badlogic.gdx.physics.box2d.World;
  * und angepasst an die Bedürfnisse des Spiels.
  *
  * createCircle wurde selbst hinzugefügt.
+ *
+ * Erstellt automatisch Box2D Körper für TiledMaps und
+ * bietet außerdem Hilfsfunktionen, die aus Map Objekten Shapes erstellen.
  */
 public final class PhysicsTileMapBuilder
 {
-    private PhysicsTileMapBuilder()
-    {
-    }
+    /**
+     * Privater Konstruktor.
+     *
+     * Diese Klasse besitzt nur statische Hilfsfunktionen.
+     */
+    private PhysicsTileMapBuilder() {}
 
+    /**
+     * Erzeugt aus einem ObjectLayer Box2D Körper.
+     *
+     * @param layer die Ebene
+     * @param world die Box2D Welt
+     */
     public static void buildBodiesFromLayer(MapLayer layer, World world)
     {
         for(MapObject tileObject : layer.getObjects())
@@ -78,6 +90,14 @@ public final class PhysicsTileMapBuilder
         }
     }
 
+    /**
+     * Erzeugt aus einem RectangleMapObject ein rechteckiges PolygonShape.
+     *
+     * Rotationen werden NICHT unterstützt.
+     *
+     * @param rectObject das MapObject
+     * @return die entsprechende Form
+     */
     public static PolygonShape createRectangle(RectangleMapObject rectObject)
     {
         Rectangle rectangle = rectObject.getRectangle();
@@ -87,6 +107,12 @@ public final class PhysicsTileMapBuilder
         return Physics.createRectangle(rectangle.width, rectangle.height, center);
     }
 
+    /**
+     * Erzeugt aus einem PolygonMapObject ein PolygonShape.
+     *
+     * @param polyObject das MapObject
+     * @return die entsprechende Form
+     */
     public static PolygonShape createPolygon(PolygonMapObject polyObject)
     {
         PolygonShape polygon = new PolygonShape();
@@ -111,6 +137,12 @@ public final class PhysicsTileMapBuilder
         return polygon;
     }
 
+    /**
+     * Erzeugt aus einem PolylineMapObject ein ChainShape.
+     *
+     * @param polyObject das MapObject
+     * @return die entsprechende Form
+     */
     public static ChainShape createPolyline(PolylineMapObject polyObject)
     {
         float[] vertices = polyObject.getPolyline().getTransformedVertices();
@@ -129,6 +161,15 @@ public final class PhysicsTileMapBuilder
         return chain;
     }
 
+    /**
+     * Erzeugt aus einem EllipseMapObject ein CircleShape.
+     *
+     * Ellipsen werden von Box2D nicht unterstützt, Tiled erzeugt aber auch bei Kreisen EllipseMapObjects.
+     * Deshalb ermittelt diese Methode den kleineren Radius und benutzt diesen um einen Kreis zu erstellen.
+     *
+     * @param ellipseObject das MapObject
+     * @return die entsprechende Form
+     */
     public static CircleShape createCircle(EllipseMapObject ellipseObject)
     {
         Ellipse ellipse = ellipseObject.getEllipse();
