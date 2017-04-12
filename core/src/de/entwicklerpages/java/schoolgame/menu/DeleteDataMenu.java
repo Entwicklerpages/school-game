@@ -6,7 +6,17 @@ import com.badlogic.gdx.graphics.Color;
 
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 
+/**
+ * Sicherheitsfrage, bevor alle Spielfortschritte gelöscht werden.
+ *
+ * @author nico
+ */
 public class DeleteDataMenu extends MenuState {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public String getStateName() {
         return "DELETE_DATA_MENU";
@@ -17,6 +27,9 @@ public class DeleteDataMenu extends MenuState {
         return "OptionsMenu";
     }
 
+    /**
+     * Zeigt eine Sicherheitsabfrage an und definiert die Callback-Handler.
+     */
     @Override
     void setupMenu() {
         MenuLabel label = new MenuLabel("sicher");

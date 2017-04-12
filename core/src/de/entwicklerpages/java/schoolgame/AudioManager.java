@@ -103,11 +103,36 @@ public class AudioManager implements Disposable {
         autoUnloadSounds = new ArrayList<SoundKey>();
     }
 
+    /**
+     * Erstellt einen Sound in der Sound-Datenbank und lädt ihn.
+     *
+     * @see AudioManager#createSound(String, String, boolean)
+     * @see AudioManager#unloadSound(SoundKey)
+     * @see AudioManager#playSound(SoundKey)
+     * @see AudioManager#playSound(SoundKey, float)
+     *
+     * @param group zu welcher Gruppe gehört der Sound?
+     * @param name der Name der Sounddatei mit Endung
+     * @return ein Verweis auf den Sound der zum Abspielen benutzt werden kann
+     */
     public SoundKey createSound(String group, String name)
     {
         return createSound(group, name, false);
     }
 
+    /**
+     * Erstellt einen Sound in der Sound-Datenbank und lädt ihn.
+     *
+     * @see AudioManager#createSound(String, String)
+     * @see AudioManager#unloadSound(SoundKey)
+     * @see AudioManager#playSound(SoundKey)
+     * @see AudioManager#playSound(SoundKey, float)
+     *
+     * @param group zu welcher Gruppe gehört der Sound?
+     * @param name der Name der Sounddatei mit Endung
+     * @param autoUnload true damit der Sound beim Beenden ohne Warnung entladen wird. Sparsam benutzen.
+     * @return ein Verweis auf den Sound der zum Abspielen benutzt werden kann
+     */
     public SoundKey createSound(String group, String name, boolean autoUnload)
     {
         String soundId = group + "/" +name;
@@ -126,11 +151,28 @@ public class AudioManager implements Disposable {
         return soundKey;
     }
 
+    /**
+     * Spielt einen zuvor erzeugten Sound ab.
+     *
+     * @see AudioManager#createSound(String, String)
+     * @see AudioManager#createSound(String, String, boolean)
+     *
+     * @param soundKey der Verweis auf den Sound
+     */
     public void playSound(SoundKey soundKey)
     {
         playSound(soundKey, 1.0f);
     }
 
+    /**
+     * Spielt einen zuvor erzeugten Sound ab.
+     *
+     * @see AudioManager#createSound(String, String)
+     * @see AudioManager#createSound(String, String, boolean)
+     *
+     * @param soundKey der Verweis auf den Sound
+     * @param volume die Lautstärke zwischen 0 und 1
+     */
     public void playSound(SoundKey soundKey, float volume)
     {
         if (muteSound || soundKey == null) return;
@@ -146,6 +188,14 @@ public class AudioManager implements Disposable {
         soundMap.get(soundId).play(volume);
     }
 
+    /**
+     * Entlädt einen Sound aus dem Speicher und entfernt ihn aus der Datenbank.
+     *
+     * @see AudioManager#createSound(String, String)
+     * @see AudioManager#createSound(String, String, boolean)
+     *
+     * @param soundKey der Verweis auf den Sound
+     */
     public void unloadSound(SoundKey soundKey)
     {
         if (soundKey == null) return;
@@ -322,11 +372,21 @@ public class AudioManager implements Disposable {
         }
     }
 
+    /**
+     * Ist der Sound stumm?
+     *
+     * @return true wenn sound stumm ist, ansonsten false
+     */
     public boolean isSoundMuted()
     {
         return muteSound;
     }
 
+    /**
+     * Setzt den Sound stumm oder aktiviert ihn wieder.
+     *
+     * @param muteSound true für stumm, false für aktiv
+     */
     public void setMuteSound(boolean muteSound)
     {
         this.muteSound = muteSound;
@@ -370,16 +430,33 @@ public class AudioManager implements Disposable {
         return muteMusic;
     }
 
+    /**
+     * Verweis auf einen Sound in der Datenbank.
+     */
     public class SoundKey
     {
+        /**
+         * Schlüssel
+         */
         private final String soundId;
 
-        protected SoundKey(String soundId)
+        /**
+         * Erstellt einen neuen Verweis
+         *
+         * @param soundId der Schlüssel zum Sound
+         */
+        private SoundKey(String soundId)
         {
             this.soundId = soundId;
         }
 
-        protected String getSoundId()
+        /**
+         * Ruft den Schlüssel ab.
+         * Wird nur vom AudioManager benutzt.
+         *
+         * @return der Schlüssel zum Sound
+         */
+        private String getSoundId()
         {
             return soundId;
         }

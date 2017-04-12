@@ -22,7 +22,17 @@ import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
+/**
+ * Vorlage für die meisten Menüs im Spiel.
+ * Definiert grundlegende Abläufe wie das Navigieren durch Menüs und das Auswählen eines Eintrags.
+ *
+ * @author nico
+ */
 public abstract class MenuState implements GameState, InputProcessor {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     private List<MenuEntry> entries;
     private MenuEntry activeEntry;
@@ -37,9 +47,27 @@ public abstract class MenuState implements GameState, InputProcessor {
 
     protected SchoolGame game;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Konfiguriert das Menü.
+     */
     abstract void setupMenu();
+
+    /**
+     * Name der Sprachdatei, die geladen werden soll.
+     *
+     * @return der Name de Sprachdatei
+     */
     abstract String getI18nName();
 
+    /**
+     * Initialisierung.
+     *
+     * @param game zeigt auf das SchoolGame, dass das Spiel verwaltet
+     */
     @Override
     public void create(SchoolGame game) {
         Gdx.app.getApplicationLogger().log("INFO", "Menu init...");
@@ -62,6 +90,12 @@ public abstract class MenuState implements GameState, InputProcessor {
         Gdx.app.getApplicationLogger().log("INFO", "Menu finished...");
     }
 
+    /**
+     * Zeigt das Menü an.
+     *
+     * @param camera  die aktuelle Kamera
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void render(OrthographicCamera camera, float deltaTime) {
         batch.setProjectionMatrix(camera.combined);
@@ -84,6 +118,13 @@ public abstract class MenuState implements GameState, InputProcessor {
         batch.end();
     }
 
+    /**
+     * Zeigt Menüeinträge ohne besondere Render-Methode an.
+     *
+     * @param camera die aktive Kamera
+     * @param entry der Menüeintrag, der angezeigt werden soll
+     * @param y die Y-Position des Eintrags
+     */
     protected void defaultRender(OrthographicCamera camera, MenuEntry entry, int y)
     {
         Color entryColor = entry.getColor();
@@ -100,10 +141,20 @@ public abstract class MenuState implements GameState, InputProcessor {
         font.draw(batch, fontLayout, -camera.viewportWidth / 2, y);
     }
 
+    /**
+     * Macht nix, muss aber da sein.
+     *
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void update(float deltaTime) {
     }
 
+    /**
+     * Fügt einen Eintrag am Ende hinzu.
+     *
+     * @param entry der neue Eintrag
+     */
     protected final void addEntry(MenuEntry entry)
     {
         if (entry == null) return; // ArrayList erlaubt null. Wir wollen das aber nicht.
@@ -115,6 +166,9 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Geht einen Eintrag nach vorne.
+     */
     protected final void nextEntry()
     {
         if (checkAllDisabled())
@@ -142,6 +196,9 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Geht einen Eintrag zurück.
+     */
     protected final void previousEntry()
     {
         if (checkAllDisabled())
@@ -169,6 +226,11 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Prüft, ob alle Menüeinträge deaktiviert sind oder ob man einen auswählen kann.
+     *
+     * @return true, wenn alle Einträge aus sind
+     */
     private boolean checkAllDisabled()
     {
         boolean allDisabled = true;
@@ -180,6 +242,9 @@ public abstract class MenuState implements GameState, InputProcessor {
         return allDisabled;
     }
 
+    /**
+     * Aufräumarbeiten.
+     */
     @Override
     public void dispose() {
         Gdx.app.getApplicationLogger().log("INFO", "Menu dispose...");
@@ -191,6 +256,13 @@ public abstract class MenuState implements GameState, InputProcessor {
         Gdx.app.getApplicationLogger().log("INFO", "Menu leave.");
     }
 
+    /**
+     * Regiert auf Nutzereingaben.
+     * Navigation und Auswahl im Menü werden hierdurch ermöglicht.
+     *
+     * @param keycode der Tastencode der gedrückten Taste
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     @Override
     public boolean keyDown(int keycode) {
 
@@ -256,6 +328,11 @@ public abstract class MenuState implements GameState, InputProcessor {
         return false;
     }
 
+    /**
+     * Ein einfacher Menüeintrag.
+     *
+     * @author nico
+     */
     class MenuEntry {
         private ActionCallback callback = null;
         private String label;
@@ -344,6 +421,11 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Abstandshalter für Menüs.
+     *
+     * @author nico
+     */
     class MenuSpacer extends MenuEntry {
 
         public MenuSpacer(int height)
@@ -354,6 +436,12 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Nicht auswählbare Menüeinträge zum Beispiel
+     * Erklärungen.
+     *
+     * @author nico
+     */
     class MenuLabel extends MenuEntry {
 
         private final GlyphLayout fontLayout;
@@ -379,6 +467,11 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Menüüberschrift
+     *
+     * @author nico
+     */
     class MenuTitle extends MenuEntry {
 
         private final GlyphLayout fontLayout;

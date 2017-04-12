@@ -15,7 +15,16 @@ import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.LevelManager;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
+/**
+ * Erlaubt es dem Spieler, einen Spielstand zu laden.
+ *
+ * @author nico
+ */
 public class LoadGameMenu extends MenuState {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public String getStateName() {
@@ -27,6 +36,9 @@ public class LoadGameMenu extends MenuState {
         return "GameMenu";
     }
 
+    /**
+     * Konfiguriert das Menü und legt die Callback-Handler fest.
+     */
     @Override
     void setupMenu() {
         MenuEntry back = new MenuEntry("zurueck");
@@ -64,6 +76,11 @@ public class LoadGameMenu extends MenuState {
 
     }
 
+    /**
+     * Zeigt einen einzelnen Slot an.
+     *
+     * @author nico
+     */
     class MenuLoadSlot extends MenuEntry {
         private final GlyphLayout fontLayout;
         private BitmapFont font;

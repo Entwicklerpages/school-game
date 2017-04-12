@@ -5,8 +5,16 @@ import com.badlogic.gdx.graphics.Color;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
-
+/**
+ * Sicherheitsfrage, ob ein vorhandener Spielstand wirklich überschrieben werden soll.
+ *
+ * @author nico
+ */
 public class OverwriteSlotMenu extends MenuState {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     private final SaveData saveData;
 
@@ -25,6 +33,9 @@ public class OverwriteSlotMenu extends MenuState {
         return "GameMenu";
     }
 
+    /**
+     * Erstellt eine Menüstruktur und legt die Callbacks fest.
+     */
     @Override
     void setupMenu() {
 

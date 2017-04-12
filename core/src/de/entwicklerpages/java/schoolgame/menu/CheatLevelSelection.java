@@ -17,7 +17,21 @@ import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.game.LevelManager;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
+/**
+ * Teil des Cheat-Menüs.
+ *
+ * Erlaubt einem ENTWICKLER ein beliebiges Level zu wählen.
+ *
+ * Erweitert den LevelManager. Dieser zeigt zwar eigentlich das Spiel an, allerdings ist er in der Lage
+ * eine Liste aller vorhandenen Level zu erstellen. Diese Liste wird hier gebraucht.
+ *
+ * @author nico
+ */
 public class CheatLevelSelection extends LevelManager {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     private SpriteBatch batch;
     private BitmapFont font;
@@ -28,11 +42,28 @@ public class CheatLevelSelection extends LevelManager {
     private int selection = -1;
     private String[] levelIds;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Konstruktor.
+     *
+     * @param slot der Slot, der verändert werden soll
+     */
     public CheatLevelSelection(SaveData.Slot slot)
     {
         super(slot);
     }
 
+    /**
+     * Initialisierung
+     *
+     * Wird automatisch aufgerufen.
+     * Erfasst auch gleich die Liste aller Level.
+     *
+     * @param game zeigt auf das SchoolGame, dass das Spiel verwaltet.
+     */
     @Override
     public void create(SchoolGame game) {
         this.game = game;
@@ -58,6 +89,12 @@ public class CheatLevelSelection extends LevelManager {
         levelIds = levelIdSet.toArray(new String[levelIdSet.size()]);
     }
 
+    /**
+     * Zeigt die Liste aller Level an.
+     *
+     * @param camera  die aktuelle Kamera
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void render(OrthographicCamera camera, float deltaTime) {
         batch.setProjectionMatrix(camera.combined);
@@ -75,10 +112,24 @@ public class CheatLevelSelection extends LevelManager {
         batch.end();
     }
 
+    /**
+     * Überschreibt die update Methode des LevelManagers, damit dieser kein Level anzeigen kann.
+     *
+     * @see LevelManager#update(float)
+     *
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void update(float deltaTime) {
     }
 
+    /**
+     * Erlaubt die Navigation durch die Liste der Level und
+     * ermöglicht eine Auswahl.
+     *
+     * @param keycode der Tastencode, der gedrückten Taste
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     @Override
     public boolean keyDown(int keycode) {
 
@@ -120,12 +171,23 @@ public class CheatLevelSelection extends LevelManager {
         return false;
     }
 
+    /**
+     * Wird eigentlich nicht gebraucht, aber wir verhindern das der LevelManager hier etwas machen kann.
+     *
+     * @param keycode der Tastencode, der gedrückten Taste
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     @Override
     public boolean keyUp(int keycode) {
 
         return false;
     }
 
+    /**
+     * Name dieses Zustands
+     *
+     * @return der Name
+     */
     @Override
     public String getStateName() {
         return "CHEAT_LEVEL_SELECTION";
