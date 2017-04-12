@@ -14,7 +14,17 @@ import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
+/**
+ * Lässt den Spieler einen Slot für ein neues Spiel auswählen.
+ *
+ * @author nico
+ */
 public class NewGameMenu extends MenuState {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public String getStateName() {
         return "NEW_GAME_MENU";
@@ -25,6 +35,10 @@ public class NewGameMenu extends MenuState {
         return "GameMenu";
     }
 
+    /**
+     * Konfiguriert das Menü.
+     * Es gibt eine Zurück-Taste und eine Übersicht über alle Slots.
+     */
     @Override
     void setupMenu() {
         MenuEntry back = new MenuEntry("zurueck");
@@ -68,19 +82,24 @@ public class NewGameMenu extends MenuState {
 
     }
 
+    /**
+     * Zeigt einen einzelnen Slot an.
+     *
+     * @author nico
+     */
     class MenuNewSlot extends MenuEntry {
-        private GlyphLayout fontLayout;
+        private final GlyphLayout fontLayout;
         private BitmapFont font;
         private BitmapFont fontSmall;
 
-        private SaveData saveData;
-        private String detail;
+        private final SaveData saveData;
+        private final String detail;
 
         private int used = 0;
         private int id = 0;
-        private String playerName;
-        private String gender;
-        private String levelName;
+        private final String playerName;
+        private final String gender;
+        private final String levelName;
         private String playTime;
 
         public MenuNewSlot(String label, String detail, SaveData saveData)

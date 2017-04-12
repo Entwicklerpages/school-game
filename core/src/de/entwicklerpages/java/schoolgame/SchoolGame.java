@@ -13,7 +13,20 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import de.entwicklerpages.java.schoolgame.menu.Splashscreen;
 
+/**
+ * Einstiegspunkt in das Spiel
+ *
+ * Das ist die Hauptklasse. Sie verwaltet die Kamera und den Viewport und welcher GameState aktiv ist.
+ *
+ * @see GameState
+ * @see AudioManager
+ */
 public class SchoolGame implements ApplicationListener {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     private OrthographicCamera camera;
     private Viewport viewport;
 
@@ -26,8 +39,14 @@ public class SchoolGame implements ApplicationListener {
 
     private GameState gameState;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     /***
-     * Wird zum Start einmal aufgerufen.
+     * Initialisierung
+     *
+     * Diese Methode wird zum Start einmal aufgerufen.
      * Hier werden alle benötigten Variablen initialisiert.
      */
     @Override
@@ -83,7 +102,7 @@ public class SchoolGame implements ApplicationListener {
      * Wird aufgerufen, wenn sich die Fenstergröße ändert.
      *
      * @param width    Die neue Breite des Fensters
-     * @param height Die neue Höhe des Fensters
+     * @param height   Die neue Höhe des Fensters
      */
     @Override
     public void resize(int width, int height) {
@@ -113,7 +132,10 @@ public class SchoolGame implements ApplicationListener {
 
     /***
      * Wird kurz vor dem Beenden aufgerufen.
-     * Brauchen wir nicht. 
+     * Brauchen wir eigentlich nicht, da wir auch dispose haben.
+     * Allerdings nutzen wir sie, um die Fenstergröße zu speichern und den Cursor wieder frei zu geben.
+     *
+     * @see SchoolGame#dispose()
      */
     @Override
     public void pause() {
@@ -134,7 +156,11 @@ public class SchoolGame implements ApplicationListener {
     }
 
     /***
-     * Hier werden alle Resourcen freigegeben.
+     * Aufräumen
+     *
+     * Hier werden alle Resourcen freigegeben. Dazu wird auch der aktive GameState informiert.
+     *
+     * @see GameState#dispose()
      */
     @Override
     public void dispose() {
@@ -152,16 +178,52 @@ public class SchoolGame implements ApplicationListener {
         Gdx.app.getApplicationLogger().log("INFO", "Quit.");
     }
 
+    /**
+     * Fügt dem Spiel einen InputProcessor hinzu.
+     * Dieser ist in der Lage auf Tastatur Events
+     * zu reagieren.
+     *
+     * Es können mehrere gleichzeitig aktiv sein, da im Hintergrund ein Multiplexer benutzt wird.
+     * Beim wechseln des GameStates werden automatisch alle Prozessoren entfernt.
+     *
+     * @see SchoolGame#setGameState(GameState)
+     * @see SchoolGame#removeInputProccessor(InputProcessor)
+     *
+     * @param inputProcessor Der neue InputProcessor
+     */
     public void addInputProcessor(InputProcessor inputProcessor)
     {
         inputMultiplexer.addProcessor(inputProcessor);
     }
 
+    /**
+     * Entfernt einen InputProcessor.
+     *
+     * Selten benötigt, da die Prozessoren beim Zustandswechsel automatisch entfernt werden.
+     *
+     * @see SchoolGame#addInputProcessor(InputProcessor)
+     *
+     * @param inputProcessor
+     */
     public void removeInputProccessor(InputProcessor inputProcessor)
     {
         inputMultiplexer.removeProcessor(inputProcessor);
     }
 
+    /**
+     * Wechselt den Spielzustand.
+     *
+     * Kann benutzt werden um z.B. zwischen Menüs zu wechseln.
+     *
+     * Dabei wird automatisch
+     * <ul>
+     *     <li>die Kamera zurückgesetzt</li>
+     *     <li>der InputMultiplexer geleert</li>
+     *     <li>der neue Zustand als InputProcessor hinzugefügt, sofern dieser InputProcessor implementiert</li>
+     * </ul>
+     *
+     * @param newState der neue Zustand
+     */
     public void setGameState(GameState newState)
     {
         if (newState == null)
@@ -184,49 +246,120 @@ public class SchoolGame implements ApplicationListener {
         }
     }
 
+    /**
+     * Gibt die Spielkamera zurück
+     *
+     * @return die Kamera
+     */
     public OrthographicCamera getCamera() {
         return camera;
     }
 
+    /**
+     * Gibt Zugriff auf die Spieleinstellungen und Speicherstände
+     *
+     * @return die Einstellungen
+     */
     public Preferences getPreferences()
     {
         return preferences;
     }
 
+    /**
+     * Gibt Zugriff auf den AudioManager um z.B. Sounds abzuspielen.
+     *
+     * @see AudioManager#playSound(AudioManager.SoundKey)
+     * @see AudioManager#selectMusic(String)
+     *
+     * @return der Audio Manager
+     */
     public AudioManager getAudioManager() {
         return audioManager;
     }
 
+    /**
+     * Ermittelt, ob das Spiel als Vollbild angezeigt werden soll.
+     *
+     * @see SchoolGame#setFullscreen(boolean)
+     *
+     * @return true wenn Vollbild, false wenn Fenstermodus
+     */
     public boolean shouldBeFullscreen()
     {
         return preferences.getBoolean("fullscreen", false);
     }
 
+    /**
+     * Speichert, ob das Spiel als Vollbild angezeigt werden soll.
+     *
+     * <b>WARNUNG:</b> Diese Methode ändert nicht die Darstellungsart. Dies muss manuell erledigt werden.
+     *
+     * @see SchoolGame#shouldBeFullscreen()
+     *
+     * @param fullscreen true wenn Vollbild, false wenn Fenstermodus
+     */
     public void setFullscreen(boolean fullscreen)
     {
         preferences.putBoolean("fullscreen", fullscreen);
     }
 
+    /**
+     * Ermittelt, ob das Spiel V-Sync benutzen soll.
+     *
+     * @see SchoolGame#setVSync(boolean)
+     *
+     * @return true wenn V-Sync an, false wenn V-Sync aus
+     */
     public boolean shouldVSync()
     {
         return preferences.getBoolean("vsync", false);
     }
 
+    /**
+     * Speichert, ob das Spiel V-Sync soll.
+     *
+     * <b>WARNUNG:</b> Diese Methode ändert nicht die Darstellungsart. Dies muss manuell erledigt werden.
+     *
+     * @see SchoolGame#shouldVSync()
+     *
+     * @param vsync true wenn V-Sync an, false wenn V-Sync aus
+     */
     public void setVSync(boolean vsync)
     {
         preferences.putBoolean("vsync", vsync);
     }
 
+    /**
+     * Diese Methode gibt Zugriff auf die Standard-Schrift. (Mittlere Größe)
+     *
+     * Die Schriften werden durch SchoolGame verwaltet. Dadurch wird ständiges laden und entladen der Schriften vermieden.
+     *
+     * @return mittlere Schrift
+     */
     public BitmapFont getDefaultFont()
     {
         return defaultFont;
     }
 
+    /**
+     * Diese Methode gibt Zugriff auf die Lange-Texte-Schrift. (Kleine Größe)
+     *
+     * Die Schriften werden durch SchoolGame verwaltet. Dadurch wird ständiges laden und entladen der Schriften vermieden.
+     *
+     * @return kleine Schrift
+     */
     public BitmapFont getLongTextFont()
     {
         return longTextFont;
     }
 
+    /**
+     * Diese Methode gibt Zugriff auf die Titel-Schrift. (Große Größe)
+     *
+     * Die Schriften werden durch SchoolGame verwaltet. Dadurch wird ständiges laden und entladen der Schriften vermieden.
+     *
+     * @return große Schrift
+     */
     public BitmapFont getTitleFont()
     {
         return titleFont;

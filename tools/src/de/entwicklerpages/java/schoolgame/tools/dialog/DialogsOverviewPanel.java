@@ -17,10 +17,10 @@ import de.entwicklerpages.java.schoolgame.game.dialog.TextsType;
 
 public class DialogsOverviewPanel extends BasePanel implements ActionListener {
 
-    private DialogsType dialogs;
-    private DefaultMutableTreeNode dialogsNode;
+    private final DialogsType dialogs;
+    private final DefaultMutableTreeNode dialogsNode;
 
-    private JButton addDialogButton;
+    private final JButton addDialogButton;
 
     public DialogsOverviewPanel(DialogEditor editor, DefaultMutableTreeNode dialogsNode, DialogsType dialogs)
     {

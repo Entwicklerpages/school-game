@@ -16,7 +16,7 @@ public final class CheatManager {
     /**
      * Gehört zum Singleton. Speichert die globale Instanz.
      */
-    private static CheatManager ourInstance = new CheatManager();
+    private static final CheatManager ourInstance = new CheatManager();
 
     /**
      * Gehört zum Singleton. Gibt die globale Instanz zurück.

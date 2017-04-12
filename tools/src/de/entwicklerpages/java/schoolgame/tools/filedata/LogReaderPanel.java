@@ -20,7 +20,7 @@ public class LogReaderPanel extends JPanel implements ActionListener {
     private JTextArea textArea = null;
     private JButton reloadButton = null;
 
-    private File logFile;
+    private final File logFile;
 
 
     public LogReaderPanel(String logFileName)

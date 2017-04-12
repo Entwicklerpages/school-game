@@ -42,6 +42,7 @@ public class AboutPanel extends JPanel {
         add(label);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private JButton createLinkButton(String title, final URI target)
     {
         JButton linkButton = new JButton();

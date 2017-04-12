@@ -25,11 +25,11 @@ public class Player implements ExtendedMapDisplayObject {
     private static final float CAGE_THICKNESS = 20f;
     private static final long LONG_ATTACK_TIME = 1700L;
 
-    private Body playerBody;
+    private final Body playerBody;
 
     private int health;
-    private String name;
-    private boolean male;
+    private final String name;
+    private final boolean male;
 
     private float lastDeltaX = 0;
     private float lastDeltaY = 0;
@@ -42,10 +42,10 @@ public class Player implements ExtendedMapDisplayObject {
     private EntityOrientation orientation;
     private float diagonalSwitchTimer = 0f;
 
-    private TextureAtlas playerAtlas;
-    private TextureRegion playerFront;
-    private TextureRegion playerSide;
-    private TextureRegion playerBack;
+    private final TextureAtlas playerAtlas;
+    private final TextureRegion playerFront;
+    private final TextureRegion playerSide;
+    private final TextureRegion playerBack;
 
     public Player(World world, String name, boolean male) {
         this.health = 100;
