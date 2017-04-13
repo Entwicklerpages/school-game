@@ -93,7 +93,6 @@ public class SchoolGame implements ApplicationListener {
         Gdx.graphics.setVSync(shouldVSync());
 
         audioManager = new AudioManager(this);
-        audioManager.selectMusic("zakarra_menu", 0f); // Nur als Test
 
         Gdx.app.getApplicationLogger().log("INFO", "Finished.");
     }

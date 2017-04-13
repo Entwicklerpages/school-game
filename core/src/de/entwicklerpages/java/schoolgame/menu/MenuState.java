@@ -34,6 +34,8 @@ public abstract class MenuState implements GameState, InputProcessor {
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    private static final String MUSIC_NAME = "skiessi_onion";
+
     private List<MenuEntry> entries;
     private MenuEntry activeEntry;
 
@@ -83,6 +85,8 @@ public abstract class MenuState implements GameState, InputProcessor {
 
         selectSound = game.getAudioManager().createSound("menu", "select.wav", true);
         changeSound = game.getAudioManager().createSound("menu", "change.wav", true);
+
+        game.getAudioManager().selectMusic(MUSIC_NAME, 0f);
 
         FileHandle baseFileHandle = Gdx.files.internal("data/I18n/" + getI18nName());
         localeBundle = I18NBundle.createBundle(baseFileHandle);
