@@ -15,6 +15,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.TimeUtils;
 
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
 public class Player implements ExtendedMapDisplayObject {
@@ -52,6 +53,9 @@ public class Player implements ExtendedMapDisplayObject {
     private final Animation<TextureRegion> playerFrontWalk;
     private final Animation<TextureRegion> playerSideWalk;
     private final Animation<TextureRegion> playerBackWalk;
+
+    private ActionCallback deadCallback = null;
+    private ActionCallback interactionCallback = null;
 
     private float animationTime = 0f;
 
@@ -102,7 +106,7 @@ public class Player implements ExtendedMapDisplayObject {
         if (health > 100)
             health = 100;
 
-        if (health <= 0)
+        if (health < 0 || MathUtils.isZero(health))
         {
             if (cheatManager.isImmortal())
             {
@@ -111,9 +115,21 @@ public class Player implements ExtendedMapDisplayObject {
             }
 
             health = 0;
+            if (deadCallback != null)
+                deadCallback.run();
         }
 
         this.health = health;
+    }
+
+    public void setDeadCallback(ActionCallback deadCallback)
+    {
+        this.deadCallback = deadCallback;
+    }
+
+    public void setInteractionCallback(ActionCallback interactionCallback)
+    {
+        this.interactionCallback = interactionCallback;
     }
 
     public void applyDamage(int damage) {
@@ -339,7 +355,9 @@ public class Player implements ExtendedMapDisplayObject {
         else if (InputHelper.checkKeys(keycode, Input.Keys.E, Input.Keys.ENTER))
         {
             // Interaktion
-            Gdx.app.log("INFO", "Interaction");
+            if (interactionCallback != null)
+                interactionCallback.run();
+
             return true;
         }
 

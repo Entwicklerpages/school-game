@@ -28,6 +28,12 @@ public class WorldObjectManager
     private final SchoolGame game;
     private final World physicalWorld;
 
+    /**
+     * Erstellt einen neuen WorldObjectManager.
+     *
+     * @param game Zugriff auf die Spielinstanz
+     * @param physicalWorld Zugriff auf die Box2D Welt
+     */
     public WorldObjectManager(SchoolGame game, World physicalWorld)
     {
         this.game = game;
@@ -36,7 +42,12 @@ public class WorldObjectManager
         worldObjects = new ArrayList<WorldObject>();
     }
 
-
+    /**
+     * Initialisiert ein Tiled MapObject.
+     *
+     * @param objectId die ID des Objektes
+     * @param object Zugriff auf das Objekt selbst
+     */
     public void initObject(String objectId, MapObject object)
     {
         if (config == null)
@@ -61,11 +72,18 @@ public class WorldObjectManager
         Gdx.app.log("WARNING", "Object '" + objectId + "' is not a part of the level!");
     }
 
+    /**
+     * Sperrt die Konfiguration.
+     */
     public void lockConfig()
     {
         config.lockConfig();
     }
 
+    /**
+     * Schließt die Initialisierung ab.
+     * Sollten Objekte nicht in der TiledMap gefunden worden sein, wird eine Warnung ausgegeben.
+     */
     public void finishInit()
     {
         if (config == null)
@@ -85,6 +103,13 @@ public class WorldObjectManager
         Gdx.app.log("INFO", "World is ready.");
     }
 
+    /**
+     * Erzeugt eine neue Konfiguration.
+     *
+     * @see WorldObjectConfig
+     *
+     * @return die leere Konfiguration
+     */
     public WorldObjectConfig createConfig()
     {
         if (config == null)
@@ -94,36 +119,83 @@ public class WorldObjectManager
         return config;
     }
 
+    /**
+     * Reagiert auf Spielerinteraktionen.
+     *
+     * @param player Zugriff auf die Spielerinstanz (Position)
+     */
+    public void playerInteraction(Player player)
+    {
+
+    }
+
+    /**
+     * Erlaubt vorallem Welt Objekten den Zugriff auf die Spielinstanz.
+     *
+     * @return die Spielinstanz
+     */
     public SchoolGame getGame()
     {
         return game;
     }
 
+    /**
+     * Erlaubt vorallem Welt Objekten den Zugriff auf die Box2D Welt.
+     *
+     * @return die Box2D Welt
+     */
     public World getPhysicalWorld()
     {
         return physicalWorld;
     }
 
+    /**
+     * Speichert die Liste der Welt Objekte, die in der TiledMap vorkommen sollten.
+     *
+     * @author nico
+     */
     public class WorldObjectConfig
     {
         private List<WorldObject> worldObjects = new ArrayList<WorldObject>();
         private boolean locked;
 
+        /**
+         * Privater Konstruktor.
+         * Nur der WorldObjectManager darf Konfigurationen erstellen.
+         *
+         * @see WorldObjectManager#createConfig()
+         */
         private WorldObjectConfig()
         {
             locked = false;
         }
 
+        /**
+         * Ruft die Liste der Weltobjekte ab.
+         * Zugriff nur für den WorldObjectManager.
+         *
+         * @return die Liste der Weltobjekte
+         */
         private List<WorldObject> getWorldObjects()
         {
             return worldObjects;
         }
 
+        /**
+         * Sperrt die Konfiguration.
+         * Nach dem Aufruf können keine Objekte mehr hinzugefügt werden.
+         */
         private void lockConfig()
         {
             locked = true;
         }
 
+        /**
+         * Fügt ein Objekt zur Welt hinzu.
+         * Es muss auch in der TiledMap existieren.
+         *
+         * @param worldObject das neue Objekt
+         */
         public void registerObject(WorldObject worldObject)
         {
             if (locked)

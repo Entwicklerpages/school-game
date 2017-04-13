@@ -24,14 +24,6 @@ public abstract class WorldObject
     {
     }
 
-    public void onAttack()
-    {
-    }
-
-    public void onInteract()
-    {
-    }
-
     public final String getObjectId()
     {
         return objectId;

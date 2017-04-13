@@ -217,6 +217,22 @@ public abstract class Level implements Disposable {
         camera = game.getCamera();
 
         player = new Player(physicalWorld, saveData.getPlayerName(), saveData.isMale());
+        player.setDeadCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                levelState = LevelState.DEAD;
+            }
+        });
+        player.setInteractionCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                worldObjectManager.playerInteraction(player);
+            }
+        });
 
         localeBundle = I18NBundle.createBundle(Gdx.files.internal("data/I18n/Game"));
 
@@ -695,7 +711,8 @@ public abstract class Level implements Disposable {
         INTRO,
         PLAYING,
         PAUSE,
-        OUTRO
+        OUTRO,
+        DEAD
     }
 
     /**
