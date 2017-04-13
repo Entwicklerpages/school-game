@@ -19,6 +19,10 @@ import de.entwicklerpages.java.schoolgame.game.PhysicsTileMapBuilder;
 import de.entwicklerpages.java.schoolgame.game.Player;
 
 /**
+ * Trigger Objekt
+ *
+ * Generischer, unischtbarer Trigger.
+ *
  * @author nico
  */
 public class Trigger extends WorldObject implements PhysicsListener
@@ -28,17 +32,35 @@ public class Trigger extends WorldObject implements PhysicsListener
 
     protected Body trigger;
 
+    /**
+     * Standardkonstruktor.
+     *
+     * @param objectId die ID des Objektes
+     */
     public Trigger(String objectId)
     {
         super(objectId);
     }
 
+    /**
+     * Konstruktor.
+     *
+     * @param objectId die ID des Objektes
+     * @param triggerEntered das Callback für das Betreten des Triggers
+     */
     public Trigger(String objectId, ActionCallback triggerEntered)
     {
         super(objectId);
         this.triggerEntered = triggerEntered;
     }
 
+    /**
+     * Konstruktor.
+     *
+     * @param objectId die ID des Objektes
+     * @param triggerEntered das Callback für das Betreten des Triggers
+     * @param triggerLeaved das Callback für das Verlassen des Triggers
+     */
     public Trigger(String objectId, ActionCallback triggerEntered, ActionCallback triggerLeaved)
     {
         super(objectId);
@@ -46,6 +68,9 @@ public class Trigger extends WorldObject implements PhysicsListener
         this.triggerLeaved = triggerLeaved;
     }
 
+    /**
+     * Erstellt einen Box2D Körper und macht ihm zum Sensor.
+     */
     @Override
     public void onInit()
     {
@@ -88,6 +113,12 @@ public class Trigger extends WorldObject implements PhysicsListener
         shape.dispose();
     }
 
+    /**
+     * Wird automatisch aufgerufen, wenn dieser Trigger mit dem Spieler in Berührung kommt.
+     *
+     * @param other der Körper mit dem die Kollision statt fand
+     * @param otherUserData ein optionales User Data Objekt des Kollisionspartners
+     */
     @Override
     public void beginContact(Fixture other, Object otherUserData)
     {
@@ -97,6 +128,12 @@ public class Trigger extends WorldObject implements PhysicsListener
         }
     }
 
+    /**
+     * Wird automatisch aufgerufen, wenn dieser Trigger nicht mehr vom Spieler berührt wird.
+     *
+     * @param other der Körper mit dem die Kollision vorher statt fand
+     * @param otherUserData ein optionales User Data Objekt des Kollisionspartners
+     */
     @Override
     public void endContact(Fixture other, Object otherUserData)
     {
@@ -106,21 +143,21 @@ public class Trigger extends WorldObject implements PhysicsListener
         }
     }
 
-    public ActionCallback getTriggerEntered()
-    {
-        return triggerEntered;
-    }
-
+    /**
+     * Setzt das Callback für das Betreten des Triggers.
+     *
+     * @param triggerEntered das Callback
+     */
     public void setTriggerEntered(ActionCallback triggerEntered)
     {
         this.triggerEntered = triggerEntered;
     }
 
-    public ActionCallback getTriggerLeaved()
-    {
-        return triggerLeaved;
-    }
-
+    /**
+     * Setzt das Callback für das Verlssen des Triggers.
+     *
+     * @param triggerLeaved das Callback
+     */
     public void setTriggerLeaved(ActionCallback triggerLeaved)
     {
         this.triggerLeaved = triggerLeaved;

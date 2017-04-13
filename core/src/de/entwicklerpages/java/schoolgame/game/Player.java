@@ -66,7 +66,7 @@ public class Player implements ExtendedMapDisplayObject {
 
     /**
      * Initialisierung.
-     * 
+     *
      * @param world Zugriff auf die Box2D Welt
      * @param name der Name des Spielers
      * @param male ist der Spieler männlich oder weiblich?
