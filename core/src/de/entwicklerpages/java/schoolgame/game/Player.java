@@ -27,6 +27,7 @@ public class Player implements ExtendedMapDisplayObject {
     private static final long LONG_ATTACK_TIME = 1700L;
 
     private final Body playerBody;
+    private final CheatManager cheatManager;
 
     private int health;
     private final String name;
@@ -59,6 +60,8 @@ public class Player implements ExtendedMapDisplayObject {
         this.name = name;
         this.male = male;
         this.orientation = EntityOrientation.LOOK_FORWARD;
+
+        this.cheatManager = CheatManager.getInstance();
 
         String player = "player_" + (this.male ? "m" : "f");
 
@@ -98,14 +101,24 @@ public class Player implements ExtendedMapDisplayObject {
     public void setHealth(int health) {
         if (health > 100)
             health = 100;
-        if (health < 0)
+
+        if (health <= 0)
+        {
+            if (cheatManager.isImmortal())
+            {
+                this.health = 100;
+                return;
+            }
+
             health = 0;
+        }
 
         this.health = health;
     }
 
     public void applyDamage(int damage) {
-        this.setHealth(health - damage);
+        if (!cheatManager.isImmortal())
+            this.setHealth(health - damage);
     }
 
     public void heal(int healAmount) {
@@ -226,6 +239,12 @@ public class Player implements ExtendedMapDisplayObject {
         {
             deltaX *= RUN_FACTOR;
             deltaY *= RUN_FACTOR;
+        }
+
+        if (cheatManager.isSuperFast())
+        {
+            deltaX *= 2.4f;
+            deltaY *= 2.4f;
         }
 
         if (!MathUtils.isZero(deltaX) && !MathUtils.isZero(deltaY))
