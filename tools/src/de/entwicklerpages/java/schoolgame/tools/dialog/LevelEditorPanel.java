@@ -17,7 +17,7 @@ import de.entwicklerpages.java.schoolgame.game.dialog.Level;
 
 public class LevelEditorPanel extends BasePanel implements ActionListener {
 
-    private Level level;
+    private final Level level;
 
     private JTextField atlasTextField;
     private JButton saveButton;

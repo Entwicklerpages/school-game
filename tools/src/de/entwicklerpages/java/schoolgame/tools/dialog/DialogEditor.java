@@ -30,6 +30,7 @@ import de.entwicklerpages.java.schoolgame.game.dialog.DialogType;
 import de.entwicklerpages.java.schoolgame.game.dialog.DialogsType;
 import de.entwicklerpages.java.schoolgame.game.dialog.Level;
 import de.entwicklerpages.java.schoolgame.game.dialog.StatementType;
+import de.entwicklerpages.java.schoolgame.tools.PathHelper;
 
 public class DialogEditor extends JPanel implements ActionListener {
 
@@ -44,10 +45,10 @@ public class DialogEditor extends JPanel implements ActionListener {
     private JButton saveButton = null;
     private JButton loadButton = null;
 
-    private JPanel containerPanel = new JPanel(new BorderLayout());
-    private JPanel emptyPanel = new JPanel();
+    private final JPanel containerPanel = new JPanel(new BorderLayout());
+    private final JPanel emptyPanel = new JPanel();
     private JPanel createLevelPanel = null;
-    private FileFilter filter = new FileNameExtensionFilter("Dialog XML Datei", "xml");
+    private final FileFilter filter = new FileNameExtensionFilter("Dialog XML Datei", "xml");
 
     private DefaultMutableTreeNode root = null;
 
@@ -256,7 +257,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
     private void loadLevel()
     {
-        JFileChooser chooser = new JFileChooser(lastDir == null ? DialogDataHelper.getAssetDirIfFound() : lastDir);
+        JFileChooser chooser = new JFileChooser(lastDir == null ? PathHelper.getDialogDirIfFound() : lastDir);
         chooser.addChoosableFileFilter(filter);
         chooser.setAcceptAllFileFilterUsed(true);
         chooser.setMultiSelectionEnabled(false);
@@ -293,7 +294,7 @@ public class DialogEditor extends JPanel implements ActionListener {
             return;
         }
 
-        JFileChooser chooser = new JFileChooser(lastDir == null ? DialogDataHelper.getAssetDirIfFound() : lastDir);
+        JFileChooser chooser = new JFileChooser(lastDir == null ? PathHelper.getDialogDirIfFound() : lastDir);
         chooser.addChoosableFileFilter(filter);
         chooser.setAcceptAllFileFilterUsed(true);
         chooser.setMultiSelectionEnabled(false);
@@ -382,7 +383,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
     public class CharacterNode extends NodeData
     {
-        protected CharacterType character;
+        protected final CharacterType character;
 
         public CharacterNode(CharacterType character) {
             this.character = character;
@@ -405,7 +406,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
     public class DialogNode extends NodeData
     {
-        protected DialogType dialog;
+        protected final DialogType dialog;
 
         public DialogNode(DialogType dialog) {
             this.dialog = dialog;
@@ -428,7 +429,7 @@ public class DialogEditor extends JPanel implements ActionListener {
 
     public class StatementNode extends DialogNode
     {
-        protected StatementType statement;
+        protected final StatementType statement;
 
         public StatementNode(DialogType dialog, StatementType statement) {
             super(dialog);

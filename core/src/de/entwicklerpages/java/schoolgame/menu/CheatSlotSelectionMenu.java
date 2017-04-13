@@ -5,8 +5,20 @@ import com.badlogic.gdx.graphics.Color;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
-
+/**
+ * Erlaubt es einem ENTWICKLER einen Slot auszusuchen, der im Anschluss
+ * auf ein beliebiges Level gesetzt werden kann.
+ *
+ * @see CheatLevelSelection
+ *
+ * @author nico
+ */
 public class CheatSlotSelectionMenu extends LoadGameMenu {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public String getStateName() {
         return "CHEAT_SLOT_SELECTION_MENU";
@@ -17,6 +29,10 @@ public class CheatSlotSelectionMenu extends LoadGameMenu {
         return "Cheats";
     }
 
+    /**
+     * Erstellt die entsprechende Menüstruktur und legt die Callbacks fest.
+     *
+     */
     @Override
     void setupMenu() {
         MenuEntry back = new MenuEntry("zurueck");

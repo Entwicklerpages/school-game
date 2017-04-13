@@ -1,34 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="10">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="33">
  <tileset firstgid="1" source="../tilemap/test.tsx"/>
  <layer name="Hintergrund" width="80" height="50">
   <data encoding="base64" compression="zlib">
-   eJztm9tOwzAMQAOTuE0Cxh0Gk2DsAcr+//dwNSIsK0nttGnS1A/nYVPaZqeu46TZxhizScglcAVcJ75Orai/PP5OgNM/zgr4Hbl4AB6Bp0jvc4/dI+AYWKg/8wy8CFgD58AFsBRey8ZtV+za+8NBeg+H5h34ELDt4Y+LPT+HVH2Q+vsEvoFdQf7ugBsP94X525LPJfgLnT91H2rzR8es0vz9mMP4sC/I36v5HyfeyDVL8+eD5sXc48fU/NG4HMPfynSPF1Pxl+P5DcVkaf6+zOH55NKM0HdcP/vGi5R9wHN0Ti2/YLbz5fJUsRbyldIfnmNyavkls91YtX9uf3iO6crFlFtmO9dxY/lbkWuWkv9KxOXP10b9hf3hGnrMHDwGeO1r7fjOtfYl9Vf6+ksfcO3omz/j+cuWeV5JLk6Vg3P5o/Vkg9py/c0Fl79QW/Xn92fnyb6cp/7C/jjrD+pP7o+uPeTuc0mk9mdrIW7dMzVS+mvd7SOOmxIxa18x98b6c9XmtcZmX/B71YZ8pzmV7w/7aePdvoex8xpJTM8Jlz/rUL3F+1Nk/tr6W8eIeH8ag3HgsWJuMYj36VIk+3ZDMehau60FvM+UItl3imOQ1tB4n05tz/dQ/nAM+vY34fq6FlL48+1rqs3d0P58c+wavVnwPnGK9D8PiqIoiqIoSje/zO3AzQ==
+   eJztm8luAyEMhmkjdYvUNm3TPZGqtId0ef/Xqw9BgyzMmEwMYeY/fIdIhOUD2YCYtXNubcg1cUPcGrczVuCvjr8z4nzHxRGMoxaPxBPxvKf3qa/dE+KUmMFfkhfilfFGXBJXxDyzPr9u+9aunx8NuXNYkg/ik/je8UVsBvjT4uvXYNWHQ/nbRH6X8vdA3Aks4a/XX6p+6z4cyt+v62LfX0V/PGe14G/rutjn+Sno7911eWLF2mzBX876sKg/lS/gT2bh+vMF/A1rE/5kwv2zlC8s+xCe0TV7+ZmynBTLreYn5cvSX3jG1Ozl58pypfb+tf2FZ8xYLObcK8vF/lfK34K12XL8sybmTyoDf2l/4R66ZAwuQSxPpvKQ9q5pLPcvOePkcd3j71CWGWPNicVWMbiWPz72MN63vFZK+UuVhT/ZnxTnw/MD/Mn+JLzXFfzt5W8suRL+jg/4G0bumbnlvRoAAAAAAJAJ3+lypvxuV0v4zpQzhXen8Ad/LQN/wwjfiXNyv3kAAAAAAAD9/ANtJ7Jj
+  </data>
+ </layer>
+ <layer name="Dekoration" width="80" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2jESg0AIhWFvktLOeP/TWWTS6SQqLu/B//U6sAusOk4T4GsdfB36WLIDGCwq33fQfQDEUD3vzsSlmgM+qs39Cvm8sgMw9d37OTUKuOjQZ0+ev0d95jSDz65Pt/dLAH05zXKM5V4bVb5NVMkjS+T6ZexFdh9Sf7iLGgLuyT4HcOzq3vC9SYNDbznEWNU/a88zDoAoT80TlTmlEkekvXOiYp7wFv0s6favhVpP8k8TflGr2ZFU3n0z41BZgwwdar9DjgC0bcaKCPk=
   </data>
  </layer>
  <objectgroup name="Objekte">
   <object id="3" name="Spielerstart" type="Start" x="1166.67" y="752">
    <ellipse/>
   </object>
-  <object id="4" name="Chaos Trigger" type="Welt" x="374.667" y="593.333" width="406.667" height="313.333"/>
-  <object id="5" name="Intro Dialog" type="Welt" x="944" y="662.667" width="57.3333" height="49.3333">
-   <properties>
-    <property name="sequence" value="Intro"/>
-   </properties>
-  </object>
-  <object id="7" name="Storm Trigger" type="Welt" x="637.333" y="1176" width="165.333" height="165.333">
+  <object id="5" name="Intro Dialog" type="Welt" x="946.667" y="661.334" width="57.3333" height="49.3333"/>
+  <object id="7" name="Chaos Trigger" type="Welt" x="586.666" y="173.333" width="165.333" height="165.333">
    <ellipse/>
-  </object>
-  <object id="8" name="Wobbel Trigger" type="Welt" x="1496" y="308">
-   <polygon points="0,0 -93.3333,114.667 49.3333,334.667 190.667,-44 292,296 300,-188 22.6667,-252 -246.667,-162.667"/>
   </object>
   <object id="9" name="Gegener Pfad" type="Welt" x="1817.33" y="784">
    <polyline points="0,0 -264,10.6667 -508,225.333 -760,354.667 -848,445.333 -865.333,626.667 -692,665.333 -486.667,573.333 -382.667,400 -313.333,348 -268,385.333 -265.333,504 -218.667,616 -117.333,717.333"/>
   </object>
+  <object id="32" name="Storm Trigger" type="Welt" x="453.333" y="980">
+   <polygon points="-24,-6.66667 140,-292 233.333,-132 233.333,90.6667 40,256"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Kollisionen">
+  <object id="12" x="1005" y="653.333" width="133.333" height="69"/>
+  <object id="13" x="845.667" y="653.333" width="100.667" height="127.667"/>
+  <object id="14" x="845.333" y="781.667" width="294.333" height="165.333"/>
+  <object id="15" x="1139" y="813" width="96.3333" height="134.667"/>
+  <object id="16" x="784.333" y="-1" width="63.6667" height="113"/>
+  <object id="18" x="112.667" y="496" width="285.788" height="64"/>
+  <object id="19" x="1.3333" y="498" width="78.6667" height="61.3333"/>
+  <object id="20" x="1041" y="1201" width="223" height="159.25"/>
+  <object id="21" x="1232.18" y="80.5455" width="95.6364" height="95.4545"/>
+  <object id="22" x="1712" y="303.333">
+   <polygon points="0,0 64,-0.666667 64.6667,258.667 -0.666667,258.667 0.666667,96.6667 -162,98 -161.333,34 0,30.6667"/>
+  </object>
+  <object id="23" x="1551.33" y="175.333" width="64" height="166"/>
+  <object id="24" x="1614" y="176" width="292" height="63.3333"/>
+  <object id="25" x="1840" y="236.667" width="66" height="453.333"/>
+  <object id="26" x="1550.33" y="463" width="99" height="226.333"/>
+  <object id="27" x="1646" y="623.333" width="197.333" height="65"/>
+  <object id="28" x="1138" y="654" width="97.5" height="36.5"/>
+  <object id="29" x="1197" y="687.5" width="37" height="128"/>
+  <object id="30" x="783.5" y="143.5" width="65.5" height="417.5"/>
+  <object id="31" x="433.495" y="495.875" width="350.631" height="65.125"/>
  </objectgroup>
  <layer name="Vordergrund" width="80" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt2jESg0AIhWFvktLOeP/TWWTS6SQqLu/B//U6sAusOk4T4GsdfB36WLIDGCwq33fQfQDEUD3vzsSlmgM+qs39Cvm8sgMw9d37OTUKuOjQZ0+ev0d95jSDz65Pt/dLAH05zXKM5V4bVb5NVMkjS+T6ZexFdh9Sf7iLGgLuyT4HcOzq3vC9SYNDbznEWNU/a88zDoAoT80TlTmlEkekvXOiYp7wFv0s6favhVpP8k8TflGr2ZFU3n0z41BZgwwdar9DjgC0bcaKCPk=
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
   </data>
  </layer>
 </map>

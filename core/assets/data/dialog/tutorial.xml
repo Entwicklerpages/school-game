@@ -20,6 +20,28 @@
                 </texts>
             </statement>
         </dialog>
+        <dialog name="bewegen">
+            <statement talking="tutorial">
+                <display position="right">tutorial</display>
+                <texts>
+                    <text>Okay, fangen wir einfach an.</text>
+                    <text>Du kannst dich entwerder mit den Pfeiltasten oder |br| mit W A S und D bewegen.</text>
+                    <text>Wenn du dabei Shift gedrückt hälst, bewegst du dich schneller!</text>
+                    <text>Probier es gleich aus!|br|Verlass dieses Gelände.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="bewegen_fertig">
+            <statement talking="tutorial">
+                <display position="right">tutorial</display>
+                <sound>pling.wav</sound>
+                <texts>
+                    <text>Super #{PLAYER}!</text>
+                    <text>Du hast es geschafft!</text>
+                    <text>Wende dein neues Wissen gleich an und geh weiter nach rechts.</text>
+                </texts>
+            </statement>
+        </dialog>
         <dialog name="outro">
             <statement talking="tutorial">
                 <display position="right">tutorial</display>

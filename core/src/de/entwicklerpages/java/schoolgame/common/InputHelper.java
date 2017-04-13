@@ -7,8 +7,22 @@ package de.entwicklerpages.java.schoolgame.common;
  */
 public final class InputHelper
 {
+    /**
+     * Privater Konstruktor.
+     *
+     * Verhindert, das unsinniger weise ein Objekt dieser Klasse erstellt wird.
+     */
     private InputHelper() {}
 
+    /**
+     * Prüft ob EINER der übergebenen Key Codes dem gedrücktem entspricht.
+     *
+     * Logisches ODER.
+     *
+     * @param keycode der Keycode der gedrückten Tase
+     * @param keys die Tasten die abgefragt werden sollen
+     * @return true wenn eine der Tasten gedrückt wurde, sonst false
+     */
     public static boolean checkKeys(int keycode, int... keys)
     {
         for (int key : keys)

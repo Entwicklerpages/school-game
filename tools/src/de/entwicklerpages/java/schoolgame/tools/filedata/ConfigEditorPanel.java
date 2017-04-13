@@ -1,7 +1,6 @@
 package de.entwicklerpages.java.schoolgame.tools.filedata;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +10,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,7 +23,7 @@ public class ConfigEditorPanel extends JPanel implements ActionListener {
     private JButton reloadButton = null;
     private JButton saveButton = null;
 
-    private File configFile;
+    private final File configFile;
 
 
     public ConfigEditorPanel()

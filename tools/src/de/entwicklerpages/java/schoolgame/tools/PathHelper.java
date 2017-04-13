@@ -7,7 +7,7 @@ public final class PathHelper {
 
     private final static String GAME_NAME = "schoolgame";
 
-    private PathHelper() {};
+    private PathHelper() {}
 
     public static String getBasePath()
     {
@@ -38,5 +38,43 @@ public final class PathHelper {
         }
 
         return base;
+    }
+
+    public static File getAssetDirIfFound()
+    {
+        File workingDir = new File(System.getProperty("user.dir"));
+
+        File assetDir = new File(workingDir.getAbsolutePath() + File.separator + "core" + File.separator + "assets" + File.separator + "data");
+
+        if (assetDir.exists() && assetDir.isDirectory())
+        {
+            return assetDir;
+        }
+
+        return workingDir;
+    }
+
+    public static File getDialogDirIfFound()
+    {
+        File dialogAssetDir = new File(getAssetDirIfFound().getAbsolutePath() + File.separator + "dialog");
+
+        if (dialogAssetDir.exists() && dialogAssetDir.isDirectory())
+        {
+            return dialogAssetDir;
+        }
+
+        return getAssetDirIfFound();
+    }
+
+    public static File getMapDirIfFound()
+    {
+        File mapAssetDir = new File(getAssetDirIfFound().getAbsolutePath() + File.separator + "maps");
+
+        if (mapAssetDir.exists() && mapAssetDir.isDirectory())
+        {
+            return mapAssetDir;
+        }
+
+        return getAssetDirIfFound();
     }
 }

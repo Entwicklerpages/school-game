@@ -17,13 +17,13 @@ public class CutScene {
     /**
      * Der Name des zu verwendeneden Hintergrundbildes
      */
-    private String cutSceneImage;
+    private final String cutSceneImage;
 
     /**
      * Die ID des Dialogs, der angezeigt werden soll.
      * Muss in der Dialogdatei des Levels existieren.
      */
-    private String dialogId;
+    private final String dialogId;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// METHODEN /////////////////////////////////////////////////

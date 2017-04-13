@@ -13,6 +13,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
 import de.entwicklerpages.java.schoolgame.game.dialog.Level;
+import de.entwicklerpages.java.schoolgame.tools.PathHelper;
 
 public final class DialogDataHelper {
     private DialogDataHelper() {}
@@ -46,23 +47,9 @@ public final class DialogDataHelper {
         marshaller.marshal(root, dialogFile);
     }
 
-    public static File getAssetDirIfFound()
-    {
-        File workingDir = new File(System.getProperty("user.dir"));
-
-        File dialogAssetDir = new File(workingDir.getAbsolutePath() + File.separator + "core" + File.separator + "assets" + File.separator + "data" + File.separator + "dialog");
-
-        if (dialogAssetDir.exists() && dialogAssetDir.isDirectory())
-        {
-            return dialogAssetDir;
-        }
-
-        return workingDir;
-    }
-
     private static Schema getSchema() throws SAXException
     {
-        File schemaFile = new File(getAssetDirIfFound().getAbsolutePath() + File.separator + "dialog.xsd");
+        File schemaFile = new File(PathHelper.getDialogDirIfFound().getAbsolutePath() + File.separator + "dialog.xsd");
 
         if (!schemaFile.exists() || !schemaFile.canRead())
             return null;
