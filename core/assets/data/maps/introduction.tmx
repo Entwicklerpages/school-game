@@ -12,7 +12,7 @@
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="10" name="Spielerstart" type="Start" x="283" y="282" width="10" height="10">
+  <object id="10" name="Spielerstart" type="Start" x="380.948" y="292" width="20.1047" height="20">
    <ellipse/>
   </object>
  </objectgroup>

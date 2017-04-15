@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.objects.*;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -585,7 +586,8 @@ public abstract class Level implements Disposable {
                 if (type.equals(LevelConstants.TMX_TYPE_START_POSITION) && tileObject instanceof EllipseMapObject)
                 {
                     EllipseMapObject start = (EllipseMapObject) tileObject;
-                    player.setPosition(start.getEllipse().x, start.getEllipse().y);
+                    Ellipse startEllipse = start.getEllipse();
+                    player.setPosition(startEllipse.x + startEllipse.width / 2f, startEllipse.y + startEllipse.height / 2f);
                 }
                 else if (type.equals(LevelConstants.TMX_TYPE_WORLD_OBJECT)) {
 
