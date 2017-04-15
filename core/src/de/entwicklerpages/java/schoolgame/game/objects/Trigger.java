@@ -76,20 +76,7 @@ public class Trigger extends WorldObject implements PhysicsListener
     {
         World world = worldObjectManager.getPhysicalWorld();
 
-        Shape shape = null;
-
-        if (rawObject instanceof RectangleMapObject)
-        {
-            shape = PhysicsTileMapBuilder.createRectangle((RectangleMapObject) rawObject);
-        }
-        else if (rawObject instanceof PolygonMapObject)
-        {
-            shape = PhysicsTileMapBuilder.createPolygon((PolygonMapObject) rawObject);
-        }
-        else if (rawObject instanceof EllipseMapObject)
-        {
-            shape = PhysicsTileMapBuilder.createCircle((EllipseMapObject) rawObject);
-        }
+        Shape shape = PhysicsTileMapBuilder.createShape(rawObject, PhysicsTileMapBuilder.TYPE_TRIGGER);
 
         if (shape == null)
         {

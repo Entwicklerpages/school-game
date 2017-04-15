@@ -29,6 +29,15 @@ import com.badlogic.gdx.physics.box2d.World;
  */
 public final class PhysicsTileMapBuilder
 {
+    public static final short TYPE_ALL                  = 0x0FFF;
+    public static final short TYPE_RECTANGLE            = 0x0001;
+    public static final short TYPE_POLYGON              = 0x0002;
+    public static final short TYPE_CIRCLE               = 0x0004;
+    public static final short TYPE_POLYLINE             = 0x0008;
+
+    public static final short TYPE_COLLISION            = TYPE_RECTANGLE | TYPE_POLYGON | TYPE_POLYLINE;
+    public static final short TYPE_TRIGGER              = TYPE_RECTANGLE | TYPE_POLYGON | TYPE_CIRCLE;
+
     /**
      * Privater Konstruktor.
      *
@@ -52,24 +61,7 @@ public final class PhysicsTileMapBuilder
                     tileObject instanceof EllipseMapObject)
                 continue;
 
-            Shape shape;
-
-            if (tileObject instanceof RectangleMapObject)
-            {
-                shape = createRectangle((RectangleMapObject) tileObject);
-            }
-            else if (tileObject instanceof PolygonMapObject)
-            {
-                shape = createPolygon((PolygonMapObject) tileObject);
-            }
-            else if (tileObject instanceof PolylineMapObject)
-            {
-                shape = createPolyline((PolylineMapObject) tileObject);
-            }
-            else
-            {
-                continue;
-            }
+            Shape shape = createShape(tileObject, TYPE_COLLISION);
 
             if (shape == null)
                 continue;
@@ -88,6 +80,37 @@ public final class PhysicsTileMapBuilder
 
             shape.dispose();
         }
+    }
+
+    /**
+     * Erzeugt eine Form aus einem MapObject.
+     *
+     * @param mapObject das MapObject
+     * @param mask Bitmaske, um Shape Typen auszuschließen
+     * @return die entsprechende Form
+     */
+    public static Shape createShape(MapObject mapObject, short mask)
+    {
+        Shape shape = null;
+
+        if (mapObject instanceof RectangleMapObject && (mask & TYPE_RECTANGLE) != 0)
+        {
+            shape = PhysicsTileMapBuilder.createRectangle((RectangleMapObject) mapObject);
+        }
+        else if (mapObject instanceof PolygonMapObject && (mask & TYPE_POLYGON) != 0)
+        {
+            shape = PhysicsTileMapBuilder.createPolygon((PolygonMapObject) mapObject);
+        }
+        else if (mapObject instanceof EllipseMapObject && (mask & TYPE_CIRCLE) != 0)
+        {
+            shape = PhysicsTileMapBuilder.createCircle((EllipseMapObject) mapObject);
+        }
+        else if (mapObject instanceof PolylineMapObject && (mask & TYPE_POLYLINE) != 0)
+        {
+            shape = createPolyline((PolylineMapObject) mapObject);
+        }
+
+        return shape;
     }
 
     /**
