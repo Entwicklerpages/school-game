@@ -308,6 +308,9 @@ public abstract class Level implements Disposable {
         if (tileMapRenderer != null)
             tileMapRenderer.dispose();
 
+        if (worldObjectManager != null)
+            worldObjectManager.dispose();
+
         if (player != null)
             player.dispose();
 

@@ -8,6 +8,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -21,7 +22,8 @@ import de.entwicklerpages.java.schoolgame.menu.Splashscreen;
  * @see GameState
  * @see AudioManager
  */
-public class SchoolGame implements ApplicationListener {
+public class SchoolGame implements ApplicationListener
+{
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////

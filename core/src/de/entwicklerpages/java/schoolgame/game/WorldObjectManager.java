@@ -3,12 +3,14 @@ package de.entwicklerpages.java.schoolgame.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Disposable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
-import de.entwicklerpages.java.schoolgame.game.objects.WorldObject;
+import de.entwicklerpages.java.schoolgame.game.objects.*;
 
 /**
  * Verwaltet alle Ingame Objekte wie
@@ -21,10 +23,11 @@ import de.entwicklerpages.java.schoolgame.game.objects.WorldObject;
  *
  * @author nico
  */
-public class WorldObjectManager
+public class WorldObjectManager implements Disposable
 {
     private WorldObjectConfig config;
     private List<WorldObject> worldObjects;
+    private Array<Interactable> interactionObjects;
     private final SchoolGame game;
     private final World physicalWorld;
 
@@ -40,6 +43,7 @@ public class WorldObjectManager
         this.physicalWorld = physicalWorld;
 
         worldObjects = new ArrayList<WorldObject>();
+        interactionObjects = new Array<Interactable>(false, 3);
     }
 
     /**
@@ -104,6 +108,20 @@ public class WorldObjectManager
     }
 
     /**
+     * Aufräumarbeiten.
+     *
+     * Alle Objekte werden informiert, das sie ihre Resourcen aufräumen sollen.
+     */
+    @Override
+    public void dispose()
+    {
+        for (WorldObject object : worldObjects)
+        {
+            object.onDispose();
+        }
+    }
+
+    /**
      * Erzeugt eine neue Konfiguration.
      *
      * @see WorldObjectConfig
@@ -126,7 +144,30 @@ public class WorldObjectManager
      */
     public void playerInteraction(Player player)
     {
+        Interactable mostImportant = null;
+        int highestPriority = 0;
 
+        for (Interactable interaction : interactionObjects)
+        {
+            if (interaction.getInteractionPriority() >= highestPriority)
+            {
+                mostImportant = interaction;
+                highestPriority = interaction.getInteractionPriority();
+            }
+        }
+
+        if (mostImportant != null)
+            mostImportant.interaction(player);
+    }
+
+    public void registerForInteraction(Interactable interactable)
+    {
+        interactionObjects.add(interactable);
+    }
+
+    public void unregisterForInteraction(Interactable interactable)
+    {
+        interactionObjects.removeValue(interactable, true);
     }
 
     /**

@@ -35,6 +35,15 @@ public abstract class WorldObject
     }
 
     /**
+     * Wird aufgerufen, wenn das Objekt entfernt wird.
+     *
+     * Macht selbst nichts, kann aber überschrieben werden.
+     */
+    public void onDispose()
+    {
+    }
+
+    /**
      * Gibt die Objekt ID zurück.
      *
      * @return die Objekt ID
