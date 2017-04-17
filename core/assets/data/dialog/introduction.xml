@@ -16,8 +16,21 @@
             <title>Fee</title>
             <image>yes</image>
         </character>
+        <character>
+            <id>schild</id>
+            <title>Schild</title>
+            <image>no</image>
+        </character>
     </characters>
     <dialogs>
+        <dialog name="schild">
+            <statement talking="schild">
+                <display position="right">schild</display>
+                <texts>
+                    <text>Ich bin kein Schild.</text>
+                </texts>
+            </statement>
+        </dialog>
         <dialog name="kiosk1">
             <statement talking="peter">
                 <player position="left" />
