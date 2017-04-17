@@ -15,8 +15,15 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.TimeUtils;
 
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
+/**
+ * Spielerklasse.
+ * Ist für die Steuerung und Darstellung des Spielercharakters zuständig.
+ *
+ * @author nico
+ */
 public class Player implements ExtendedMapDisplayObject {
 
     private static final float SPEED = 3.25f;
@@ -27,6 +34,7 @@ public class Player implements ExtendedMapDisplayObject {
     private static final long LONG_ATTACK_TIME = 1700L;
 
     private final Body playerBody;
+    private final CheatManager cheatManager;
 
     private int health;
     private final String name;
@@ -35,8 +43,7 @@ public class Player implements ExtendedMapDisplayObject {
     private float lastDeltaX = 0;
     private float lastDeltaY = 0;
 
-    private float maxX;
-    private float maxY;
+    private boolean cageBuilt = false;
 
     private long attackStart = -1;
 
@@ -52,13 +59,25 @@ public class Player implements ExtendedMapDisplayObject {
     private final Animation<TextureRegion> playerSideWalk;
     private final Animation<TextureRegion> playerBackWalk;
 
+    private ActionCallback deadCallback = null;
+    private ActionCallback interactionCallback = null;
+
     private float animationTime = 0f;
 
+    /**
+     * Initialisierung.
+     *
+     * @param world Zugriff auf die Box2D Welt
+     * @param name der Name des Spielers
+     * @param male ist der Spieler männlich oder weiblich?
+     */
     public Player(World world, String name, boolean male) {
         this.health = 100;
         this.name = name;
         this.male = male;
         this.orientation = EntityOrientation.LOOK_FORWARD;
+
+        this.cheatManager = CheatManager.getInstance();
 
         String player = "player_" + (this.male ? "m" : "f");
 
@@ -91,66 +110,170 @@ public class Player implements ExtendedMapDisplayObject {
         playerBox.dispose();
     }
 
+    /**
+     * Ruft die Anzahl der Lebenspunkte ab.
+     *
+     * @return die Anzahl der Lebenspunkte
+     */
     public int getHealth() {
         return health;
     }
 
+    /**
+     * Setzt die Anzahl der Lebenspunkte direkt.
+     * Sollte so ehr selten benutzt werden.
+     *
+     * @see Player#applyDamage(int)
+     * @see Player#heal(int)
+     *
+     * @param health die neue Anzahl Lebenspunkte
+     */
     public void setHealth(int health) {
         if (health > 100)
             health = 100;
-        if (health < 0)
+
+        if (health < 0 || MathUtils.isZero(health))
+        {
+            if (cheatManager.isImmortal())
+            {
+                this.health = 100;
+                return;
+            }
+
             health = 0;
+            if (deadCallback != null)
+                deadCallback.run();
+        }
 
         this.health = health;
     }
 
-    public void applyDamage(int damage) {
-        this.setHealth(health - damage);
+    /**
+     * Legt fest, welches Callback aufgerufen werden soll,
+     * wenn der Spieler stirbt.
+     *
+     * @param deadCallback das Callback
+     */
+    public void setDeadCallback(ActionCallback deadCallback)
+    {
+        this.deadCallback = deadCallback;
     }
 
+    /**
+     * Legt fest, welches Callback aufgerufen werden soll,
+     * wenn der Spieler die Interaktionstaste drückt.
+     *
+     * @param interactionCallback das Callback
+     */
+    public void setInteractionCallback(ActionCallback interactionCallback)
+    {
+        this.interactionCallback = interactionCallback;
+    }
+
+    /**
+     * Fügt dem Spieler schaden zu.
+     *
+     * @param damage wie viele Lebenspunkte soll der Spieler verlieren?
+     */
+    public void applyDamage(int damage) {
+        if (!cheatManager.isImmortal())
+            this.setHealth(health - damage);
+    }
+
+    /**
+     * Heilt den Spieler.
+     *
+     * @param healAmount wie viele Lebenspunkte soll der Spieler bekommen?
+     */
     public void heal(int healAmount) {
         this.setHealth(health + healAmount);
     }
 
+    /**
+     * Gibt den Namen des Spielers zurück.
+     *
+     * @return der Name des Spielers
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Ruft ab, ob der Spieler männlich oder weiblich ist.
+     *
+     * @return true wenn männlich, false wenn weiblich
+     */
     public boolean isMale() {
         return male;
     }
 
+    /**
+     * Gibt die X Position des Spielers zurück.
+     *
+     * @return die X Position
+     */
     public float getPosX() {
         return playerBody.getPosition().x * Physics.PPM;
     }
 
-
+    /**
+     * Gibt die Y Position des Spielers zurück.
+     *
+     * @return die Y Position
+     */
     public float getPosY() {
         return playerBody.getPosition().y * Physics.PPM;
     }
 
-
+    /**
+     * Ruft ab, in welche Richtung der Spieler gerade sieht.
+     *
+     * @return die Richtung, in die der Spieler sieht.
+     */
     public EntityOrientation getOrientation() {
         return orientation;
     }
 
+    /**
+     * Legt fest, in welche Richtung der Spieler sieht.
+     *
+     * @param orientation die neue Richtung
+     */
     public void setOrientation(EntityOrientation orientation) {
         this.orientation = orientation;
     }
 
+    /**
+     * Baut einen "Käfig" um die Map, sofern nicht vorher schon eine Größe übergeben wurde.
+     *
+     * @see Player#buildCage(float, float)
+     *
+     * @param maxX die Breite der Map
+     * @param maxY die Höhe der Map
+     */
     public void setMaxMapDimension(float maxX, float maxY)
     {
-        this.maxX = maxX;
-        this.maxY = maxY;
-
-        buildCage();
+        if (!cageBuilt)
+        {
+            buildCage(maxX, maxY);
+            cageBuilt = true;
+        }
     }
 
+    /**
+     * Verschiebt den Spieler an eine andere Position.
+     *
+     * @param posX die neue X Position
+     * @param posY die neue Y Position
+     */
     public void setPosition(float posX, float posY) {
         this.playerBody.setTransform(posX * Physics.MPP, posY * Physics.MPP, 0f);
     }
 
-    private void buildCage()
+    /**
+     * Erstellt 4 Box2D Körper, die verhindern, das die Spielfigur die Map verlässt.
+     */
+    private void buildCage(float maxX, float maxY)
     {
         if (maxX <= 32f || maxY <= 32f) return; // Zu klein für den Spieler
 
@@ -198,6 +321,11 @@ public class Player implements ExtendedMapDisplayObject {
         wallBottomBox.dispose();
     }
 
+    /**
+     * Wird jeden Frame aufgerufen um eine Bewegung des Spielers durchzuführen.
+     *
+     * @param deltaTime die Zeit, die seit dem letzten Frame vergangen ist
+     */
     public void update(float deltaTime) {
         float deltaX = 0;
         float deltaY = 0;
@@ -226,6 +354,12 @@ public class Player implements ExtendedMapDisplayObject {
         {
             deltaX *= RUN_FACTOR;
             deltaY *= RUN_FACTOR;
+        }
+
+        if (cheatManager.isSuperFast())
+        {
+            deltaX *= 2.4f;
+            deltaY *= 2.4f;
         }
 
         if (!MathUtils.isZero(deltaX) && !MathUtils.isZero(deltaY))
@@ -262,6 +396,14 @@ public class Player implements ExtendedMapDisplayObject {
         playerBody.setLinearVelocity(lastDeltaX, lastDeltaY);
     }
 
+    /**
+     * Zeigt die Spielfigur an. Dabei wird die Ausrichtung und der Zustand der Figur beachtet.
+     *
+     * Zustände: Stehen, Laufen, TODO Attacke
+     *
+     * @param batch der Batch, in den gerendert werden soll
+     * @param deltaTime die Zeit, die seit dem letztem Frame vergangen ist
+     */
     public void render(Batch batch, float deltaTime)
     {
         Vector2 pos = playerBody.getPosition();
@@ -308,6 +450,14 @@ public class Player implements ExtendedMapDisplayObject {
                 0f);                                            // Rotation
     }
 
+    /**
+     * Regiert auf das Drücken einer Taste.
+     *
+     * Startet eine Attacke oder führt eine Interaktion durch.
+     *
+     * @param keycode der Tastencode der Taste
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     public boolean keyDown(int keycode)
     {
         if (keycode == Input.Keys.SPACE)
@@ -320,13 +470,23 @@ public class Player implements ExtendedMapDisplayObject {
         else if (InputHelper.checkKeys(keycode, Input.Keys.E, Input.Keys.ENTER))
         {
             // Interaktion
-            Gdx.app.log("INFO", "Interaction");
+            if (interactionCallback != null)
+                interactionCallback.run();
+
             return true;
         }
 
         return false;
     }
 
+    /**
+     * Regiert auf das Loslassen einer Taste.
+     *
+     * Führt die Attacke nach dem Loslassen der entsprechenden Taste durch.
+     *
+     * @param keycode der Tastencode der Taste
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     public boolean keyUp(int keycode)
     {
         if (keycode == Input.Keys.SPACE && attackStart > 0)
@@ -346,6 +506,9 @@ public class Player implements ExtendedMapDisplayObject {
         return false;
     }
 
+    /**
+     * Aufräumarbeiten.
+     */
     public void dispose()
     {
         playerAtlas.dispose();

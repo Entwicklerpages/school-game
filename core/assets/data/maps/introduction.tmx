@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="28">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="30">
  <tileset firstgid="1" source="../tilemap/test.tsx"/>
  <layer name="Hintergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">
@@ -8,16 +8,17 @@
  </layer>
  <layer name="Dekoration" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+   eJztzgENAAAIA6Ansn88Y3w6SEAC8Nu0AwAAAAAAAJyw20wALw==
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="10" name="Spielerstart" type="Start" x="283" y="282" width="10" height="10">
+  <object id="10" name="Spielerstart" type="Start" x="380.948" y="292" width="20.1047" height="20">
    <ellipse/>
   </object>
+  <object id="29" name="Schild" type="Welt" x="439.5" y="89.5" width="48.5" height="60.5"/>
  </objectgroup>
  <objectgroup name="Kollisionen">
-  <object id="12" x="111" y="494.667" width="289.667" height="65.3333"/>
+  <object id="12" x="111.625" y="494.667" width="289.042" height="65.3333"/>
   <object id="15" x="463.334" y="495.333" width="386" height="65"/>
   <object id="16" x="783.733" y="175.667" width="64.8672" height="324.333"/>
   <object id="17" x="1968.5" y="144.25" width="191.75" height="63.5"/>
@@ -35,6 +36,7 @@
   </object>
   <object id="26" x="2431.91" y="192.091" width="384" height="191.909"/>
   <object id="27" x="784.083" y="-8.66667" width="63.875" height="120.542"/>
+  <object id="28" x="-0.125" y="496.375" width="79" height="64.125"/>
  </objectgroup>
  <layer name="Vordergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">

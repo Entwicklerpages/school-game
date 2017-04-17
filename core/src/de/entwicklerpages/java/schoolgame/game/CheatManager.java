@@ -45,6 +45,11 @@ public final class CheatManager {
      */
     private boolean immortality = false;
 
+    /**
+     * Macht den Spieler schneller.
+     * Wenn diese Eigenschaft true ist, läuft der Spieler viel schneller.
+     */
+    private boolean superFast = false;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////// GETTER & SETTER ////////////////////////////////////////////
@@ -66,5 +71,25 @@ public final class CheatManager {
      */
     public void setImmortality(boolean immortal) {
         this.immortality = immortal;
+    }
+
+    /**
+     * Ruft ab, ob der Spieler super schnell ist.
+     *
+     * @return normal immer false, wenn extra schnell, dann true
+     */
+    public boolean isSuperFast()
+    {
+        return superFast;
+    }
+
+    /**
+     * Legt fest, ob der Spieler super schnell ist.
+     *
+     * @param superFast true für extra schnell, false für normal
+     */
+    public void setSuperFast(boolean superFast)
+    {
+        this.superFast = superFast;
     }
 }

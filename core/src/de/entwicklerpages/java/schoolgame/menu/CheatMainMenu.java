@@ -30,6 +30,7 @@ public class CheatMainMenu extends MenuState {
      * Erstellt die entsprechende Menüstruktur und legt die Callbacks fest.
      *
      * * Unsterblichkeit
+     * * Schnelligkeit
      * * Speicherstand manipulieren
      * * Zurück
      */
@@ -49,6 +50,21 @@ public class CheatMainMenu extends MenuState {
                 } else {
                     immortality.setLabel("unsterblich_on");
                     CheatManager.getInstance().setImmortality(true);
+                }
+            }
+        });
+
+        final MenuEntry superfast = new MenuEntry(CheatManager.getInstance().isSuperFast() ? "superschnell_on" : "superschnell_off");
+        superfast.setCallback(new ActionCallback() {
+            @Override
+            public void run() {
+                if (CheatManager.getInstance().isSuperFast())
+                {
+                    superfast.setLabel("superschnell_off");
+                    CheatManager.getInstance().setSuperFast(false);
+                } else {
+                    superfast.setLabel("superschnell_on");
+                    CheatManager.getInstance().setSuperFast(true);
                 }
             }
         });
@@ -73,6 +89,7 @@ public class CheatMainMenu extends MenuState {
         addEntry(title);
         addEntry(new MenuSpacer(70));
         addEntry(immortality);
+        addEntry(superfast);
         addEntry(modSaveData);
         addEntry(new MenuSpacer(25));
         addEntry(back);

@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.objects.*;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -217,6 +218,22 @@ public abstract class Level implements Disposable {
         camera = game.getCamera();
 
         player = new Player(physicalWorld, saveData.getPlayerName(), saveData.isMale());
+        player.setDeadCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                levelState = LevelState.DEAD;
+            }
+        });
+        player.setInteractionCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                worldObjectManager.playerInteraction(player);
+            }
+        });
 
         localeBundle = I18NBundle.createBundle(Gdx.files.internal("data/I18n/Game"));
 
@@ -240,6 +257,7 @@ public abstract class Level implements Disposable {
         if (dialogManager.isPlaying()) return;
 
         player.update(deltaTime);
+        worldObjectManager.update(deltaTime);
     }
 
     /**
@@ -290,6 +308,9 @@ public abstract class Level implements Disposable {
     {
         if (tileMapRenderer != null)
             tileMapRenderer.dispose();
+
+        if (worldObjectManager != null)
+            worldObjectManager.dispose();
 
         if (player != null)
             player.dispose();
@@ -569,7 +590,8 @@ public abstract class Level implements Disposable {
                 if (type.equals(LevelConstants.TMX_TYPE_START_POSITION) && tileObject instanceof EllipseMapObject)
                 {
                     EllipseMapObject start = (EllipseMapObject) tileObject;
-                    player.setPosition(start.getEllipse().x, start.getEllipse().y);
+                    Ellipse startEllipse = start.getEllipse();
+                    player.setPosition(startEllipse.x + startEllipse.width / 2f, startEllipse.y + startEllipse.height / 2f);
                 }
                 else if (type.equals(LevelConstants.TMX_TYPE_WORLD_OBJECT)) {
 
@@ -627,8 +649,6 @@ public abstract class Level implements Disposable {
 
         player.setMaxMapDimension(mapWidth, mapHeight);
 
-        worldObjectManager.finishInit();
-
         TiledMapTileLayer decoTiledLayer;
         MapLayer decoLayer = tileMap.getLayers().get(LevelConstants.TMX_DECORATION_LAYER);
         if (decoLayer == null || !(decoLayer instanceof TiledMapTileLayer))
@@ -642,6 +662,8 @@ public abstract class Level implements Disposable {
 
         tileMapRenderer = new ExtendedOrthogonalTiledMapRenderer(tileMap, decoTiledLayer);
         tileMapRenderer.addDisplayObject(player);
+
+        worldObjectManager.finishInit(tileMapRenderer);
 
         onLoaded();
     }
@@ -695,7 +717,8 @@ public abstract class Level implements Disposable {
         INTRO,
         PLAYING,
         PAUSE,
-        OUTRO
+        OUTRO,
+        DEAD
     }
 
     /**
