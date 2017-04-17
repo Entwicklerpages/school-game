@@ -543,18 +543,14 @@ public class Player implements ExtendedMapDisplayObject {
 
             return true;
         }
-        else if (keycode == Input.Keys.J)
+        else if (cheatManager.isHealthControlled() && keycode == Input.Keys.J)
         {
-            // TODO Cheatmanager
             applyDamage(10);
-
             return true;
         }
-        else if (keycode == Input.Keys.K)
+        else if (cheatManager.isHealthControlled() && keycode == Input.Keys.K)
         {
-            // TODO Cheatmanager
             heal(15);
-
             return true;
         }
 
