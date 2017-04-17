@@ -189,16 +189,32 @@ public class WorldObjectManager implements Disposable
             mostImportant.interaction(player);
     }
 
+    /**
+     * Setzt ein Objekt, das bei einer Spielerinteraktion *sofort* aufgerufen werden soll.
+     * Werden mehrere Objekte hinzugefügt, wird nur das Objekt mit der höchsten Priorität aufgerufen.
+     *
+     * @param interactable das Objekt, das gesetzt werden soll
+     */
     public void registerForInteraction(Interactable interactable)
     {
         interactionObjects.add(interactable);
     }
 
+    /**
+     * Beachtet das Objekt nicht mehr bei Spielerinteraktionen.
+     *
+     * @param interactable das Objekt, das nicht mehr beachtet werden soll
+     */
     public void unregisterForInteraction(Interactable interactable)
     {
         interactionObjects.removeValue(interactable, true);
     }
 
+    /**
+     * Zeigt, ob der Spieler mit etwas interagieren kann.
+     *
+     * @return true, wenn der Spieler mit etwas interagieren kann
+     */
     public boolean interactionPossible()
     {
         return interactionObjects.size > 0;
