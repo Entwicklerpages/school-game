@@ -2,19 +2,28 @@ package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.TimeUtils;
 
+import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
@@ -59,6 +68,12 @@ public class Player implements ExtendedMapDisplayObject {
     private final Animation<TextureRegion> playerSideWalk;
     private final Animation<TextureRegion> playerBackWalk;
 
+    private final SpriteBatch interfaceBatch;
+    private final ShapeRenderer interfaceRenderer;
+    private final BitmapFont interfaceFont;
+    private final GlyphLayout fontLayout;
+    private final Matrix4 interfaceProjection;
+
     private ActionCallback deadCallback = null;
     private ActionCallback interactionCallback = null;
 
@@ -71,7 +86,7 @@ public class Player implements ExtendedMapDisplayObject {
      * @param name der Name des Spielers
      * @param male ist der Spieler männlich oder weiblich?
      */
-    public Player(World world, String name, boolean male) {
+    public Player(SchoolGame game, World world, String name, boolean male) {
         this.health = 100;
         this.name = name;
         this.male = male;
@@ -108,6 +123,13 @@ public class Player implements ExtendedMapDisplayObject {
 
         playerBody.createFixture(fixtureDef).setUserData(this);
         playerBox.dispose();
+
+
+        interfaceBatch = new SpriteBatch();
+        interfaceRenderer = new ShapeRenderer();
+        interfaceFont = game.getLongTextFont();
+        fontLayout = new GlyphLayout();
+        interfaceProjection = new Matrix4();
     }
 
     /**
@@ -451,6 +473,52 @@ public class Player implements ExtendedMapDisplayObject {
     }
 
     /**
+     * Zeigt das Interface mit Lebensstand an.
+     *
+     * @param camera Zugriff auf die Kamera
+     * @param interaction true, wenn eine Interaktion möglich ist
+     */
+    public void renderInterface(OrthographicCamera camera, boolean interaction)
+    {
+        interfaceProjection.set(camera.projection).translate(-camera.viewportWidth / 2f, -camera.viewportHeight / 2f, 0f);
+
+        interfaceRenderer.setProjectionMatrix(interfaceProjection);
+
+        ////////////////////
+
+        interfaceRenderer.begin(ShapeRenderer.ShapeType.Filled);
+
+        float healthWidth = (((float)health) / 100f) * 200f;
+
+        interfaceRenderer.setColor(Color.FIREBRICK);
+        interfaceRenderer.rect(20, camera.viewportHeight - 50, healthWidth, 20);
+
+        interfaceRenderer.end();
+
+        ////////////////////
+
+        interfaceRenderer.begin(ShapeRenderer.ShapeType.Line);
+
+        interfaceRenderer.setColor(Color.WHITE);
+        interfaceRenderer.rect(20, camera.viewportHeight - 50, 200, 20);
+
+        interfaceRenderer.end();
+
+        ////////////////////
+
+        if (interaction)
+        {
+            interfaceBatch.setProjectionMatrix(interfaceProjection);
+            interfaceBatch.begin();
+
+            fontLayout.setText(interfaceFont, "E / Enter zum Interagieren", Color.WHITE, camera.viewportWidth, Align.center, false);
+            interfaceFont.draw(interfaceBatch, fontLayout, 0,  40);
+
+            interfaceBatch.end();
+        }
+    }
+
+    /**
      * Regiert auf das Drücken einer Taste.
      *
      * Startet eine Attacke oder führt eine Interaktion durch.
@@ -472,6 +540,20 @@ public class Player implements ExtendedMapDisplayObject {
             // Interaktion
             if (interactionCallback != null)
                 interactionCallback.run();
+
+            return true;
+        }
+        else if (keycode == Input.Keys.J)
+        {
+            // TODO Cheatmanager
+            applyDamage(10);
+
+            return true;
+        }
+        else if (keycode == Input.Keys.K)
+        {
+            // TODO Cheatmanager
+            heal(15);
 
             return true;
         }
@@ -512,5 +594,7 @@ public class Player implements ExtendedMapDisplayObject {
     public void dispose()
     {
         playerAtlas.dispose();
+        interfaceRenderer.dispose();
+        interfaceBatch.dispose();
     }
 }

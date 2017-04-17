@@ -199,6 +199,11 @@ public class WorldObjectManager implements Disposable
         interactionObjects.removeValue(interactable, true);
     }
 
+    public boolean interactionPossible()
+    {
+        return interactionObjects.size > 0;
+    }
+
     /**
      * Erlaubt vorallem Welt Objekten den Zugriff auf die Spielinstanz.
      *
