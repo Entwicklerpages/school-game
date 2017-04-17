@@ -51,6 +51,11 @@ public final class CheatManager {
      */
     private boolean superFast = false;
 
+    /**
+     * Erlaubt eine Veränderung der Gesundheit durch die Tasten J und K.
+     */
+    private boolean healthControl = false;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////// GETTER & SETTER ////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,6 +76,8 @@ public final class CheatManager {
      */
     public void setImmortality(boolean immortal) {
         this.immortality = immortal;
+
+        setHealthControl(this.healthControl);
     }
 
     /**
@@ -91,5 +98,31 @@ public final class CheatManager {
     public void setSuperFast(boolean superFast)
     {
         this.superFast = superFast;
+    }
+
+    /**
+     * Ruft ab, ob die Gesundheit des Spielers manuell verändert werden kann.
+     * J veringert die Gesundheit,
+     * K vergrößert die Gesundheit
+     *
+     * @return true für manuelle Kontrolle, false für normal
+     */
+    public boolean isHealthControlled()
+    {
+        return healthControl;
+    }
+
+    /**
+     * Legt fest, ob die Gesundheit des Spielers manuell verändert werden kann.
+     * J veringert die Gesundheit,
+     * K vergrößert die Gesundheit
+     *
+     * Unsterblichkeit muss aus sein!
+     *
+     * @param healthControl true für manuelle Kontrolle, false für normal
+     */
+    public void setHealthControl(boolean healthControl)
+    {
+        this.healthControl = healthControl && !immortality;
     }
 }

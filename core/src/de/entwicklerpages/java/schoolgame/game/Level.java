@@ -217,7 +217,7 @@ public abstract class Level implements Disposable {
 
         camera = game.getCamera();
 
-        player = new Player(physicalWorld, saveData.getPlayerName(), saveData.isMale());
+        player = new Player(game, physicalWorld, saveData.getPlayerName(), saveData.isMale());
         player.setDeadCallback(new ActionCallback()
         {
             @Override
@@ -267,6 +267,8 @@ public abstract class Level implements Disposable {
      */
     public final void render(float deltaTime)
     {
+        boolean freePlaying = levelState == LevelState.PLAYING && !dialogManager.isPlaying();
+
         // SPIEL
 
         if (levelState != LevelState.INTRO && levelState != LevelState.OUTRO)
@@ -274,6 +276,11 @@ public abstract class Level implements Disposable {
             tileMapRenderer.setView(camera);
             tileMapRenderer.renderAll(deltaTime);
         }
+
+        // INTERFACE
+
+        if (freePlaying)
+            player.renderInterface(camera, worldObjectManager.interactionPossible());
 
         // DIALOGE
 
@@ -288,7 +295,7 @@ public abstract class Level implements Disposable {
 
         // PHYSIK
 
-        if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
+        if (freePlaying)
         {
             float frameTime = Math.min(deltaTime, 0.25f);
             physicsAccumulator += frameTime;

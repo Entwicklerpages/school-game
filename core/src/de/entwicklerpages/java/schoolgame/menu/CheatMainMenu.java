@@ -39,6 +39,22 @@ public class CheatMainMenu extends MenuState {
         MenuTitle title = new MenuTitle("titel");
         title.setColor(Color.PINK);
 
+        final MenuEntry healthControl = new MenuEntry(CheatManager.getInstance().isHealthControlled() ? "gesundheit_on" : "gesundheit_off");
+        healthControl.setCallback(new ActionCallback() {
+            @Override
+            public void run() {
+                if (CheatManager.getInstance().isHealthControlled())
+                {
+                    healthControl.setLabel("gesundheit_off");
+                    CheatManager.getInstance().setHealthControl(false);
+                } else {
+                    healthControl.setLabel("gesundheit_on");
+                    CheatManager.getInstance().setHealthControl(true);
+                }
+            }
+        });
+        healthControl.setEnabled(!CheatManager.getInstance().isImmortal());
+
         final MenuEntry immortality = new MenuEntry(CheatManager.getInstance().isImmortal() ? "unsterblich_on" : "unsterblich_off");
         immortality.setCallback(new ActionCallback() {
             @Override
@@ -47,9 +63,12 @@ public class CheatMainMenu extends MenuState {
                 {
                     immortality.setLabel("unsterblich_off");
                     CheatManager.getInstance().setImmortality(false);
+                    healthControl.setEnabled(true);
                 } else {
                     immortality.setLabel("unsterblich_on");
                     CheatManager.getInstance().setImmortality(true);
+                    healthControl.setEnabled(false);
+                    healthControl.setLabel("gesundheit_off");
                 }
             }
         });
@@ -90,6 +109,7 @@ public class CheatMainMenu extends MenuState {
         addEntry(new MenuSpacer(70));
         addEntry(immortality);
         addEntry(superfast);
+        addEntry(healthControl);
         addEntry(modSaveData);
         addEntry(new MenuSpacer(25));
         addEntry(back);
