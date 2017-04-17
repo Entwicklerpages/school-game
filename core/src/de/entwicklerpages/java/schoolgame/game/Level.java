@@ -257,6 +257,7 @@ public abstract class Level implements Disposable {
         if (dialogManager.isPlaying()) return;
 
         player.update(deltaTime);
+        worldObjectManager.update(deltaTime);
     }
 
     /**
@@ -648,8 +649,6 @@ public abstract class Level implements Disposable {
 
         player.setMaxMapDimension(mapWidth, mapHeight);
 
-        worldObjectManager.finishInit();
-
         TiledMapTileLayer decoTiledLayer;
         MapLayer decoLayer = tileMap.getLayers().get(LevelConstants.TMX_DECORATION_LAYER);
         if (decoLayer == null || !(decoLayer instanceof TiledMapTileLayer))
@@ -663,6 +662,8 @@ public abstract class Level implements Disposable {
 
         tileMapRenderer = new ExtendedOrthogonalTiledMapRenderer(tileMap, decoTiledLayer);
         tileMapRenderer.addDisplayObject(player);
+
+        worldObjectManager.finishInit(tileMapRenderer);
 
         onLoaded();
     }

@@ -28,6 +28,7 @@ public class WorldObjectManager implements Disposable
     private WorldObjectConfig config;
     private List<WorldObject> worldObjects;
     private Array<Interactable> interactionObjects;
+    private Array<UpdateObject> updateObjects;
     private final SchoolGame game;
     private final World physicalWorld;
 
@@ -43,7 +44,8 @@ public class WorldObjectManager implements Disposable
         this.physicalWorld = physicalWorld;
 
         worldObjects = new ArrayList<WorldObject>();
-        interactionObjects = new Array<Interactable>(false, 3);
+        interactionObjects = new Array<Interactable>(false, 8);
+        updateObjects = new Array<UpdateObject>(false, 10);
     }
 
     /**
@@ -67,6 +69,12 @@ public class WorldObjectManager implements Disposable
                 worldObject.setWorldObjectManager(this);
                 worldObject.setRawObject(object);
                 worldObject.onInit();
+
+                if (worldObject instanceof UpdateObject)
+                {
+                    updateObjects.add((UpdateObject) worldObject);
+                }
+
                 worldObjects.add(worldObject);
                 config.getWorldObjects().remove(worldObject);
                 return;
@@ -88,7 +96,7 @@ public class WorldObjectManager implements Disposable
      * Schließt die Initialisierung ab.
      * Sollten Objekte nicht in der TiledMap gefunden worden sein, wird eine Warnung ausgegeben.
      */
-    public void finishInit()
+    public void finishInit(ExtendedOrthogonalTiledMapRenderer renderer)
     {
         if (config == null)
         {
@@ -104,7 +112,28 @@ public class WorldObjectManager implements Disposable
             }
         }
 
+        for (WorldObject object : worldObjects)
+        {
+            if (object instanceof ExtendedMapDisplayObject)
+            {
+                renderer.addDisplayObject((ExtendedMapDisplayObject) object);
+            }
+        }
+
         Gdx.app.log("INFO", "World is ready.");
+    }
+
+    /**
+     * Wird bei jedem Frame aufgerufen.
+     *
+     * @param deltaTime die Zeit, die seit dem letzten Frame vergangen ist
+     */
+    public void update(float deltaTime)
+    {
+        for (UpdateObject object : updateObjects)
+        {
+            object.onUpdate(deltaTime);
+        }
     }
 
     /**
