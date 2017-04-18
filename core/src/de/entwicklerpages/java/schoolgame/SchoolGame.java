@@ -244,6 +244,8 @@ public class SchoolGame implements ApplicationListener
 
         gameState = newState;
 
+        InputManager.getInstance().requestMenuMode();
+
         gameState.create(this);
 
         if (gameState instanceof InputProcessor) {

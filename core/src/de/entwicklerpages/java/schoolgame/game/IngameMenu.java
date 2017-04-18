@@ -112,7 +112,7 @@ public class IngameMenu {
             return true;
         }
 
-        if (action == InputManager.Action.INTERACTION)
+        if (action == InputManager.Action.MENU_SELECT)
         {
             if (menuMode == MenuMode.MODE_PAUSE) {
                 switch (activeEntry) {

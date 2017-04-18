@@ -203,8 +203,6 @@ public class LevelManager implements GameState, InputProcessor, Disposable {
         saveData.setLevelName(activeLevel.getTitle());
         saveData.save(null);
 
-        InputManager.getInstance().requestGameMode();
-
         activeLevel.create(game, this, saveData);
     }
 

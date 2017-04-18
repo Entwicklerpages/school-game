@@ -241,6 +241,8 @@ public abstract class Level implements Disposable {
 
         ingameMenu = new IngameMenu(game, this);
 
+        InputManager.getInstance().requestGameMode();
+
         Gdx.app.log("INFO", "Level loaded.");
     }
 
@@ -337,7 +339,7 @@ public abstract class Level implements Disposable {
      */
     public final boolean keyDown(int keycode)
     {
-        if (InputManager.checkGameAction(keycode) == InputManager.Action.MENU)
+        if (InputManager.checkGameAction(keycode) == InputManager.Action.INGAME_MENU)
         {
             if (levelState == LevelState.PLAYING)
             {
@@ -508,6 +510,7 @@ public abstract class Level implements Disposable {
      */
     public final void setPause() {
         levelState = LevelState.PAUSE;
+        InputManager.getInstance().requestMenuMode();
     }
 
     /**
@@ -517,6 +520,7 @@ public abstract class Level implements Disposable {
      */
     public final void setPlaying() {
         levelState = LevelState.PLAYING;
+        InputManager.getInstance().requestGameMode();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

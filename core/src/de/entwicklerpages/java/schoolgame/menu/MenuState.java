@@ -283,7 +283,7 @@ public abstract class MenuState implements GameState, InputProcessor {
             return true;
         }
 
-        if (action == InputManager.Action.INTERACTION)
+        if (action == InputManager.Action.MENU_SELECT)
         {
             game.getAudioManager().playSound(selectSound);
             if (activeEntry != null && activeEntry.isEnabled() && activeEntry.getCallback() != null)
