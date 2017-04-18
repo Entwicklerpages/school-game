@@ -9,7 +9,6 @@ import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.PovDirection;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.Array;
 
 import java.io.BufferedInputStream;
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Hilft bei der Abfrage von Eingaben
+ * Hilft bei der Abfrage von Eingaben, egal ob durch die Tastatur oder durch einen Controller.
  *
  * @author nico
  */
@@ -64,6 +63,9 @@ public final class InputManager implements ControllerListener
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Auflistung der Aktionen, die Importiert werden sollen.
+     */
     private static final Action[] IMPORT_ACTIONS = new Action[] {
             Action.ATTACK,
             Action.INTERACTION,
@@ -75,6 +77,9 @@ public final class InputManager implements ControllerListener
             Action.MOVE_UP
     };
 
+    /**
+     * Zeigt auf den InputProcessor, an den Controller-Ereignisse gesendet werden sollen.
+     */
     private InputProcessor feedForwardProcessor = null;
 
     private boolean gameMode = false;
@@ -90,17 +95,31 @@ public final class InputManager implements ControllerListener
     /////////////////////////////////// GETTER & SETTER ////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void init()
+    /**
+     * Initialisierung.
+     *
+     * Lädt alle angeschlossenen Controller und legt den InputProcessor fest.
+     *
+     * @param inputProcessor der InputProcessor an den Controllereingaben gesendet werden sollen
+     */
+    public void init(InputProcessor inputProcessor)
     {
+        this.feedForwardProcessor = inputProcessor;
+
         for (Controller controller : Controllers.getControllers())
         {
-            loadController(controller, false);
+            loadController(controller);
         }
 
         buildInverse();
     }
 
-    private void loadController(Controller controller, boolean inverse)
+    /**
+     * Lädt einen einzelnen Controller, sofern für diesen ein Mapping bekannt ist.
+     *
+     * @param controller der Controller, der geladen werden soll
+     */
+    private void loadController(Controller controller)
     {
         if (controller.getName().toLowerCase().contains("sony computer entertainment"))
         {
@@ -110,11 +129,14 @@ public final class InputManager implements ControllerListener
         {
             loadDefaultControllerMapping(controller, "xbox360");
         }
-
-        if (inverse)
-            buildInverse();
     }
 
+    /**
+     * Lädt ein Mapping aus den Assets.
+     *
+     * @param controller der Controller, auf den das Mapping angewendet werden soll
+     * @param mapfile der Name des Mappings
+     */
     private void loadDefaultControllerMapping(Controller controller, String mapfile)
     {
         FileHandle fileHandle = Gdx.files.internal("data/misc/" + mapfile + ".properties");
@@ -192,6 +214,10 @@ public final class InputManager implements ControllerListener
         }
     }
 
+    /**
+     * Erzeugt zwei entgegengesetzte Maps, um zu einem ButtonKey oder einem AxisKey die entsprechende
+     * Aktion ableiten zu können.
+     */
     private void buildInverse()
     {
         controllerGameButtonBindingInverse.clear();
@@ -210,16 +236,17 @@ public final class InputManager implements ControllerListener
         }
     }
 
-    public void setFeedForwardProcessor(InputProcessor feedForwardProcessor)
-    {
-        this.feedForwardProcessor = feedForwardProcessor;
-    }
-
+    /**
+     * Schaltet in den GameMode um.
+     */
     public void requestGameMode()
     {
         gameMode = true;
     }
 
+    /**
+     * Schaltet in den MenuMode um.
+     */
     public void requestMenuMode()
     {
         gameMode = false;
@@ -251,6 +278,13 @@ public final class InputManager implements ControllerListener
         return false;
     }
 
+    /**
+     * Sollte nur von Menüs aufgerufen werden.
+     * Gibt die der Taste entsprechende Aktion zurück.
+     *
+     * @param keycode der Tastencode der Taste
+     * @return die Aktion, die mit dieser Taste verknüpft ist
+     */
     public static Action checkMenuAction(int keycode)
     {
         if (keycode == Input.Keys.UP || keycode == Input.Keys.W)
@@ -271,6 +305,13 @@ public final class InputManager implements ControllerListener
         return Action.UNKNOWN;
     }
 
+    /**
+     * Sollte nur im Spiel aufgerufen werden.
+     * Gibt die der Taste entsprechende Aktion zurück.
+     *
+     * @param keycode der Tastencode der Taste
+     * @return die Aktion, die mit dieser Taste verknüpft ist
+     */
     public static Action checkGameAction(int keycode)
     {
         if (keycode == Input.Keys.SPACE)
@@ -301,6 +342,13 @@ public final class InputManager implements ControllerListener
         return Action.UNKNOWN;
     }
 
+    /**
+     * Wird für Polling benutzt.
+     * Fragt in jedem Frame ab, ob eine Taste im Moment gedrückt ist.
+     *
+     * @param action die Aktion, die abgefragt werden soll
+     * @return true wenn diese Aktion im Moment aktiv ist
+     */
     public static boolean checkActionActive(Action action)
     {
         switch (action)
@@ -339,7 +387,8 @@ public final class InputManager implements ControllerListener
     @Override
     public void connected(Controller controller)
     {
-        //loadController(controller, true);
+        //loadController(controller);
+        //buildInverse();
     }
 
     /**
@@ -351,6 +400,16 @@ public final class InputManager implements ControllerListener
     {
     }
 
+    /**
+     * Wird aufgerufen, wenn ein Button auf dem Controller gedrückt wird.
+     * Das Ereignis wird an den InputProcessor weitergeleitet, wenn mit diesem eine Aktion verknüpft ist.
+     *
+     * @see InputManager#buttonUp(Controller, int)
+     *
+     * @param controller der Controller, auf dem der Button gedrückt wurde
+     * @param buttonCode der Code des Buttons
+     * @return true, wenn das Ereignis beachtet wurde
+     */
     @Override
     public boolean buttonDown(Controller controller, int buttonCode)
     {
@@ -365,6 +424,16 @@ public final class InputManager implements ControllerListener
         return controllerDown(action);
     }
 
+    /**
+     * Wird aufgerufen, wenn ein Button auf dem Controller losgelassen wird.
+     * Das Ereignis wird an den InputProcessor weitergeleitet, wenn mit diesem eine Aktion verknüpft ist.
+     *
+     * @see InputManager#buttonDown(Controller, int)
+     *
+     * @param controller der Controller, auf dem der Button losgelassen wurde
+     * @param buttonCode der Code des Buttons
+     * @return true, wenn das Ereignis beachtet wurde
+     */
     @Override
     public boolean buttonUp(Controller controller, int buttonCode)
     {
@@ -379,6 +448,15 @@ public final class InputManager implements ControllerListener
         return controllerUp(action);
     }
 
+    /**
+     * Hilfsfunktion, die prüft, ob eine Axe losgelassen wurde.
+     *
+     * @see InputManager#axisMoved(Controller, int, float)
+     *
+     * @param controller der Controller, von dem das Ereignis aus geht
+     * @param axisCode der Code der Axe
+     * @return true, wenn die Axe wirklich losgelassen wurde
+     */
     private boolean axisReleased(Controller controller, int axisCode)
     {
         AxisKey lowAxis = new AxisKey(axisCode, false, controller);
@@ -401,6 +479,20 @@ public final class InputManager implements ControllerListener
         return false;
     }
 
+    /**
+     * Wird aufgerufen, wenn sich eine Axe am Controller (Stick, Trigger) ändert.
+     * Das analoge Ereignis wird durch einen Threshold in ein digitales Ereignis umgewandelt,
+     * und dann genau wie bei den Button-Funktionen verarbeitet.
+     *
+     * @see InputManager#buttonDown(Controller, int)
+     * @see InputManager#buttonUp(Controller, int)
+     * @see InputManager#axisReleased(Controller, int)
+     *
+     * @param controller der Controller, dessen Axe bewegt wurde
+     * @param axisCode der Code der Axe
+     * @param value die neue Position dieser Axe
+     * @return true, wenn das Ereignis beachtet wurde
+     */
     @Override
     public boolean axisMoved(Controller controller, int axisCode, float value)
     {
@@ -434,30 +526,70 @@ public final class InputManager implements ControllerListener
         return false;
     }
 
+    /**
+     * Wird derzeit nicht benutzt.
+     *
+     * @param controller unbenutzt
+     * @param povCode unbenutzt
+     * @param value unbenutzt
+     * @return immer false
+     */
     @Override
     public boolean povMoved(Controller controller, int povCode, PovDirection value)
     {
         return false;
     }
 
+    /**
+     * Wird derzeit nicht benutzt.
+     *
+     * @param controller unbenutzt
+     * @param sliderCode unbenutzt
+     * @param value unbenutzt
+     * @return immer false
+     */
     @Override
     public boolean xSliderMoved(Controller controller, int sliderCode, boolean value)
     {
         return false;
     }
 
+    /**
+     * Wird derzeit nicht benutzt.
+     *
+     * @param controller unbenutzt
+     * @param sliderCode unbenutzt
+     * @param value unbenutzt
+     * @return immer false
+     */
     @Override
     public boolean ySliderMoved(Controller controller, int sliderCode, boolean value)
     {
         return false;
     }
 
+    /**
+     * Wird derzeit nicht benutzt.
+     *
+     * @param controller unbenutzt
+     * @param accelerometerCode unbenutzt
+     * @param value unbenutzt
+     * @return immer false
+     */
     @Override
     public boolean accelerometerMoved(Controller controller, int accelerometerCode, Vector3 value)
     {
         return false;
     }
 
+    /**
+     * Prüft, ob ein Button, der zu dieser Aktion gehört, auf einem Controller im Moment gedrückt ist.
+     *
+     * Dabei werden auch Axenstellungen geprüft.
+     *
+     * @param action die Aktion
+     * @return true, wenn die Aktion auf einem Controller aktiv ist
+     */
     private static boolean checkController(Action action)
     {
         if (Controllers.getControllers().size <= 0) return false;
@@ -491,6 +623,13 @@ public final class InputManager implements ControllerListener
         return result;
     }
 
+    /**
+     * Sendet ein keyDown Ereignis an den InputProcessor.
+     * Der KeyCode wird über die Aktion ermittelt.
+     *
+     * @param action die Aktion
+     * @return true, wenn ein Ereignis ausgelöst wurde
+     */
     private boolean controllerDown(Action action)
     {
         if (!gameMode)
@@ -540,6 +679,13 @@ public final class InputManager implements ControllerListener
         return false;
     }
 
+    /**
+     * Sendet ein keyUp Ereignis an den InputProcessor.
+     * Der KeyCode wird über die Aktion ermittelt.
+     *
+     * @param action die Aktion
+     * @return true, wenn ein Ereignis ausgelöst wurde
+     */
     private boolean controllerUp(Action action)
     {
         if (!gameMode)
@@ -586,7 +732,7 @@ public final class InputManager implements ControllerListener
     }
 
     /**
-     * Listet mögliche Eingaben auf.
+     * Listet mögliche Eingaben als Aktionen auf.
      *
      * @author nico
      */
@@ -605,6 +751,11 @@ public final class InputManager implements ControllerListener
         MENU_SELECT
     }
 
+    /**
+     * Verknüpft einen Button auf einem Controller mit einer Aktion.
+     *
+     * @author nico
+     */
     private class ButtonKey {
         private int buttonCode;
         private Controller controller;
@@ -657,6 +808,11 @@ public final class InputManager implements ControllerListener
         }
     }
 
+    /**
+     * Verknüpft eine Axenstellung auf einem Controller mit einer Aktion.
+     *
+     * @author nico
+     */
     private class AxisKey {
         private int axisCode;
         private boolean high;
