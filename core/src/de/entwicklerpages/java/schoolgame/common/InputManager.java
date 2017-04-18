@@ -47,9 +47,12 @@ public final class InputManager implements ControllerListener
     private InputManager() {
         Controllers.addListener(this);
 
-        controllerGameButtonBinding = new HashMap<ButtonKey, Action>();
-        controllerGameAxisBinding = new HashMap<AxisKey, Action>();
-        controllerGameAxisState = new HashMap<AxisKey, Boolean>();
+        controllerGameButtonBindingInverse = new HashMap<ButtonKey, Action>();
+        controllerGameAxisBindingInverse = new HashMap<AxisKey, Action>();
+        controllerGameAxisStateInverse = new HashMap<AxisKey, Boolean>();
+
+        controllerGameButtonBinding = new HashMap<Action, ButtonKey[]>();
+        controllerGameAxisBinding = new HashMap<Action, AxisKey[]>();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,9 +70,12 @@ public final class InputManager implements ControllerListener
 
     private boolean gameMode = false;
 
-    private Map<ButtonKey, Action>controllerGameButtonBinding;
-    private Map<AxisKey, Action>controllerGameAxisBinding;
-    private Map<AxisKey, Boolean>controllerGameAxisState;
+    private Map<ButtonKey, Action> controllerGameButtonBindingInverse;
+    private Map<AxisKey, Action> controllerGameAxisBindingInverse;
+    private Map<AxisKey, Boolean> controllerGameAxisStateInverse;
+
+    private Map<Action, ButtonKey[]> controllerGameButtonBinding;
+    private Map<Action, AxisKey[]> controllerGameAxisBinding;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////// GETTER & SETTER ////////////////////////////////////////////
@@ -81,18 +87,61 @@ public final class InputManager implements ControllerListener
 
         if (Controllers.getControllers().size > 0)
         {
-            String name = Controllers.getControllers().first().getName();
+            Controller first = Controllers.getControllers().first();
+            String name = first.getName();
 
             if (name.contains("Sony Computer Entertainment"))
             {
-                controllerGameButtonBinding.put(new ButtonKey(1, name), Action.ATTACK);
-                controllerGameButtonBinding.put(new ButtonKey(2, name), Action.INTERACTION);
-                controllerGameButtonBinding.put(new ButtonKey(9, name), Action.INGAME_MENU);
-                controllerGameButtonBinding.put(new ButtonKey(13, name), Action.INGAME_MENU);
+                controllerGameButtonBinding.put(Action.ATTACK, new ButtonKey[]{
+                        new ButtonKey(1, first)         // X
+                });
+                controllerGameButtonBinding.put(Action.INTERACTION, new ButtonKey[]{
+                        new ButtonKey(2, first)         // O
+                });
+                controllerGameButtonBinding.put(Action.RUN, new ButtonKey[]{
+                        new ButtonKey(6, first),        // L2
+                        new ButtonKey(7, first),        // R2
+                        new ButtonKey(10, first)        // L3
+                });
+                controllerGameButtonBinding.put(Action.INGAME_MENU, new ButtonKey[]{
+                        new ButtonKey(9, first),        // OPTIONS
+                        new ButtonKey(13, first)        // TOUCHPAD
+                });
 
-                controllerGameAxisBinding.put(new AxisKey(1, true, name), Action.MOVE_DOWN);
-                controllerGameAxisBinding.put(new AxisKey(1, false, name), Action.MOVE_UP);
+                controllerGameAxisBinding.put(Action.MOVE_RIGHT, new AxisKey[] {
+                        new AxisKey(0, true, first)
+                });
+                controllerGameAxisBinding.put(Action.MOVE_LEFT, new AxisKey[] {
+                        new AxisKey(0, false, first)
+                });
+
+                controllerGameAxisBinding.put(Action.MOVE_DOWN, new AxisKey[] {
+                        new AxisKey(1, true, first)
+                });
+                controllerGameAxisBinding.put(Action.MOVE_UP, new AxisKey[] {
+                        new AxisKey(1, false, first)
+                });
             }
+        }
+
+        buildInverse();
+    }
+
+    private void buildInverse()
+    {
+        controllerGameButtonBindingInverse.clear();
+        controllerGameAxisBindingInverse.clear();
+
+        for (Map.Entry<Action, ButtonKey[]>buttonEntry : controllerGameButtonBinding.entrySet())
+        {
+            for (ButtonKey buttonKey : buttonEntry.getValue())
+                controllerGameButtonBindingInverse.put(buttonKey, buttonEntry.getKey());
+        }
+
+        for (Map.Entry<Action, AxisKey[]>axisEntry : controllerGameAxisBinding.entrySet())
+        {
+            for (AxisKey axisKey : axisEntry.getValue())
+                controllerGameAxisBindingInverse.put(axisKey, axisEntry.getKey());
         }
     }
 
@@ -231,13 +280,14 @@ public final class InputManager implements ControllerListener
     @Override
     public boolean buttonDown(Controller controller, int buttonCode)
     {
+        Gdx.app.log("DEBUG", "Btn: " + String.valueOf(buttonCode));
         if (feedForwardProcessor == null) return false;
 
-        ButtonKey button = new ButtonKey(buttonCode, controller.getName());
+        ButtonKey button = new ButtonKey(buttonCode, controller);
 
-        if (!controllerGameButtonBinding.containsKey(button)) return false;
+        if (!controllerGameButtonBindingInverse.containsKey(button)) return false;
 
-        Action action = controllerGameButtonBinding.get(button);
+        Action action = controllerGameButtonBindingInverse.get(button);
 
         return controllerDown(action);
     }
@@ -247,32 +297,32 @@ public final class InputManager implements ControllerListener
     {
         if (feedForwardProcessor == null) return false;
 
-        ButtonKey button = new ButtonKey(buttonCode, controller.getName());
+        ButtonKey button = new ButtonKey(buttonCode, controller);
 
-        if (!controllerGameButtonBinding.containsKey(button)) return false;
+        if (!controllerGameButtonBindingInverse.containsKey(button)) return false;
 
-        Action action = controllerGameButtonBinding.get(button);
+        Action action = controllerGameButtonBindingInverse.get(button);
 
         return controllerUp(action);
     }
 
     private boolean axisReleased(Controller controller, int axisCode)
     {
-        AxisKey lowAxis = new AxisKey(axisCode, false, controller.getName());
+        AxisKey lowAxis = new AxisKey(axisCode, false, controller);
 
 
-        if (controllerGameAxisState.containsKey(lowAxis) && controllerGameAxisState.get(lowAxis))
+        if (controllerGameAxisStateInverse.containsKey(lowAxis) && controllerGameAxisStateInverse.get(lowAxis))
         {
-            controllerGameAxisState.put(lowAxis, false);
-            return controllerUp(controllerGameAxisBinding.get(lowAxis));
+            controllerGameAxisStateInverse.put(lowAxis, false);
+            return controllerUp(controllerGameAxisBindingInverse.get(lowAxis));
         }
 
-        AxisKey highAxis = new AxisKey(axisCode, true, controller.getName());
+        AxisKey highAxis = new AxisKey(axisCode, true, controller);
 
-        if (controllerGameAxisState.containsKey(highAxis) && controllerGameAxisState.get(highAxis))
+        if (controllerGameAxisStateInverse.containsKey(highAxis) && controllerGameAxisStateInverse.get(highAxis))
         {
-            controllerGameAxisState.put(highAxis, false);
-            return controllerUp(controllerGameAxisBinding.get(highAxis));
+            controllerGameAxisStateInverse.put(highAxis, false);
+            return controllerUp(controllerGameAxisBindingInverse.get(highAxis));
         }
 
         return false;
@@ -292,21 +342,21 @@ public final class InputManager implements ControllerListener
         else
             return axisReleased(controller, axisCode);
 
-        AxisKey axis = new AxisKey(axisCode, high, controller.getName());
+        AxisKey axis = new AxisKey(axisCode, high, controller);
 
-        if (!controllerGameAxisBinding.containsKey(axis)) return false;
+        if (!controllerGameAxisBindingInverse.containsKey(axis)) return false;
 
-        if (!controllerGameAxisState.containsKey(axis))
+        if (!controllerGameAxisStateInverse.containsKey(axis))
         {
-            controllerGameAxisState.put(axis, true);
+            controllerGameAxisStateInverse.put(axis, true);
         } else {
-            if (controllerGameAxisState.get(axis))
+            if (controllerGameAxisStateInverse.get(axis))
                 return false;
             else
-                controllerGameAxisState.put(axis, true);
+                controllerGameAxisStateInverse.put(axis, true);
         }
 
-        controllerDown(controllerGameAxisBinding.get(axis));
+        controllerDown(controllerGameAxisBindingInverse.get(axis));
 
         return false;
     }
@@ -337,7 +387,35 @@ public final class InputManager implements ControllerListener
 
     private static boolean checkController(Action action)
     {
-        return false;
+        if (Controllers.getControllers().size <= 0) return false;
+
+        boolean result = false;
+
+        if (getInstance().controllerGameButtonBinding.containsKey(action))
+        {
+            ButtonKey[] buttonKeys = getInstance().controllerGameButtonBinding.get(action);
+
+            for (ButtonKey buttonKey : buttonKeys)
+                result |= buttonKey.getController() != null && buttonKey.getController().getButton(buttonKey.getButtonCode());
+        }
+
+        if (getInstance().controllerGameAxisBinding.containsKey(action))
+        {
+            AxisKey[] axisKeys = getInstance().controllerGameAxisBinding.get(action);
+
+            for (AxisKey axisKey : axisKeys)
+            {
+                if (axisKey.getController() != null)
+                {
+                    float axisValue = axisKey.getController().getAxis(axisKey.getAxisCode());
+
+                    result |= axisKey.isHigh() && axisValue >= 0.7f;
+                    result |= !axisKey.isHigh() && axisValue <= -0.7f;
+                }
+            }
+        }
+
+        return result;
     }
 
     private boolean controllerDown(Action action)
@@ -360,6 +438,10 @@ public final class InputManager implements ControllerListener
 
                 case ATTACK:
                     feedForwardProcessor.keyDown(Input.Keys.ENTER);
+                    return true;
+
+                case INGAME_MENU:
+                    feedForwardProcessor.keyDown(Input.Keys.ESCAPE);
                     return true;
 
                 default:
@@ -452,12 +534,12 @@ public final class InputManager implements ControllerListener
 
     private class ButtonKey {
         private int buttonCode;
-        private String controllerName;
+        private Controller controller;
 
-        public ButtonKey(int buttonCode, String controllerName)
+        public ButtonKey(int buttonCode, Controller controller)
         {
             this.buttonCode = buttonCode;
-            this.controllerName = controllerName;
+            this.controller = controller;
         }
 
         public int getButtonCode()
@@ -470,14 +552,14 @@ public final class InputManager implements ControllerListener
             this.buttonCode = buttonCode;
         }
 
-        public String getControllerName()
+        public Controller getController()
         {
-            return controllerName;
+            return controller;
         }
 
-        public void setControllerName(String controllerName)
+        public void setController(Controller controller)
         {
-            this.controllerName = controllerName;
+            this.controller = controller;
         }
 
         @Override
@@ -489,7 +571,7 @@ public final class InputManager implements ControllerListener
             ButtonKey buttonKey = (ButtonKey) o;
 
             if (buttonCode != buttonKey.buttonCode) return false;
-            return controllerName != null ? controllerName.equals(buttonKey.controllerName) : buttonKey.controllerName == null;
+            return controller != null ? controller.equals(buttonKey.controller) : buttonKey.controller == null;
 
         }
 
@@ -497,7 +579,7 @@ public final class InputManager implements ControllerListener
         public int hashCode()
         {
             int result = buttonCode;
-            result = 31 * result + (controllerName != null ? controllerName.hashCode() : 0);
+            result = 31 * result + (controller != null ? controller.hashCode() : 0);
             return result;
         }
     }
@@ -505,13 +587,13 @@ public final class InputManager implements ControllerListener
     private class AxisKey {
         private int axisCode;
         private boolean high;
-        private String controllerName;
+        private Controller controller;
 
-        public AxisKey(int axisCode, boolean high, String controllerName)
+        public AxisKey(int axisCode, boolean high, Controller controller)
         {
             this.axisCode = axisCode;
             this.high = high;
-            this.controllerName = controllerName;
+            this.controller = controller;
         }
 
         public int getAxisCode()
@@ -534,14 +616,14 @@ public final class InputManager implements ControllerListener
             this.high = high;
         }
 
-        public String getControllerName()
+        public Controller getController()
         {
-            return controllerName;
+            return controller;
         }
 
-        public void setControllerName(String controllerName)
+        public void setController(Controller controller)
         {
-            this.controllerName = controllerName;
+            this.controller = controller;
         }
 
         @Override
@@ -554,7 +636,7 @@ public final class InputManager implements ControllerListener
 
             if (axisCode != axisKey.axisCode) return false;
             if (high != axisKey.high) return false;
-            return controllerName != null ? controllerName.equals(axisKey.controllerName) : axisKey.controllerName == null;
+            return controller != null ? controller.equals(axisKey.controller) : axisKey.controller == null;
 
         }
 
@@ -563,7 +645,7 @@ public final class InputManager implements ControllerListener
         {
             int result = axisCode;
             result = 31 * result + (high ? 1 : 0);
-            result = 31 * result + (controllerName != null ? controllerName.hashCode() : 0);
+            result = 31 * result + (controller != null ? controller.hashCode() : 0);
             return result;
         }
     }
