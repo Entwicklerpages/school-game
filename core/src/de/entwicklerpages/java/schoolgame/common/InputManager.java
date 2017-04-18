@@ -7,12 +7,17 @@ import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.ControllerListener;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.PovDirection;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Array;
 
+import java.io.BufferedInputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-import de.entwicklerpages.java.schoolgame.SchoolGame;
+import java.util.Properties;
 
 /**
  * Hilft bei der Abfrage von Eingaben
@@ -59,12 +64,16 @@ public final class InputManager implements ControllerListener
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
-     * Zugriff auf die Spielinstanz
-     *
-     * @see SchoolGame
-     */
-    private SchoolGame game;
+    private static final Action[] IMPORT_ACTIONS = new Action[] {
+            Action.ATTACK,
+            Action.INTERACTION,
+            Action.INGAME_MENU,
+            Action.RUN,
+            Action.MOVE_RIGHT,
+            Action.MOVE_LEFT,
+            Action.MOVE_DOWN,
+            Action.MOVE_UP
+    };
 
     private InputProcessor feedForwardProcessor = null;
 
@@ -81,50 +90,106 @@ public final class InputManager implements ControllerListener
     /////////////////////////////////// GETTER & SETTER ////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void setGame(SchoolGame game)
+    public void init()
     {
-        this.game = game;
-
-        if (Controllers.getControllers().size > 0)
+        for (Controller controller : Controllers.getControllers())
         {
-            Controller first = Controllers.getControllers().first();
-            String name = first.getName();
-
-            if (name.contains("Sony Computer Entertainment"))
-            {
-                controllerGameButtonBinding.put(Action.ATTACK, new ButtonKey[]{
-                        new ButtonKey(1, first)         // X
-                });
-                controllerGameButtonBinding.put(Action.INTERACTION, new ButtonKey[]{
-                        new ButtonKey(2, first)         // O
-                });
-                controllerGameButtonBinding.put(Action.RUN, new ButtonKey[]{
-                        new ButtonKey(6, first),        // L2
-                        new ButtonKey(7, first),        // R2
-                        new ButtonKey(10, first)        // L3
-                });
-                controllerGameButtonBinding.put(Action.INGAME_MENU, new ButtonKey[]{
-                        new ButtonKey(9, first),        // OPTIONS
-                        new ButtonKey(13, first)        // TOUCHPAD
-                });
-
-                controllerGameAxisBinding.put(Action.MOVE_RIGHT, new AxisKey[] {
-                        new AxisKey(0, true, first)
-                });
-                controllerGameAxisBinding.put(Action.MOVE_LEFT, new AxisKey[] {
-                        new AxisKey(0, false, first)
-                });
-
-                controllerGameAxisBinding.put(Action.MOVE_DOWN, new AxisKey[] {
-                        new AxisKey(1, true, first)
-                });
-                controllerGameAxisBinding.put(Action.MOVE_UP, new AxisKey[] {
-                        new AxisKey(1, false, first)
-                });
-            }
+            loadController(controller, false);
         }
 
         buildInverse();
+    }
+
+    private void loadController(Controller controller, boolean inverse)
+    {
+        if (controller.getName().toLowerCase().contains("sony computer entertainment"))
+        {
+            loadDefaultControllerMapping(controller, "ps4");
+        }
+        else if (controller.getName().toLowerCase().contains("xbox") && controller.getName().contains("360"))
+        {
+            loadDefaultControllerMapping(controller, "xbox360");
+        }
+
+        if (inverse)
+            buildInverse();
+    }
+
+    private void loadDefaultControllerMapping(Controller controller, String mapfile)
+    {
+        FileHandle fileHandle = Gdx.files.internal("data/misc/" + mapfile + ".properties");
+        Properties props = new Properties();
+
+
+        try {
+            props.load(new BufferedInputStream(fileHandle.read()));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+
+        for (Action action : IMPORT_ACTIONS)
+        {
+            String value = props.getProperty(action.name());
+
+            if (value == null)
+                continue;
+
+            String[] parts = value.split(",");
+            List<ButtonKey> buttonKeys = new ArrayList<ButtonKey>(4);
+            List<AxisKey>axisKeys = new ArrayList<AxisKey>(2);
+
+            if (controllerGameButtonBinding.containsKey(action))
+                buttonKeys.addAll(Arrays.asList(controllerGameButtonBinding.get(action)));
+
+            if (controllerGameAxisBinding.containsKey(action))
+                axisKeys.addAll(Arrays.asList(controllerGameAxisBinding.get(action)));
+
+            for (String part : parts)
+            {
+                part = part.trim().toLowerCase();
+
+                if (part.startsWith("b"))
+                {
+                    int buttonCode;
+                    try
+                    {
+                        buttonCode = Integer.parseInt(part.replaceAll("\\D+",""));
+                    } catch (Exception e) {
+                        continue;
+                    }
+
+                    buttonKeys.add(new ButtonKey(buttonCode, controller));
+                }
+                else if  (part.startsWith("a"))
+                {
+                    int axisCode;
+                    try
+                    {
+                        axisCode = Integer.parseInt(part.replaceAll("\\D+",""));
+                    } catch (Exception e) {
+                        continue;
+                    }
+
+                    axisKeys.add(new AxisKey(axisCode, part.endsWith("h"), controller));
+                }
+            }
+
+            if (buttonKeys.size() > 0)
+            {
+                ButtonKey[] buttonKeyArray = new ButtonKey[buttonKeys.size()];
+                buttonKeyArray = buttonKeys.toArray(buttonKeyArray);
+                controllerGameButtonBinding.put(action, buttonKeyArray);
+            }
+
+            if (axisKeys.size() > 0)
+            {
+                AxisKey[] axisKeyArray = new AxisKey[axisKeys.size()];
+                axisKeyArray = axisKeys.toArray(axisKeyArray);
+                controllerGameAxisBinding.put(action, axisKeyArray);
+            }
+        }
     }
 
     private void buildInverse()
@@ -267,11 +332,20 @@ public final class InputManager implements ControllerListener
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    /**
+     * Wird derzeit auf der Desktop Platform nicht unterstützt.
+     * @param controller unbenutzt
+     */
     @Override
     public void connected(Controller controller)
     {
+        //loadController(controller, true);
     }
 
+    /**
+     * Wird derzeit auf der Desktop Platform nicht unterstützt.
+     * @param controller unbenutzt
+     */
     @Override
     public void disconnected(Controller controller)
     {
@@ -280,7 +354,6 @@ public final class InputManager implements ControllerListener
     @Override
     public boolean buttonDown(Controller controller, int buttonCode)
     {
-        Gdx.app.log("DEBUG", "Btn: " + String.valueOf(buttonCode));
         if (feedForwardProcessor == null) return false;
 
         ButtonKey button = new ButtonKey(buttonCode, controller);

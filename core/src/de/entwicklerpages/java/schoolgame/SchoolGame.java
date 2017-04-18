@@ -98,7 +98,7 @@ public class SchoolGame implements ApplicationListener
         audioManager = new AudioManager(this);
         audioManager.selectMusic("zakarra_menu", 0f); // Nur als Test
 
-        InputManager.getInstance().setGame(this);
+        InputManager.getInstance().init();
 
         Gdx.app.getApplicationLogger().log("INFO", "Finished.");
     }
