@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 import de.entwicklerpages.java.schoolgame.menu.Splashscreen;
 
 /**
@@ -96,6 +97,8 @@ public class SchoolGame implements ApplicationListener
 
         audioManager = new AudioManager(this);
         audioManager.selectMusic("zakarra_menu", 0f); // Nur als Test
+
+        InputManager.getInstance().init();
 
         Gdx.app.getApplicationLogger().log("INFO", "Finished.");
     }
@@ -241,10 +244,13 @@ public class SchoolGame implements ApplicationListener
 
         gameState = newState;
 
+        InputManager.getInstance().requestMenuMode();
+
         gameState.create(this);
 
         if (gameState instanceof InputProcessor) {
             inputMultiplexer.addProcessor((InputProcessor) gameState);
+            InputManager.getInstance().setFeedForwardProcessor((InputProcessor) gameState);
         }
     }
 

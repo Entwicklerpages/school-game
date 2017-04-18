@@ -67,6 +67,7 @@ public class DesktopLauncher {
         config.useGL30 = false;
         config.forceExit = true;
         config.resizable = true;
+        config.useHDPI = false;
         config.width = Math.round(1280 / 1.4f);
         config.height = Math.round(720 / 1.4f);
         config.foregroundFPS = 60;

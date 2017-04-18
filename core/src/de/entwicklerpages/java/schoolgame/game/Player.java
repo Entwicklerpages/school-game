@@ -1,7 +1,6 @@
 package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -25,7 +24,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
-import de.entwicklerpages.java.schoolgame.common.InputHelper;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 
 /**
  * Spielerklasse.
@@ -352,27 +351,27 @@ public class Player implements ExtendedMapDisplayObject {
         float deltaX = 0;
         float deltaY = 0;
 
-        if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W) )
+        if (InputManager.checkActionActive(InputManager.Action.MOVE_UP))
         {
             deltaY += SPEED;
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A) )
+        if (InputManager.checkActionActive(InputManager.Action.MOVE_LEFT))
         {
             deltaX -= SPEED;
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S) )
+        if (InputManager.checkActionActive(InputManager.Action.MOVE_DOWN))
         {
             deltaY -= SPEED;
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D) )
+        if (InputManager.checkActionActive(InputManager.Action.MOVE_RIGHT))
         {
             deltaX += SPEED;
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT))
+        if (InputManager.checkActionActive(InputManager.Action.RUN))
         {
             deltaX *= RUN_FACTOR;
             deltaY *= RUN_FACTOR;
@@ -528,14 +527,16 @@ public class Player implements ExtendedMapDisplayObject {
      */
     public boolean keyDown(int keycode)
     {
-        if (keycode == Input.Keys.SPACE)
+        InputManager.Action action = InputManager.checkGameAction(keycode);
+
+        if (action == InputManager.Action.ATTACK)
         {
             // Attacke
             Gdx.app.log("INFO", "Start Attack");
             attackStart = TimeUtils.millis();
             return true;
         }
-        else if (InputHelper.checkKeys(keycode, Input.Keys.E, Input.Keys.ENTER))
+        else if (action == InputManager.Action.INTERACTION)
         {
             // Interaktion
             if (interactionCallback != null)
@@ -543,12 +544,12 @@ public class Player implements ExtendedMapDisplayObject {
 
             return true;
         }
-        else if (cheatManager.isHealthControlled() && keycode == Input.Keys.J)
+        else if (cheatManager.isHealthControlled() && action == InputManager.Action.CHEAT_DAMAGE)
         {
             applyDamage(10);
             return true;
         }
-        else if (cheatManager.isHealthControlled() && keycode == Input.Keys.K)
+        else if (cheatManager.isHealthControlled() && action == InputManager.Action.CHEAT_HEAL)
         {
             heal(15);
             return true;
@@ -567,7 +568,9 @@ public class Player implements ExtendedMapDisplayObject {
      */
     public boolean keyUp(int keycode)
     {
-        if (keycode == Input.Keys.SPACE && attackStart > 0)
+        InputManager.Action action = InputManager.checkGameAction(keycode);
+
+        if (action == InputManager.Action.ATTACK && attackStart > 0)
         {
             // Attacke
 
