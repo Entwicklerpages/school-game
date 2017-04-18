@@ -98,7 +98,7 @@ public class SchoolGame implements ApplicationListener
         audioManager = new AudioManager(this);
         audioManager.selectMusic("zakarra_menu", 0f); // Nur als Test
 
-        InputManager.getInstance().init();
+        InputManager.getInstance().init(inputMultiplexer);
 
         Gdx.app.getApplicationLogger().log("INFO", "Finished.");
     }
@@ -250,7 +250,6 @@ public class SchoolGame implements ApplicationListener
 
         if (gameState instanceof InputProcessor) {
             inputMultiplexer.addProcessor((InputProcessor) gameState);
-            InputManager.getInstance().setFeedForwardProcessor((InputProcessor) gameState);
         }
     }
 
