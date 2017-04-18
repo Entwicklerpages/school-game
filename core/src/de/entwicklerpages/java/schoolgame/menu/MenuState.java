@@ -20,7 +20,7 @@ import de.entwicklerpages.java.schoolgame.AudioManager;
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
-import de.entwicklerpages.java.schoolgame.common.InputHelper;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 
 /**
  * Vorlage für die meisten Menüs im Spiel.
@@ -264,23 +264,26 @@ public abstract class MenuState implements GameState, InputProcessor {
      * @return true, wenn auf das Ereignis reagiert wurde
      */
     @Override
-    public boolean keyDown(int keycode) {
+    public boolean keyDown(int keycode)
+    {
 
-        if (InputHelper.checkKeys(keycode, Input.Keys.UP, Input.Keys.W))
+        InputManager.Action action = InputManager.checkMenuAction(keycode);
+
+        if (action == InputManager.Action.MOVE_UP)
         {
             game.getAudioManager().playSound(changeSound);
             previousEntry();
             return true;
         }
 
-        if (InputHelper.checkKeys(keycode, Input.Keys.DOWN, Input.Keys.S))
+        if (action == InputManager.Action.MOVE_DOWN)
         {
             game.getAudioManager().playSound(changeSound);
             nextEntry();
             return true;
         }
 
-        if (InputHelper.checkKeys(keycode, Input.Keys.ENTER, Input.Keys.SPACE))
+        if (action == InputManager.Action.INTERACTION)
         {
             game.getAudioManager().playSound(selectSound);
             if (activeEntry != null && activeEntry.isEnabled() && activeEntry.getCallback() != null)

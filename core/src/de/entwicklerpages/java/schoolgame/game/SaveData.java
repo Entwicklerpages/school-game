@@ -218,7 +218,7 @@ public class SaveData {
      * innerhalb dieser Klasse erfasst.
      *
      * @param playTime die neue Spielzeit
-     * @deprecated SaveData erfässt die Spielzeit selbst
+     * @deprecated SaveData erfasst die Spielzeit selbst
      */
     @Deprecated
     public void setPlayTime(long playTime) {

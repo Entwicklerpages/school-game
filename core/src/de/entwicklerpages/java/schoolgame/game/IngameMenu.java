@@ -2,7 +2,6 @@ package de.entwicklerpages.java.schoolgame.game;
 
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -15,7 +14,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
-import de.entwicklerpages.java.schoolgame.common.InputHelper;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 
 /**
  * Stellt im Spiel ein Menü dar.
@@ -91,7 +90,9 @@ public class IngameMenu {
      */
     public boolean handleInput(int keycode)
     {
-        if (InputHelper.checkKeys(keycode, Input.Keys.UP, Input.Keys.W))
+        InputManager.Action action = InputManager.checkMenuAction(keycode);
+
+        if (action == InputManager.Action.MOVE_UP)
         {
             activeEntry--;
 
@@ -101,7 +102,7 @@ public class IngameMenu {
             return true;
         }
 
-        if (InputHelper.checkKeys(keycode, Input.Keys.DOWN, Input.Keys.S))
+        if (action == InputManager.Action.MOVE_DOWN)
         {
             activeEntry++;
 
@@ -111,7 +112,7 @@ public class IngameMenu {
             return true;
         }
 
-        if (InputHelper.checkKeys(keycode, Input.Keys.ENTER, Input.Keys.SPACE))
+        if (action == InputManager.Action.INTERACTION)
         {
             if (menuMode == MenuMode.MODE_PAUSE) {
                 switch (activeEntry) {

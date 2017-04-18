@@ -15,6 +15,7 @@ import java.util.Set;
 
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 import de.entwicklerpages.java.schoolgame.menu.Credits;
 import de.entwicklerpages.java.schoolgame.menu.MainMenu;
 
@@ -201,6 +202,8 @@ public class LevelManager implements GameState, InputProcessor, Disposable {
 
         saveData.setLevelName(activeLevel.getTitle());
         saveData.save(null);
+
+        InputManager.getInstance().requestGameMode();
 
         activeLevel.create(game, this, saveData);
     }

@@ -28,7 +28,7 @@ import javax.xml.validation.Validator;
 import de.entwicklerpages.java.schoolgame.AudioManager;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
-import de.entwicklerpages.java.schoolgame.common.InputHelper;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 import de.entwicklerpages.java.schoolgame.game.dialog.*;
 import de.entwicklerpages.java.schoolgame.game.dialog.Level;
 
@@ -296,10 +296,7 @@ public class DialogManager {
     {
         if (!isPlaying()) return false;
 
-        if (InputHelper.checkKeys(keycode,
-                Input.Keys.ENTER,
-                Input.Keys.SPACE,
-                Input.Keys.TAB))
+        if (keycode == Input.Keys.ENTER || keycode == Input.Keys.SPACE || keycode == Input.Keys.TAB)
         {
             nextLine();
             return true;

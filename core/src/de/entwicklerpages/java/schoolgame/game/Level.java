@@ -1,7 +1,6 @@
 package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -20,6 +19,7 @@ import com.badlogic.gdx.utils.I18NBundle;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 
 /**
  * Basisklasse für alle Level
@@ -337,7 +337,7 @@ public abstract class Level implements Disposable {
      */
     public final boolean keyDown(int keycode)
     {
-        if (keycode == Input.Keys.ESCAPE)
+        if (InputManager.checkGameAction(keycode) == InputManager.Action.MENU)
         {
             if (levelState == LevelState.PLAYING)
             {
