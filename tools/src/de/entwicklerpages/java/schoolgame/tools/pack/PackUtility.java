@@ -58,41 +58,35 @@ public class PackUtility
         config.minimizeJre = minimizeJre.trim();
     }
 
-    public void packWin32() throws IOException
+    public void setPlatform(PackrConfig.Platform platform)
     {
-        config.platform = PackrConfig.Platform.Windows32;
-        config.outDir = new File(outDir + "win32/");
-
-        new Packr().pack(config);
+        config.platform = platform;
     }
 
-    public void packWin64() throws IOException
+    public void pack() throws IOException
     {
-        config.platform = PackrConfig.Platform.Windows64;
-        config.outDir = new File(outDir + "win64/");
+        switch (config.platform)
+        {
+            case Windows32:
+                config.outDir = new File(outDir + "win32/");
+                break;
 
-        new Packr().pack(config);
-    }
-    public void packMacOS() throws IOException
-    {
-        config.platform = PackrConfig.Platform.MacOS;
-        config.outDir = new File(outDir + "mac/" + config.executable + ".app/");
+            case Windows64:
+                config.outDir = new File(outDir + "win64/");
+                break;
 
-        new Packr().pack(config);
-    }
+            case Linux32:
+                config.outDir = new File(outDir + "linux32/");
+                break;
 
-    public void packLinux32() throws IOException
-    {
-        config.platform = PackrConfig.Platform.Linux32;
-        config.outDir = new File(outDir + "linux32/");
+            case Linux64:
+                config.outDir = new File(outDir + "linux64/");
+                break;
 
-        new Packr().pack(config);
-    }
-
-    public void packLinux64() throws IOException
-    {
-        config.platform = PackrConfig.Platform.Linux64;
-        config.outDir = new File(outDir + "linux64/");
+            case MacOS:
+                config.outDir = new File(outDir + "mac/" + config.executable + ".app/");
+                break;
+        }
 
         new Packr().pack(config);
     }

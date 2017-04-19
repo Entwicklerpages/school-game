@@ -91,4 +91,18 @@ public final class PathHelper {
 
         return workingDir;
     }
+
+    public static File getPackrDirIfFound()
+    {
+        File workingDir = new File(System.getProperty("user.dir"));
+
+        File assetDir = new File(workingDir.getAbsolutePath() + File.separator + "tools" + File.separator + "packr");
+
+        if (assetDir.exists() && assetDir.isDirectory())
+        {
+            return assetDir;
+        }
+
+        return workingDir;
+    }
 }

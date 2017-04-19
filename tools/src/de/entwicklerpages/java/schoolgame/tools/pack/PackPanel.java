@@ -1,5 +1,7 @@
 package de.entwicklerpages.java.schoolgame.tools.pack;
 
+import com.badlogicgames.packr.PackrConfig;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -7,6 +9,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -48,6 +51,11 @@ public class PackPanel extends JPanel implements ActionListener
     private JButton inputJarBtn;
     private JTextField outputDirTextField;
     private JButton outputDirBtn;
+    private JTextField jdkPathTextField;
+    private JButton jdkPathBtn;
+
+    private JProgressBar overallProgress;
+    private JProgressBar subProgress;
 
     public PackPanel()
     {
@@ -132,7 +140,7 @@ public class PackPanel extends JPanel implements ActionListener
         editor.add(new JLabel("JRE verkleinern"), gbc);
 
         gbc.gridx++;
-        minimizeJreTextField = new JTextField("soft");
+        minimizeJreTextField = new JTextField(PathHelper.getPackrDirIfFound() + File.separator + "minimize.json");
         editor.add(minimizeJreTextField, gbc);
 
         gbc.gridx = 0;
@@ -170,6 +178,38 @@ public class PackPanel extends JPanel implements ActionListener
         outputDirBtn.addActionListener(this);
         editor.add(outputDirBtn, gbc);
 
+        gbc.gridx = 0;
+        gbc.gridy++;
+        editor.add(new JLabel("JDK Stammverzeichnis:"), gbc);
+
+        gbc.gridx++;
+        jdkPathTextField = new JTextField(PathHelper.getBuildDirIfFound().getAbsolutePath());
+        editor.add(jdkPathTextField, gbc);
+
+        gbc.gridx++;
+        jdkPathBtn = new JButton("Durchsuchen");
+        jdkPathBtn.addActionListener(this);
+        editor.add(jdkPathBtn, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridwidth = 3;
+        gbc.gridy++;
+        gbc.insets.top = 20;
+        overallProgress = new JProgressBar(0, 5);
+        overallProgress.setValue(0);
+        overallProgress.setStringPainted(true);
+        overallProgress.setEnabled(false);
+        editor.add(overallProgress, gbc);
+
+        gbc.gridy++;
+        gbc.insets.top = 10;
+        subProgress = new JProgressBar();
+        subProgress.setStringPainted(true);
+        subProgress.setIndeterminate(false);
+        subProgress.setEnabled(false);
+        subProgress.setString("");
+        editor.add(subProgress, gbc);
+
         return editor;
     }
 
@@ -185,6 +225,20 @@ public class PackPanel extends JPanel implements ActionListener
 
     private void packGame()
     {
+        int max = 0;
+        max += targetPlatformWin32.isSelected() ? 1 : 0;
+        max += targetPlatformWin64.isSelected() ? 1 : 0;
+        max += targetPlatformLinux32.isSelected() ? 1 : 0;
+        max += targetPlatformLinux64.isSelected() ? 1 : 0;
+        max += targetPlatformMac.isSelected() ? 1 : 0;
+
+        overallProgress.setEnabled(true);
+        overallProgress.setValue(0);
+        overallProgress.setMaximum(max);
+        subProgress.setEnabled(true);
+        subProgress.setIndeterminate(true);
+        subProgress.setString("");
+
         PackUtility packUtility = new PackUtility();
 
         packUtility.setExecutable(executableTextField.getText());
@@ -194,105 +248,101 @@ public class PackPanel extends JPanel implements ActionListener
         packUtility.setSourceJar(inputJarTextField.getText());
         packUtility.setOutDir(outputDirTextField.getText());
 
-        int count  = 0;
+        int count = 0;
 
         if (targetPlatformWin32.isSelected())
         {
-            File jdkPath = askForJDK("Windows 32bit");
-            if (jdkPath != null)
-            {
-                packUtility.setJDK(jdkPath.getAbsolutePath());
-                try
-                {
-                    packUtility.packWin32();
-                    count++;
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Bei der Erstellung trat ein Fehler auf.\n" + e.getMessage(), "Fehler!", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Sie haben keinen Pfad angegeben.\nZielplatform wird übersprungen.", "Kein Pfad angegeben!", JOptionPane.WARNING_MESSAGE);
-            }
+            packPlatform(packUtility, PackrConfig.Platform.Windows32);
+            count++;
+            overallProgress.setValue(count);
         }
 
         if (targetPlatformWin64.isSelected())
         {
-            File jdkPath = askForJDK("Windows 64bit");
-            if (jdkPath != null)
-            {
-                packUtility.setJDK(jdkPath.getAbsolutePath());
-                try
-                {
-                    packUtility.packWin64();
-                    count++;
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Bei der Erstellung trat ein Fehler auf.\n" + e.getMessage(), "Fehler!", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Sie haben keinen Pfad angegeben.\nZielplatform wird übersprungen.", "Kein Pfad angegeben!", JOptionPane.WARNING_MESSAGE);
-            }
+            packPlatform(packUtility, PackrConfig.Platform.Windows64);
+            count++;
+            overallProgress.setValue(count);
         }
 
         if (targetPlatformLinux32.isSelected())
         {
-            File jdkPath = askForJDK("Linux 32bit");
-            if (jdkPath != null)
-            {
-                packUtility.setJDK(jdkPath.getAbsolutePath());
-                try
-                {
-                    packUtility.packLinux32();
-                    count++;
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Bei der Erstellung trat ein Fehler auf.\n" + e.getMessage(), "Fehler!", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Sie haben keinen Pfad angegeben.\nZielplatform wird übersprungen.", "Kein Pfad angegeben!", JOptionPane.WARNING_MESSAGE);
-            }
+            packPlatform(packUtility, PackrConfig.Platform.Linux32);
+            count++;
+            overallProgress.setValue(count);
         }
 
         if (targetPlatformLinux64.isSelected())
         {
-            File jdkPath = askForJDK("Linux 64bit");
-            if (jdkPath != null)
-            {
-                packUtility.setJDK(jdkPath.getAbsolutePath());
-                try
-                {
-                    packUtility.packLinux64();
-                    count++;
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Bei der Erstellung trat ein Fehler auf.\n" + e.getMessage(), "Fehler!", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Sie haben keinen Pfad angegeben.\nZielplatform wird übersprungen.", "Kein Pfad angegeben!", JOptionPane.WARNING_MESSAGE);
-            }
+            packPlatform(packUtility, PackrConfig.Platform.Linux64);
+            count++;
+            overallProgress.setValue(count);
         }
 
         if (targetPlatformMac.isSelected())
         {
-            File jdkPath = askForJDK("macOS");
-            if (jdkPath != null)
-            {
-                packUtility.setJDK(jdkPath.getAbsolutePath());
-                try
-                {
-                    packUtility.packMacOS();
-                    count++;
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Bei der Erstellung trat ein Fehler auf.\n" + e.getMessage(), "Fehler!", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Sie haben keinen Pfad angegeben.\nZielplatform wird übersprungen.", "Kein Pfad angegeben!", JOptionPane.WARNING_MESSAGE);
-            }
+            packPlatform(packUtility, PackrConfig.Platform.MacOS);
+            count++;
+            overallProgress.setValue(count);
         }
 
-        JOptionPane.showMessageDialog(this, "Für alle angegebenen Platformen wurden Pakete erstellt.\nEs wurden " + count + " Pakete erstellt.", "Fertig!", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Vorgang abgeschlossen.", "Fertig!", JOptionPane.INFORMATION_MESSAGE);
+
+        overallProgress.setValue(0);
+        overallProgress.setEnabled(false);
+
+        subProgress.setIndeterminate(false);
+        subProgress.setEnabled(false);
+        subProgress.setString("");
+    }
+
+    private void packPlatform(PackUtility packUtility, PackrConfig.Platform platform)
+    {
+        String platformString = "Unkown!";
+
+        switch (platform)
+        {
+            case Windows32:
+                platformString = "Windows 32bit";
+                break;
+
+            case Windows64:
+                platformString = "Windows 64bit";
+                break;
+
+            case Linux32:
+                platformString = "Linux 32bit";
+                break;
+
+            case Linux64:
+                platformString = "Linux 64bit";
+                break;
+
+            case MacOS:
+                platformString = "macOS";
+                break;
+        }
+
+        File jdkPath = askForJDK(platformString);
+        if (jdkPath != null)
+        {
+            packUtility.setJDK(jdkPath.getAbsolutePath());
+            try
+            {
+                packUtility.setPlatform(platform);
+                packUtility.pack();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Bei der Erstellung trat ein Fehler auf.\n" + e.getMessage(), "Fehler!", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Sie haben keinen Pfad angegeben.\nZielplatform wird übersprungen.", "Kein Pfad angegeben!", JOptionPane.WARNING_MESSAGE);
+        }
     }
 
     private File askForJDK(String platform)
     {
+        subProgress.setString(platform);
         JOptionPane.showMessageDialog(this, "Bitte geben Sie den Pfad zu einem JDK (zip) an.\nZielplatform: " + platform, "Packen: " + platform, JOptionPane.INFORMATION_MESSAGE);
-        JFileChooser chooser = new JFileChooser(PathHelper.getBuildDirIfFound());
+        JFileChooser chooser = new JFileChooser(jdkPathTextField.getText());
         chooser.addChoosableFileFilter(zipFilter);
         chooser.setAcceptAllFileFilterUsed(true);
         chooser.setMultiSelectionEnabled(false);
@@ -348,6 +398,20 @@ public class PackPanel extends JPanel implements ActionListener
             {
                 File selectedFile = chooser.getSelectedFile();
                 outputDirTextField.setText(selectedFile.getAbsolutePath());
+            }
+        }
+        else if (e.getSource() == jdkPathBtn)
+        {
+            JFileChooser chooser = new JFileChooser(jdkPathTextField.getText());
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            chooser.setMultiSelectionEnabled(false);
+
+            int result = chooser.showOpenDialog(this);
+
+            if (result == JFileChooser.APPROVE_OPTION)
+            {
+                File selectedFile = chooser.getSelectedFile();
+                jdkPathTextField.setText(selectedFile.getAbsolutePath());
             }
         }
     }
