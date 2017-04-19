@@ -74,6 +74,7 @@ project(":tools") {
 
     dependencies {
         compile project(":jaxb")
+        compile fileTree(dir: 'libs', include: '*.jar')
     }
 }
 

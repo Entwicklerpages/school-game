@@ -1,7 +1,6 @@
 package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,6 +10,7 @@ import com.badlogic.gdx.maps.objects.*;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.I18NBundle;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 
 /**
  * Basisklasse für alle Level
@@ -216,13 +217,31 @@ public abstract class Level implements Disposable {
 
         camera = game.getCamera();
 
-        player = new Player(physicalWorld, saveData.getPlayerName(), saveData.isMale());
+        player = new Player(game, physicalWorld, saveData.getPlayerName(), saveData.isMale());
+        player.setDeadCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                levelState = LevelState.DEAD;
+            }
+        });
+        player.setInteractionCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                worldObjectManager.playerInteraction(player);
+            }
+        });
 
         localeBundle = I18NBundle.createBundle(Gdx.files.internal("data/I18n/Game"));
 
         initMap();
 
         ingameMenu = new IngameMenu(game, this);
+
+        InputManager.getInstance().requestGameMode();
 
         Gdx.app.log("INFO", "Level loaded.");
     }
@@ -240,6 +259,7 @@ public abstract class Level implements Disposable {
         if (dialogManager.isPlaying()) return;
 
         player.update(deltaTime);
+        worldObjectManager.update(deltaTime);
     }
 
     /**
@@ -249,6 +269,8 @@ public abstract class Level implements Disposable {
      */
     public final void render(float deltaTime)
     {
+        boolean freePlaying = levelState == LevelState.PLAYING && !dialogManager.isPlaying();
+
         // SPIEL
 
         if (levelState != LevelState.INTRO && levelState != LevelState.OUTRO)
@@ -256,6 +278,11 @@ public abstract class Level implements Disposable {
             tileMapRenderer.setView(camera);
             tileMapRenderer.renderAll(deltaTime);
         }
+
+        // INTERFACE
+
+        if (freePlaying)
+            player.renderInterface(camera, worldObjectManager.interactionPossible());
 
         // DIALOGE
 
@@ -270,7 +297,7 @@ public abstract class Level implements Disposable {
 
         // PHYSIK
 
-        if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
+        if (freePlaying)
         {
             float frameTime = Math.min(deltaTime, 0.25f);
             physicsAccumulator += frameTime;
@@ -291,6 +318,9 @@ public abstract class Level implements Disposable {
         if (tileMapRenderer != null)
             tileMapRenderer.dispose();
 
+        if (worldObjectManager != null)
+            worldObjectManager.dispose();
+
         if (player != null)
             player.dispose();
 
@@ -309,7 +339,7 @@ public abstract class Level implements Disposable {
      */
     public final boolean keyDown(int keycode)
     {
-        if (keycode == Input.Keys.ESCAPE)
+        if (InputManager.checkGameAction(keycode) == InputManager.Action.INGAME_MENU)
         {
             if (levelState == LevelState.PLAYING)
             {
@@ -480,6 +510,7 @@ public abstract class Level implements Disposable {
      */
     public final void setPause() {
         levelState = LevelState.PAUSE;
+        InputManager.getInstance().requestMenuMode();
     }
 
     /**
@@ -489,6 +520,7 @@ public abstract class Level implements Disposable {
      */
     public final void setPlaying() {
         levelState = LevelState.PLAYING;
+        InputManager.getInstance().requestGameMode();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -569,7 +601,8 @@ public abstract class Level implements Disposable {
                 if (type.equals(LevelConstants.TMX_TYPE_START_POSITION) && tileObject instanceof EllipseMapObject)
                 {
                     EllipseMapObject start = (EllipseMapObject) tileObject;
-                    player.setPosition(start.getEllipse().x, start.getEllipse().y);
+                    Ellipse startEllipse = start.getEllipse();
+                    player.setPosition(startEllipse.x + startEllipse.width / 2f, startEllipse.y + startEllipse.height / 2f);
                 }
                 else if (type.equals(LevelConstants.TMX_TYPE_WORLD_OBJECT)) {
 
@@ -627,8 +660,6 @@ public abstract class Level implements Disposable {
 
         player.setMaxMapDimension(mapWidth, mapHeight);
 
-        worldObjectManager.finishInit();
-
         TiledMapTileLayer decoTiledLayer;
         MapLayer decoLayer = tileMap.getLayers().get(LevelConstants.TMX_DECORATION_LAYER);
         if (decoLayer == null || !(decoLayer instanceof TiledMapTileLayer))
@@ -642,6 +673,8 @@ public abstract class Level implements Disposable {
 
         tileMapRenderer = new ExtendedOrthogonalTiledMapRenderer(tileMap, decoTiledLayer);
         tileMapRenderer.addDisplayObject(player);
+
+        worldObjectManager.finishInit(tileMapRenderer);
 
         onLoaded();
     }
@@ -695,7 +728,8 @@ public abstract class Level implements Disposable {
         INTRO,
         PLAYING,
         PAUSE,
-        OUTRO
+        OUTRO,
+        DEAD
     }
 
     /**

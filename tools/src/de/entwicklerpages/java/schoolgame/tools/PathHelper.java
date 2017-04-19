@@ -77,4 +77,32 @@ public final class PathHelper {
 
         return getAssetDirIfFound();
     }
+
+    public static File getBuildDirIfFound()
+    {
+        File workingDir = new File(System.getProperty("user.dir"));
+
+        File assetDir = new File(workingDir.getAbsolutePath() + File.separator + "desktop" + File.separator + "build" + File.separator + "libs");
+
+        if (assetDir.exists() && assetDir.isDirectory())
+        {
+            return assetDir;
+        }
+
+        return workingDir;
+    }
+
+    public static File getPackrDirIfFound()
+    {
+        File workingDir = new File(System.getProperty("user.dir"));
+
+        File assetDir = new File(workingDir.getAbsolutePath() + File.separator + "tools" + File.separator + "packr");
+
+        if (assetDir.exists() && assetDir.isDirectory())
+        {
+            return assetDir;
+        }
+
+        return workingDir;
+    }
 }

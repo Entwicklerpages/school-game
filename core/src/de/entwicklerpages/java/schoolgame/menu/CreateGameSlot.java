@@ -15,7 +15,7 @@ import com.badlogic.gdx.utils.StringBuilder;
 
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
-import de.entwicklerpages.java.schoolgame.common.InputHelper;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 import de.entwicklerpages.java.schoolgame.game.LevelManager;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
@@ -292,7 +292,9 @@ public class CreateGameSlot implements GameState, InputProcessor {
 
         if (setupStep == SetupStep.STEP_2_GENDER || setupStep == SetupStep.STEP_3_TUTORIAL)
         {
-            if (InputHelper.checkKeys(keycode, Input.Keys.UP, Input.Keys.W, Input.Keys.DOWN, Input.Keys.S))
+            InputManager.Action action = InputManager.checkMenuAction(keycode);
+
+            if (action == InputManager.Action.MOVE_UP || action == InputManager.Action.MOVE_DOWN)
             {
                 stateSwitch = !stateSwitch;
                 return true;

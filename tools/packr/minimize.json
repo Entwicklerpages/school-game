@@ -1,0 +1,82 @@
+{
+  "reduce": [
+    {
+      "archive": "jre/lib/rt.jar",
+      "paths": [
+        "com/sun/corba",
+        "com/sun/jndi",
+        "com/sun/media",
+        "com/sun/naming",
+        "com/sun/rowset",
+        "com/sun/imageio",
+        "com/sun/jmx/remote",
+        "com/sun/jmx/mbeanserver",
+        "com/sun/org/omg",
+        "com/sun/org/glassfish",
+        "sun/applet",
+        "sun/corba",
+        "sun/management",
+        "sun/rmi",
+        "sun/security/jgss",
+        "sun/security/krb5",
+        "sun/security/tools",
+        "sun/security/x509",
+        "javax/management",
+        "javax/naming",
+        "javax/print",
+        "javax/sound",
+        "javax/imageio",
+        "javax/sql",
+        "javax/swing/text/html",
+        "javax/swing/plaf/nimbus",
+        "javax/swing/plaf/synth",
+        "javax/swing/plaf/metal",
+        "org/ietf",
+        "org/jcp",
+        "org/omg"
+      ]
+    },
+    {
+      "archive": "jre/lib/charsets.jar",
+      "paths": [
+      ]
+    },
+    {
+      "archive": "jre/lib/jsse.jar",
+      "paths": [
+        "sun/security/ssl"
+      ]
+    },
+    {
+      "archive": "jre/lib/resources.jar",
+      "paths": [
+        "com/sun/corba",
+        "com/sun/imageio",
+        "com/sun/jndi",
+        "com/sun/rowset"
+      ]
+    }
+  ],
+  "remove": [
+    {
+      "platform": "*",
+      "paths": [
+        "jre/lib/rhino.jar",
+        "jre/lib/fonts",
+        "jre/lib/zi",
+        "jre/lib/charsets.jar",
+        "jre/lib/management",
+        "jre/lib/management-agent.jar",
+        "jre/lib/ext/localedata.jar",
+        "jre/lib/applet"
+      ]
+    },
+    {
+      "platform": "windows",
+      "paths": [
+        "jre/bin/*.exe",
+        "jre/bin/client"
+      ]
+    }
+  ]
+}

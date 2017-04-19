@@ -8,9 +8,11 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 import de.entwicklerpages.java.schoolgame.menu.Splashscreen;
 
 /**
@@ -21,7 +23,8 @@ import de.entwicklerpages.java.schoolgame.menu.Splashscreen;
  * @see GameState
  * @see AudioManager
  */
-public class SchoolGame implements ApplicationListener {
+public class SchoolGame implements ApplicationListener
+{
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
@@ -93,6 +96,8 @@ public class SchoolGame implements ApplicationListener {
         Gdx.graphics.setVSync(shouldVSync());
 
         audioManager = new AudioManager(this);
+
+        InputManager.getInstance().init(inputMultiplexer);
 
         Gdx.app.getApplicationLogger().log("INFO", "Finished.");
     }
@@ -237,6 +242,8 @@ public class SchoolGame implements ApplicationListener {
         camera.position.set(0, 0, 0);
 
         gameState = newState;
+
+        InputManager.getInstance().requestMenuMode();
 
         gameState.create(this);
 
