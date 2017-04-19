@@ -32,7 +32,7 @@ public class MapPanel extends JPanel implements ActionListener
         add(new JLabel("<html>Dieses Tool erstellt eine Vorlage für eine Map.<br>" +
                 "Die Breite und Höhe beträgt 50 Kacheln.<br>" +
                 "Die Größe kann in Tiled geändert werden.<br>" +
-                "Die Layer sind korrekt beschriftet und sind richtig geordnet.</html>", JLabel.CENTER), BorderLayout.CENTER);
+                "Die Layer sind korrekt beschriftet und richtig geordnet.</html>", JLabel.CENTER), BorderLayout.CENTER);
 
 
         createButton = new JButton("Erstellen");

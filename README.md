@@ -33,6 +33,7 @@ While we are developing this game for school, we can't accept any contribution. 
 ## Dependencies
 * [libGDX](http://libgdx.badlogicgames.com) (Apache 2.0) \[[GitHub](https://github.com/libgdx/libgdx)\]
 * Reflections (BSD 2-clause) \[[GitHub](https://github.com/ronmamo/reflections)\]
+* Packr (Apache 2 license) \[[GitHub](https://github.com/libgdx/packr)\] (To pack the final game. Used by the tool.)
 
 ## License
 This software is licensed under the GPL-3.0. More information can be found in the LICENSE file.
