@@ -14,6 +14,7 @@ import de.entwicklerpages.java.schoolgame.tools.dialog.DialogEditor;
 import de.entwicklerpages.java.schoolgame.tools.filedata.ConfigEditorPanel;
 import de.entwicklerpages.java.schoolgame.tools.filedata.LogReaderPanel;
 import de.entwicklerpages.java.schoolgame.tools.map.MapPanel;
+import de.entwicklerpages.java.schoolgame.tools.pack.PackPanel;
 
 
 public class ToolsLauncher extends JFrame {
@@ -74,6 +75,7 @@ public class ToolsLauncher extends JFrame {
         tabbedPane.addTab("Config Editor", new ConfigEditorPanel());
         tabbedPane.addTab("Dialog Editor", new DialogEditor());
         tabbedPane.addTab("Tiled Map", new MapPanel());
+        tabbedPane.addTab("Pack Game", new PackPanel());
         tabbedPane.addTab("Über", new AboutPanel());
 
         add(tabbedPane);
