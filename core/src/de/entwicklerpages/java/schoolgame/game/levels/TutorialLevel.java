@@ -7,7 +7,9 @@ import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.CutScene;
 import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
+import de.entwicklerpages.java.schoolgame.game.objects.InteractionZone;
 import de.entwicklerpages.java.schoolgame.game.objects.Trigger;
+import de.entwicklerpages.java.schoolgame.game.objects.entities.npc.WaypointNPC;
 
 /**
  * Tutorial Level
@@ -115,9 +117,35 @@ public class TutorialLevel extends Level {
             }
         });
 
+        WaypointNPC npcTest = new WaypointNPC("NPC Pfad", "player_f");
+
+        InteractionZone sign1Interaction = new InteractionZone("Schild1");
+        sign1Interaction.setActionCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                startDialog("outro");
+            }
+        });
+
+        InteractionZone sign2Interaction = new InteractionZone("Schild2");
+        sign2Interaction.setActionCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                startDialog("outro");
+            }
+        });
+
         worldConfig.registerObject(introDialogTrigger);
         worldConfig.registerObject(chaosTrigger);
         worldConfig.registerObject(stormTrigger);
+        worldConfig.registerObject(npcTest);
+        worldConfig.registerObject(sign1Interaction);
+        worldConfig.registerObject(sign2Interaction);
+
     }
 }
 

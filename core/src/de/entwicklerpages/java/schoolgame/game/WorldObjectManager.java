@@ -31,6 +31,7 @@ public class WorldObjectManager implements Disposable
     private Array<UpdateObject> updateObjects;
     private final SchoolGame game;
     private final World physicalWorld;
+    private ExtendedOrthogonalTiledMapRenderer renderer;
 
     /**
      * Erstellt einen neuen WorldObjectManager.
@@ -103,6 +104,8 @@ public class WorldObjectManager implements Disposable
             Gdx.app.error("ERROR", "No world config was created!");
             return;
         }
+
+        this.renderer = renderer;
 
         if (!config.getWorldObjects().isEmpty())
         {
@@ -218,6 +221,22 @@ public class WorldObjectManager implements Disposable
     public boolean interactionPossible()
     {
         return interactionObjects.size > 0;
+    }
+
+    /**
+     * Entfernt ein Objekt aus der Welt
+     *
+     * @param object das Objekt, das entfernt werden soll
+     */
+    public void removeObject(WorldObject object)
+    {
+        if (object instanceof Interactable && interactionObjects.contains((Interactable)object, true))
+            interactionObjects.removeValue((Interactable)object, true);
+
+        if (object instanceof ExtendedMapDisplayObject)
+            renderer.removeDisplayObject((ExtendedMapDisplayObject) object);
+
+        object.onDispose();
     }
 
     /**
