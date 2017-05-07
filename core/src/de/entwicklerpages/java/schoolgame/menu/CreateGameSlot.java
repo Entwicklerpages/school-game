@@ -30,16 +30,53 @@ public class CreateGameSlot implements GameState, InputProcessor {
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Liste aller Buchstaben, die für den SPielernamen erlaubt sind.
+     */
     private final static String ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzäöü";
 
+    /**
+     * Die Spielkonfiguration.
+     */
     private SaveData saveData;
+
+    /**
+     * Zugriff auf die Spielinstanz.
+     */
     private SchoolGame game;
+
+    /**
+     * Der Slot, in den gespeichert werden soll.
+     */
     private SaveData.Slot slot;
 
+    /**
+     * Der Batch, in den gerendert werden soll.
+     */
     private SpriteBatch batch;
+
+    /**
+     * Die Schriftart, die zur Anzeige verwendet werden soll.
+     *
+     * @see SchoolGame#getDefaultFont()
+     */
     private BitmapFont font;
+
+    /**
+     * Die kleinere Schriftart.
+     *
+     * @see SchoolGame#getLongTextFont()
+     */
     private BitmapFont smallFont;
+
+    /**
+     * Bereitet den Text zur Anzeige vor.
+     */
     private GlyphLayout fontLayout;
+
+    /**
+     * Sprachdatei.
+     */
     private I18NBundle localeBundle;
 
     private boolean stateSwitch = false;

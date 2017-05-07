@@ -16,7 +16,6 @@ import java.util.List;
 
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
-import de.entwicklerpages.java.schoolgame.common.InputManager;
 
 /**
  * Klasse zum Anzeigen der Credits.
@@ -29,18 +28,51 @@ public class Credits implements GameState, InputProcessor {
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private static final int FONT_HEIGHT = 55;
+    /**
+     * Die Höhe, die jede Zeile erhalten soll.
+     */
+    private static final int FONT_HEIGHT = 57;
+
+    /**
+     * Die Geschwindigkeit, mit der die Einträge durch scrollen.
+     */
     private static final int SCROLL_SPEED = 60;
 
+    /**
+     * Der Batch, in den gerendert werden soll.
+     */
     private SpriteBatch batch;
+
+    /**
+     * Zugriff auf die Spielinstanz.
+     */
     private SchoolGame game;
 
+    /**
+     * Verweis auf die Schriftart.
+     *
+     * @see SchoolGame#getDefaultFont()
+     */
     private BitmapFont font;
+
+    /**
+     * Bereitet den Text zur Anzeige vor.
+     */
     private GlyphLayout fontLayout;
 
+    /**
+     * Anfangsverschiebung der Credits in der vertikalen Achse
+     */
     private float offset = 0;
+
+    /**
+     * Startverzögerung.
+     */
     private float timer = 1.5f;
 
+    /**
+     * Liste aller Zeilen.
+     */
     private List<CreditLine>creditLines = new ArrayList<CreditLine>();
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

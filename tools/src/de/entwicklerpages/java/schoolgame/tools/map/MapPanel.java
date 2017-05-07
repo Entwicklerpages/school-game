@@ -17,12 +17,22 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import de.entwicklerpages.java.schoolgame.tools.PathHelper;
 
+/**
+ * Tool zum erzeugen einer Basis-Map.
+ *
+ * @author nico
+ */
 public class MapPanel extends JPanel implements ActionListener
 {
     private final JButton createButton;
 
     private final FileFilter filter = new FileNameExtensionFilter("Tiled Map Datei", "tmx");
 
+    /**
+     * Konstruktor.
+     *
+     * Fügt ein Label als Erklärung und einen Button zum Erzeugen hinzu.
+     */
     public MapPanel()
     {
         super(new BorderLayout());
@@ -41,6 +51,14 @@ public class MapPanel extends JPanel implements ActionListener
         add(createButton, BorderLayout.SOUTH);
     }
 
+    /**
+     * Zeigt einen Speicher DIalog an und erzeugt in der ausgewählten Datei eine Map mithilfe des
+     * MapCreators.
+     *
+     * @see MapCreator
+     *
+     * @param content
+     */
     private void saveFile(String content)
     {
         JFileChooser chooser = new JFileChooser(PathHelper.getMapDirIfFound());
@@ -84,10 +102,15 @@ public class MapPanel extends JPanel implements ActionListener
         }
     }
 
+    /**
+     * Wird aufgerufen, wenn der Button gedrückt wurde.
+     *
+     * @param event das ausgelöste Ereignis
+     */
     @Override
-    public void actionPerformed(ActionEvent e)
+    public void actionPerformed(ActionEvent event)
     {
-        if (e.getSource().equals(createButton))
+        if (event.getSource().equals(createButton))
         {
             saveFile(MapCreator.createMap());
         }
