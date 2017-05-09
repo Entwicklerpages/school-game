@@ -1,6 +1,9 @@
 package de.entwicklerpages.java.schoolgame.game.levels;
 
+import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.Level;
+import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
+import de.entwicklerpages.java.schoolgame.game.objects.InteractionZone;
 
 /**
  * Einstiegs Level
@@ -21,5 +24,22 @@ public class IntruductionLevel extends Level {
     @Override
     public String getTitle() {
         return "Einführung";
+    }
+
+    @Override
+    protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
+    {
+        InteractionZone signInteraction = new InteractionZone("Schild");
+
+        signInteraction.setActionCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                startDialog("schild");
+            }
+        });
+
+        worldConfig.registerObject(signInteraction);
     }
 }

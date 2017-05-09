@@ -90,8 +90,6 @@ public class LogStream extends OutputStream {
      *
      * @param game Name des Spielverzeichnisses
      * @return der betriebssystemspeziefische Pfad
-     *
-     * TODO: Auf Windows und Linux testen!
      */
     public static String getBasePath(String game)
     {

@@ -16,24 +16,74 @@ import java.util.List;
 
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
-import de.entwicklerpages.java.schoolgame.common.InputHelper;
 
+/**
+ * Klasse zum Anzeigen der Credits.
+ *
+ * @author nico
+ */
 public class Credits implements GameState, InputProcessor {
 
-    private static final int FONT_HEIGHT = 55;
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Die Höhe, die jede Zeile erhalten soll.
+     */
+    private static final int FONT_HEIGHT = 57;
+
+    /**
+     * Die Geschwindigkeit, mit der die Einträge durch scrollen.
+     */
     private static final int SCROLL_SPEED = 60;
 
+    /**
+     * Der Batch, in den gerendert werden soll.
+     */
     private SpriteBatch batch;
+
+    /**
+     * Zugriff auf die Spielinstanz.
+     */
     private SchoolGame game;
 
+    /**
+     * Verweis auf die Schriftart.
+     *
+     * @see SchoolGame#getDefaultFont()
+     */
     private BitmapFont font;
+
+    /**
+     * Bereitet den Text zur Anzeige vor.
+     */
     private GlyphLayout fontLayout;
 
+    /**
+     * Anfangsverschiebung der Credits in der vertikalen Achse
+     */
     private float offset = 0;
+
+    /**
+     * Startverzögerung.
+     */
     private float timer = 1.5f;
 
+    /**
+     * Liste aller Zeilen.
+     */
     private List<CreditLine>creditLines = new ArrayList<CreditLine>();
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Initialisierung.
+     *
+     * @param game zeigt auf das SchoolGame, dass das Spiel verwaltet
+     */
     @Override
     public void create(SchoolGame game) {
         this.game = game;
@@ -53,6 +103,12 @@ public class Credits implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Zeigt die Credits an.
+     *
+     * @param camera  die aktuelle Kamera
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void render(OrthographicCamera camera, float deltaTime) {
         batch.setProjectionMatrix(camera.combined);
@@ -73,6 +129,12 @@ public class Credits implements GameState, InputProcessor {
         batch.end();
     }
 
+    /**
+     * Lässt die Texte nach oben scrollen.
+     * Wechselt am Ende zurück ins Hauptmenü.
+     *
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void update(float deltaTime) {
 
@@ -90,6 +152,9 @@ public class Credits implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Aufräumarbeiten.
+     */
     @Override
     public void dispose() {
         batch.dispose();
@@ -102,6 +167,14 @@ public class Credits implements GameState, InputProcessor {
         return "CREDITS";
     }
 
+    /**
+     * Bereitet die Credits für die Anzeige vor.
+     *
+     * Zeilen, die mit # Anfangen werden als Überschriften gehandhabt.
+     * Zeilen, die mit !# Anfangen, werden als Haupt-Überschriften gehandhabt.
+     *
+     * @param creditsFile ein FileHandle auf die Datei mit den Credits
+     */
     private void prepareCredits(FileHandle creditsFile)
     {
         creditLines.clear();
@@ -130,10 +203,16 @@ public class Credits implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Bricht ab, wenn auf Escape gedrückt wird.
+     *
+     * @param keycode der Tastencode der gedrückten Taste
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     @Override
     public boolean keyDown(int keycode) {
 
-        if (InputHelper.checkKeys(keycode, Input.Keys.ESCAPE, Input.Keys.SPACE))
+        if (keycode == Input.Keys.ESCAPE || keycode == Input.Keys.SPACE)
         {
             game.setGameState(new MainMenu());
             return true;
@@ -177,11 +256,22 @@ public class Credits implements GameState, InputProcessor {
         return false;
     }
 
+    /**
+     * Speichert eine einzige Zeile der Credits.
+     *
+     * @author nico
+     */
     protected class CreditLine {
-        private String line;
+        private final String line;
         private boolean heading;
         private boolean topHeading;
 
+        /**
+         * Konstruktor.
+         *
+         * @param line der Text der Zeile
+         * @param heading handelt es sich um eine Überschrift?
+         */
         public CreditLine(String line, int heading) {
             this.line = line;
 
@@ -199,10 +289,20 @@ public class Credits implements GameState, InputProcessor {
             }
         }
 
+        /**
+         * Gibt den Text der Zeile zurück.
+         *
+         * @return der Text
+         */
         public String getLine() {
             return line;
         }
 
+        /**
+         * Gibt die Farbe der Zeile zurück.
+         *
+         * @return die Farbe
+         */
         public Color getColor() {
             if (heading)
             {

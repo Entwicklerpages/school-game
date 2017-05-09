@@ -14,8 +14,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * Ein einfaches Über-Panel.
+ *
+ * @author nico
+ */
 public class AboutPanel extends JPanel {
 
+    /**
+     * Konstruktor.
+     *
+     * Legt dne Inhalt des Panels fest.
+     */
     public AboutPanel() {
         super();
 
@@ -35,6 +45,11 @@ public class AboutPanel extends JPanel {
         addCenteredLabel("<BR>This software is licensed under the <I>GPL-3.0</I>.<BR>More information can be found in the <I>LICENSE</I> file.");
     }
 
+    /**
+     * Erstellt ein zentriertes Label mit aktivem HTML und fügt es hinzu.
+     *
+     * @param htmlText der Inhalt des Labels.
+     */
     private void addCenteredLabel(String htmlText)
     {
         JLabel label = new JLabel("<HTML>" + htmlText + "</HTML>");
@@ -42,6 +57,13 @@ public class AboutPanel extends JPanel {
         add(label);
     }
 
+    /**
+     * Erstellt automatisch einen anklickbaren Link, der aussieht wie ein Label.
+     * @param title
+     * @param target
+     * @return
+     */
+    @SuppressWarnings("SameParameterValue")
     private JButton createLinkButton(String title, final URI target)
     {
         JButton linkButton = new JButton();

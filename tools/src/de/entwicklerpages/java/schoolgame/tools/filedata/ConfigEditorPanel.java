@@ -1,7 +1,6 @@
 package de.entwicklerpages.java.schoolgame.tools.filedata;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +10,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,14 +18,24 @@ import javax.swing.JTextArea;
 
 import de.entwicklerpages.java.schoolgame.tools.PathHelper;
 
+/**
+ * Ein einfacher Editor für die Spielekonfiguration.
+ * Zeigt einfach nur einen Editor an.
+ *
+ * @author nico
+ */
 public class ConfigEditorPanel extends JPanel implements ActionListener {
     private JTextArea textArea = null;
     private JButton reloadButton = null;
     private JButton saveButton = null;
 
-    private File configFile;
+    private final File configFile;
 
 
+    /**
+     * Konstruktor.
+     * Legt den Inhalt des Panels fest.
+     */
     public ConfigEditorPanel()
     {
         super(new BorderLayout());
@@ -55,6 +63,9 @@ public class ConfigEditorPanel extends JPanel implements ActionListener {
         add(buttonBar, BorderLayout.SOUTH);
     }
 
+    /**
+     * Lädt den Inhalt der Konfiguration und zeigt ihn im Editor an.
+     */
     private void loadText()
     {
         if (!configFile.exists() || !configFile.isFile() || !configFile.canRead())
@@ -73,6 +84,9 @@ public class ConfigEditorPanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Speichert die Konfiguration aus dem Editor in der Datei.
+     */
     private void saveText()
     {
         if (!configFile.isFile() || !configFile.canWrite())
@@ -90,6 +104,13 @@ public class ConfigEditorPanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Reagiert auf Button-Ereignisse:
+     * Speicher
+     * Laden
+     *
+     * @param event das ausgelöste Event
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == this.reloadButton)

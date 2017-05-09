@@ -6,14 +6,21 @@
 
 
 
-Entwickelt von Team {hier Team-Name}
+Entwickelt von SGFantasy
 
 # Programmierung
 Nicolas Hollmann
+
+# Grafik, Design & Story
+Ominöse Katze
+
+# Musik & Sounds
 Spirupi
 
-# Grafik, Design & Level
+# Level
 Ominöse Katze
+Nicolas Hollmann
+Spirupi
 
 # Basierend auf
 libGDX
@@ -21,11 +28,18 @@ gdx-ai
 gdx-tools
 gdx-box2d
 gdx-controllers
+Reflections
 
 # Software
 Android Studio
 GitHub
 Tiled
+Gimp
+LMMS
+
+# Musik
+Onion
+von Skiessi
 
 # Rezept #1
 4cl Tequila
@@ -42,4 +56,5 @@ von Peter Hull
 
 
 
-# Vielen Dank!
+# Vielen Dank
+# fürs Spielen!

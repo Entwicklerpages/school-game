@@ -10,5 +10,9 @@ package de.entwicklerpages.java.schoolgame.common;
  * @see de.entwicklerpages.java.schoolgame.menu.MenuState
  */
 public interface ActionCallback {
+
+    /**
+     * Callback-Methode
+     */
     void run();
 }

@@ -35,7 +35,7 @@ public class SaveData {
      *
      * @see SchoolGame#getPreferences()
      */
-    private Preferences prefs;
+    private final Preferences prefs;
 
     /**
      * Speichert, in welchem Slot die Daten gesichert werden.
@@ -218,7 +218,7 @@ public class SaveData {
      * innerhalb dieser Klasse erfasst.
      *
      * @param playTime die neue Spielzeit
-     * @deprecated SaveData erfässt die Spielzeit selbst
+     * @deprecated SaveData erfasst die Spielzeit selbst
      */
     @Deprecated
     public void setPlayTime(long playTime) {

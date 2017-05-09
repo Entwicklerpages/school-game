@@ -14,15 +14,26 @@ import javax.swing.JTextArea;
 
 import de.entwicklerpages.java.schoolgame.tools.PathHelper;
 
-
+/**
+ * Zeigt Logdateien an.
+ *
+ * @author nico
+ */
 public class LogReaderPanel extends JPanel implements ActionListener {
 
     private JTextArea textArea = null;
     private JButton reloadButton = null;
 
-    private File logFile;
+    private final File logFile;
 
 
+    /**
+     * Konstruktor.
+     *
+     * Zeigt einen schreibgeschützten Editor an.
+     *
+     * @param logFileName der Name der Log Datei
+     */
     public LogReaderPanel(String logFileName)
     {
         super(new BorderLayout());
@@ -42,6 +53,9 @@ public class LogReaderPanel extends JPanel implements ActionListener {
         add(reloadButton, BorderLayout.SOUTH);
     }
 
+    /**
+     * Lädt den Inhalt der Log-Datei.
+     */
     private void loadText()
     {
         if (!logFile.exists() || !logFile.isFile() || !logFile.canRead())
@@ -60,6 +74,11 @@ public class LogReaderPanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Wird aufgerufen, wenn ein Button gedrückt wird.
+     *
+     * @param event das ausgelöste Event.
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == this.reloadButton)

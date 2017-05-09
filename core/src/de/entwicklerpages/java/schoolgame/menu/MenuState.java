@@ -2,7 +2,6 @@ package de.entwicklerpages.java.schoolgame.menu;
 
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -20,9 +19,21 @@ import de.entwicklerpages.java.schoolgame.AudioManager;
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
-import de.entwicklerpages.java.schoolgame.common.InputHelper;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 
+/**
+ * Vorlage für die meisten Menüs im Spiel.
+ * Definiert grundlegende Abläufe wie das Navigieren durch Menüs und das Auswählen eines Eintrags.
+ *
+ * @author nico
+ */
 public abstract class MenuState implements GameState, InputProcessor {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static final String MUSIC_NAME = "skiessi_onion";
 
     private List<MenuEntry> entries;
     private MenuEntry activeEntry;
@@ -32,14 +43,42 @@ public abstract class MenuState implements GameState, InputProcessor {
     private GlyphLayout fontLayout;
     private I18NBundle localeBundle;
 
+    /**
+     * Sound, der abgespielt wird, wenn ein Menüeintrag bestätigt wird.
+     */
     private AudioManager.SoundKey selectSound;
+
+    /**
+     * Sound, der abgespielt wird, wenn ein anderer Menüeintrag ausgewählt wird.
+     */
     private AudioManager.SoundKey changeSound;
 
+    /**
+     * Zugriff auf die Spielinstanz.
+     */
     protected SchoolGame game;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Konfiguriert das Menü.
+     */
     abstract void setupMenu();
+
+    /**
+     * Name der Sprachdatei, die geladen werden soll.
+     *
+     * @return der Name de Sprachdatei
+     */
     abstract String getI18nName();
 
+    /**
+     * Initialisierung.
+     *
+     * @param game zeigt auf das SchoolGame, dass das Spiel verwaltet
+     */
     @Override
     public void create(SchoolGame game) {
         Gdx.app.getApplicationLogger().log("INFO", "Menu init...");
@@ -56,12 +95,20 @@ public abstract class MenuState implements GameState, InputProcessor {
         selectSound = game.getAudioManager().createSound("menu", "select.wav", true);
         changeSound = game.getAudioManager().createSound("menu", "change.wav", true);
 
+        game.getAudioManager().selectMusic(MUSIC_NAME, 0f);
+
         FileHandle baseFileHandle = Gdx.files.internal("data/I18n/" + getI18nName());
         localeBundle = I18NBundle.createBundle(baseFileHandle);
 
         Gdx.app.getApplicationLogger().log("INFO", "Menu finished...");
     }
 
+    /**
+     * Zeigt das Menü an.
+     *
+     * @param camera  die aktuelle Kamera
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void render(OrthographicCamera camera, float deltaTime) {
         batch.setProjectionMatrix(camera.combined);
@@ -84,6 +131,13 @@ public abstract class MenuState implements GameState, InputProcessor {
         batch.end();
     }
 
+    /**
+     * Zeigt Menüeinträge ohne besondere Render-Methode an.
+     *
+     * @param camera die aktive Kamera
+     * @param entry der Menüeintrag, der angezeigt werden soll
+     * @param y die Y-Position des Eintrags
+     */
     protected void defaultRender(OrthographicCamera camera, MenuEntry entry, int y)
     {
         Color entryColor = entry.getColor();
@@ -100,10 +154,20 @@ public abstract class MenuState implements GameState, InputProcessor {
         font.draw(batch, fontLayout, -camera.viewportWidth / 2, y);
     }
 
+    /**
+     * Macht nix, muss aber da sein.
+     *
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void update(float deltaTime) {
     }
 
+    /**
+     * Fügt einen Eintrag am Ende hinzu.
+     *
+     * @param entry der neue Eintrag
+     */
     protected final void addEntry(MenuEntry entry)
     {
         if (entry == null) return; // ArrayList erlaubt null. Wir wollen das aber nicht.
@@ -115,6 +179,9 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Geht einen Eintrag nach vorne.
+     */
     protected final void nextEntry()
     {
         if (checkAllDisabled())
@@ -142,6 +209,9 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Geht einen Eintrag zurück.
+     */
     protected final void previousEntry()
     {
         if (checkAllDisabled())
@@ -169,7 +239,12 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
-    private final boolean checkAllDisabled()
+    /**
+     * Prüft, ob alle Menüeinträge deaktiviert sind oder ob man einen auswählen kann.
+     *
+     * @return true, wenn alle Einträge aus sind
+     */
+    private boolean checkAllDisabled()
     {
         boolean allDisabled = true;
         for (MenuEntry entry : entries)
@@ -180,6 +255,9 @@ public abstract class MenuState implements GameState, InputProcessor {
         return allDisabled;
     }
 
+    /**
+     * Aufräumarbeiten.
+     */
     @Override
     public void dispose() {
         Gdx.app.getApplicationLogger().log("INFO", "Menu dispose...");
@@ -191,24 +269,34 @@ public abstract class MenuState implements GameState, InputProcessor {
         Gdx.app.getApplicationLogger().log("INFO", "Menu leave.");
     }
 
+    /**
+     * Regiert auf Nutzereingaben.
+     * Navigation und Auswahl im Menü werden hierdurch ermöglicht.
+     *
+     * @param keycode der Tastencode der gedrückten Taste
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     @Override
-    public boolean keyDown(int keycode) {
+    public boolean keyDown(int keycode)
+    {
 
-        if (InputHelper.checkKeys(keycode, Input.Keys.UP, Input.Keys.W))
+        InputManager.Action action = InputManager.checkMenuAction(keycode);
+
+        if (action == InputManager.Action.MOVE_UP)
         {
             game.getAudioManager().playSound(changeSound);
             previousEntry();
             return true;
         }
 
-        if (InputHelper.checkKeys(keycode, Input.Keys.DOWN, Input.Keys.S))
+        if (action == InputManager.Action.MOVE_DOWN)
         {
             game.getAudioManager().playSound(changeSound);
             nextEntry();
             return true;
         }
 
-        if (InputHelper.checkKeys(keycode, Input.Keys.ENTER, Input.Keys.SPACE))
+        if (action == InputManager.Action.MENU_SELECT)
         {
             game.getAudioManager().playSound(selectSound);
             if (activeEntry != null && activeEntry.isEnabled() && activeEntry.getCallback() != null)
@@ -256,6 +344,11 @@ public abstract class MenuState implements GameState, InputProcessor {
         return false;
     }
 
+    /**
+     * Ein einfacher Menüeintrag.
+     *
+     * @author nico
+     */
     class MenuEntry {
         private ActionCallback callback = null;
         private String label;
@@ -344,6 +437,11 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Abstandshalter für Menüs.
+     *
+     * @author nico
+     */
     class MenuSpacer extends MenuEntry {
 
         public MenuSpacer(int height)
@@ -354,9 +452,15 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Nicht auswählbare Menüeinträge zum Beispiel
+     * Erklärungen.
+     *
+     * @author nico
+     */
     class MenuLabel extends MenuEntry {
 
-        private GlyphLayout fontLayout;
+        private final GlyphLayout fontLayout;
         private BitmapFont font;
 
         public MenuLabel(String label)
@@ -379,9 +483,14 @@ public abstract class MenuState implements GameState, InputProcessor {
         }
     }
 
+    /**
+     * Menüüberschrift
+     *
+     * @author nico
+     */
     class MenuTitle extends MenuEntry {
 
-        private GlyphLayout fontLayout;
+        private final GlyphLayout fontLayout;
         private BitmapFont font;
 
         public MenuTitle(String label) {

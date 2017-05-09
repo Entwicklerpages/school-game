@@ -2,6 +2,8 @@ package de.entwicklerpages.java.schoolgame.game.objects;
 
 import com.badlogic.gdx.maps.MapObject;
 
+import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
+
 /**
  * Basisklasse für Weltobjekte
  *
@@ -9,34 +11,78 @@ import com.badlogic.gdx.maps.MapObject;
  */
 public abstract class WorldObject
 {
-    protected String objectId;
+    protected final String objectId;
     protected MapObject rawObject;
+    protected WorldObjectManager worldObjectManager;
 
+    /**
+     * Konstruktor.
+     *
+     * @param objectId die ID des Objektes
+     */
     public WorldObject(String objectId)
     {
         this.objectId = objectId;
     }
 
-    public void onAttack()
+    /**
+     * Wird aufgerufen wenn das Objekt in der Map gefunden wurde.
+     *
+     * Macht selbst nichts, kann aber überschrieben werden.
+     */
+    public void onInit()
     {
     }
 
-    public void onInteract()
+    /**
+     * Wird aufgerufen, wenn das Objekt entfernt wird.
+     *
+     * Macht selbst nichts, kann aber überschrieben werden.
+     */
+    public void onDispose()
     {
     }
 
-    public String getObjectId()
+    /**
+     * Gibt die Objekt ID zurück.
+     *
+     * @return die Objekt ID
+     */
+    public final String getObjectId()
     {
         return objectId;
     }
 
-    public MapObject getRawObject()
+    /**
+     * Gibt das MapObject zurück, das dieses Objekt in der TiledMap repräsentiert.
+     *
+     * @return das MapObject
+     */
+    public final MapObject getRawObject()
     {
         return rawObject;
     }
 
-    public void setRawObject(MapObject rawObject)
+    /**
+     * Setzt das MapObject, das dieses Objekt in der TiledMap repräsentiert.
+     *
+     * @param rawObject das MapObject
+     */
+    public final void setRawObject(MapObject rawObject)
     {
         this.rawObject = rawObject;
+    }
+
+    /**
+     * Setzt denn WorldObjectManager, zu dem dieses Objekt gehört.
+     * Wird vor onInit aufgerufen.
+     *
+     * @see WorldObject#onInit()
+     *
+     * @param worldObjectManager der Manager dieses Objektes
+     */
+    public final void setWorldObjectManager(WorldObjectManager worldObjectManager)
+    {
+        this.worldObjectManager = worldObjectManager;
     }
 }

@@ -1,7 +1,6 @@
 package de.entwicklerpages.java.schoolgame.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,15 +10,16 @@ import com.badlogic.gdx.maps.objects.*;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.I18NBundle;
 
-import java.util.Iterator;
-
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 
 /**
  * Basisklasse für alle Level
@@ -104,7 +104,7 @@ public abstract class Level implements Disposable {
      * Speichert den Namen der Map, die zu dem entsprechendem Level gehört.
      * Wird im Konstruktor gesetzt.
      */
-    private String mapName;
+    private final String mapName;
 
     /**
      * Speichert die tileMap, die für dieses Level benutzt wird.
@@ -116,7 +116,7 @@ public abstract class Level implements Disposable {
      *
      * @see Level#tileMap
      */
-    private OrthogonalTiledMapRenderer tileMapRenderer;
+    private ExtendedOrthogonalTiledMapRenderer tileMapRenderer;
 
     /**
      * Die Breite der Map.
@@ -131,6 +131,16 @@ public abstract class Level implements Disposable {
      * @see Level#parseMap()
      */
     private float mapHeight;
+
+    /**
+     * Box2D Welt für Physikberechnungen
+     */
+    private World physicalWorld;
+
+    /**
+     * Speichert die Restzeit für Physikberechnungen
+     */
+    private float physicsAccumulator;
 
     /**
      * Repräsentiert den Spieler, wird auch für die Kamerasteuerung verwendet.
@@ -181,7 +191,10 @@ public abstract class Level implements Disposable {
             return;
         }
 
-        this.worldObjectManager = new WorldObjectManager(game);
+        physicalWorld = new World(new Vector2(0f, 0f), true);
+        physicalWorld.setContactListener(Physics.createContactListener());
+
+        this.worldObjectManager = new WorldObjectManager(game, physicalWorld);
 
         activeCutScene = this.getIntroCutScene();
         if (activeCutScene == null)
@@ -195,6 +208,7 @@ public abstract class Level implements Disposable {
                 {
                     levelState = LevelState.PLAYING;
                     activeCutScene = null;
+                    onStartPlaying();
                 }
             });
 
@@ -203,13 +217,31 @@ public abstract class Level implements Disposable {
 
         camera = game.getCamera();
 
-        player = new Player(saveData.getPlayerName(), saveData.isMale());
+        player = new Player(game, physicalWorld, saveData.getPlayerName(), saveData.isMale());
+        player.setDeadCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                levelState = LevelState.DEAD;
+            }
+        });
+        player.setInteractionCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                worldObjectManager.playerInteraction(player);
+            }
+        });
 
         localeBundle = I18NBundle.createBundle(Gdx.files.internal("data/I18n/Game"));
 
         initMap();
 
         ingameMenu = new IngameMenu(game, this);
+
+        InputManager.getInstance().requestGameMode();
 
         Gdx.app.log("INFO", "Level loaded.");
     }
@@ -221,13 +253,13 @@ public abstract class Level implements Disposable {
      */
     public final void update(float deltaTime)
     {
-        if (levelState != LevelState.PLAYING) return;
+        setCameraInBounds();
 
-        // AnimatedTiledMapTile.updateAnimationBaseTime();
+        if (levelState != LevelState.PLAYING) return;
+        if (dialogManager.isPlaying()) return;
 
         player.update(deltaTime);
-
-        setCameraInBounds();
+        worldObjectManager.update(deltaTime);
     }
 
     /**
@@ -237,19 +269,44 @@ public abstract class Level implements Disposable {
      */
     public final void render(float deltaTime)
     {
+        boolean freePlaying = levelState == LevelState.PLAYING && !dialogManager.isPlaying();
+
+        // SPIEL
+
         if (levelState != LevelState.INTRO && levelState != LevelState.OUTRO)
         {
             tileMapRenderer.setView(camera);
-            tileMapRenderer.render();
-
-            player.render(camera, deltaTime);
+            tileMapRenderer.renderAll(deltaTime);
         }
+
+        // INTERFACE
+
+        if (freePlaying)
+            player.renderInterface(camera, worldObjectManager.interactionPossible());
+
+        // DIALOGE
 
         if (dialogManager.isPlaying())
             dialogManager.render(camera, deltaTime);
 
+        // INGAME MENÜ
+
         if (levelState == LevelState.PAUSE)
             ingameMenu.render(camera);
+
+
+        // PHYSIK
+
+        if (freePlaying)
+        {
+            float frameTime = Math.min(deltaTime, 0.25f);
+            physicsAccumulator += frameTime;
+            while (physicsAccumulator >= LevelConstants.PHYSICS_TIME_STEP)
+            {
+                physicalWorld.step(LevelConstants.PHYSICS_TIME_STEP, LevelConstants.PHYSICS_VELOCITY_ITERATIONS, LevelConstants.PHYSICS_POSITION_ITERATIONS);
+                physicsAccumulator -= LevelConstants.PHYSICS_TIME_STEP;
+            }
+        }
     }
 
     /**
@@ -261,11 +318,17 @@ public abstract class Level implements Disposable {
         if (tileMapRenderer != null)
             tileMapRenderer.dispose();
 
+        if (worldObjectManager != null)
+            worldObjectManager.dispose();
+
         if (player != null)
             player.dispose();
 
         if (tileMap != null)
             tileMap.dispose();
+
+        if (physicalWorld != null)
+            physicalWorld.dispose();
     }
 
     /**
@@ -276,7 +339,7 @@ public abstract class Level implements Disposable {
      */
     public final boolean keyDown(int keycode)
     {
-        if (keycode == Input.Keys.ESCAPE)
+        if (InputManager.checkGameAction(keycode) == InputManager.Action.INGAME_MENU)
         {
             if (levelState == LevelState.PLAYING)
             {
@@ -290,6 +353,9 @@ public abstract class Level implements Disposable {
             return true;
         }
 
+        if (levelState == LevelState.PAUSE)
+            return ingameMenu.handleInput(keycode);
+
         if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
         {
             return player.keyDown(keycode);
@@ -298,8 +364,6 @@ public abstract class Level implements Disposable {
         if (dialogManager.isPlaying())
             return  dialogManager.handleInput(keycode);
 
-        if (levelState == LevelState.PAUSE)
-            return ingameMenu.handleInput(keycode);
 
         return false;
     }
@@ -353,6 +417,11 @@ public abstract class Level implements Disposable {
      */
     protected void onLoaded() {}
 
+    /**
+     * Erlaubt einem abgeleitetem Level nach dem Intro Aktionen durchzuführen.
+     */
+    protected void onStartPlaying() {}
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // AKTIONS METHODEN
 
@@ -388,6 +457,7 @@ public abstract class Level implements Disposable {
      * @see LevelManager#changeLevel(String)
      * @see Level#getOutroCutScene()
      */
+    @SuppressWarnings("unused")
     protected final void changeLevel(final String newLevel)
     {
         activeCutScene = this.getOutroCutScene();
@@ -409,6 +479,19 @@ public abstract class Level implements Disposable {
         }
     }
 
+    @SuppressWarnings("unused")
+    protected final void startDialog(String dialog)
+    {
+        startDialog(dialog, null);
+    }
+
+    protected final void startDialog(String dialog, ActionCallback finished)
+    {
+        dialogManager.setFinishedCallback(finished);
+
+        dialogManager.startDialog(dialog);
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // GETTER UND SETTER
 
@@ -427,6 +510,7 @@ public abstract class Level implements Disposable {
      */
     public final void setPause() {
         levelState = LevelState.PAUSE;
+        InputManager.getInstance().requestMenuMode();
     }
 
     /**
@@ -436,6 +520,7 @@ public abstract class Level implements Disposable {
      */
     public final void setPlaying() {
         levelState = LevelState.PLAYING;
+        InputManager.getInstance().requestGameMode();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -465,7 +550,7 @@ public abstract class Level implements Disposable {
     }
 
     /**
-     * Parst die Map und sucht nach Objekten und Animationen.
+     * Parst die Map.
      *
      * Wird von {@link #initMap()} aufgerufen.
      */
@@ -476,6 +561,17 @@ public abstract class Level implements Disposable {
         mapWidth = firstLayer.getWidth() * firstLayer.getTileWidth();
         mapHeight = firstLayer.getHeight() * firstLayer.getTileHeight();
 
+        parseMapObjects();
+        parseMapCollisionTiles();
+    }
+
+    /**
+     * Parst die Map: Sucht nach Objekten.
+     *
+     * Wird von {@link #parseMap()} ()} aufgerufen.
+     */
+    private void parseMapObjects()
+    {
         MapLayer objectLayer = tileMap.getLayers().get(LevelConstants.TMX_OBJECT_LAYER);
 
         if (objectLayer == null)
@@ -485,11 +581,8 @@ public abstract class Level implements Disposable {
             return;
         }
 
-        Iterator<MapObject> objects = objectLayer.getObjects().iterator();
-        while (objects.hasNext())
+        for (MapObject tileObject : objectLayer.getObjects())
         {
-            MapObject tileObject = objects.next();
-
             Gdx.app.log("LEVEL", "Found object '" + tileObject.getName() + "'");
 
             /*
@@ -508,7 +601,8 @@ public abstract class Level implements Disposable {
                 if (type.equals(LevelConstants.TMX_TYPE_START_POSITION) && tileObject instanceof EllipseMapObject)
                 {
                     EllipseMapObject start = (EllipseMapObject) tileObject;
-                    player.setPosition(start.getEllipse().x, start.getEllipse().y);
+                    Ellipse startEllipse = start.getEllipse();
+                    player.setPosition(startEllipse.x + startEllipse.width / 2f, startEllipse.y + startEllipse.height / 2f);
                 }
                 else if (type.equals(LevelConstants.TMX_TYPE_WORLD_OBJECT)) {
 
@@ -531,6 +625,22 @@ public abstract class Level implements Disposable {
     }
 
     /**
+     * Parst die Map: Sucht nach Objekten mit denen der Spieler oder andere Objekte kollidieren.
+     *
+     * Wird von {@link #parseMap()} ()} aufgerufen.
+     */
+    private void parseMapCollisionTiles()
+    {
+        MapLayer colLayer = tileMap.getLayers().get(LevelConstants.TMX_COLLISION_LAYER);
+
+        if (colLayer == null) return;
+
+        PhysicsTileMapBuilder.buildBodiesFromLayer(colLayer, physicalWorld);
+
+        tileMap.getLayers().remove(colLayer);
+    }
+
+    /**
      * Initialisiert die Map.
      * Ruft in erster Linie nur andere Methoden auf.
      *
@@ -548,9 +658,23 @@ public abstract class Level implements Disposable {
         loadMap();
         parseMap();
 
-        worldObjectManager.finishInit();
+        player.setMaxMapDimension(mapWidth, mapHeight);
 
-        tileMapRenderer = new OrthogonalTiledMapRenderer(tileMap, 1f);
+        TiledMapTileLayer decoTiledLayer;
+        MapLayer decoLayer = tileMap.getLayers().get(LevelConstants.TMX_DECORATION_LAYER);
+        if (decoLayer == null || !(decoLayer instanceof TiledMapTileLayer))
+        {
+            Gdx.app.error("ERROR", "Found no decoration layer!");
+            exitToMenu();
+            return;
+        } else {
+            decoTiledLayer = (TiledMapTileLayer) decoLayer;
+        }
+
+        tileMapRenderer = new ExtendedOrthogonalTiledMapRenderer(tileMap, decoTiledLayer);
+        tileMapRenderer.addDisplayObject(player);
+
+        worldObjectManager.finishInit(tileMapRenderer);
 
         onLoaded();
     }
@@ -604,15 +728,30 @@ public abstract class Level implements Disposable {
         INTRO,
         PLAYING,
         PAUSE,
-        OUTRO
+        OUTRO,
+        DEAD
     }
 
+    /**
+     * Definiert Konstanten
+     *
+     * @author nico
+     */
     private final class LevelConstants
     {
         static final String TMX_OBJECT_LAYER = "Objekte";
+        //static final String TMX_BACKGROUND_LAYER = "Hintergrund";
+        //static final String TMX_FOREGROUND_LAYER = "Vordergrund";
+        static final String TMX_DECORATION_LAYER = "Dekoration";
+        static final String TMX_COLLISION_LAYER = "Kollisionen";
+
         static final String TMX_TYPE = "type";
         static final String TMX_TYPE_START_POSITION = "Start";
         static final String TMX_TYPE_WORLD_OBJECT = "Welt";
+
+        static final float PHYSICS_TIME_STEP = 1/60f;
+        static final int PHYSICS_VELOCITY_ITERATIONS = 6;
+        static final int PHYSICS_POSITION_ITERATIONS = 2;
 
         private LevelConstants() {}
     }

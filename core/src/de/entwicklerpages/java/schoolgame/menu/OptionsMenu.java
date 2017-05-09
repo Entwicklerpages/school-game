@@ -8,7 +8,16 @@ import com.badlogic.gdx.graphics.Color;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.common.CheatDetector;
 
+/**
+ * Spieloptionen.
+ *
+ * @author nico
+ */
 public class OptionsMenu extends MenuState {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public String getStateName() {
@@ -20,6 +29,22 @@ public class OptionsMenu extends MenuState {
         return "OptionsMenu";
     }
 
+    /**
+     * Erstellt die entsprechende Menüstruktur und legt die Callbacks fest.<br>
+     *<br>
+     * * Zurück<br>
+     * * Sounds AN/AUS<br>
+     * * Musik AN/AUS<br>
+     * * Fullscreen<br>
+     * * V-Sync<br>
+     * * Ales löschen<br>
+     * <br>
+     * Außerdem wird ein CheatDetector eingerichtet, mit denen man in das Entwickler-Cheat-Menü gelangt.
+     * Die Kombination lautet:
+     * Hoch Hoch Runter Runter Links Rechts Links Rechts B A
+     *
+     * @see CheatDetector
+     */
     @Override
     void setupMenu() {
         MenuTitle label = new MenuTitle("titel");

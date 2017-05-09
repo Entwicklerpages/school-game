@@ -15,22 +15,68 @@ import com.badlogic.gdx.utils.StringBuilder;
 
 import de.entwicklerpages.java.schoolgame.GameState;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
-import de.entwicklerpages.java.schoolgame.common.InputHelper;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 import de.entwicklerpages.java.schoolgame.game.LevelManager;
 import de.entwicklerpages.java.schoolgame.game.SaveData;
 
+/**
+ * 4-Stufiger Wizard um ein neues Spiel zu beginnen.
+ *
+ * @author nico
+ */
 public class CreateGameSlot implements GameState, InputProcessor {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Liste aller Buchstaben, die für den SPielernamen erlaubt sind.
+     */
     private final static String ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzäöü";
 
+    /**
+     * Die Spielkonfiguration.
+     */
     private SaveData saveData;
+
+    /**
+     * Zugriff auf die Spielinstanz.
+     */
     private SchoolGame game;
+
+    /**
+     * Der Slot, in den gespeichert werden soll.
+     */
     private SaveData.Slot slot;
 
+    /**
+     * Der Batch, in den gerendert werden soll.
+     */
     private SpriteBatch batch;
+
+    /**
+     * Die Schriftart, die zur Anzeige verwendet werden soll.
+     *
+     * @see SchoolGame#getDefaultFont()
+     */
     private BitmapFont font;
+
+    /**
+     * Die kleinere Schriftart.
+     *
+     * @see SchoolGame#getLongTextFont()
+     */
     private BitmapFont smallFont;
+
+    /**
+     * Bereitet den Text zur Anzeige vor.
+     */
     private GlyphLayout fontLayout;
+
+    /**
+     * Sprachdatei.
+     */
     private I18NBundle localeBundle;
 
     private boolean stateSwitch = false;
@@ -40,12 +86,26 @@ public class CreateGameSlot implements GameState, InputProcessor {
 
     private SetupStep setupStep;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Konstruktor.
+     *
+     * @param slot der Slot, der benutzt werden soll
+     */
     public CreateGameSlot(SaveData.Slot slot)
     {
         this.slot = slot;
         setupStep = SetupStep.STEP_1_NAME;
     }
 
+    /**
+     * Initialisierung
+     *
+     * @param game zeigt auf das SchoolGame, dass das Spiel verwaltet
+     */
     @Override
     public void create(SchoolGame game) {
         this.game = game;
@@ -62,6 +122,12 @@ public class CreateGameSlot implements GameState, InputProcessor {
         localeBundle = I18NBundle.createBundle(baseFileHandle);
     }
 
+    /**
+     * Zeigt den Bildschirm an, der dem Wizard-Schritt entspricht.
+     *
+     * @param camera  die aktuelle Kamera
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void render(OrthographicCamera camera, float deltaTime) {
         batch.setProjectionMatrix(camera.combined);
@@ -79,10 +145,10 @@ public class CreateGameSlot implements GameState, InputProcessor {
                 renderName(camera, deltaTime);
                 break;
             case STEP_2_GENDER:
-                renderGender(camera, deltaTime);
+                renderGender(camera);
                 break;
             case STEP_3_TUTORIAL:
-                renderTutorial(camera, deltaTime);
+                renderTutorial(camera);
                 break;
             case STEP_4_START:
                 renderStart(camera);
@@ -92,6 +158,12 @@ public class CreateGameSlot implements GameState, InputProcessor {
         batch.end();
     }
 
+    /**
+     * Zeigt den Namenswahl Bilschirm an
+     *
+     * @param camera  die aktuelle Kamera
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     public void renderName(OrthographicCamera camera, float deltaTime)
     {
         strokeTimer += deltaTime;
@@ -113,7 +185,12 @@ public class CreateGameSlot implements GameState, InputProcessor {
         smallFont.draw(batch, fontLayout, -camera.viewportWidth / 2, -camera.viewportHeight / 2 + 70);
     }
 
-    public void renderGender(OrthographicCamera camera, float deltaTime)
+    /**
+     * Zeigt den Geschlechtsauswahl Bildschirm an
+     *
+     * @param camera die aktuelle Kamera
+     */
+    public void renderGender(OrthographicCamera camera)
     {
         Color maleColor;
         Color femaleColor;
@@ -140,7 +217,12 @@ public class CreateGameSlot implements GameState, InputProcessor {
         smallFont.draw(batch, fontLayout, -camera.viewportWidth / 2, -camera.viewportHeight / 2 + 70);
     }
 
-    public void renderTutorial(OrthographicCamera camera, float deltaTime)
+    /**
+     * Zeigt den Tutorial-Wahl Bildschirm an
+     *
+     * @param camera die aktuelle Kamera
+     */
+    public void renderTutorial(OrthographicCamera camera)
     {
         Color yesColor;
         Color noColor;
@@ -169,6 +251,11 @@ public class CreateGameSlot implements GameState, InputProcessor {
         smallFont.draw(batch, fontLayout, -camera.viewportWidth / 2, -camera.viewportHeight / 2 + 70);
     }
 
+    /**
+     * Zeigt den Spielstarten Bildschirm an
+     *
+     * @param camera die aktuelle Kamera
+     */
     public void renderStart(OrthographicCamera camera)
     {
         fontLayout.setText(font, localeBundle.format("hallo", saveData.getPlayerName(), saveData.isMale() ? "M" : "W"), Color.WHITE, camera.viewportWidth, Align.center, false);
@@ -181,10 +268,18 @@ public class CreateGameSlot implements GameState, InputProcessor {
         font.draw(batch, fontLayout, -camera.viewportWidth / 2, -50);
     }
 
+    /**
+     * Macht nix, muss aber da sein.
+     *
+     * @param deltaTime die vergangene Zeit seit dem letztem Frame
+     */
     @Override
     public void update(float deltaTime) {
     }
 
+    /**
+     * Aufräumarbeiten
+     */
     @Override
     public void dispose() {
         batch.dispose();
@@ -195,6 +290,14 @@ public class CreateGameSlot implements GameState, InputProcessor {
         return "CREATE_GAME_SLOT";
     }
 
+    /**
+     * Regiert auf Tastendrücke.
+     *
+     * Teilt ein Tasten Event dem entsprechenden Wizard-Zustand zu.
+     *
+     * @param keycode der Tastencode der gedrückten Taste
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.ESCAPE)
@@ -226,7 +329,9 @@ public class CreateGameSlot implements GameState, InputProcessor {
 
         if (setupStep == SetupStep.STEP_2_GENDER || setupStep == SetupStep.STEP_3_TUTORIAL)
         {
-            if (InputHelper.checkKeys(keycode, Input.Keys.UP, Input.Keys.W, Input.Keys.DOWN, Input.Keys.S))
+            InputManager.Action action = InputManager.checkMenuAction(keycode);
+
+            if (action == InputManager.Action.MOVE_UP || action == InputManager.Action.MOVE_DOWN)
             {
                 stateSwitch = !stateSwitch;
                 return true;
@@ -243,6 +348,10 @@ public class CreateGameSlot implements GameState, InputProcessor {
         return false;
     }
 
+    /**
+     * Speichert den eingegebenen Namen
+     * und wechselt zum nächsten Schritt.
+     */
     private void handleAcceptName()
     {
         if (playerName.length() < 2)
@@ -255,6 +364,10 @@ public class CreateGameSlot implements GameState, InputProcessor {
         stateSwitch = false;
     }
 
+    /**
+     * Speichert das ausgewählte Geschlecht
+     * und wechselt zum nächsten Schritt.
+     */
     private void handleAcceptGender()
     {
         saveData.setMale(stateSwitch);
@@ -262,6 +375,10 @@ public class CreateGameSlot implements GameState, InputProcessor {
         stateSwitch = true;
     }
 
+    /**
+     * Speichert, ob der Spieler das Tutorial sehen will,
+     * und wechselt zum nächsten Schritt.
+     */
     private void handleAcceptTutorial()
     {
         if (stateSwitch) {
@@ -275,17 +392,33 @@ public class CreateGameSlot implements GameState, InputProcessor {
         setupStep = SetupStep.STEP_4_START;
     }
 
+    /**
+     * Speichert die eingegeben Daten dauerhaft ab und startet das Spiel.
+     */
     private void handleAcceptStart()
     {
         saveData.save(null);
         game.setGameState(new LevelManager(slot));
     }
 
+    /**
+     * Macht nix, muss aber da sein.
+     *
+     * @param keycode der Tastencode der gedrückten Taste
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     @Override
     public boolean keyUp(int keycode) {
         return false;
     }
 
+    /**
+     * Wird aufgerufen, wenn ein Buchstabe eingegeben wurde.
+     * Damit wird der Name des Spielers eingegeben.
+     *
+     * @param character der Buchstabe
+     * @return true, wenn auf das Ereignis reagiert wurde
+     */
     @Override
     public boolean keyTyped(char character) {
 
@@ -332,7 +465,12 @@ public class CreateGameSlot implements GameState, InputProcessor {
         return false;
     }
 
-    enum SetupStep
+    /**
+     * Aufzählung aller möglichen Wizard-Schritte.
+     *
+     * @author nico
+     */
+    private enum SetupStep
     {
         STEP_1_NAME,
         STEP_2_GENDER,

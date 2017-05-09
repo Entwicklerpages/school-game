@@ -2,7 +2,6 @@ package de.entwicklerpages.java.schoolgame.game;
 
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -15,6 +14,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
+import de.entwicklerpages.java.schoolgame.common.InputManager;
 
 /**
  * Stellt im Spiel ein Menü dar.
@@ -24,24 +24,37 @@ import de.entwicklerpages.java.schoolgame.SchoolGame;
  */
 public class IngameMenu {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     private static final String[] ENTRIES = new String[]{"weiter", "mainmenu", "beenden"};
     private static final float WIDTH = 450f;
     private static final float HEIGHT = 420f;
 
-    private Level level;
-    private BitmapFont titleFont;
-    private BitmapFont textFont;
-    private BitmapFont smallFont;
-    private GlyphLayout fontLayout;
-    private SpriteBatch batch;
-    private ShapeRenderer shapeRenderer;
-    private I18NBundle localeBundle;
-    private Matrix4 projection;
+    private final Level level;
+    private final BitmapFont titleFont;
+    private final BitmapFont textFont;
+    private final BitmapFont smallFont;
+    private final GlyphLayout fontLayout;
+    private final SpriteBatch batch;
+    private final ShapeRenderer shapeRenderer;
+    private final I18NBundle localeBundle;
+    private final Matrix4 projection;
 
     private int activeEntry = 0;
     private MenuMode menuMode = MenuMode.MODE_PAUSE;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Initialisierung.
+     *
+     * @param game Zugriff auf die Spielinstanz
+     * @param level Zugriff auf die aktive Levelinstanz
+     */
     public IngameMenu(SchoolGame game, Level level)
     {
         this.level = level;
@@ -60,15 +73,26 @@ public class IngameMenu {
         projection = new Matrix4();
     }
 
+    /**
+     * Setzt das Menü auf den Normalzustand zurück.
+     */
     public void reset()
     {
         menuMode = MenuMode.MODE_PAUSE;
         activeEntry = 0;
     }
 
+    /**
+     * Reagiert auf Nutzereingaben und ermöglicht eine Navigation durch das Menü.
+     *
+     * @param keycode der Tastencode der gedrückten Taste
+     * @return true wenn auf das Ereignis reagiert wurde
+     */
     public boolean handleInput(int keycode)
     {
-        if (keycode == Input.Keys.UP || keycode == Input.Keys.W)
+        InputManager.Action action = InputManager.checkMenuAction(keycode);
+
+        if (action == InputManager.Action.MOVE_UP)
         {
             activeEntry--;
 
@@ -78,7 +102,7 @@ public class IngameMenu {
             return true;
         }
 
-        if (keycode == Input.Keys.DOWN || keycode == Input.Keys.S)
+        if (action == InputManager.Action.MOVE_DOWN)
         {
             activeEntry++;
 
@@ -88,7 +112,7 @@ public class IngameMenu {
             return true;
         }
 
-        if (keycode == Input.Keys.ENTER || keycode == Input.Keys.SPACE)
+        if (action == InputManager.Action.MENU_SELECT)
         {
             if (menuMode == MenuMode.MODE_PAUSE) {
                 switch (activeEntry) {
@@ -123,6 +147,16 @@ public class IngameMenu {
         return false;
     }
 
+    /**
+     * Verdunkelt das Spiel und zeigt das Menüfenster an.
+     *
+     * Der Inhalt wird in anderen Methoden dargestellt.
+     *
+     * @see IngameMenu#renderPause(OrthographicCamera, float)
+     * @see IngameMenu#renderQuestion(OrthographicCamera, float)
+     *
+     * @param camera Zugriff auf die Kamera
+     */
     public void render(OrthographicCamera camera)
     {
         // Kameraprojektion anpassen
@@ -167,6 +201,12 @@ public class IngameMenu {
             renderQuestion(camera, x);
     }
 
+    /**
+     * Stellt das Ingame Menü dar.
+     *
+     * @param camera Zugriff auf die Kamera
+     * @param x erspart eine Neuberechnung der X Position des Menüs
+     */
     private void renderPause(OrthographicCamera camera, float x)
     {
         batch.setProjectionMatrix(projection);
@@ -198,6 +238,12 @@ public class IngameMenu {
         batch.end();
     }
 
+    /**
+     * Fragt den Nutzer ob er wirklich das Spiel beenden oder zurück ins Hauptmenü will.
+     *
+     * @param camera Zugriff auf die Kamera
+     * @param x erspart eine Neuberechnung der X Position des Menüs
+     */
     private void renderQuestion(OrthographicCamera camera, float x)
     {
         batch.setProjectionMatrix(projection);
@@ -233,6 +279,11 @@ public class IngameMenu {
         batch.end();
     }
 
+    /**
+     * Auflistung aller Zustände, die das IngameMenu haben kann.
+     *
+     * @author nico
+     */
     private enum MenuMode
     {
         MODE_PAUSE,
