@@ -13,6 +13,20 @@ player_m_back
   index: -1
 player_m_back_walk
   rotate: false
+  xy: 36, 4
+  size: 32, 62
+  orig: 32, 62
+  offset: 0, 0
+  index: 4
+player_m_back_walk
+  rotate: false
+  xy: 36, 4
+  size: 32, 62
+  orig: 32, 62
+  offset: 0, 0
+  index: 2
+player_m_back_walk
+  rotate: false
   xy: 70, 70
   size: 32, 62
   orig: 32, 62
@@ -24,7 +38,7 @@ player_m_back_walk
   size: 32, 62
   orig: 32, 62
   offset: 0, 0
-  index: 2
+  index: 3
 player_m_front
   rotate: false
   xy: 2, 134
@@ -48,6 +62,13 @@ player_m_front_walk
   index: 2
 player_m_front_walk
   rotate: false
+  xy: 36, 134
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: 4
+player_m_front_walk
+  rotate: false
   xy: 2, 2
   size: 32, 64
   orig: 32, 64
@@ -66,13 +87,6 @@ player_m_side_walk
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: 4
-player_m_side_walk
-  rotate: false
-  xy: 36, 68
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
   index: 2
 player_m_side_walk
   rotate: false
@@ -81,10 +95,3 @@ player_m_side_walk
   orig: 32, 64
   offset: 0, 0
   index: 1
-player_m_side_walk
-  rotate: false
-  xy: 70, 134
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: 3

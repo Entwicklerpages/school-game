@@ -11,79 +11,16 @@ Heilerin_Fortitura
   orig: 32, 64
   offset: 0, 0
   index: -1
-Heldin_hinte_laufen2
-  rotate: false
-  xy: 854, 292
-  size: 32, 62
-  orig: 32, 62
-  offset: 0, 0
-  index: -1
-Heldin_hinten
-  rotate: false
-  xy: 786, 94
-  size: 32, 62
-  orig: 32, 62
-  offset: 0, 0
-  index: -1
-Heldin_hinten_laufen1
-  rotate: false
-  xy: 820, 160
-  size: 32, 62
-  orig: 32, 62
-  offset: 0, 0
-  index: -1
-Heldin_laufen1
+Kind_Mädchen_hinten2
   rotate: false
   xy: 852, 422
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: -1
-Heldin_laufen_seite
+Kind_Mädchen_vorne2
   rotate: false
   xy: 786, 290
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-Heldin_seite_rechts
-  rotate: false
-  xy: 786, 290
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-Heldin_steht_seite
-  rotate: false
-  xy: 820, 356
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-Heldin_vorne
-  rotate: false
-  xy: 886, 422
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-Heldin_vorne_laufen1
-  rotate: false
-  xy: 786, 224
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-Heldin_vorne_laufen2
-  rotate: false
-  xy: 820, 290
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-Heldin_vorne_laufen3
-  rotate: false
-  xy: 854, 356
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
@@ -97,63 +34,70 @@ altes_paerchen
   index: -1
 bär
   rotate: false
-  xy: 920, 454
+  xy: 820, 388
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
 bär_laufen1
   rotate: false
-  xy: 920, 420
+  xy: 886, 454
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
 bär_laufen2
   rotate: false
-  xy: 854, 258
+  xy: 820, 354
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
 frosch_seite_springend
   rotate: false
-  xy: 986, 454
+  xy: 952, 454
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 frosch_sitzend_seite
   rotate: false
-  xy: 786, 60
+  xy: 820, 320
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 frosch_sitzend_vone
   rotate: false
-  xy: 820, 126
+  xy: 786, 190
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+gegner_stein
+  rotate: false
+  xy: 886, 354
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 hase_hüpft_böse
   rotate: false
-  xy: 854, 224
+  xy: 920, 420
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 hase_hüpft_lieb
   rotate: false
-  xy: 986, 420
+  xy: 986, 454
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 hase_sitzt_böse
   rotate: false
-  xy: 786, 26
+  xy: 820, 286
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -172,44 +116,58 @@ heldin_Cherackter
   orig: 390, 484
   offset: 0, 0
   index: -1
+huhn
+  rotate: false
+  xy: 854, 320
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+huhn_gakernd
+  rotate: false
+  xy: 786, 156
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
 kind_maedchen_hinten
   rotate: false
-  xy: 786, 158
+  xy: 786, 224
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: -1
 kind_maedchen_vorne
   rotate: false
-  xy: 820, 224
+  xy: 886, 388
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: -1
 krabbe_laufen1
   rotate: false
-  xy: 820, 92
+  xy: 920, 386
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 krabbe_laufen2
   rotate: false
-  xy: 854, 190
+  xy: 954, 420
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 krabbe_laufen3
   rotate: false
-  xy: 820, 58
+  xy: 820, 252
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 seeigel
   rotate: false
-  xy: 854, 156
+  xy: 854, 286
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
