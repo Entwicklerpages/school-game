@@ -1,34 +1,216 @@
 
 village.png
-size: 256,128
+size: 1024,512
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-altes_paerchen
+Heilerin_Fortitura
   rotate: false
-  xy: 2, 2
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-heilerin_fortitura
-  rotate: false
-  xy: 68, 2
+  xy: 786, 356
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: -1
+Heldin_hinte_laufen2
+  rotate: false
+  xy: 854, 292
+  size: 32, 62
+  orig: 32, 62
+  offset: 0, 0
+  index: -1
+Heldin_hinten
+  rotate: false
+  xy: 786, 94
+  size: 32, 62
+  orig: 32, 62
+  offset: 0, 0
+  index: -1
+Heldin_hinten_laufen1
+  rotate: false
+  xy: 820, 160
+  size: 32, 62
+  orig: 32, 62
+  offset: 0, 0
+  index: -1
+Heldin_laufen1
+  rotate: false
+  xy: 852, 422
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Heldin_laufen_seite
+  rotate: false
+  xy: 786, 290
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Heldin_seite_rechts
+  rotate: false
+  xy: 786, 290
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Heldin_steht_seite
+  rotate: false
+  xy: 820, 356
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Heldin_vorne
+  rotate: false
+  xy: 886, 422
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Heldin_vorne_laufen1
+  rotate: false
+  xy: 786, 224
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Heldin_vorne_laufen2
+  rotate: false
+  xy: 820, 290
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Heldin_vorne_laufen3
+  rotate: false
+  xy: 854, 356
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+altes_paerchen
+  rotate: false
+  xy: 786, 422
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+bär
+  rotate: false
+  xy: 920, 454
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+bär_laufen1
+  rotate: false
+  xy: 920, 420
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+bär_laufen2
+  rotate: false
+  xy: 854, 258
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+frosch_seite_springend
+  rotate: false
+  xy: 986, 454
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+frosch_sitzend_seite
+  rotate: false
+  xy: 786, 60
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+frosch_sitzend_vone
+  rotate: false
+  xy: 820, 126
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+hase_hüpft_böse
+  rotate: false
+  xy: 854, 224
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+hase_hüpft_lieb
+  rotate: false
+  xy: 986, 420
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+hase_sitzt_böse
+  rotate: false
+  xy: 786, 26
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+held_Cherackter
+  rotate: false
+  xy: 2, 2
+  size: 390, 484
+  orig: 390, 484
+  offset: 0, 0
+  index: -1
+heldin_Cherackter
+  rotate: false
+  xy: 394, 2
+  size: 390, 484
+  orig: 390, 484
+  offset: 0, 0
+  index: -1
 kind_maedchen_hinten
   rotate: false
-  xy: 102, 2
+  xy: 786, 158
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: -1
 kind_maedchen_vorne
   rotate: false
-  xy: 136, 2
+  xy: 820, 224
   size: 32, 64
   orig: 32, 64
+  offset: 0, 0
+  index: -1
+krabbe_laufen1
+  rotate: false
+  xy: 820, 92
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+krabbe_laufen2
+  rotate: false
+  xy: 854, 190
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+krabbe_laufen3
+  rotate: false
+  xy: 820, 58
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+seeigel
+  rotate: false
+  xy: 854, 156
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
