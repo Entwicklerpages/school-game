@@ -10,7 +10,7 @@ import java.io.File;
  */
 public final class PathHelper {
 
-    private final static String GAME_NAME = "schoolgame";
+    private final static String GAME_NAME = "legende_kristalle";
 
     private PathHelper() {}
 
