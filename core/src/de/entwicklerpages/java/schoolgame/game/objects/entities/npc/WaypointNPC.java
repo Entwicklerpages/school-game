@@ -1,7 +1,6 @@
 package de.entwicklerpages.java.schoolgame.game.objects.entities.npc;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.objects.PolylineMapObject;
 import com.badlogic.gdx.math.MathUtils;
@@ -17,6 +16,10 @@ import de.entwicklerpages.java.schoolgame.game.Physics;
  */
 public class WaypointNPC extends BaseNPC
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     private static final float ACCELERATION = 0.28f;
     private static final float DIAGONAL_SWITCH_TIME = 0.4f;
     private static final float TARGET_DISTANCE_SQUARED = 16f;
@@ -54,17 +57,40 @@ public class WaypointNPC extends BaseNPC
      */
     protected float speed = 3f;
 
+    /**
+     * Die letzte X Geschwindigkeit.
+     */
     protected float lastDeltaX = 0;
+
+    /**
+     * Die letzte Y Geschwindigkeit.
+     */
     protected float lastDeltaY = 0;
 
+    /**
+     * Kompensiert ein starkes Ungleichgewicht in der Entfernung zwischen der X und der Y Achse.
+     * Verhindert zittriges, diagonales gehen.
+     */
     protected boolean proportionCompensation = false;
+
+    /**
+     * Timer, um zwischen X und Y Bewegungen zu wechseln.
+     */
     private float diagonalSwitchTimer = 0f;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public WaypointNPC(String objectId, String baseName)
     {
         super(objectId, baseName);
     }
 
+    /**
+     * Initialisiert den NPC.
+     * Erstellt eine Liste aller Wegpunkte.
+     */
     @Override
     public void onInit()
     {
@@ -117,6 +143,13 @@ public class WaypointNPC extends BaseNPC
         targetIndex = 1;
     }
 
+    /**
+     * Wird in jedem Frame aufgerufen um die Bewegung des NPCs zu steuern.
+     * Geht zu dem aktuellen Ziel.
+     * Legt ein neues fest, falls das alte erreicht wurde.
+     *
+     * @param deltaTime die Zeit, die seit dem letzten Frame vergangen ist
+     */
     @Override
     public void onUpdate(float deltaTime)
     {
@@ -236,31 +269,63 @@ public class WaypointNPC extends BaseNPC
         body.setLinearVelocity(lastDeltaX, lastDeltaY);
     }
 
+    /**
+     * Wird nur bei Polylines beachtet. Sagt aus, ob der NPC am Ende der Polyline wieder die ganze Strecke zurück gehen soll,
+     * oder direkt zum Start teleoprtiert werden soll.
+     *
+     * @param repeating true, für den Rückweg, false zum teleportieren
+     */
     public void setRepeating(boolean repeating)
     {
         this.repeating = repeating;
     }
 
+    /**
+     * Legt fest, in welche Richtung der NPC gehen soll. Die Richtung hängt allerdings von der Reihenfolge der Wegpunkte in der Map ab.
+     * Diese Einstellung ist nützlich um die Richtung umzukehren.
+     *
+     * @see WaypointNPC#toggleDirection()
+     *
+     * @param direction die Richtung
+     */
     public void setDirection(boolean direction)
     {
         this.direction = direction;
     }
 
+    /**
+     * Wechselt die Richtung, in die der NPC die Wegpunkte abgklappert.
+     */
     public void toggleDirection()
     {
         this.direction = !this.direction;
     }
 
+    /**
+     * Ruft die aktuelle Richtung ab.
+     *
+     * @return die aktuelle Richtung
+     */
     public boolean getDirection()
     {
         return direction;
     }
 
+    /**
+     * Ruft die Geschwindigkeit des NPCs ab.
+     *
+     * @return die Geschwindigkeit
+     */
     public float getSpeed()
     {
         return speed;
     }
 
+    /**
+     * Legt die Geschwindigkeit des NPCs fest.
+     *
+     * @param speed die neue Geschwindigkeit
+     */
     public void setSpeed(float speed)
     {
         this.speed = speed;
