@@ -28,7 +28,7 @@ public class DesktopLauncher {
      */
     public static void main (String[] arg) {
 
-        String basePath = LogStream.getBasePath("schoolgame");
+        String basePath = LogStream.getBasePath("legende_kristalle");
 
         try
         {
