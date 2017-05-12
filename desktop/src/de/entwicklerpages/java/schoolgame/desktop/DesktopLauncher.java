@@ -63,7 +63,7 @@ public class DesktopLauncher {
         }
 
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.title = "School Game";
+        config.title = "Die Legende der Kristalle";
         config.useGL30 = false;
         config.forceExit = true;
         config.resizable = true;
