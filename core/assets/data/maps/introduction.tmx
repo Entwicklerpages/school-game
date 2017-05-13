@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="34">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="36">
  <tileset firstgid="1" source="../tilemap/test.tsx"/>
  <tileset firstgid="49" source="../tilemap/forest.tsx"/>
  <tileset firstgid="105" source="../tilemap/graveyard.tsx"/>
  <tileset firstgid="125" source="../tilemap/cave.tsx"/>
+ <tileset firstgid="173" source="../tilemap/village.tsx"/>
+ <tileset firstgid="245" source="../tilemap/village_deco.tsx"/>
  <layer name="Hintergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztmLlLA0EUhydaeIGJCsYDAxotvKpoGtNYezQeCDaWQiwsBQuPxvSKjZZCQPwj/S3ZIcPzze7MzuyugQ18bFx2IvO+/ObNpCaEqKXIJCiDCrjJiX0LdsEFaFqO80WaLgofhY/CRzSzoArmYmrW1ty/Z+7dFT68ENTmlmDrx0c+GuCaYWfAfMyDBQsWQQkMgWGmTqZufPuQNac0M/DxDrrkqr638bEMViyogzEwDiZiapbESZtcda5pTfbAFUPLwId8lQ2h41UH0oN6L4mPVbAB1hx8RNVQlx8T1LFcPo7ACTjW1Fu6amk82PqgXroxJPFRF2Z5scmHjzXMxMcBuASHGh9RmXDxIZ1wa5R6zdOHzAi3h1Ix3U/pXKq1PQOn4DwnH7q1yiUfW6LXr7cdfWSFzf6qobxPY73i+rhr/9BB+8p/9eGyv7L1wfVy3/1DB83Nf/Kh9nGX/ZXLPpf2DS4jWe53szx7qtj0cVMfXD0fwDd4ZGpOc8GtVbY+1kVvPTJlMwMfJdE7b8ozZ1Y+uLXmCXyBZwMPuqyMhIySuemQczZ5NmApZR/Sd9T/SCsfNBefoY8P0c8JzUgUwWfJvlMhc9Mh52zyLDfON1NgOmQmQx/q913mgkJzEucioCr6v7+qc9Mh52zyLDcur/5heu5I0j9ewA94Cz28hn93xN+1SuciSf8YVGz2QbbrlXqN6x8mOcm7VoPqg/utQ+akI/j6R50D5b1ffHsQXg==
+   eJztmLlLA0EUh0ctvMBEBU8MaLTwqjwabaw9Gg8EG0tBC0vBwqPRRsW78IoiBMQ/0t+SHXw832xmspeBCB8Tlxll3sc7NjmlVC5G2kAGZMFeSiw4MAM2wazjuaiI00XNR81HzUcwXaAb9JSJ2a7h+aHw7KDmIxK82OwzXP1EkR9TYEdgusp89II+B/pBHagHDUKcbN1E7UPHnDObgI8HUGQr/eziYxAMOZAHzaAFtJaJWSVOdtlqcs1jMge2BeYtfOifjCX8PHWgPdBnlfgYBmNgJISPoBia8scGelbKj2WwClYM8dau5g0eXH1wL8UyVOIjr+zyxSU/oqhhNj4WwRZYMvgIyokwPrQTqUbRNU0fOkekGYpiO0+ZXNLYroM1sJGSD1OtCpMfE6rUrydD+kgKl/lqinyOo15JfTxs/zDB+8p/9RFmvnL1IfXyqPuHCZ43/8kH7eNh5qswcy7vG1KOJDnvJvnuSXHp47Y+pHgegS9wLMTc40OA73O516gq1SNbxhPwUadK75v6nTMpH1KtOQGf4FTw9Q4uwCXhChTY3kafJnY3E/rONns9BmL2oX0H/Y+48oPnxbPv40n95omOs+fjnsX+EVyDG3/1/pbuO1l2NxP6zjZ7pXNR0w46fDoT9EFrvs4LDs0TyYdU87rV7/ev9G4m9J1t9krn0uoftu8dlfSPM/AN7nwPt/7v5yTOQfmhce0f1YrLHORar+harn9IPgrsWdqxqlYf0ncdOk/O1d+5yfPxAl4Jb8yHd+YHKxYP7g==
   </data>
  </layer>
  <layer name="Hintergrund2" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1rEKgCAUhlFft4bae/pccguKFH/iHLiruHxXS/m3pc46+xI0W5199iVo9PHOMfh8fWTRRxZ9wD37qp8eb7199czof9VFH1n0kUUfWfSRRR9Z9JFFH1n0kUUfWfTBFyedVBCf
+   eJzt1jEOgCAQAEG+q4X2/sTfQgOdiUbwNrKTXEuuWSClf1vKrNFLqNnK7NFLqLGPZ47B59sHi32w2Id0zfuqnx5vvffVPaP/VZV9sNgHi32w2AeLfbDYBwu9jzN6gY/ZBwu9j9nYh97IY2AROA==
   </data>
  </layer>
  <layer name="Dekoration" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1lsKgCAQBVAX2iZ6E7T4vgIJSSh6WOd8DSLDRcExBKBUzdMBClE9HSCSurP69hRwvT6x1kX1ENVtptd0Ps4v5M5xNR/o7Z3ia/yh3is1P7bieTLu7PN2AQAAAEcsHFwHoA==
+   eJzt2E0KgCAQhmEP2iX6J+jE7WvdpsUgOkHETNr7bBQV+VBQMQQApeq8AxSi8Q4gpPasNU8BK4fSt5ul8DEm2gZRn0S9z8yxXeXySqL65dYxtj6Ym3MKteEN9V2p+yMm75NZGcfZBQAAANzT/q8A4K9OXC0Law==
   </data>
  </layer>
  <objectgroup name="Objekte">

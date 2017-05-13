@@ -63,6 +63,12 @@
  <tile id="24" terrain="2,1,2,1"/>
  <tile id="25" terrain="1,1,1,1"/>
  <tile id="26" terrain="1,2,1,2"/>
+ <tile id="28">
+  <animation>
+   <frame tileid="28" duration="400"/>
+   <frame tileid="27" duration="400"/>
+  </animation>
+ </tile>
  <tile id="29" terrain="2,2,,"/>
  <tile id="30" terrain="0,1,0,0">
   <animation>
