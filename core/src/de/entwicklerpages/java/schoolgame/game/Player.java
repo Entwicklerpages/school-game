@@ -100,9 +100,9 @@ public class Player implements ExtendedMapDisplayObject {
         playerSide = playerAtlas.findRegion(player + "_side");
         playerBack = playerAtlas.findRegion(player + "_back");
 
-        playerFrontWalk = new Animation<TextureRegion>(1/5f, playerAtlas.findRegions(player + "_front_walk"), Animation.PlayMode.LOOP);
-        playerSideWalk = new Animation<TextureRegion>(1/5f, playerAtlas.findRegions(player + "_side_walk"), Animation.PlayMode.LOOP);
-        playerBackWalk = new Animation<TextureRegion>(1/5f, playerAtlas.findRegions(player + "_back_walk"), Animation.PlayMode.LOOP);
+        playerFrontWalk = new Animation<TextureRegion>(1/7f, playerAtlas.findRegions(player + "_front_walk"), Animation.PlayMode.LOOP);
+        playerSideWalk = new Animation<TextureRegion>(1/7f, playerAtlas.findRegions(player + "_side_walk"), Animation.PlayMode.LOOP);
+        playerBackWalk = new Animation<TextureRegion>(1/7f, playerAtlas.findRegions(player + "_back_walk"), Animation.PlayMode.LOOP);
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;

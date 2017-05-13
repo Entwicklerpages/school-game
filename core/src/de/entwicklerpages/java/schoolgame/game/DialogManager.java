@@ -214,6 +214,8 @@ public class DialogManager {
         CharacterType character = characterMap.get(talking);
         if (character != null)
             talking = character.getTitle();
+        else if (talking.equals("#player#"))
+            talking = playerName;
         else
             Gdx.app.error("WARNING", "There is no character '" + talking + "' who can talk in '" + activeDialog.getName() + "', statement: " + activeStatement);
 
