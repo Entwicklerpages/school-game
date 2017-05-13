@@ -66,7 +66,7 @@ public class GraveyardIntroLevel extends Level
         }
 
         Trigger exitTrigger = new Trigger("Ausgang");
-        scullTrigger.setTriggerEntered(new ActionCallback()
+        exitTrigger.setTriggerEntered(new ActionCallback()
         {
             @Override
             public void run()
