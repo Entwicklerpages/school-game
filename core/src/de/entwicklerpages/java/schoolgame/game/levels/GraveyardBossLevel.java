@@ -4,25 +4,25 @@ import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
 
 /**
- * Zweites Friedhof Level
+ * Fünftes Friedhof Level
  *
  * LEVEL INFO
  * -----
- * Keine Story, nur Kampf!
+ * Story
  *
  * @author nico
  */
-public class GraveyardBattleLevel extends Level
+public class GraveyardBossLevel extends Level
 {
-    public static final String LEVEL_NAME = "graveyard_battle";
+    public static final String LEVEL_NAME = "graveyard_boss";
 
-    public GraveyardBattleLevel() {
+    public GraveyardBossLevel() {
         super(LEVEL_NAME);
     }
 
     @Override
     public String getTitle() {
-        return "Friedhof: Kampf";
+        return "Friedhof: Bosskampf";
     }
 
     @Override

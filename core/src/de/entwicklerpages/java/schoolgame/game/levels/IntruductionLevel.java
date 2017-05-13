@@ -18,7 +18,7 @@ public class IntruductionLevel extends Level {
     public static final String LEVEL_NAME = "introduction";
 
     public IntruductionLevel() {
-        super("introduction");
+        super(LEVEL_NAME);
     }
 
     @Override
