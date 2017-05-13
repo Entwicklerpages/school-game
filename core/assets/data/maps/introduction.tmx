@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="30">
  <tileset firstgid="1" source="../tilemap/test.tsx"/>
+ <tileset firstgid="49" source="../tilemap/forest.tsx"/>
  <layer name="Hintergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztl20LgjAQgFdBaUFpQVmRUNaH3v7/3+vEDobc3tTpJhOeD8Jkdz6ed8sZY7lF1sAGSCzv0xUxsARWDsQSfAQfIubA4k8UfHTGHjgAWUOPfdfW2H00xaYPvvZ4Is98HIGTAWdgAkyBmeFeWFdNasvENU/imY8rcDOgcDQ/3jVPphEvXpRPij583IEX8PDUh4wU2AI7gQdTHza9oI+idj8mHxTUZerDhpPgw00fH1b166+nPmTzlWj+aOvDRh6qeqj3FVd9tJmvTH3YzEPlo143Lvkov3v85tvMVy7h87wba8bgSrw6PFn1P9Ll3UN++L9XnTl98UH1MhmYs87akovl/PD9qfbwxQfVy2RgnDprqee6Bs9v1BnORx98L+NzE4E566ylnhuKVDOGoX0Egg+XGdrHDySn06A=
+   eJztmEtLAzEQx1MFtQrWB/jEglYPWj219mIvnn1cfCB48ej3/wT+ZTswhs12ppvsbtYUftCFhOzkt5NJ0jfG9AOyCXpgK/A4RdwruAUfYKLs54vQc5F8tMPHClidsZZ8eGMP7IODBT36yK3kw19ehfAxAt85jCPzcQiOFByDDlgCy8qxKK8Wya15PmjObSYV+PD5zZ6CMwUD0AXrYMPzu5TxcQe+cpgKfNCvJ6QKH+fgClxE6OMJvIBnx3yTq6nDg9aH7SWEj4H1HJOPB/AJHh0+inKijA9yknz8nds38AreW+Tj2mT1+iZCH/P2VyP2P5b1yoVdV5rqo8z+SusjVC2X+LDzpkk+eB0vs79qwj5X6qPJ65W0jkt91BUL59Jk65GUYQU+OiY7bxadOWPywe/seGwuKGZJ219OAvsg30VjxOSD3xHx2FxQzJK2ef18sw12Zuy2wAe/I+KxuaCYJW3z+tWB5txRt4//gGYflHwkH5wfUzUrFw==
   </data>
  </layer>
  <layer name="Dekoration" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztzgENAAAIA6Ansn88Y3w6SEAC8Nu0AwAAAAAAAJyw20wALw==
+   eJztzgENAAAIA6AHtX8OY3w6SEAC8Nu0AwAAAAAAAJywl2cAXQ==
   </data>
  </layer>
  <objectgroup name="Objekte">
