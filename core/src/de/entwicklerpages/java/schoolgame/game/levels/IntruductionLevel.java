@@ -40,6 +40,18 @@ public class IntruductionLevel extends Level {
             }
         });
 
+        InteractionZone scullInteraction = new InteractionZone("Schaedel");
+
+        scullInteraction.setActionCallback(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                startDialog("bar1");
+            }
+        });
+
         worldConfig.registerObject(signInteraction);
+        worldConfig.registerObject(scullInteraction);
     }
 }

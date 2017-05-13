@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="30">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="34">
  <tileset firstgid="1" source="../tilemap/test.tsx"/>
  <tileset firstgid="49" source="../tilemap/forest.tsx"/>
+ <tileset firstgid="105" source="../tilemap/graveyard.tsx"/>
  <layer name="Hintergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztmEtLAzEQx1MFtQrWB/jEglYPWj219mIvnn1cfCB48ej3/wT+ZTswhs12ppvsbtYUftCFhOzkt5NJ0jfG9AOyCXpgK/A4RdwruAUfYKLs54vQc5F8tMPHClidsZZ8eGMP7IODBT36yK3kw19ehfAxAt85jCPzcQiOFByDDlgCy8qxKK8Wya15PmjObSYV+PD5zZ6CMwUD0AXrYMPzu5TxcQe+cpgKfNCvJ6QKH+fgClxE6OMJvIBnx3yTq6nDg9aH7SWEj4H1HJOPB/AJHh0+inKijA9yknz8nds38AreW+Tj2mT1+iZCH/P2VyP2P5b1yoVdV5rqo8z+SusjVC2X+LDzpkk+eB0vs79qwj5X6qPJ65W0jkt91BUL59Jk65GUYQU+OiY7bxadOWPywe/seGwuKGZJ219OAvsg30VjxOSD3xHx2FxQzJK2ef18sw12Zuy2wAe/I+KxuaCYJW3z+tWB5txRt4//gGYflHwkH5wfUzUrFw==
+   eJztmMlLQzEQh1M9uIGtCtYFC1o9uJ2qvdiLZ5eLC4IXj0I9eBT85/2V12AImfdmTPKWmsJH28cL7czXyUzaU0r1IrIK2qADPiriWsAleAFD4bpQxHSRfCQfyUc+m6ALtgpyNiaufzuufSUfQZjk5tNC6idEfQzAu4OLhvnYBjsCdkELzIF5R564bkL70Dm3GZbgI+Tvex8cCOiDJbAMVgpy9hcnY+uZcm3n5Aq8ORgxfOhHm0kZPg7BCTjy8JGXQ6p+OJhrXfVxBx7APZFv7WpEeJD6sL3E8NG33oeojxB7GMfHDXgFt4SPvJrw8aGd1NmHrhHXDGXCnacol2Zun8AjeJ4hH2cq69fnnj7KQjJfDYzXTdmvKOy+UlcfPvOV1EesXs7xYddNnXyYfdxnvqrDnMv1UbRfxfhOHCR9nOujqlhMjlW2H3E5LcFHS2XnTX3mbLqPhSmLVmwUOmbOvRP2IvvQvvM+o0k+dN/pWLFR6Jg597rWhWYNrE/ZmAEfXfX7/6sZG4WOmXOva10VSM4dVfv4D0jmoOQj+TD5AZ+yo6c=
+  </data>
+ </layer>
+ <layer name="Hintergrund2" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1rEKgCAUhlFft4bae/pccguKFH/iHLiruHxXS/m3pc46+xI0W5199iVo9PHOMfh8fWTRRxZ9wD37qp8eb7199czof9VFH1n0kUUfWfSRRR9Z9JFFH1n0kUUfWfTBFyedVBCf
   </data>
  </layer>
  <layer name="Dekoration" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztzgENAAAIA6AHtX8OY3w6SEAC8Nu0AwAAAAAAAJywl2cAXQ==
+   eJzt1lsKgCAQBVAX2iZ6E7T4vgIJSSh6WOd8DSLDRcExBKBUzdMBClE9HSCSurP69hRwvT6x1kX1ENVtptd0Ps4v5M5xNR/o7Z3ia/yh3is1P7bieTLu7PN2AQAAAEcsHFwHoA==
   </data>
  </layer>
  <objectgroup name="Objekte">
@@ -17,6 +23,9 @@
    <ellipse/>
   </object>
   <object id="29" name="Schild" type="Welt" x="439.5" y="89.5" width="48.5" height="60.5"/>
+  <object id="32" name="Schaedel" type="Welt" x="1237.33" y="186.667" width="54.6667" height="57.3333">
+   <ellipse/>
+  </object>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="12" x="111.625" y="494.667" width="289.042" height="65.3333"/>
@@ -38,10 +47,12 @@
   <object id="26" x="2431.91" y="192.091" width="384" height="191.909"/>
   <object id="27" x="784.083" y="-8.66667" width="63.875" height="120.542"/>
   <object id="28" x="-0.125" y="496.375" width="79" height="64.125"/>
+  <object id="30" x="1790.67" y="-1.33333" width="70.6667" height="177.333"/>
+  <object id="31" x="1794.67" y="236" width="58.6667" height="405.333"/>
  </objectgroup>
  <layer name="Vordergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+   eJztzkEJAAAIADHrav8A2kKUDe5/EQAAwFU51fYEAAAAADzRI9gA1A==
   </data>
  </layer>
 </map>
