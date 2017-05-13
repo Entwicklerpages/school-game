@@ -54,8 +54,6 @@ public class GraveyardIntroLevel extends Level
                 {
                     startDialog("schaedel");
                     talkedToScull = true;
-                } else {
-                    startDialog("schaedel2");
                 }
             }
         });

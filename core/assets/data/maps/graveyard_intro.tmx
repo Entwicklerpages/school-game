@@ -1,25 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="2">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="19" tilewidth="32" tileheight="32" nextobjectid="49">
  <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
- <layer name="Hintergrund" width="50" height="50">
+ <layer name="Hintergrund" width="24" height="19">
   <data encoding="base64" compression="zlib">
-   eJztw8EJAAAMA6F7ZP+ZO0dBwVVTVVVVVVVVVVXV5w+SZScR
+   eJxjYWBgYBnFgw4zD3H76O1+cjEHDjwc/EZL99IzDIZaeBNy91D1z0jEALuDBzA=
   </data>
  </layer>
- <layer name="Dekoration" width="50" height="50">
+ <layer name="Hintergrund2" width="24" height="19">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJxjZGBgYAJiRhrRbEDMTkMal73EAnLdTywYae4nFZDqflIBIfdTCsjNF9RyP6X+GnX/qPux0SxEYn4oTW3/DZb6BQD5YQS8
+  </data>
+ </layer>
+ <layer name="Dekoration" width="24" height="19">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFlABOIOZBYsMAFxBz0985Aw74GBDhAQKcRLBJAYJAzI/FzqEKYOHAw4CZfkY6wBcmQzV8qJlWQWbhChN6hY8IlObAgYc6AAB2kAFm
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="1" name="Spielerstart" type="Start" x="19" y="15" width="10" height="10">
+  <object id="1" name="Spielerstart" type="Start" x="33" y="272.5" width="10" height="10">
    <ellipse/>
   </object>
+  <object id="4" name="Schaedel" type="Welt" x="510" y="501" width="46" height="54"/>
+  <object id="5" name="Schild" type="Welt" x="126.5" y="240" width="36.5" height="49"/>
+  <object id="6" name="Grab1" type="Welt" x="253.5" y="124" width="38" height="38.5"/>
+  <object id="7" name="Grab6" type="Welt" x="447" y="216.75" width="38" height="38.5"/>
+  <object id="8" name="Grab3" type="Welt" x="445" y="122.75" width="38" height="38.5"/>
+  <object id="9" name="Grab2" type="Welt" x="348.5" y="122.25" width="38" height="38.5"/>
+  <object id="10" name="Grab5" type="Welt" x="349" y="218.25" width="38" height="38.5"/>
+  <object id="11" name="Grab4" type="Welt" x="252.5" y="219.75" width="38" height="38.5"/>
+  <object id="12" name="Grab9" type="Welt" x="444.5" y="315.75" width="38" height="38.5"/>
+  <object id="13" name="Grab8" type="Welt" x="349" y="314.25" width="38" height="38.5"/>
+  <object id="14" name="Grab7" type="Welt" x="254" y="314.75" width="38" height="38.5"/>
+  <object id="15" name="Grab10" type="Welt" x="253" y="408.75" width="38" height="38.5"/>
+  <object id="16" name="Grab11" type="Welt" x="347.5" y="411.25" width="38" height="38.5"/>
+  <object id="17" name="Grab12" type="Welt" x="444.5" y="409.25" width="38" height="38.5"/>
+  <object id="18" name="Grab13" type="Welt" x="250" y="504.25" width="38" height="38.5"/>
+  <object id="19" name="Grab14" type="Welt" x="348.5" y="506.75" width="38" height="38.5"/>
+  <object id="20" name="Grab15" type="Welt" x="445" y="505.75" width="38" height="38.5"/>
+  <object id="48" name="Ausgang" type="Welt" x="719" y="494" width="73" height="86"/>
  </objectgroup>
- <objectgroup name="Kollisionen"/>
- <layer name="Vordergrund" width="50" height="50">
+ <objectgroup name="Kollisionen">
+  <object id="21" x="1.33333" y="0" width="124.667" height="256"/>
+  <object id="25" x="0" y="302" width="192.667" height="318"/>
+  <object id="26" x="193.333" y="560" width="572.667" height="48"/>
+  <object id="27" x="128" y="-2" width="60.6667" height="194"/>
+  <object id="28" x="189.333" y="0" width="385.333" height="66.6667"/>
+  <object id="29" x="513.333" y="66" width="62" height="445.333"/>
+  <object id="30" x="576.667" y="449.333" width="195.667" height="61.3333"/>
+  <object id="32" x="261" y="117.25" width="23" height="11"/>
+  <object id="33" x="357.5" y="117.5" width="23" height="11"/>
+  <object id="34" x="451.25" y="117.25" width="23" height="11"/>
+  <object id="35" x="260.75" y="213.25" width="23" height="11"/>
+  <object id="36" x="357.5" y="212.75" width="23" height="11"/>
+  <object id="37" x="452.75" y="213.5" width="23" height="11"/>
+  <object id="38" x="260.5" y="309.25" width="23" height="11"/>
+  <object id="39" x="357" y="310" width="23" height="11"/>
+  <object id="40" x="451.25" y="309" width="23" height="11"/>
+  <object id="41" x="261" y="405.25" width="23" height="11"/>
+  <object id="42" x="355.25" y="405.25" width="23" height="11"/>
+  <object id="43" x="450.5" y="405.5" width="23" height="11"/>
+  <object id="44" x="258" y="501.5" width="23" height="11"/>
+  <object id="45" x="355" y="502" width="23" height="11"/>
+  <object id="46" x="451.5" y="502.75" width="23" height="11"/>
+  <object id="47" x="137.167" y="244.5" width="15.3333" height="11"/>
+ </objectgroup>
+ <layer name="Vordergrund" width="24" height="19">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJxjYBgFo2AU0AowAjETFnoUjIKRDHDlC1JpWgMANpAAJQ==
   </data>
  </layer>
 </map>
