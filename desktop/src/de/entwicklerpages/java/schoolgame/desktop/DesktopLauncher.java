@@ -28,7 +28,7 @@ public class DesktopLauncher {
      */
     public static void main (String[] arg) {
 
-        String basePath = LogStream.getBasePath("schoolgame");
+        String basePath = LogStream.getBasePath("legende_kristalle");
 
         try
         {
@@ -63,7 +63,7 @@ public class DesktopLauncher {
         }
 
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.title = "School Game";
+        config.title = "Die Legende der Kristalle";
         config.useGL30 = false;
         config.forceExit = true;
         config.resizable = true;
