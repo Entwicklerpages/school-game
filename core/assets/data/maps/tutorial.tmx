@@ -1,55 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="35">
- <tileset firstgid="1" source="../tilemap/test.tsx"/>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="69">
+ <tileset firstgid="1" source="../tilemap/forest.tsx"/>
  <layer name="Hintergrund" width="80" height="50">
   <data encoding="base64" compression="zlib">
-   eJztm8luAyEMhmkjdYvUNm3TPZGqtId0ef/Xqw9BgyzMmEwMYeY/fIdIhOUD2YCYtXNubcg1cUPcGrczVuCvjr8z4nzHxRGMoxaPxBPxvKf3qa/dE+KUmMFfkhfilfFGXBJXxDyzPr9u+9aunx8NuXNYkg/ik/je8UVsBvjT4uvXYNWHQ/nbRH6X8vdA3Aks4a/XX6p+6z4cyt+v62LfX0V/PGe14G/rutjn+Sno7911eWLF2mzBX876sKg/lS/gT2bh+vMF/A1rE/5kwv2zlC8s+xCe0TV7+ZmynBTLreYn5cvSX3jG1Ozl58pypfb+tf2FZ8xYLObcK8vF/lfK34K12XL8sybmTyoDf2l/4R66ZAwuQSxPpvKQ9q5pLPcvOePkcd3j71CWGWPNicVWMbiWPz72MN63vFZK+UuVhT/ZnxTnw/MD/Mn+JLzXFfzt5W8suRL+jg/4G0bumbnlvRoAAAAAAJAJ3+lypvxuV0v4zpQzhXen8Ad/LQN/wwjfiXNyv3kAAAAAAAD9/ANtJ7Jj
+   eJztmstOwzAQRS1B2ZQNAomWRxueQmLDkv//MmyREZfLjO0UqhJ7FkcC0iby0TzsCS8hhBfiMvIWWSnX/oJt5D1yHDmbOdr6TsZry0qH4hup+Z48Z86U1rXIOFspnxeWFS5b8YcuML8Sg7H27Xgtffe08Awrjlvxl9ZhxZkWb7s40By27o9zdEHXUm6WYg/hZ7TiT3Ix5wx/lpy9jTyMbOD3jfEsqYm5ujk3rLrGzvjv6btPkcfIVeQuch95jdwUXIrHKbH7XyntL7BuWTl7PXoT2OWh13gIf9hXMYe1e7A/BP0dha++Lsx9D231VnGV1jwY/iRHJdaQdfjM7WflPi31EK5tuC5eM6/Virs1eBO03t1CDczlLu83+NyK/cPKWc3f3GOu5E88DcZ1Wb+Wv1rsleJ4znDc4f5Mm8NgX5H8lVqH9c5yV3PemxNW3Gn9l2NH8pediTeO4dbcsT/NJTqYsn6unS26y/krOc3t3zBndzknzwltTzFl7rwlh+yuVW/sr2bmV+Ow1X1Kyd9v0Wb+Pfrjs1ztuw1t5t+DP3bCc1Lr3UZulrwIfdQ+RJvzoQOeleL7Ieyv0j96iD2hZjaCs4LcTK+n3E3w/hjzMjk4J39yvtVmeXivXvzxPmQIP+PvInw/qyWnpfd1PfqzzhvaGSPnr6feUXPW0M5tQ+bzvcRegvciu/7vUEsz5Slw75WzWKm+9ZqvDLqz+kjuLNJbvDGel/vx1/rcbp/+eq5nu/jjuubu6nFfjuM4juM4juM4juM4++UDkWk6zg==
+  </data>
+ </layer>
+ <layer name="Hintergrund2" width="80" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
   </data>
  </layer>
  <layer name="Dekoration" width="80" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt2jESg0AIhWFvktLOeP/TWWTS6SQqLu/B//U6sAusOk4T4GsdfB36WLIDGCwq33fQfQDEUD3vzsSlmgM+qs39Cvm8sgMw9d37OTUKuOjQZ0+ev0d95jSDz65Pt/dLAH05zXKM5V4bVb5NVMkjS+T6ZexFdh9Sf7iLGgLuyT4HcOzq3vC9SYNDbznEWNU/a88zDoAoT80TlTmlEkekvXOiYp7wFv0s6favhVpP8k8TflGr2ZFU3n0z41BZgwwdar9DjgC0bcaKCPk=
+   eJztzgENAAAIA6AHsn8+Y3w6SEACAABwz7QDAAAAAAAAAAAAAAAADy3J6AAt
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="3" name="Spielerstart" type="Start" x="1166.67" y="752">
+  <object id="3" name="Spielerstart" type="Start" x="320" y="768" width="32" height="32">
    <ellipse/>
   </object>
-  <object id="5" name="Intro Dialog" type="Welt" x="946.667" y="661.334" width="57.3333" height="49.3333"/>
-  <object id="7" name="Chaos Trigger" type="Welt" x="586.666" y="173.333" width="165.333" height="165.333">
+  <object id="5" name="Bewegen Fertig" type="Welt" x="517.667" y="747.834" width="28.8333" height="71.3333"/>
+  <object id="65" name="Interaktion" type="Welt" x="582.667" y="664" width="114.667" height="31.3333"/>
+  <object id="67" name="Ausgang" type="Welt" x="968.667" y="230.667" width="31.3333" height="82.6667"/>
+  <object id="68" name="Pilz" type="Welt" x="601.333" y="311.333" width="44" height="68">
    <ellipse/>
   </object>
-  <object id="9" name="NPC Pfad" type="Welt" x="1817.33" y="784">
-   <polyline points="0,0 -264,10.6667 -508,225.333 -760,354.667 -848,445.333 -865.333,626.667 -692,665.333 -486.667,573.333 -382.667,400 -313.333,348 -268,385.333 -265.333,504 -218.667,616 -117.333,717.333"/>
-  </object>
-  <object id="32" name="Storm Trigger" type="Welt" x="453.333" y="980">
-   <polygon points="-24,-6.66667 140,-292 233.333,-132 233.333,90.6667 40,256"/>
-  </object>
-  <object id="33" name="Schild1" type="Welt" x="861.667" y="985.333" width="38" height="40.3333"/>
-  <object id="34" name="Schild2" type="Welt" x="1500.33" y="508.667" width="38" height="40.3333"/>
  </objectgroup>
  <objectgroup name="Kollisionen">
-  <object id="12" x="1005" y="653.333" width="133.333" height="69"/>
-  <object id="13" x="845.667" y="653.333" width="100.667" height="127.667"/>
-  <object id="14" x="845.333" y="781.667" width="294.333" height="165.333"/>
-  <object id="15" x="1139" y="813" width="96.3333" height="134.667"/>
-  <object id="16" x="784.333" y="-1" width="63.6667" height="113"/>
-  <object id="18" x="112.667" y="496" width="285.788" height="64"/>
-  <object id="19" x="1.3333" y="498" width="78.6667" height="61.3333"/>
-  <object id="20" x="1041" y="1201" width="223" height="159.25"/>
-  <object id="21" x="1232.18" y="80.5455" width="95.6364" height="95.4545"/>
-  <object id="22" x="1712" y="303.333">
-   <polygon points="0,0 64,-0.666667 64.6667,258.667 -0.666667,258.667 0.666667,96.6667 -162,98 -161.333,34 0,30.6667"/>
+  <object id="37" x="516" y="562">
+   <polygon points="4.5,3 74.5,69.5 74,177.5 66,188 -39,189 -53.5,179 -55,158.5"/>
   </object>
-  <object id="23" x="1551.33" y="175.333" width="64" height="166"/>
-  <object id="24" x="1614" y="176" width="292" height="63.3333"/>
-  <object id="25" x="1840" y="236.667" width="66" height="453.333"/>
-  <object id="26" x="1550.33" y="463" width="99" height="226.333"/>
-  <object id="27" x="1646" y="623.333" width="197.333" height="65"/>
-  <object id="28" x="1138" y="654" width="97.5" height="36.5"/>
-  <object id="29" x="1197" y="687.5" width="37" height="128"/>
-  <object id="30" x="783.5" y="143.5" width="65.5" height="417.5"/>
-  <object id="31" x="433.495" y="495.875" width="350.631" height="65.125"/>
+  <object id="40" x="417.5" y="688.5">
+   <polygon points="0,0 -1,-129 96,-128 104,-124 44.5,37 33,29.5 21,26.5"/>
+  </object>
+  <object id="41" x="223.5" y="560.5" width="199.5" height="126"/>
+  <object id="43" x="462.5" y="817" width="158.5" height="125.5"/>
+  <object id="45" x="219.333" y="642" width="52" height="107.333"/>
+  <object id="46" x="187.333" y="686.667" width="54" height="256.667"/>
+  <object id="48" x="238.667" y="913.333" width="244" height="36.6667"/>
+  <object id="49" x="233.333" y="877.333" width="74.6667" height="36"/>
+  <object id="50" x="331.333" y="241.333" width="37.3333" height="330.667"/>
+  <object id="51" x="368" y="394" width="62" height="68"/>
+  <object id="52" x="366.667" y="450.667" width="34" height="78.6667"/>
+  <object id="54" x="369.333" y="152" width="62.6667" height="122.667"/>
+  <object id="55" x="431.333" y="128" width="36" height="81.3333"/>
+  <object id="56" x="462.667" y="69.3333" width="66" height="106.667"/>
+  <object id="57" x="522" y="-0.666667" width="36.6667" height="114.667"/>
+  <object id="58" x="548" y="6.66667" width="208" height="40.6667"/>
+  <object id="59" x="947.333" y="-24" width="57.3333" height="262"/>
+  <object id="60" x="714.667" y="36.6667" width="138" height="42"/>
+  <object id="61" x="810.667" y="71.3333" width="110.667" height="40.6667"/>
+  <object id="62" x="845.333" y="107.333" width="116.667" height="40"/>
+  <object id="63" x="877.333" y="140" width="86" height="66"/>
+  <object id="64" x="884" y="308" width="108" height="57.3333"/>
  </objectgroup>
  <layer name="Vordergrund" width="80" height="50">
   <data encoding="base64" compression="zlib">

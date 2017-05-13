@@ -1,6 +1,5 @@
 package de.entwicklerpages.java.schoolgame.game.levels;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Timer;
 
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
@@ -9,7 +8,6 @@ import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
 import de.entwicklerpages.java.schoolgame.game.objects.InteractionZone;
 import de.entwicklerpages.java.schoolgame.game.objects.Trigger;
-import de.entwicklerpages.java.schoolgame.game.objects.entities.npc.WaypointNPC;
 
 /**
  * Tutorial Level
@@ -24,7 +22,9 @@ import de.entwicklerpages.java.schoolgame.game.objects.entities.npc.WaypointNPC;
 public class TutorialLevel extends Level {
     public static final String LEVEL_NAME = "tutorial";
 
-    private boolean introDialog = false;
+    private boolean movement = false;
+    private boolean interaction = false;
+    private boolean interaction2 = false;
 
     public TutorialLevel() {
         super("tutorial");
@@ -57,95 +57,75 @@ public class TutorialLevel extends Level {
             {
                 startDialog("bewegen");
             }
-        }, 0.7f);
+        }, 1.2f);
     }
 
     @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
-        Trigger introDialogTrigger = new Trigger("Intro Dialog");
-        introDialogTrigger.setTriggerEntered(new ActionCallback()
+        Trigger movementDialogTrigger = new Trigger("Bewegen Fertig");
+        movementDialogTrigger.setTriggerEntered(new ActionCallback()
         {
             @Override
             public void run()
             {
-                if (!introDialog)
+                if (!movement)
                 {
-                    introDialog = true;
+                    movement = true;
                     startDialog("bewegen_fertig");
                 }
             }
         });
 
-
-        Trigger chaosTrigger = new Trigger("Chaos Trigger");
-        chaosTrigger.setTriggerEntered(new ActionCallback()
+        Trigger interactionDialogTrigger = new Trigger("Interaktion");
+        interactionDialogTrigger.setTriggerEntered(new ActionCallback()
         {
             @Override
             public void run()
             {
-                Gdx.app.log("DEBUG", "Trigger Chaos Entered");
+                if (!interaction)
+                {
+                    interaction = true;
+                    startDialog("interagieren");
+                }
             }
         });
 
-        chaosTrigger.setTriggerLeaved(new ActionCallback()
+        InteractionZone mushroom = new InteractionZone("Pilz");
+        mushroom.setActionCallback(new ActionCallback()
         {
             @Override
             public void run()
             {
-                Gdx.app.log("DEBUG", "Trigger Chaos Leaved");
+                startDialog("pilz", new ActionCallback()
+                {
+                    @Override
+                    public void run()
+                    {
+                        if (!interaction2)
+                        {
+                            interaction2 = true;
+                            startDialog("interagieren_fertig");
+                        }
+                    }
+                });
+            }
+        });
+
+        Trigger exitTrigger = new Trigger("Ausgang");
+        exitTrigger.setTriggerEntered(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
                 changeLevel("introduction");
             }
         });
 
-        Trigger stormTrigger = new Trigger("Storm Trigger");
-        stormTrigger.setTriggerEntered(new ActionCallback()
-        {
-            @Override
-            public void run()
-            {
-                Gdx.app.log("DEBUG", "Trigger Storm Entered");
-            }
-        });
-
-        stormTrigger.setTriggerLeaved(new ActionCallback()
-        {
-            @Override
-            public void run()
-            {
-                Gdx.app.log("DEBUG", "Trigger Storm Leaved");
-            }
-        });
-
-        WaypointNPC npcTest = new WaypointNPC("NPC Pfad", "player_f");
-
-        InteractionZone sign1Interaction = new InteractionZone("Schild1");
-        sign1Interaction.setActionCallback(new ActionCallback()
-        {
-            @Override
-            public void run()
-            {
-                startDialog("outro");
-            }
-        });
-
-        InteractionZone sign2Interaction = new InteractionZone("Schild2");
-        sign2Interaction.setActionCallback(new ActionCallback()
-        {
-            @Override
-            public void run()
-            {
-                startDialog("outro");
-            }
-        });
-
-        worldConfig.registerObject(introDialogTrigger);
-        worldConfig.registerObject(chaosTrigger);
-        worldConfig.registerObject(stormTrigger);
-        worldConfig.registerObject(npcTest);
-        worldConfig.registerObject(sign1Interaction);
-        worldConfig.registerObject(sign2Interaction);
-
+        worldConfig.registerObject(movementDialogTrigger);
+        worldConfig.registerObject(interactionDialogTrigger);
+        worldConfig.registerObject(mushroom);
+        worldConfig.registerObject(exitTrigger);
     }
 }
 

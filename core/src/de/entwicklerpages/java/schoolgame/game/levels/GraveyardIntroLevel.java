@@ -77,6 +77,7 @@ public class GraveyardIntroLevel extends Level
 
         worldConfig.registerObject(signInteraction);
         worldConfig.registerObject(scullTrigger);
+        worldConfig.registerObject(exitTrigger);
     }
 
     private InteractionZone createGrave(final int id)
