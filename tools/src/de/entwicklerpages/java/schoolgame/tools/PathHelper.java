@@ -3,12 +3,22 @@ package de.entwicklerpages.java.schoolgame.tools;
 
 import java.io.File;
 
+/**
+ * Helferklasse für Pfade.
+ *
+ * @author nico
+ */
 public final class PathHelper {
 
     private final static String GAME_NAME = "legende_kristalle";
 
     private PathHelper() {}
 
+    /**
+     * Gibt den Basispfad für Speicherdateien zurück.
+     *
+     * @return der Pfad
+     */
     public static String getBasePath()
     {
         String os = System.getProperty("os.name").toLowerCase();
@@ -40,6 +50,12 @@ public final class PathHelper {
         return base;
     }
 
+    /**
+     * Gibt den Pfad zum assets/data Verzeichnis im Projekt zurück.
+     * Wird der Pfad nicht gefunden, dann wird das Arbeitsverzeichnis zurückgegeben.
+     *
+     * @return der Pfad
+     */
     public static File getAssetDirIfFound()
     {
         File workingDir = new File(System.getProperty("user.dir"));
@@ -54,6 +70,12 @@ public final class PathHelper {
         return workingDir;
     }
 
+    /**
+     * Gibt den Pfad zum assets/data/dialog Verzeichnis im Projekt zurück.
+     * Wird der Pfad nicht gefunden, dann wird das assets/data Verzeichnis oder das Arbeitsverzeichnis zurückgegeben.
+     *
+     * @return der Pfad
+     */
     public static File getDialogDirIfFound()
     {
         File dialogAssetDir = new File(getAssetDirIfFound().getAbsolutePath() + File.separator + "dialog");
@@ -66,6 +88,12 @@ public final class PathHelper {
         return getAssetDirIfFound();
     }
 
+    /**
+     * Gibt den Pfad zum assets/data/map Verzeichnis im Projekt zurück.
+     * Wird der Pfad nicht gefunden, dann wird das assets/data Verzeichnis oder das Arbeitsverzeichnis zurückgegeben.
+     *
+     * @return der Pfad
+     */
     public static File getMapDirIfFound()
     {
         File mapAssetDir = new File(getAssetDirIfFound().getAbsolutePath() + File.separator + "maps");
@@ -78,6 +106,11 @@ public final class PathHelper {
         return getAssetDirIfFound();
     }
 
+    /**
+     * Gibt den Build Pfad zurück.
+     *
+     * @return der Pfad
+     */
     public static File getBuildDirIfFound()
     {
         File workingDir = new File(System.getProperty("user.dir"));
@@ -92,6 +125,11 @@ public final class PathHelper {
         return workingDir;
     }
 
+    /**
+     * Gibt den Pfad zum packr Subverzeichnis des Tools zurück.
+     *
+     * @return der Pfad
+     */
     public static File getPackrDirIfFound()
     {
         File workingDir = new File(System.getProperty("user.dir"));

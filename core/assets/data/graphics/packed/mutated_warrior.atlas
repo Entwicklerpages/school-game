@@ -1,0 +1,69 @@
+
+mutated_warrior.png
+size: 128,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Krieger_Mutiert_hinten1
+  rotate: false
+  xy: 2, 134
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Krieger_Mutiert_hinten2
+  rotate: false
+  xy: 2, 68
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Krieger_Mutiert_hinten3
+  rotate: false
+  xy: 36, 134
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Krieger_Mutiert_seite1
+  rotate: false
+  xy: 2, 2
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Krieger_Mutiert_seite2
+  rotate: false
+  xy: 36, 68
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Krieger_Mutiert_seite3
+  rotate: false
+  xy: 70, 134
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Krieger_Mutiert_vorne1
+  rotate: false
+  xy: 36, 2
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Krieger_Mutiert_vorne2
+  rotate: false
+  xy: 70, 68
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+Krieger_Mutiert_vorne3
+  rotate: false
+  xy: 70, 2
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1

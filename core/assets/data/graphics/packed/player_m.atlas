@@ -32,6 +32,13 @@ player_m_back_walk
   orig: 32, 62
   offset: 0, 0
   index: 3
+player_m_back_walk
+  rotate: false
+  xy: 410, 4
+  size: 32, 62
+  orig: 32, 62
+  offset: 0, 0
+  index: 4
 player_m_front
   rotate: false
   xy: 2, 2
@@ -60,31 +67,31 @@ player_m_front_walk
   orig: 32, 64
   offset: 0, 0
   index: 3
-player_m_side
+player_m_front_walk
   rotate: false
   xy: 138, 2
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: 4
+player_m_side
+  rotate: false
+  xy: 172, 2
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: -1
 player_m_side_walk
   rotate: false
-  xy: 172, 2
+  xy: 206, 2
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: 1
 player_m_side_walk
   rotate: false
-  xy: 206, 2
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: 2
-player_m_side_walk
-  rotate: false
   xy: 240, 2
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: 3
+  index: 2

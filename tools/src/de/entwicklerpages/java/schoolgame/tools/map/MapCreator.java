@@ -1,11 +1,21 @@
 package de.entwicklerpages.java.schoolgame.tools.map;
 
 
+/**
+ * Hilfsklasse zur Erzeugung einer einfachen Tiled-Map.
+ *
+ * @author nico
+ */
 @SuppressWarnings("FieldCanBeLocal")
 public final class MapCreator
 {
     private MapCreator() {}
 
+    /**
+     * Erzeugt den Map-String.
+     *
+     * @return ein String, der die Map beinhaltet
+     */
     public static String createMap()
     {
         String mapCode = HEAD;

@@ -2,7 +2,6 @@ package de.entwicklerpages.java.schoolgame.menu;
 
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -44,9 +43,19 @@ public abstract class MenuState implements GameState, InputProcessor {
     private GlyphLayout fontLayout;
     private I18NBundle localeBundle;
 
+    /**
+     * Sound, der abgespielt wird, wenn ein Menüeintrag bestätigt wird.
+     */
     private AudioManager.SoundKey selectSound;
+
+    /**
+     * Sound, der abgespielt wird, wenn ein anderer Menüeintrag ausgewählt wird.
+     */
     private AudioManager.SoundKey changeSound;
 
+    /**
+     * Zugriff auf die Spielinstanz.
+     */
     protected SchoolGame game;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
