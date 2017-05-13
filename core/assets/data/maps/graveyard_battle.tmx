@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="2">
+ <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
+ <layer name="Hintergrund" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztw8EJAAAMA6F7ZP+ZO0dBwVVTVVVVVVVVVVXV5w+SZScR
+  </data>
+ </layer>
+ <layer name="Dekoration" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+  </data>
+ </layer>
+ <objectgroup name="Objekte">
+  <object id="1" name="Spielerstart" type="Start" x="10" y="10" width="10" height="10">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Kollisionen"/>
+ <layer name="Vordergrund" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+  </data>
+ </layer>
+</map>
