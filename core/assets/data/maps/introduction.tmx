@@ -3,9 +3,10 @@
  <tileset firstgid="1" source="../tilemap/test.tsx"/>
  <tileset firstgid="49" source="../tilemap/forest.tsx"/>
  <tileset firstgid="105" source="../tilemap/graveyard.tsx"/>
+ <tileset firstgid="125" source="../tilemap/cave.tsx"/>
  <layer name="Hintergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztmMlLQzEQh1M9uIGtCtYFC1o9uJ2qvdiLZ5eLC4IXj0I9eBT85/2V12AImfdmTPKWmsJH28cL7czXyUzaU0r1IrIK2qADPiriWsAleAFD4bpQxHSRfCQfyUc+m6ALtgpyNiaufzuufSUfQZjk5tNC6idEfQzAu4OLhvnYBjsCdkELzIF5R564bkL70Dm3GZbgI+Tvex8cCOiDJbAMVgpy9hcnY+uZcm3n5Aq8ORgxfOhHm0kZPg7BCTjy8JGXQ6p+OJhrXfVxBx7APZFv7WpEeJD6sL3E8NG33oeojxB7GMfHDXgFt4SPvJrw8aGd1NmHrhHXDGXCnacol2Zun8AjeJ4hH2cq69fnnj7KQjJfDYzXTdmvKOy+UlcfPvOV1EesXs7xYddNnXyYfdxnvqrDnMv1UbRfxfhOHCR9nOujqlhMjlW2H3E5LcFHS2XnTX3mbLqPhSmLVmwUOmbOvRP2IvvQvvM+o0k+dN/pWLFR6Jg597rWhWYNrE/ZmAEfXfX7/6sZG4WOmXOva10VSM4dVfv4D0jmoOQj+TD5AZ+yo6c=
+   eJztmLlLA0EUhydaeIGJCsYDAxotvKpoGtNYezQeCDaWQiwsBQuPxvSKjZZCQPwj/S3ZIcPzze7MzuyugQ18bFx2IvO+/ObNpCaEqKXIJCiDCrjJiX0LdsEFaFqO80WaLgofhY/CRzSzoArmYmrW1ty/Z+7dFT68ENTmlmDrx0c+GuCaYWfAfMyDBQsWQQkMgWGmTqZufPuQNac0M/DxDrrkqr638bEMViyogzEwDiZiapbESZtcda5pTfbAFUPLwId8lQ2h41UH0oN6L4mPVbAB1hx8RNVQlx8T1LFcPo7ACTjW1Fu6amk82PqgXroxJPFRF2Z5scmHjzXMxMcBuASHGh9RmXDxIZ1wa5R6zdOHzAi3h1Ix3U/pXKq1PQOn4DwnH7q1yiUfW6LXr7cdfWSFzf6qobxPY73i+rhr/9BB+8p/9eGyv7L1wfVy3/1DB83Nf/Kh9nGX/ZXLPpf2DS4jWe53szx7qtj0cVMfXD0fwDd4ZGpOc8GtVbY+1kVvPTJlMwMfJdE7b8ozZ1Y+uLXmCXyBZwMPuqyMhIySuemQczZ5NmApZR/Sd9T/SCsfNBefoY8P0c8JzUgUwWfJvlMhc9Mh52zyLDfON1NgOmQmQx/q913mgkJzEucioCr6v7+qc9Mh52zyLDcur/5heu5I0j9ewA94Cz28hn93xN+1SuciSf8YVGz2QbbrlXqN6x8mOcm7VoPqg/utQ+akI/j6R50D5b1ffHsQXg==
   </data>
  </layer>
  <layer name="Hintergrund2" width="100" height="20">
@@ -35,9 +36,6 @@
   <object id="18" x="1968.25" y="336.25" width="192.25" height="63.75"/>
   <object id="19" x="2191" y="-1" width="65.9091" height="242"/>
   <object id="20" x="2191" y="335.091" width="66.2727" height="308.909"/>
-  <object id="22" x="1904.75" y="399.75">
-   <polyline points="0,-0.75 -33.5,-0.75 -33.5,161.25"/>
-  </object>
   <object id="23" x="2336.18" y="258.636">
    <polygon points="-0.181818,-2.63636 -0.181818,61.3636 31.8182,61.3636 31.8182,93.3636 95.8182,93.3636 95.8182,-34.6364 31.8182,-34.6364 31.8182,-2.63636"/>
   </object>
