@@ -224,6 +224,8 @@ public abstract class Level implements Disposable {
             public void run()
             {
                 levelState = LevelState.DEAD;
+                ingameMenu.setPlayerDead();
+                ingameMenu.reset();
             }
         });
         player.setInteractionCallback(new ActionCallback()
@@ -237,9 +239,9 @@ public abstract class Level implements Disposable {
 
         localeBundle = I18NBundle.createBundle(Gdx.files.internal("data/I18n/Game"));
 
-        initMap();
-
         ingameMenu = new IngameMenu(game, this);
+
+        initMap();
 
         InputManager.getInstance().requestGameMode();
 
@@ -289,9 +291,9 @@ public abstract class Level implements Disposable {
         if (dialogManager.isPlaying())
             dialogManager.render(camera, deltaTime);
 
-        // INGAME MENÜ
+        // INGAME MENÜ ODER GESTORBEN
 
-        if (levelState == LevelState.PAUSE)
+        if (levelState == LevelState.PAUSE || levelState == LevelState.DEAD)
             ingameMenu.render(camera);
 
 
@@ -353,7 +355,7 @@ public abstract class Level implements Disposable {
             return true;
         }
 
-        if (levelState == LevelState.PAUSE)
+        if (levelState == LevelState.PAUSE || levelState == LevelState.DEAD)
             return ingameMenu.handleInput(keycode);
 
         if (levelState == LevelState.PLAYING && !dialogManager.isPlaying())
@@ -477,6 +479,17 @@ public abstract class Level implements Disposable {
 
             dialogManager.startDialog(activeCutScene.getDialogId());
         }
+    }
+
+    /**
+     * Lädt das Level neu.
+     * Dabei wird keine Outro CutScene gestartet.
+     *
+     * @see LevelManager#reloadLevel()
+     */
+    public final void reloadLevel()
+    {
+        levelManager.reloadLevel();
     }
 
     @SuppressWarnings("unused")

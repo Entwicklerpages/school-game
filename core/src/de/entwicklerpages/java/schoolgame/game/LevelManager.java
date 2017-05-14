@@ -284,6 +284,19 @@ public class LevelManager implements GameState, InputProcessor, Disposable {
     }
 
     /**
+     * Startet das aktive Level neu.
+     * Intern wird ein neues Level mit der gleichen ID erstellt.
+     *
+     * @see LevelManager#changeLevel(String)
+     */
+    public void reloadLevel()
+    {
+        Gdx.app.log("INFO", "Reload level ...");
+
+        changeLevel(saveData.getLevelId());
+    }
+
+    /**
      * Beendet das Spiel und wechselt ins Hauptmenü.
      * Wird vermutlich von einem Level aus aufgerufen.
      *

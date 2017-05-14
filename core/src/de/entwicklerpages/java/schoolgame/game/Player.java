@@ -39,7 +39,7 @@ public class Player implements ExtendedMapDisplayObject {
     private static final float RUN_FACTOR = 2f;
     private static final float DIAGONAL_SWITCH_TIME = 0.4f;
     private static final float CAGE_THICKNESS = 20f;
-    private static final long LONG_ATTACK_TIME = 1700L;
+    private static final long LONG_ATTACK_TIME = 1300L;
 
     private final Body playerBody;
     private final CheatManager cheatManager;
@@ -77,6 +77,7 @@ public class Player implements ExtendedMapDisplayObject {
     private ActionCallback interactionCallback = null;
 
     private float animationTime = 0f;
+    private float damageTime = 0f;
 
     /**
      * Initialisierung.
@@ -197,8 +198,13 @@ public class Player implements ExtendedMapDisplayObject {
      * @param damage wie viele Lebenspunkte soll der Spieler verlieren?
      */
     public void applyDamage(int damage) {
+
+        if (!MathUtils.isZero(damageTime)) return;
+
         if (!cheatManager.isImmortal())
             this.setHealth(health - damage);
+
+        damageTime = 0.1f * (float) damage;
     }
 
     /**
@@ -351,6 +357,14 @@ public class Player implements ExtendedMapDisplayObject {
         float deltaX = 0;
         float deltaY = 0;
 
+        if (!MathUtils.isZero(damageTime))
+        {
+            damageTime -= deltaTime;
+
+            if (damageTime <= 0.0f)
+                damageTime = 0f;
+        }
+
         if (InputManager.checkActionActive(InputManager.Action.MOVE_UP))
         {
             deltaY += SPEED;
@@ -459,16 +473,40 @@ public class Player implements ExtendedMapDisplayObject {
                 break;
         }
 
-        batch.draw(region,                                      // TextureRegion (front, back, side)
-                pos.x - playerSide.getRegionWidth() / 2,        // Offset to the X position (character center)
-                pos.y,                                          // Y position is at the foots
-                playerSide.getRegionWidth() / 2,                // Origin X (important for flipping)
-                playerSide.getRegionHeight(),                   // Origin Y
-                playerSide.getRegionWidth(),                    // Width
-                playerSide.getRegionHeight(),                   // Height
-                scaleX,                                         // Scale X (-1 to flip)
-                1f,                                             // Scale Y
-                0f);                                            // Rotation
+        if (!MathUtils.isZero(damageTime))
+        {
+            if (damageTime % 0.4f > 0.2f)
+            {
+                Color oldColor = batch.getColor();
+                batch.setColor(Color.RED);
+
+                batch.draw(region,                                      // TextureRegion (front, back, side)
+                        pos.x - playerSide.getRegionWidth() / 2,        // Offset to the X position (character center)
+                        pos.y,                                          // Y position is at the foots
+                        playerSide.getRegionWidth() / 2,                // Origin X (important for flipping)
+                        playerSide.getRegionHeight(),                   // Origin Y
+                        playerSide.getRegionWidth(),                    // Width
+                        playerSide.getRegionHeight(),                   // Height
+                        scaleX,                                         // Scale X (-1 to flip)
+                        1f,                                             // Scale Y
+                        0f);
+
+                batch.setColor(oldColor);
+            }
+        }
+        else
+        {
+            batch.draw(region,                                      // TextureRegion (front, back, side)
+                    pos.x - playerSide.getRegionWidth() / 2,        // Offset to the X position (character center)
+                    pos.y,                                          // Y position is at the foots
+                    playerSide.getRegionWidth() / 2,                // Origin X (important for flipping)
+                    playerSide.getRegionHeight(),                   // Origin Y
+                    playerSide.getRegionWidth(),                    // Width
+                    playerSide.getRegionHeight(),                   // Height
+                    scaleX,                                         // Scale X (-1 to flip)
+                    1f,                                             // Scale Y
+                    0f);                                            // Rotation
+        }
     }
 
     /**
@@ -532,7 +570,6 @@ public class Player implements ExtendedMapDisplayObject {
         if (action == InputManager.Action.ATTACK)
         {
             // Attacke
-            Gdx.app.log("INFO", "Start Attack");
             attackStart = TimeUtils.millis();
             return true;
         }
