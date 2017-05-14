@@ -222,6 +222,9 @@ public class DialogManager {
         String nextText = activeDialog.getStatement().get(activeStatement).getTexts().getText().get(activeText);
         lines = nextText.replaceAll("(#\\{PLAYER\\})", playerName).split("(\\|br\\|)+");
 
+        for (int i = 0; i < lines.length; i++)
+            lines[i] = lines[i].trim();
+
         if (lines.length > 3)
         {
             Gdx.app.error("WARNING", "Too many dialog lines in '" + activeDialog.getName() + "', statement: " + activeStatement + " text: " + activeText + ". Line count: " + lines.length);

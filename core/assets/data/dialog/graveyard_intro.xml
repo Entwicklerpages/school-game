@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<level atlas="">
+    <characters>
+        <character>
+            <id>schild</id>
+            <title>Schild</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>schaedel</id>
+            <title>Schädel</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>grab</id>
+            <title>Grab</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>schaedel_name</id>
+            <title>Jux van Dar</title>
+            <image>no</image>
+        </character>
+    </characters>
+    <dialogs>
+        <dialog name="schild">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <sound></sound>
+                <texts>
+                    <text>Wer diesen Friedhof betritt, wird ein Teil von ihm werden...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schaedel">
+            <statement talking="schaedel">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>DU KOMMST NICHT VORBEI!!!</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Ähm was?</text>
+                </texts>
+            </statement>
+            <statement talking="schaedel">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Wie was?</text>
+                </texts>
+            </statement>
+            <statement talking="schaedel">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Du kannst sprchen...</text>
+                </texts>
+            </statement>
+            <statement talking="schaedel">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Natürlich kann ich Sprchen!</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Was ist natürlich daran das ein Schädel sprechen kann?</text>
+                </texts>
+            </statement>
+            <statement talking="schaedel">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Mein Name ist Jux van Dar und ich bin der größte Zauberer der Welt!</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Das erklärt aber immer noch nicht warum du als Schädel sprechen kannst</text>
+                </texts>
+            </statement>
+            <statement talking="schaedel_name">
+                <player position="left"></player>
+                <display position="right">schaedel_name</display>
+                <sound></sound>
+                <texts>
+                    <text>Ich wollte einst auf diesem Friedhof die Früchte der Totenbüsche sammeln..</text>
+                    <text>Nur leider griffen mich aus ihren Grabe steigende Skelette an...</text>
+                    <text>ich konnte fast bis an den Eingang flüchten...</text>
+                    <text>aber sie erwischten mich doch...</text>
+                    <text>sie schlufen mir den Kopf ab...</text>
+                    <text>aber ich bin nich tot...</text>
+                    <text>statdessen muss ich hier auf ewig verweilen...</text>
+                    <text>Also geh nicht weiter!!!</text>
+                    <text>Wer auf diesem Friedhof stirbt wird auf ewig hier gefangen sein...</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Aber ich muss auf den Friedhof um das Dorf zu retten!</text>
+                </texts>
+            </statement>
+            <statement talking="schaedel_name">
+                <player position="left"></player>
+                <display position="right">schaedel_name</display>
+                <sound></sound>
+                <texts>
+                    <text>Warum willst du das Dorf retten?</text>
+                    <text>Sie verachten dich als habelf...</text>
+                    <text>warum willst du für Leute sterben die dich verachten?</text>
+                    <text>Menschen sind Habgierige Wesen</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Ich möchte Helfen das ist alles...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab1">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Tormento Quales|br| Möge er in Frieden ruhen</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab2">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Hier ruht |br| Panita Leida </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab3">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Ruhe in Frieden |br| Legito Listos</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab4">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Mögest du in Frieden ruhen |br| Iradia Zornad </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab5">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Jasper Bardua |br| "Kein Ende in Sicht..."|br| 3,14159...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab6">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Verum Trunes</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab7">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Hier ruht |br| Fidu Zuvers</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab8">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Luxa Light |br| Ruhe in Frieden </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab9">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Risumero Leachels |br| Mögest du in Frieden ruhen</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab10">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Nicolas Hollmann |br| "Still alive"</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab11">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Hier liegt |br| Filiciara Lugg </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab12">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Ruhe in Frieden |br| Salutemo Gesud </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab13">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Hier ruht |br| Salome Arabe |br| Möge Sie in Frieden ruhen</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab14">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Ruhe in Frieden |br| Spero Hopese</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab15">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Catharina Przetak |br| "Non serviam"</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
+</level>
