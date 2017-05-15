@@ -75,6 +75,7 @@ public class Player implements ExtendedMapDisplayObject {
 
     private ActionCallback deadCallback = null;
     private ActionCallback interactionCallback = null;
+    private WorldObjectManager.AttackCallback attackCallback = null;
 
     private float animationTime = 0f;
     private float damageTime = 0f;
@@ -190,6 +191,17 @@ public class Player implements ExtendedMapDisplayObject {
     public void setInteractionCallback(ActionCallback interactionCallback)
     {
         this.interactionCallback = interactionCallback;
+    }
+
+    /**
+     * Legt fest, welches Callback aufgerufen werden soll,
+     * wenn der Spieler einen Angriff durchführt.
+     *
+     * @param attackCallback das Callback
+     */
+    public void setAttackCallback(WorldObjectManager.AttackCallback attackCallback)
+    {
+        this.attackCallback = attackCallback;
     }
 
     /**
@@ -611,11 +623,17 @@ public class Player implements ExtendedMapDisplayObject {
         {
             // Attacke
 
-            if (TimeUtils.timeSinceMillis(attackStart) >= LONG_ATTACK_TIME)
+            if (attackCallback == null)
+                return false;
+
+            long attackTime = TimeUtils.timeSinceMillis(attackStart);
+            if (attackTime >= LONG_ATTACK_TIME)
             {
                 Gdx.app.log("INFO", "Stop Long Attack");
+                attackCallback.run((int)(attackTime/400));
             } else {
                 Gdx.app.log("INFO", "Stop Short Attack");
+                attackCallback.run(1);
             }
 
             attackStart = -1;

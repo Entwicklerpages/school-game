@@ -236,6 +236,22 @@ public abstract class Level implements Disposable {
                 worldObjectManager.playerInteraction(player);
             }
         });
+        player.setAttackCallback(new WorldObjectManager.AttackCallback()
+        {
+            @Override
+            public void run(int damage)
+            {
+                worldObjectManager.playerAttack(player, damage);
+            }
+        });
+        worldObjectManager.setAttackPlayerCallback(new WorldObjectManager.AttackCallback()
+        {
+            @Override
+            public void run(int damage)
+            {
+                player.applyDamage(damage);
+            }
+        });
 
         localeBundle = I18NBundle.createBundle(Gdx.files.internal("data/I18n/Game"));
 
