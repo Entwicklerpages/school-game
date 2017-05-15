@@ -17,28 +17,28 @@
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="41" name="Spielerstart" type="Start" x="27.0027" y="94.5095">
+  <object id="41" name="Spielerstart" type="Welt" x="27.0027" y="94.5095">
    <ellipse/>
   </object>
-  <object id="77" name="Knochen_3" x="456" y="72" width="82.6667" height="88">
+  <object id="77" name="Knochen_3" type="Welt" x="456" y="72" width="82.6667" height="88">
    <ellipse/>
   </object>
-  <object id="79" name="Knochen_4" x="682.667" y="106.667" width="82.6667" height="88">
+  <object id="79" name="Knochen_4" type="Welt" x="682.667" y="106.667" width="82.6667" height="88">
    <ellipse/>
   </object>
-  <object id="80" name="Knochen_5" x="456" y="362.667" width="82.6667" height="88">
+  <object id="80" name="Knochen_5" type="Welt" x="456" y="362.667" width="82.6667" height="88">
    <ellipse/>
   </object>
-  <object id="81" name="Knochen_2" x="137.333" y="396" width="82.6667" height="88">
+  <object id="81" name="Knochen_2" type="Welt" x="137.333" y="396" width="82.6667" height="88">
    <ellipse/>
   </object>
-  <object id="82" name="Knochen_1" x="41.3333" y="204" width="82.6667" height="88">
+  <object id="82" name="Knochen_1" type="Welt" x="41.3333" y="204" width="82.6667" height="88">
    <ellipse/>
   </object>
-  <object id="83" name="Schild_Start" x="137.333" y="117.333" width="104" height="129.333">
+  <object id="83" name="Schild_Start" type="Welt" x="137.333" y="117.333" width="104" height="129.333">
    <ellipse/>
   </object>
-  <object id="90" name="Schädel" x="400" y="617.333" width="127.333" height="144">
+  <object id="90" name="Schädel" type="Welt" x="400" y="617.333" width="127.333" height="144">
    <ellipse/>
   </object>
  </objectgroup>
