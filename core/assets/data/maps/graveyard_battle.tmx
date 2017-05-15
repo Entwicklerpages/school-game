@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="68" tilewidth="32" tileheight="32" nextobjectid="96">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="68" tilewidth="32" tileheight="32" nextobjectid="127">
  <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
  <layer name="Hintergrund" width="68" height="68">
   <data encoding="base64" compression="zlib">
-   eJztmkGOwzAIRSOli+x7/7t200ipC7YxBn6IF2ikqB4+Dwyu09e2ba9ly4S2A2iItONri5GMyZNYHZuOSUZr8dgLbtnZ1WIsOTyBCxcfFzv1PFsvKWPeiWdl3FnrhMp3b6wZeVBMevZC9j1TzpFejtG6USzrXqGMq32qn0ZrtYqZ6qlU7FnnCsVBYrU6uqtJzlyZa4KK+3yWLeejTKJ1oFj2/riYjBs3c6N1odji8c9i8fjlgThvPXM18r32XOfNI6s/qbbrXy8WyDw89XG+3gAsavqQ/Hn1joja7fUZUS9Re/kO/cPaD/cuBaVvROcKdc4g8ODuyp7Eg2LC3ZtezWPWRPDYL76lTDzz5MGA8x+lq+YXob8hvNdHvuePPiMh1Uq0HpSehsSkxgaBCVJuvDXV3vEj3DUizMBoBq16yeJrlkYLnZwPhD3inTfvfjWLsVQr5Zc7i6Lujd48zq6J6NiQeETHhaD/zixm6M/0W0qLuog682o+Y8kjOscI+hHOWpq5pq1ttN9Lae42LPb5TLZaBhI2Ht9TZsQ6oxa0rLS5bf1vjQ5JLFQOrDlIYu3Nj2StVRzWNazl1GKAemdQxkjFa7EOxTR5GV3bWodWKzP0oMW0bNmofQCcrE9T
+   eJztmsluwzAMRA04h9zz///aSw04CilTG2dM8zAo4MIS+bgpSl7btr1SqUbtBDYg9f5XMmpj8iRW722MSURd8dgLbtHZ1XwsOTyBi+af5rv0PFovKX3ehWel31HzRIq31deIPCQmllqIXjPlHLFyRNvNoqi1IknLfamfom1d5bPUUyXfo84ViUOLanl0V7WcuSLnhOT38SxazHuZoO1gUfT+mEz6pc1ctF0sSh6/LJLHNw/GeesZq57Ptcd73jwY9/s42nXYdv7rxYK1b3jbp+3lnQet9jHt59U7ELlr3RORL6havkP/WL2P9l1KmQfoPoKKFeucYeCh3ZU9iYfERLs3Pctj1iB47Ke9W5lEyRHrd5ESp4g8erixMkHyYuPBUs+oc3StjtH5i2SSfc7uM/KcL/2PQYh7E6Y5iLAR3ctZmGg9jK1GaravZrFKsxlbbZb21c6id6iNq1jOzAm0X0gWs9dKFniN2h/pt5Qz7UfkhmWetMycFTzQMWawn+GsNTLXRnOb6fdSo/cYK+p8ZM3eXKpxsLBZeU7S1l11fu7xdzSPWmN7tfas+r5aR4rBag4t+1njI9np7YdHHvcysjBgvzOo+Wxh2fIek0bi0vvu1XtsuTLDHjafUqle/QFyE0+p
   </data>
  </layer>
  <layer name="Hintergrund_Baum" width="68" height="68">
@@ -13,11 +13,11 @@
  </layer>
  <layer name="Dekoration" width="68" height="68">
   <data encoding="base64" compression="zlib">
-   eJztmeEKgzAMhPtXJ4pj7/+so7BAPNNZZVrZ3QelW6ZYz0vCakpCiCt4NrhmD3NXiNcef+TaHZzff0YXHG+xFlqdydx6ATcg8lBfiCPeh7XnHGFvfpTimD/Iv/n7F0SalvQT96DW91t9ZavP7Ml3881ZNULck299Ieobz41zzsLnRqmflH4/slb1miVbz1x1Qwixh0cQG108z9N1y2nKw40RvmOMAXv2XoM+rXVhIPJC1uKVlpoMrRbYgJImbN7wYJ1g12OAYdow5Qnia+qQOH1h+P1lnyPad+ZmrpwFJ/KH+Ib8IWoo+UD+EEIIUQPug2GMEbx/3Ednwu/12JgS5x4Q5orXxX9mIvIH4zunjNciz5gnTFoYkRdYtciw99YzsFos1u+tmLHaa4M156J3mYz+sPv298/qDd+HvCZT4tMj0oG5jqIGU1rXDlZ/YM1g0sFjOcH+/yZCWgghhBBCiF/xBny5DT8=
+   eJztmm1vgzAMhPO1lIGK+v9/61RpltyrzUsX4rS+R0IZbhlwOTuQtBRCSAuWwHMPf+0F9qWdnTh+X7539JwDxAf1v3VcYpFancEt+gI6YHBiVhzRPtx7zDt4+fHjxCcnjvmDfJu/a4B9atUI0hdbvvfyA4/H/PLOs/eacMwh38/auGCNG8vGMWeAz1kF9iVvvPEGj9tTHznWPLPV56wb/eD5XsB8wvEG80g+J6QmVyM2qfijPfLu/Mlc1TbBPsYyIH2vNRjKqy4ZsLzw0OJenjUZoy4wAE+TbN7QYJ3IrscIm2iTKU8QXVPHktMXgp5f1jnCeefc3Ha2JCf0B1mD/iB78HxAfxBCiI81p5H1XRbnwbxYJvT8sZ4T0+sLGRANZK5HNoxnAfNC66L/zoTlj17WnFr/DkO0mFWr9ZH9HrC0OUMvb00y2htHWUodfax7j9Sih98q/ffepRa3oFXevAuuW0UTqY3UXtnOyLGe+t7DWsuM8Ee0VnLf+v7P9EbP6HFIayLPLjX1WOt377OWXrF0qF1Ho71/BNRgLq+1I1O+aH9gzWilQ2/PHZITmd99PagFIYQQQgipxS+DnQ/S
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="41" name="Spielerstart" type="Welt" x="27.0027" y="94.5095">
+  <object id="41" name="Spielerstart" type="Start" x="27.0027" y="94.5095">
    <ellipse/>
   </object>
   <object id="77" name="Knochen_3" type="Welt" x="456" y="72" width="82.6667" height="88">
@@ -38,8 +38,23 @@
   <object id="83" name="Schild_Start" type="Welt" x="137.333" y="117.333" width="104" height="129.333">
    <ellipse/>
   </object>
-  <object id="90" name="Schädel" type="Welt" x="400" y="617.333" width="127.333" height="144">
+  <object id="115" name="Grube_1" x="498" y="867" width="61" height="32">
    <ellipse/>
+  </object>
+  <object id="116" name="Grube_2" x="305.5" y="932" width="61" height="32">
+   <ellipse/>
+  </object>
+  <object id="117" name="Grube_3" x="243.5" y="1060" width="61" height="32">
+   <ellipse/>
+  </object>
+  <object id="118" name="Grube_4" x="370.5" y="1058" width="61" height="32">
+   <ellipse/>
+  </object>
+  <object id="119" name="Grube_5" x="434.5" y="995" width="61" height="32">
+   <ellipse/>
+  </object>
+  <object id="125" name="Trigger_Gegner" x="323" y="615">
+   <polyline points="-27,-35 322,-42 234,167 127,249 -5,177 -21,96 -54,73 -26,-35"/>
   </object>
  </objectgroup>
  <objectgroup name="Kollisionen">
@@ -99,6 +114,25 @@
   <object id="92" x="741.333" y="1800" width="125.333" height="113.333"/>
   <object id="93" x="808" y="1738.67" width="58.6667" height="60"/>
   <object id="94" x="805.333" y="1472" width="61.3333" height="60"/>
+  <object id="96" x="324.928" y="849.194" width="26.1448" height="13.6111"/>
+  <object id="97" x="516.928" y="846.528" width="26.1448" height="13.6111"/>
+  <object id="98" x="516.928" y="911.861" width="26.1448" height="13.6111"/>
+  <object id="99" x="452.928" y="912.528" width="26.1448" height="13.6111"/>
+  <object id="100" x="388.928" y="913.194" width="26.1448" height="13.6111"/>
+  <object id="101" x="324.261" y="913.861" width="26.1448" height="13.6111"/>
+  <object id="102" x="260.261" y="911.861" width="26.1448" height="13.6111"/>
+  <object id="103" x="260.261" y="980.528" width="26.1448" height="13.6111"/>
+  <object id="104" x="260.928" y="1039.86" width="26.1448" height="13.6111"/>
+  <object id="105" x="322.928" y="1043.86" width="26.1448" height="13.6111"/>
+  <object id="106" x="324.928" y="978.528" width="26.1448" height="13.6111"/>
+  <object id="107" x="388.261" y="980.528" width="26.1448" height="13.6111"/>
+  <object id="108" x="389.594" y="1039.86" width="26.1448" height="13.6111"/>
+  <object id="109" x="324.261" y="1105.19" width="26.1448" height="13.6111"/>
+  <object id="110" x="452.928" y="977.861" width="26.1448" height="13.6111"/>
+  <object id="111" x="452.261" y="1040.53" width="26.1448" height="13.6111"/>
+  <object id="112" x="516.261" y="979.194" width="26.1448" height="13.6111"/>
+  <object id="113" x="514.928" y="1041.19" width="26.1448" height="13.6111"/>
+  <object id="114" x="515.928" y="1105.19" width="26.1448" height="13.6111"/>
  </objectgroup>
  <layer name="Vordergrund" width="68" height="68">
   <data encoding="base64" compression="zlib">
