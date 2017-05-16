@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="68" tilewidth="32" tileheight="32" nextobjectid="127">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="68" tilewidth="32" tileheight="32" nextobjectid="143">
  <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
  <layer name="Hintergrund" width="68" height="68">
   <data encoding="base64" compression="zlib">
-   eJztmsluwzAMRA04h9zz///aSw04CilTG2dM8zAo4MIS+bgpSl7btr1SqUbtBDYg9f5XMmpj8iRW722MSURd8dgLbtHZ1XwsOTyBi+af5rv0PFovKX3ehWel31HzRIq31deIPCQmllqIXjPlHLFyRNvNoqi1IknLfamfom1d5bPUUyXfo84ViUOLanl0V7WcuSLnhOT38SxazHuZoO1gUfT+mEz6pc1ctF0sSh6/LJLHNw/GeesZq57Ptcd73jwY9/s42nXYdv7rxYK1b3jbp+3lnQet9jHt59U7ELlr3RORL6havkP/WL2P9l1KmQfoPoKKFeucYeCh3ZU9iYfERLs3Pctj1iB47Ke9W5lEyRHrd5ESp4g8erixMkHyYuPBUs+oc3StjtH5i2SSfc7uM/KcL/2PQYh7E6Y5iLAR3ctZmGg9jK1GaravZrFKsxlbbZb21c6id6iNq1jOzAm0X0gWs9dKFniN2h/pt5Qz7UfkhmWetMycFTzQMWawn+GsNTLXRnOb6fdSo/cYK+p8ZM3eXKpxsLBZeU7S1l11fu7xdzSPWmN7tfas+r5aR4rBag4t+1njI9np7YdHHvcysjBgvzOo+Wxh2fIek0bi0vvu1XtsuTLDHjafUqle/QFyE0+p
+   eJztms2ywiAMhTtTF+59/3d1ozOKCeQHkmPK4mw6QpMvB9IL93Ycx21rS6kTIIZM3V/ajHRMrsTqfviYVNSIx9lwq86ul2PL4QpcuPy43Knn1faSNueTeNbmXdUnVL2luVbkQTGRrIXqa6btI1KO2XGjqOpaocR5n9pPs2NdlTO1p1K5V+0rFAeNej76V2m+uSp7gsr7/axaza1MsuNAUfX9cTOxi+u52XGhaPP4ZbF5fPO4er+1/F37Hpcd+2pvSH77AIg3gsXeN755XM0HWh49Re4dVGy9+xHN8x6P0Zgsv0TzsHokkgd1NzSbB3eX0voAYR/h7sqkv7PUGrnPaHLX+kLCgzsrQ+chGedhwp2bfiqi11h4eGt4NvNomETwkOTv9Yb0LpLilMFkNQ8LtywmI59G8uBii/ZIj03mukboOWgxZb9f4pus92dz6DFZHV/vjh/pzCzaK4jrpRdnFe6odePWJdIaifJI5h4VyYN6L/ct+g9rY1TLmZ7IziuTxey5Not8zTr/mDFXtmbGn+ENST/R9JwVPLJrjBA/wreWp695vY30/1Lec50V69wzp9VL0rMuLq6V30ncvKu+ny35en2kre1o7lnrezQPVYPVHDTvk9aHijM6jwgfWxlJGKCfGfRylrDUjEOSpy7WsaNxaF6ZEQ9aTltbVj0Bs4FPvQ==
   </data>
  </layer>
  <layer name="Hintergrund_Baum" width="68" height="68">
   <data encoding="base64" compression="zlib">
-   eJzt2MGqg0AQBdExi+T//ziiGKbEpW13kyoIs3yX8Sz0LWOM1/pbPLfzvf4+nr8zsruf3RNbI+v07I6/EXkvHX1E3r0+mD6YPpg+mD6YPpg+mD6YPvaivj0ji/TR8dtTH9eb9cHN+uBmfXCzPrhZH9ysD27WBzfrg5v1wc13331HG/Puu+++o415tz64Wx/crQ/u1gd364O79cHdUfevD6YPpg+mD6YPpg/WxcV5b3UfTxXtY4w+Nuatkc+hi415qz64VR/c+uT/rv/dx5E+rtMH0wfTB9MHq+jivK2ij4wqvn9kVvH9I7NK3y8VqvT9UqFMHxXL9FGxjPePymW8f1ROH0wfTB9MH+zsw5M+PPfzC3hfGJE=
+   eJztmcEKgzAQRNMe2v//49aCpbMYlbK7mY0zIMGD8sw+ExNvrbX7+7ip/bSP9/FU+20jE1XDSNbIVKrheu+MPmf2wrJm9DmzF5ZVfiCr/EBW+YGs8gNZ5Qeyyg9klR/IKj+QNaLvK61bLHNE31dat1jmSn5YVg/23v6HZ7L2KDzY7b1n8mPrWc5eM6MfW89y9hr5sc0qP+b1Y4/l6HxGP/ZYjs6v4kePrcc6ux89th6rtx9ZbkTxevuR5UYUbxU/olLVj6jIj33uq/thueUHcssP5M6a16/qxxr5gZEfGPmBkR8Y+YGp4oXlZfcjK9F+tFbHjV/WyDpUceOXVX4gq/xA1oxayA+M/NiO/MDID4z8wMgPDKMXlo3RjxFh/P4YEcvA9P0xIpaBYf0yMpl+MHuxhsEPhvTYRvjBkB4bU80ycjSWMdUsI0djGeO7vcR77Dk71zG+20u8x56zcx3LHOC99v13T45lDvBe+/67J+f9n7V66/2ftXr7AhlcHCE=
   </data>
  </layer>
  <layer name="Dekoration" width="68" height="68">
@@ -121,6 +121,22 @@
   <object id="112" x="516.261" y="979.194" width="26.1448" height="13.6111"/>
   <object id="113" x="514.928" y="1041.19" width="26.1448" height="13.6111"/>
   <object id="114" x="515.928" y="1105.19" width="26.1448" height="13.6111"/>
+  <object id="127" x="1369" y="62" width="65" height="60.3031"/>
+  <object id="129" x="1371" y="516" width="61" height="313"/>
+  <object id="131" x="1335" y="822" width="63" height="66"/>
+  <object id="132" x="1518" y="533" width="39" height="294"/>
+  <object id="133" x="1648" y="587" width="34" height="111"/>
+  <object id="134" x="1806" y="597" width="34" height="163"/>
+  <object id="135" x="1935" y="603.5" width="36" height="217.5"/>
+  <object id="136" x="2064" y="527.25" width="52" height="420.75"/>
+  <object id="137" x="1858" y="2116">
+   <polyline points="0,0 2,-111 71,-110 72,-175 140,-174 140,-239 262,-240 260,1 0,1"/>
+  </object>
+  <object id="138" x="2063" y="1746" width="55" height="129"/>
+  <object id="139" x="1741" y="2068" width="117" height="49"/>
+  <object id="140" x="1097" y="2113">
+   <polyline points="0,0 0,-45 128,-45 127,-103 301,-104 300,-48 361,-49 361,3 0,1"/>
+  </object>
  </objectgroup>
  <layer name="Vordergrund" width="68" height="68">
   <data encoding="base64" compression="zlib">
