@@ -72,7 +72,7 @@
                 </texts>
             </statement>
         </dialog>
-        <dialog name="schild_buergermeister ">
+        <dialog name="schild_buergermeister">
             <statement talking="#player#">
                 <player position="left"/>
                 <sound></sound>
@@ -100,7 +100,7 @@
                 </texts>
             </statement>
         </dialog>
-        <dialog name="bürgermeister">
+        <dialog name="buergermeister">
             <statement talking="buergermeister">
                 <player position="left"/>
                 <display position="right">buergermeister</display>
