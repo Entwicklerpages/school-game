@@ -61,19 +61,15 @@
   <object id="3" x="-2.4426" y="0" width="2179.15" height="63.5076"/>
   <object id="8" x="0.000158494" y="129.704" width="59.5445" height="2037.83"/>
   <object id="11" x="191.574" y="175.859" width="34.4234" height="15.3923"/>
-  <object id="12" x="321.902" y="146.648" width="26.1448" height="13.6111"/>
-  <object id="13" x="292.699" y="146.782" width="26.1448" height="13.6111"/>
+  <object id="12" x="292.463" y="146.648" width="55.5834" height="13.6111"/>
   <object id="14" x="226.075" y="148.184" width="26.1448" height="13.6111"/>
   <object id="15" x="98.4361" y="211.302" width="26.1448" height="13.6111"/>
-  <object id="16" x="258.335" y="209.198" width="26.1448" height="13.6111"/>
-  <object id="17" x="290.595" y="208.497" width="26.1448" height="13.6111"/>
+  <object id="17" x="256.843" y="208.497" width="59.8969" height="13.6111"/>
   <object id="18" x="98.4361" y="274.42" width="26.1448" height="13.6111"/>
   <object id="19" x="226.075" y="274.42" width="26.1448" height="13.6111"/>
   <object id="20" x="260.439" y="274.42" width="26.1448" height="13.6111"/>
   <object id="21" x="65.4745" y="338.941" width="26.1448" height="13.6111"/>
-  <object id="22" x="416.832" y="148.184" width="26.1448" height="13.6111"/>
-  <object id="23" x="450.494" y="148.886" width="26.1448" height="13.6111"/>
-  <object id="24" x="484.157" y="148.184" width="26.1448" height="13.6111"/>
+  <object id="24" x="418.073" y="148.184" width="92.2291" height="13.6111"/>
   <object id="40" x="2118.62" y="73.3721" width="58.0862" height="2100.28"/>
   <object id="43" x="744.607" y="59.151" width="625.393" height="389.701"/>
   <object id="45" x="680.237" y="452.331" width="689.763" height="379.669"/>
@@ -86,25 +82,17 @@
   <object id="52" x="1120" y="1342" width="54" height="384"/>
   <object id="55" x="1178" y="1342" width="60" height="318"/>
   <object id="56" x="1268" y="1088" width="66" height="194"/>
-  <object id="57" x="609.594" y="151.861" width="26.1448" height="13.6111"/>
-  <object id="58" x="644.928" y="150.528" width="26.1448" height="13.6111"/>
-  <object id="59" x="642.261" y="213.861" width="26.1448" height="13.6111"/>
-  <object id="60" x="674.928" y="213.861" width="26.1448" height="13.6111"/>
-  <object id="61" x="705.594" y="212.528" width="26.1448" height="13.6111"/>
+  <object id="58" x="611.174" y="150.528" width="59.8992" height="13.6111"/>
+  <object id="61" x="645.857" y="212.528" width="85.882" height="13.6111"/>
   <object id="62" x="579.594" y="208.528" width="26.1448" height="13.6111"/>
   <object id="63" x="480.928" y="339.861" width="26.1448" height="13.6111"/>
   <object id="64" x="452.261" y="341.194" width="26.1448" height="13.6111"/>
   <object id="65" x="418.261" y="339.861" width="26.1448" height="13.6111"/>
-  <object id="66" x="513.594" y="407.194" width="26.1448" height="13.6111"/>
-  <object id="67" x="546.928" y="405.861" width="26.1448" height="13.6111"/>
-  <object id="68" x="386.261" y="407.861" width="26.1448" height="13.6111"/>
-  <object id="69" x="354.928" y="405.194" width="26.1448" height="13.6111"/>
-  <object id="70" x="321.594" y="407.194" width="26.1448" height="13.6111"/>
+  <object id="67" x="515.561" y="405.861" width="57.5122" height="13.6111"/>
+  <object id="69" x="326.209" y="405.194" width="81.5523" height="13.6111"/>
   <object id="71" x="416.928" y="469.861" width="26.1448" height="13.6111"/>
-  <object id="72" x="96.9276" y="407.194" width="26.1448" height="13.6111"/>
-  <object id="73" x="130.261" y="407.861" width="26.1448" height="13.6111"/>
-  <object id="74" x="161.594" y="469.194" width="26.1448" height="13.6111"/>
-  <object id="75" x="192.928" y="471.194" width="26.1448" height="13.6111"/>
+  <object id="72" x="96.9276" y="404.382" width="55.8658" height="13.6111"/>
+  <object id="74" x="161.594" y="469.194" width="53.0667" height="13.6111"/>
   <object id="85" x="449.594" y="660.528" width="26.1448" height="18.8056"/>
   <object id="86" x="478.928" y="676" width="26.1448" height="30.1389"/>
   <object id="87" x="419.594" y="676" width="26.1448" height="28.8055"/>
