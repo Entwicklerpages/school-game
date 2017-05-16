@@ -4,24 +4,24 @@ size: 256,64
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-bär
+bear_side
   rotate: false
   xy: 2, 2
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
   index: -1
-bär_laufen1
+bear_side_walk
   rotate: false
   xy: 68, 2
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
-  index: -1
-bär_laufen2
+  index: 1
+bear_side_walk
   rotate: false
   xy: 134, 2
   size: 64, 32
   orig: 64, 32
   offset: 0, 0
-  index: -1
+  index: 2

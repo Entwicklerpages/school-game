@@ -4,24 +4,24 @@ size: 128,64
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-krabbe_laufen1
+krab
   rotate: false
   xy: 2, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: -1
-krabbe_laufen2
+  index: 1
+krab
   rotate: false
   xy: 36, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: -1
-krabbe_laufen3
+  index: 2
+krab
   rotate: false
   xy: 70, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: -1
+  index: 3

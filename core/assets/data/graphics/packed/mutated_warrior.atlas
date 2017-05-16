@@ -4,66 +4,66 @@ size: 128,256
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Krieger_Mutiert_hinten1
+warrior_back
   rotate: false
   xy: 2, 134
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: -1
-Krieger_Mutiert_hinten2
+  index: 1
+warrior_back
   rotate: false
   xy: 2, 68
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: -1
-Krieger_Mutiert_hinten3
+  index: 2
+warrior_back
   rotate: false
   xy: 36, 134
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: -1
-Krieger_Mutiert_seite1
+  index: 3
+warrior_front
   rotate: false
   xy: 2, 2
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: -1
-Krieger_Mutiert_seite2
+  index: 1
+warrior_front
   rotate: false
   xy: 36, 68
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: -1
-Krieger_Mutiert_seite3
+  index: 2
+warrior_front
   rotate: false
   xy: 70, 134
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: -1
-Krieger_Mutiert_vorne1
+  index: 3
+warrior_side
   rotate: false
   xy: 36, 2
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: -1
-Krieger_Mutiert_vorne2
+  index: 1
+warrior_side
   rotate: false
   xy: 70, 68
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: -1
-Krieger_Mutiert_vorne3
+  index: 2
+warrior_side
   rotate: false
   xy: 70, 2
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
-  index: -1
+  index: 3
