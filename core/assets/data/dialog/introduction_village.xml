@@ -54,7 +54,7 @@
                 </texts>
             </statement>
         </dialog>
-        <dialog name="schild_krieger ">
+        <dialog name="schild_krieger">
             <statement talking="#player#">
                 <player position="left"/>
                 <sound></sound>
