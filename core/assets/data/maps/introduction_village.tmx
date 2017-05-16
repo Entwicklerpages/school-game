@@ -28,13 +28,13 @@
   <object id="118" name="Schild_Hexe" type="Welf" x="695.333" y="2127.33" width="47.3333" height="64.6667"/>
   <object id="119" name="Schild_Krieger" type="Welt" x="2142" y="2090.67" width="41.3333" height="63.3333"/>
   <object id="122" name="Schild_Paerchen" type="Welt" x="2140.67" y="1290.67" width="36.6667" height="48"/>
-  <object id="125" name="Schild_Bürgermeister" type="Welt" x="1787.33" y="721.333" width="40" height="60"/>
+  <object id="125" name="Schild_Buergermeister" type="Welt" x="1787.33" y="721.333" width="40" height="60"/>
   <object id="127" name="Schild_Crasus" type="Welt" x="386" y="400" width="29.3333" height="46.6667"/>
   <object id="128" name="Schild_Stultus" type="Welt" x="833.333" y="403.333" width="34" height="46"/>
   <object id="129" name="Schild_Schmied" type="Welt" x="513.333" y="1330" width="34.6667" height="46.6667"/>
   <object id="132" name="Brunnen" type="Welt" x="1219.33" y="1184.67" width="120.667" height="133.333"/>
   <object id="133" name="Legende" type="Welt" x="1482.67" y="2374.67" width="60" height="56"/>
-  <object id="134" name="Bürgermeister" type="Welt" x="1914" y="663" width="44.6667" height="83"/>
+  <object id="134" name="Buergermeister" type="Welt" x="1914" y="663" width="44.6667" height="83"/>
   <object id="137" name="Ausgeng" type="Welt" x="1199.33" y="-23.3333" width="169.333" height="56"/>
   <object id="139" name="Wache" type="Welt" x="1173.33" y="-12.6667" width="216.667" height="155.333"/>
  </objectgroup>
