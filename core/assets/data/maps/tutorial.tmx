@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="69">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="42" tilewidth="32" tileheight="32" nextobjectid="81">
  <tileset firstgid="1" source="../tilemap/forest.tsx"/>
- <layer name="Hintergrund" width="80" height="50">
+ <layer name="Hintergrund" width="68" height="42">
   <data encoding="base64" compression="zlib">
-   eJztmstOwzAQRS1B2ZQNAomWRxueQmLDkv//MmyREZfLjO0UqhJ7FkcC0iby0TzsCS8hhBfiMvIWWSnX/oJt5D1yHDmbOdr6TsZry0qH4hup+Z48Z86U1rXIOFspnxeWFS5b8YcuML8Sg7H27Xgtffe08Awrjlvxl9ZhxZkWb7s40By27o9zdEHXUm6WYg/hZ7TiT3Ix5wx/lpy9jTyMbOD3jfEsqYm5ujk3rLrGzvjv6btPkcfIVeQuch95jdwUXIrHKbH7XyntL7BuWTl7PXoT2OWh13gIf9hXMYe1e7A/BP0dha++Lsx9D231VnGV1jwY/iRHJdaQdfjM7WflPi31EK5tuC5eM6/Virs1eBO03t1CDczlLu83+NyK/cPKWc3f3GOu5E88DcZ1Wb+Wv1rsleJ4znDc4f5Mm8NgX5H8lVqH9c5yV3PemxNW3Gn9l2NH8pediTeO4dbcsT/NJTqYsn6unS26y/krOc3t3zBndzknzwltTzFl7rwlh+yuVW/sr2bmV+Ow1X1Kyd9v0Wb+Pfrjs1ztuw1t5t+DP3bCc1Lr3UZulrwIfdQ+RJvzoQOeleL7Ieyv0j96iD2hZjaCs4LcTK+n3E3w/hjzMjk4J39yvtVmeXivXvzxPmQIP+PvInw/qyWnpfd1PfqzzhvaGSPnr6feUXPW0M5tQ+bzvcRegvciu/7vUEsz5Slw75WzWKm+9ZqvDLqz+kjuLNJbvDGel/vx1/rcbp/+eq5nu/jjuubu6nFfjuM4juM4juM4juM4++UDkWk6zg==
+   eJzVWstOwzAQtETpBS4VSLwhPIXEhSP//2W4oistw6yzTrxOOIzUNsGP8ezTvKeU3gEXGZ8Zl+RZCzxkfB2wydhlHGUM6p0t/LY9vBcNtl6Z+8TJifCn4eVSuBlgvNOMY7KmJfnYwZqQg0vyvuDEwc0FPJPve442am7hpxcfuC6tZ31ueK6Dc62Wzrbw7EHNpz/30sZOzWfpwDrLWh0zTuRvx+ZeCx9oE8fwbG8LNTrGOZjvKPmYTcVcc/jQ2rQ40J/FRu4yng+4V9/vjbnEp0yNW+JXovlgfgE5YPb8mvGScZ3xmPGU8ZFxO8KN9rUeaP6ibWfMbrXdWzZyc+BBgNzMXSP63EiNlPyn7FvbDBsD+dDQfOzzqy8ncM+9chErdsicpRxRbEK0oHGVfmzpjYzjAc6lNRLNh/YNej0sh/bo4krxwM6X5bMIFrfGdBplLyxfZnFP+1PLRlrpvVctU4r3g/Fc1sPshWljTGc1XPTkA+taVudqPyv2Ir5C+wtrL1NqEbS1yFrG0gWLL3g2Yi/IgfBg1a01utBj9KjrxnLkqetB3zNXFz1ysRIfYxxZeQLayJQ6Zw186BhYU19gvohczNE3i2+96hdPz8PDScs8ktV/S+XrtWA9xlb6xt5JJCcsF8P46umNsh5jS3tHrUT5Etwj9n2s3qhV70Tx0WNsNg/2hsQfYu8HexjynvjTqFyhBx9W7ann1LVbqacRvd7o8THfwl7UGfAh9YnVyxjS/+YD4+aQ/urjPP3Ozc/SMj3xHjWuJx9lsa3ER7TviOTDk4uyPH0ovB9tK5F1HcbOFnfZEflSr34Qxha8O/Wg1H/9T7ayS1z3rJ9q5aqSe2D+2PpOzbIVFufmzOk5+1KPt3SOLWwHe0Lb9JsD6zyn8jLGQ63fsmrSmvWV9lvSLtrsFF6i4iWrcZhWmN7Zfj3ate6HWXy0wPxCq1jG1oe+0Ou3me/S69T3xXPuzVvu36MVdu/mudNme9dg98W19+afwTwwHbSIO1I7MLBe/xph3fWtDb348Px/3RqwhFam2HUvLG1Ha8M3IcQWyw==
   </data>
  </layer>
- <layer name="Hintergrund2" width="80" height="50">
+ <layer name="Hintergrund2" width="68" height="42">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
+   eJztwTEBAAAAwqD1T20JT6AAAAAAAAAAAAAAAD4GLKAAAQ==
   </data>
  </layer>
- <layer name="Dekoration" width="80" height="50">
+ <layer name="Dekoration" width="68" height="42">
   <data encoding="base64" compression="zlib">
-   eJztzgENAAAIA6AHsn8+Y3w6SEACAABwz7QDAAAAAAAAAAAAAAAADy3J6AAt
+   eJztzgENAAAIA6AHsn8+Y3xTSEACAAA3TTsAAAAAAAAAAPDQAvfbAC0=
   </data>
  </layer>
  <objectgroup name="Objekte">
@@ -22,10 +22,11 @@
   </object>
   <object id="5" name="Bewegen Fertig" type="Welt" x="517.667" y="747.834" width="28.8333" height="71.3333"/>
   <object id="65" name="Interaktion" type="Welt" x="582.667" y="664" width="114.667" height="31.3333"/>
-  <object id="67" name="Ausgang" type="Welt" x="968.667" y="230.667" width="31.3333" height="82.6667"/>
+  <object id="67" name="Ausgang" type="Welt" x="1823.67" y="1157.67" width="31.3333" height="82.6667"/>
   <object id="68" name="Pilz" type="Welt" x="601.333" y="311.333" width="44" height="68">
    <ellipse/>
   </object>
+  <object id="78" name="InteraktionBarriere" type="Welt" x="1057" y="241" width="40" height="62"/>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="37" x="516" y="562">
@@ -35,7 +36,7 @@
    <polygon points="0,0 -1,-129 96,-128 104,-124 44.5,37 33,29.5 21,26.5"/>
   </object>
   <object id="41" x="223.5" y="560.5" width="199.5" height="126"/>
-  <object id="43" x="462.5" y="817" width="158.5" height="125.5"/>
+  <object id="43" x="462.5" y="817" width="223.5" height="125.5"/>
   <object id="45" x="219.333" y="642" width="52" height="107.333"/>
   <object id="46" x="187.333" y="686.667" width="54" height="256.667"/>
   <object id="48" x="238.667" y="913.333" width="244" height="36.6667"/>
@@ -48,16 +49,25 @@
   <object id="56" x="462.667" y="69.3333" width="66" height="106.667"/>
   <object id="57" x="522" y="-0.666667" width="36.6667" height="114.667"/>
   <object id="58" x="548" y="6.66667" width="208" height="40.6667"/>
-  <object id="59" x="947.333" y="-24" width="57.3333" height="262"/>
+  <object id="59" x="947.333" y="175.333" width="431.333" height="62.6667"/>
   <object id="60" x="714.667" y="36.6667" width="138" height="42"/>
   <object id="61" x="810.667" y="71.3333" width="110.667" height="40.6667"/>
   <object id="62" x="845.333" y="107.333" width="116.667" height="40"/>
   <object id="63" x="877.333" y="140" width="86" height="66"/>
-  <object id="64" x="884" y="308" width="108" height="57.3333"/>
+  <object id="64" x="880.5" y="304.5" width="354.5" height="61.8333"/>
+  <object id="69" x="656" y="753" width="63" height="122"/>
+  <object id="70" x="687" y="657" width="64.3333" height="99"/>
+  <object id="71" x="660" y="594.5" width="91.5" height="63"/>
+  <object id="72" x="687" y="562" width="97.5" height="34.5"/>
+  <object id="73" x="718.5" y="496" width="125" height="63.5"/>
+  <object id="75" x="847.5" y="336.5" width="96.5" height="124"/>
+  <object id="76" x="764.5" y="502.5">
+   <polygon points="0,0 89,-98.5 165,-46 73.5,56"/>
+  </object>
  </objectgroup>
- <layer name="Vordergrund" width="80" height="50">
+ <layer name="Vordergrund" width="68" height="42">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
+   eJztwTEBAAAAwqD1T20JT6AAAAAAAAAAAAAAAD4GLKAAAQ==
   </data>
  </layer>
 </map>

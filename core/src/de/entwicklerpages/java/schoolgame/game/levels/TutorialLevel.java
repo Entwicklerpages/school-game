@@ -8,6 +8,7 @@ import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
 import de.entwicklerpages.java.schoolgame.game.objects.InteractionZone;
 import de.entwicklerpages.java.schoolgame.game.objects.Trigger;
+import de.entwicklerpages.java.schoolgame.game.objects.entities.StoneBarrier;
 
 /**
  * Tutorial Level
@@ -91,6 +92,8 @@ public class TutorialLevel extends Level {
             }
         });
 
+        final StoneBarrier barrier = new StoneBarrier("InteraktionBarriere");
+
         InteractionZone mushroom = new InteractionZone("Pilz");
         mushroom.setActionCallback(new ActionCallback()
         {
@@ -105,6 +108,7 @@ public class TutorialLevel extends Level {
                         if (!interaction2)
                         {
                             interaction2 = true;
+                            barrier.destroy();
                             startDialog("interagieren_fertig");
                         }
                     }
@@ -124,6 +128,7 @@ public class TutorialLevel extends Level {
 
         worldConfig.registerObject(movementDialogTrigger);
         worldConfig.registerObject(interactionDialogTrigger);
+        worldConfig.registerObject(barrier);
         worldConfig.registerObject(mushroom);
         worldConfig.registerObject(exitTrigger);
     }
