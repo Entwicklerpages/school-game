@@ -307,6 +307,15 @@ public class ExtendedOrthogonalTiledMapRenderer extends OrthogonalTiledMapRender
             y -= layerTileHeight;
         }
 
+        // Nicht gerenderte Objekte rendern
+        if (renderObjects.size > 0)
+        {
+            for (ExtendedMapDisplayObject displayObject : renderObjects)
+            {
+                displayObject.render(batch, deltaTime);
+            }
+        }
+
         renderObjects.clear();
     }
 

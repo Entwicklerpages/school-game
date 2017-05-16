@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="33">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="35">
  <tileset firstgid="1" source="../tilemap/test.tsx"/>
  <layer name="Hintergrund" width="80" height="50">
   <data encoding="base64" compression="zlib">
@@ -19,12 +19,14 @@
   <object id="7" name="Chaos Trigger" type="Welt" x="586.666" y="173.333" width="165.333" height="165.333">
    <ellipse/>
   </object>
-  <object id="9" name="Gegener Pfad" type="Welt" x="1817.33" y="784">
+  <object id="9" name="NPC Pfad" type="Welt" x="1817.33" y="784">
    <polyline points="0,0 -264,10.6667 -508,225.333 -760,354.667 -848,445.333 -865.333,626.667 -692,665.333 -486.667,573.333 -382.667,400 -313.333,348 -268,385.333 -265.333,504 -218.667,616 -117.333,717.333"/>
   </object>
   <object id="32" name="Storm Trigger" type="Welt" x="453.333" y="980">
    <polygon points="-24,-6.66667 140,-292 233.333,-132 233.333,90.6667 40,256"/>
   </object>
+  <object id="33" name="Schild1" type="Welt" x="861.667" y="985.333" width="38" height="40.3333"/>
+  <object id="34" name="Schild2" type="Welt" x="1500.33" y="508.667" width="38" height="40.3333"/>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="12" x="1005" y="653.333" width="133.333" height="69"/>

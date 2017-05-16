@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="30">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="36">
  <tileset firstgid="1" source="../tilemap/test.tsx"/>
+ <tileset firstgid="49" source="../tilemap/forest.tsx"/>
+ <tileset firstgid="105" source="../tilemap/graveyard.tsx"/>
+ <tileset firstgid="125" source="../tilemap/cave.tsx"/>
+ <tileset firstgid="173" source="../tilemap/village.tsx"/>
+ <tileset firstgid="245" source="../tilemap/village_deco.tsx"/>
  <layer name="Hintergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztl20LgjAQgFdBaUFpQVmRUNaH3v7/3+vEDobc3tTpJhOeD8Jkdz6ed8sZY7lF1sAGSCzv0xUxsARWDsQSfAQfIubA4k8UfHTGHjgAWUOPfdfW2H00xaYPvvZ4Is98HIGTAWdgAkyBmeFeWFdNasvENU/imY8rcDOgcDQ/3jVPphEvXpRPij583IEX8PDUh4wU2AI7gQdTHza9oI+idj8mHxTUZerDhpPgw00fH1b166+nPmTzlWj+aOvDRh6qeqj3FVd9tJmvTH3YzEPlo143Lvkov3v85tvMVy7h87wba8bgSrw6PFn1P9Ll3UN++L9XnTl98UH1MhmYs87akovl/PD9qfbwxQfVy2RgnDprqee6Bs9v1BnORx98L+NzE4E566ylnhuKVDOGoX0Egg+XGdrHDySn06A=
+   eJztmLlLA0EUh0ctvMBEBU8MaLTwqjwabaw9Gg8EG0tBC0vBwqPRRsW78IoiBMQ/0t+SHXw832xmspeBCB8Tlxll3sc7NjmlVC5G2kAGZMFeSiw4MAM2wazjuaiI00XNR81HzUcwXaAb9JSJ2a7h+aHw7KDmIxK82OwzXP1EkR9TYEdgusp89II+B/pBHagHDUKcbN1E7UPHnDObgI8HUGQr/eziYxAMOZAHzaAFtJaJWSVOdtlqcs1jMge2BeYtfOifjCX8PHWgPdBnlfgYBmNgJISPoBia8scGelbKj2WwClYM8dau5g0eXH1wL8UyVOIjr+zyxSU/oqhhNj4WwRZYMvgIyokwPrQTqUbRNU0fOkekGYpiO0+ZXNLYroM1sJGSD1OtCpMfE6rUrydD+kgKl/lqinyOo15JfTxs/zDB+8p/9RFmvnL1IfXyqPuHCZ43/8kH7eNh5qswcy7vG1KOJDnvJvnuSXHp47Y+pHgegS9wLMTc40OA73O516gq1SNbxhPwUadK75v6nTMpH1KtOQGf4FTw9Q4uwCXhChTY3kafJnY3E/rONns9BmL2oX0H/Y+48oPnxbPv40n95omOs+fjnsX+EVyDG3/1/pbuO1l2NxP6zjZ7pXNR0w46fDoT9EFrvs4LDs0TyYdU87rV7/ev9G4m9J1t9krn0uoftu8dlfSPM/AN7nwPt/7v5yTOQfmhce0f1YrLHORar+harn9IPgrsWdqxqlYf0ncdOk/O1d+5yfPxAl4Jb8yHd+YHKxYP7g==
+  </data>
+ </layer>
+ <layer name="Hintergrund2" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1jEOgCAQAEG+q4X2/sTfQgOdiUbwNrKTXEuuWSClf1vKrNFLqNnK7NFLqLGPZ47B59sHi32w2Id0zfuqnx5vvffVPaP/VZV9sNgHi32w2AeLfbDYBwu9jzN6gY/ZBwu9j9nYh97IY2AROA==
   </data>
  </layer>
  <layer name="Dekoration" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztzgENAAAIA6Ansn88Y3w6SEAC8Nu0AwAAAAAAAJyw20wALw==
+   eJzt2E0KgCAQhmEP2iX6J+jE7WvdpsUgOkHETNr7bBQV+VBQMQQApeq8AxSi8Q4gpPasNU8BK4fSt5ul8DEm2gZRn0S9z8yxXeXySqL65dYxtj6Ym3MKteEN9V2p+yMm75NZGcfZBQAAANzT/q8A4K9OXC0Law==
   </data>
  </layer>
  <objectgroup name="Objekte">
@@ -16,6 +26,9 @@
    <ellipse/>
   </object>
   <object id="29" name="Schild" type="Welt" x="439.5" y="89.5" width="48.5" height="60.5"/>
+  <object id="32" name="Schaedel" type="Welt" x="1237.33" y="186.667" width="54.6667" height="57.3333">
+   <ellipse/>
+  </object>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="12" x="111.625" y="494.667" width="289.042" height="65.3333"/>
@@ -25,9 +38,6 @@
   <object id="18" x="1968.25" y="336.25" width="192.25" height="63.75"/>
   <object id="19" x="2191" y="-1" width="65.9091" height="242"/>
   <object id="20" x="2191" y="335.091" width="66.2727" height="308.909"/>
-  <object id="22" x="1904.75" y="399.75">
-   <polyline points="0,-0.75 -33.5,-0.75 -33.5,161.25"/>
-  </object>
   <object id="23" x="2336.18" y="258.636">
    <polygon points="-0.181818,-2.63636 -0.181818,61.3636 31.8182,61.3636 31.8182,93.3636 95.8182,93.3636 95.8182,-34.6364 31.8182,-34.6364 31.8182,-2.63636"/>
   </object>
@@ -37,10 +47,12 @@
   <object id="26" x="2431.91" y="192.091" width="384" height="191.909"/>
   <object id="27" x="784.083" y="-8.66667" width="63.875" height="120.542"/>
   <object id="28" x="-0.125" y="496.375" width="79" height="64.125"/>
+  <object id="30" x="1790.67" y="-1.33333" width="70.6667" height="177.333"/>
+  <object id="31" x="1794.67" y="236" width="58.6667" height="405.333"/>
  </objectgroup>
  <layer name="Vordergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+   eJztzkEJAAAIADHrav8A2kKUDe5/EQAAwFU51fYEAAAAADzRI9gA1A==
   </data>
  </layer>
 </map>

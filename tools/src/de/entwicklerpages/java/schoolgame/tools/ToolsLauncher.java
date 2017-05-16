@@ -16,7 +16,11 @@ import de.entwicklerpages.java.schoolgame.tools.filedata.LogReaderPanel;
 import de.entwicklerpages.java.schoolgame.tools.map.MapPanel;
 import de.entwicklerpages.java.schoolgame.tools.pack.PackPanel;
 
-
+/**
+ * Hauptfenster des Tools.
+ *
+ * @author nico
+ */
 public class ToolsLauncher extends JFrame {
 
     private final static int FRAME_WIDTH = 470;
@@ -24,6 +28,10 @@ public class ToolsLauncher extends JFrame {
 
     private Dimension screenSize = null;
 
+    /**
+     * Konstruktor.
+     * Erstellt das Fenster.
+     */
     public ToolsLauncher()
     {
         super("School Game Tools");
@@ -43,6 +51,11 @@ public class ToolsLauncher extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Ermittelt die Größe des Bildschirms.
+     *
+     * @return die Größe
+     */
     private Dimension getScreenSize()
     {
         if (screenSize == null)
@@ -50,6 +63,10 @@ public class ToolsLauncher extends JFrame {
         return screenSize;
     }
 
+    /**
+     * Positioniert das Fenster an einer zufälligen Position.
+     * Dabei wird dadrauf geachtet, dass das Fenster nicht zu sehr am Rand platziert wird.
+     */
     private void randomPosition()
     {
         Random r = new Random();
@@ -66,6 +83,9 @@ public class ToolsLauncher extends JFrame {
         setLocation(x, y);
     }
 
+    /**
+     * Verknüpft alle Tools über ein TabbedPane miteinander.
+     */
     private void fillWindow()
     {
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -81,7 +101,13 @@ public class ToolsLauncher extends JFrame {
         add(tabbedPane);
     }
 
-    public static void main(String[] args)  throws Exception {
+    /**
+     * Einstiegspunkt für das Tool.
+     *
+     * @param args wird nicht beachtet
+     * @throws Exception unterschiedliche Ursachen
+     */
+    public static void main(String[] args) throws Exception {
 
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());

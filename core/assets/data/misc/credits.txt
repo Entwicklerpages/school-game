@@ -28,6 +28,7 @@ gdx-ai
 gdx-tools
 gdx-box2d
 gdx-controllers
+Reflections
 
 # Software
 Android Studio
@@ -55,4 +56,5 @@ von Peter Hull
 
 
 
-# Vielen Dank!
+# Vielen Dank
+# fürs Spielen!
