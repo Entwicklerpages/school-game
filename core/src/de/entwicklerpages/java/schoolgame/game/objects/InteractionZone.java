@@ -91,4 +91,10 @@ public class InteractionZone extends WorldObject
         else
             this.actionCallback = actionCallback;
     }
+
+    @Override
+    public void onDispose()
+    {
+        handler.dispose();
+    }
 }

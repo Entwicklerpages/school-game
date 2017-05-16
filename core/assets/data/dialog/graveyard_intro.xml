@@ -28,7 +28,7 @@
                 <display position="left">schild</display>
                 <sound></sound>
                 <texts>
-                    <text>Wer diesen Friedhof betritt, wird ein Teil von ihm werden...</text>
+                    <text>Wer diesen Friedhof betritt, wird ein Teil von ihm werden ...</text>
                 </texts>
             </statement>
         </dialog>
@@ -54,23 +54,7 @@
                 <display position="right">schaedel</display>
                 <sound></sound>
                 <texts>
-                    <text>Wie was?</text>
-                </texts>
-            </statement>
-            <statement talking="schaedel">
-                <player position="left"></player>
-                <display position="right">schaedel</display>
-                <sound></sound>
-                <texts>
-                    <text>Du kannst sprchen...</text>
-                </texts>
-            </statement>
-            <statement talking="schaedel">
-                <player position="left"></player>
-                <display position="right">schaedel</display>
-                <sound></sound>
-                <texts>
-                    <text>Natürlich kann ich Sprchen!</text>
+                    <text>Wie, was?</text>
                 </texts>
             </statement>
             <statement talking="#player#">
@@ -78,7 +62,23 @@
                 <display position="right">schaedel</display>
                 <sound></sound>
                 <texts>
-                    <text>Was ist natürlich daran das ein Schädel sprechen kann?</text>
+                    <text>Du kannst sprechen ...</text>
+                </texts>
+            </statement>
+            <statement talking="schaedel">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Natürlich kann ich sprechen!</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"></player>
+                <display position="right">schaedel</display>
+                <sound></sound>
+                <texts>
+                    <text>Was ist daran natürlich, dass ein Schädel sprechen kann?</text>
                 </texts>
             </statement>
             <statement talking="schaedel">
@@ -94,7 +94,7 @@
                 <display position="right">schaedel</display>
                 <sound></sound>
                 <texts>
-                    <text>Das erklärt aber immer noch nicht warum du als Schädel sprechen kannst</text>
+                    <text>Das erklärt aber immer noch nicht, warum du als Schädel sprechen kannst.</text>
                 </texts>
             </statement>
             <statement talking="schaedel_name">
@@ -102,15 +102,15 @@
                 <display position="right">schaedel_name</display>
                 <sound></sound>
                 <texts>
-                    <text>Ich wollte einst auf diesem Friedhof die Früchte der Totenbüsche sammeln..</text>
-                    <text>Nur leider griffen mich aus ihren Grabe steigende Skelette an...</text>
-                    <text>ich konnte fast bis an den Eingang flüchten...</text>
-                    <text>aber sie erwischten mich doch...</text>
-                    <text>sie schlufen mir den Kopf ab...</text>
-                    <text>aber ich bin nich tot...</text>
-                    <text>statdessen muss ich hier auf ewig verweilen...</text>
+                    <text>Ich wollte einst auf diesem Friedhof die Früchte der Totenbüsche sammeln.</text>
+                    <text>Nur leider griffen mich die aus ihren Gräbern steigenden Skelette an ...</text>
+                    <text>ich konnte fast bis an den Eingang flüchten ...</text>
+                    <text>aber sie erwischten mich.</text>
+                    <text>Sie schlugen mir den Kopf ab und trotzdem ...</text>
+                    <text>Ich bin nicht tot.</text>
+                    <text>Stattdessen muss ich hier auf ewig verweilen.</text>
                     <text>Also geh nicht weiter!!!</text>
-                    <text>Wer auf diesem Friedhof stirbt wird auf ewig hier gefangen sein...</text>
+                    <text>Wer auf diesem Friedhof stirbt, bleibt für immer hier gefangen!</text>
                 </texts>
             </statement>
             <statement talking="#player#">
@@ -118,7 +118,7 @@
                 <display position="right">schaedel</display>
                 <sound></sound>
                 <texts>
-                    <text>Aber ich muss auf den Friedhof um das Dorf zu retten!</text>
+                    <text>Aber um das Dorf zu retten, muss ich auf den Friedhof!</text>
                 </texts>
             </statement>
             <statement talking="schaedel_name">
@@ -127,9 +127,9 @@
                 <sound></sound>
                 <texts>
                     <text>Warum willst du das Dorf retten?</text>
-                    <text>Sie verachten dich als habelf...</text>
-                    <text>warum willst du für Leute sterben die dich verachten?</text>
-                    <text>Menschen sind Habgierige Wesen</text>
+                    <text>Sie verachten Halbelfe wie dich ...</text>
+                    <text>Warum willst du für Leute sterben, die dich verachten?</text>
+                    <text>Menschen sind habgierige Wesen.</text>
                 </texts>
             </statement>
             <statement talking="#player#">
@@ -137,7 +137,7 @@
                 <display position="right">schaedel</display>
                 <sound></sound>
                 <texts>
-                    <text>Ich möchte Helfen das ist alles...</text>
+                    <text>Ich möchte helfen, das ist alles ...</text>
                 </texts>
             </statement>
         </dialog>
@@ -182,7 +182,7 @@
                 <display position="left">grab</display>
                 <sound></sound>
                 <texts>
-                    <text>Jasper Bardua |br| "Kein Ende in Sicht..."|br| 3,14159...</text>
+                    <text>Jasper Bardua |br| "Kein Ende in Sicht ..."|br| 3,14159...</text>
                 </texts>
             </statement>
         </dialog>
@@ -254,7 +254,7 @@
                 <display position="left">grab</display>
                 <sound></sound>
                 <texts>
-                    <text>Hier ruht |br| Salome Arabe |br| Möge Sie in Frieden ruhen</text>
+                    <text>Hier ruht |br| Salome Arabe |br| Möge sie in Frieden ruhen</text>
                 </texts>
             </statement>
         </dialog>

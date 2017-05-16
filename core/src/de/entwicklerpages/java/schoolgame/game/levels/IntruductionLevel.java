@@ -3,6 +3,7 @@ package de.entwicklerpages.java.schoolgame.game.levels;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
+import de.entwicklerpages.java.schoolgame.game.objects.AttackZone;
 import de.entwicklerpages.java.schoolgame.game.objects.InteractionZone;
 
 /**
@@ -51,7 +52,12 @@ public class IntruductionLevel extends Level {
             }
         });
 
+        AttackZone graveZone = new AttackZone("Grabloch");
+        graveZone.setDamage(6);
+        graveZone.setTimeout(5f);
+
         worldConfig.registerObject(signInteraction);
         worldConfig.registerObject(scullInteraction);
+        worldConfig.registerObject(graveZone);
     }
 }

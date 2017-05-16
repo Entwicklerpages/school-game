@@ -19,7 +19,7 @@
                 <sound>pling.wav</sound>
                 <texts>
                     <text>Hallo #{PLAYER}!</text>
-                    <text>Willkommen bei School-Game,|br|dem BESTEM Fantasy-Game das du je spielen wirst.</text>
+                    <text>Willkommen bei "Die Legende der Kristalle",|br|dem BESTEN Fantasy-Game, das du je spielen wirst.</text>
                     <text>Bevor du aber mit dem Spiel beginnst,|br|soll dich dieses kleine Tutorial mit der Steuerung|br|vertraut machen.</text>
                     <text>Fangen wir an!</text>
                 </texts>
@@ -30,8 +30,8 @@
                 <display position="right">tutorial</display>
                 <texts>
                     <text>Okay, fangen wir einfach an.</text>
-                    <text>Du kannst dich entwerder mit den Pfeiltasten oder |br| mit W, A, S und D bewegen.</text>
-                    <text>Wenn du dabei Shift gedrückt hälst, bewegst du dich schneller!</text>
+                    <text>Du kannst dich entweder mit den Pfeiltasten oder |br| mit W, A, S und D bewegen.</text>
+                    <text>Wenn du dabei Shift gedrückt hältst, bewegst du dich schneller!</text>
                     <text>Probier es gleich aus!|br|Verlass dieses Gelände.</text>
                 </texts>
             </statement>
@@ -52,7 +52,7 @@
                 <display position="right">tutorial</display>
                 <texts>
                     <text>In diesem Spiel ist es wichtig, mit Objekten oder Lebewesen zu interagieren.</text>
-                    <text>Dazu musst du dich dem Objekt oder Lebewesen annähern.|br|Bist du nah genug erscheint eine Meldung am unteren Bildschirmrand.</text>
+                    <text>Dazu musst du dich dem Objekt oder Lebewesen annähern.|br|Bist du nah genug, erscheint eine Meldung am unteren Bildschirmrand.</text>
                     <text>Wenn du diese siehst, musst du nur noch E oder Enter drücken, um die Interaktion zu starten.</text>
                     <text>Gehe zu dem Pilz oben und sprich mit ihm.</text>
                 </texts>
