@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="2">
- <layer name="Hintergrund" width="50" height="50">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="80" tilewidth="32" tileheight="32" nextobjectid="2">
+ <tileset firstgid="1" source="../tilemap/village.tsx"/>
+ <tileset firstgid="97" source="../tilemap/village_deco.tsx"/>
+ <tileset firstgid="100" source="../tilemap/village_houses.tsx"/>
+ <tileset firstgid="102" source="../tilemap/village_mayor.tsx"/>
+ <tileset firstgid="103" source="../tilemap/villager.tsx"/>
+ <tileset firstgid="121" source="../tilemap/lawn_map.tsx"/>
+ <layer name="Hintergrund" width="80" height="80">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztnEtuwyAQhrlClnlVSl+bXqqXStaR2oPkaLUjjzpBQBiMYTD/4ttE4JjPxAyeiTfGmI1C9gPniYOC82mB48DbxCvzd2Kfvyg4T62cI6l9nlr5Meb7mbtfY661z1MzIYdwl+4Q7mQMvm7kbvB5q30+rXE0/3MPa64cxH/wB3/z4XsCyX0otd+a/I0Oxn3U18QpwgV5s/tJPbbuj9xdhrhrxHbhg7xRP0lf+zgt+9s7PJSmZX8fA+8V2Zm2519tWr//1Qb+4K91fzwG9bHWvXUOfxRDTHHEnS+Ltc7tHP7GGGI3eaJjbc3jOv+pYKxa/XGHvd1Lc64fPa5F8Fd+zL71tvW9dCl/rM/VA/xF9vE57M3fJdGfHaesPV7J7a+XeQZ/y/mjPRf8+QnFHOQv9rl/r3HKxYOrhshqs6pn/rn8herXrHaI8yKc+fz5YpQe4xQJ0nVlzUj98fkHf+nzL8c9bm6NiQZS/BEx9SQhd9LalBzQNcvxXTSGVH/SmhBHrHhfr0vlQvg1S6kJ8h0r1V8gfhFRyt8UayTXBLnqjOb4G/uGYhgpS8c83N8SdUJStgXGnJPcNUV2blFK7/EL5befxXrwJ5vPNC95zYDrPtfSb7e015153OfClYyU56cA/uBPB/AHf/DXLvAHf/DXLvAHf/DXLvAHf734y5lT1EIJf/a7BkrlgEv7W2pcU+6+aA6zhr85eVJtOXQbV/1ojrnC/eXKk2vIobvGmes/ofb7J0v7q5Fn4f8R9b3vha9voflqX4uctQUa6g8kDrlHWt8ODkeuduStp5ybK5dLTrmP2Ha1x6MBcvXMR2w7AAAAAAAAavMH3v86Bw==
   </data>
  </layer>
- <layer name="Dekoration" width="50" height="50">
+ <layer name="Hintergrund2" width="80" height="80">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJzt3TEKhDAARcFcyO3W+x9N60AEeYXuMgPht4G8PtsY43Oe7WU7e/o+q/2eZ3/hzp6+z2pX7821uT/u0V+jv0Z/jf4a/TX6a/TX6K/RX6O/Rn+N/hr9Nfpr9Nfor9Ffo79Gf43+Gv01+mv01+iv0V+jv0Z/jf4a/TX6a/TX6K/RX6O/Rn+N/hr9Nfpr9Nfor9Ffo79Gf43+Gv01+mv01+iv0V+jv0Z/jf4a/TX6a/TX6K/RX6O/Rn+N/hr9Nfpr9Nfor9Ffo79Gf43+Gv01+mv01+iv0V+jv2buz/7X/wu/sgezHHcd
   </data>
  </layer>
- <objectgroup name="Objekte">
+ <layer name="Dekoration" width="80" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt2rENACAIBEBmNer+I9jYWioa73rIJ19CBAAAANAOzwEAENGzAwAAAAAAAExl834/Ju/RGQAAAAAAALDinsjvanYAAAAAgIsNcGIDJg==
+  </data>
+ </layer>
+ <objectgroup name="Objekte" visible="0">
   <object id="1" name="Spielerstart" type="Start" x="10" y="10" width="10" height="10">
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup name="Kollisionen"/>
- <layer name="Vordergrund" width="50" height="50">
+ <objectgroup name="Kollisionen" visible="0"/>
+ <layer name="Vordergrund" width="80" height="80" visible="0">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA1wBkAAAB
   </data>
  </layer>
 </map>
