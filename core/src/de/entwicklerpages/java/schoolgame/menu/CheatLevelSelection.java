@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 
+import java.util.Arrays;
 import java.util.Set;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
@@ -87,6 +88,8 @@ public class CheatLevelSelection extends LevelManager {
 
         Set<String> levelIdSet = levelMap.keySet();
         levelIds = levelIdSet.toArray(new String[levelIdSet.size()]);
+
+        Arrays.sort(levelIds);
     }
 
     /**

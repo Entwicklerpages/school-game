@@ -26,6 +26,8 @@ public class TutorialLevel extends Level {
     private boolean movement = false;
     private boolean interaction = false;
     private boolean interaction2 = false;
+    private boolean battle = false;
+    private boolean battle2 = false;
 
     public TutorialLevel() {
         super("tutorial");
@@ -92,7 +94,8 @@ public class TutorialLevel extends Level {
             }
         });
 
-        final StoneBarrier barrier = new StoneBarrier("InteraktionBarriere");
+        final StoneBarrier barrier1 = new StoneBarrier("InteraktionBarriere");
+        final StoneBarrier barrier2 = new StoneBarrier("KampfBarriere");
 
         InteractionZone mushroom = new InteractionZone("Pilz");
         mushroom.setActionCallback(new ActionCallback()
@@ -108,11 +111,39 @@ public class TutorialLevel extends Level {
                         if (!interaction2)
                         {
                             interaction2 = true;
-                            barrier.destroy();
+                            barrier1.destroy();
                             startDialog("interagieren_fertig");
                         }
                     }
                 });
+            }
+        });
+
+        Trigger battleInfo = new Trigger("Kampf");
+        battleInfo.setTriggerEntered(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                if (!battle)
+                {
+                    battle = true;
+                    startDialog("kampf");
+                }
+            }
+        });
+
+        Trigger battleTrigger = new Trigger("Kampf Fertig");
+        battleTrigger.setTriggerEntered(new ActionCallback()
+        {
+            @Override
+            public void run()
+            {
+                if (!battle2)
+                {
+                    battle2 = true;
+                    startDialog("kampf_fertig");
+                }
             }
         });
 
@@ -128,8 +159,11 @@ public class TutorialLevel extends Level {
 
         worldConfig.registerObject(movementDialogTrigger);
         worldConfig.registerObject(interactionDialogTrigger);
-        worldConfig.registerObject(barrier);
+        worldConfig.registerObject(barrier1);
+        worldConfig.registerObject(barrier2);
         worldConfig.registerObject(mushroom);
+        worldConfig.registerObject(battleInfo);
+        worldConfig.registerObject(battleTrigger);
         worldConfig.registerObject(exitTrigger);
     }
 }

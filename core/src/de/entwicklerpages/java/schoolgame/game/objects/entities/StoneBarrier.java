@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
 
 import de.entwicklerpages.java.schoolgame.game.Physics;
 
@@ -72,8 +73,8 @@ public class StoneBarrier extends BaseEntity
             Rectangle rect = rectObject.getRectangle();
 
             position = new Vector2(rect.getX() + rect.getWidth() / 2f, rect.getY());
-            
-            body = createBoxBody(new Vector2(rect.getX(), rect.getY()), rect.getWidth(), rect.getHeight());
+
+            body = createEntityBody(new Vector2(rect.getX(), rect.getY()), Physics.createRectangle(rect.getWidth(), rect.getHeight(), new Vector2(rect.getWidth() / 2f, rect.getHeight() / 2f)), BodyDef.BodyType.KinematicBody);
 
         } else {
             Gdx.app.log("WARNING", "Stone Barrier " + objectId + " must have an RectangleMapObject!");
@@ -120,6 +121,7 @@ public class StoneBarrier extends BaseEntity
     public void onDispose()
     {
         super.onDispose();
+        worldObjectManager.getPhysicalWorld().destroyBody(body);
         stoneAtlas.dispose();
     }
 }
