@@ -4,66 +4,66 @@ size: 256,256
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Golem_Hinten1
+golem_back
   rotate: false
   xy: 2, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-Golem_Hinten2
+golem_back_attack
   rotate: false
   xy: 2, 68
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
-  index: -1
-Golem_Hinten3
+  index: 1
+golem_back_attack
   rotate: false
   xy: 68, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
-  index: -1
-Golem_Seit1
+  index: 2
+golem_front
   rotate: false
   xy: 2, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-Golem_Seite2
+golem_front_attack
   rotate: false
   xy: 68, 68
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
-  index: -1
-Golem_Vorne1
+  index: 1
+golem_front_attack
   rotate: false
   xy: 134, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
-  index: -1
-Golem_Vorne2
+  index: 2
+golem_side
   rotate: false
   xy: 68, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-Golem_Vorne3
+golem_side_attack
   rotate: false
   xy: 134, 68
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
-  index: -1
-golem_Seite3
+  index: 1
+golem_side_attack
   rotate: false
   xy: 134, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
-  index: -1
+  index: 2

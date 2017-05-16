@@ -4,171 +4,17 @@ size: 1024,512
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Kind_Mädchen_hinten2
-  rotate: false
-  xy: 786, 356
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-Kind_Mädchen_vorne2
-  rotate: false
-  xy: 852, 422
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-altes_paerchen
-  rotate: false
-  xy: 786, 422
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-bär
-  rotate: false
-  xy: 820, 388
-  size: 64, 32
-  orig: 64, 32
-  offset: 0, 0
-  index: -1
-bär_laufen1
-  rotate: false
-  xy: 886, 454
-  size: 64, 32
-  orig: 64, 32
-  offset: 0, 0
-  index: -1
-bär_laufen2
-  rotate: false
-  xy: 886, 420
-  size: 64, 32
-  orig: 64, 32
-  offset: 0, 0
-  index: -1
-frosch_seite_springend
-  rotate: false
-  xy: 786, 256
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-frosch_sitzend_seite
-  rotate: false
-  xy: 820, 288
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-frosch_sitzend_vone
-  rotate: false
-  xy: 986, 454
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-gegner_stein
-  rotate: false
-  xy: 786, 222
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-hase_hüpft_böse
-  rotate: false
-  xy: 820, 254
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-hase_hüpft_lieb
-  rotate: false
-  xy: 786, 188
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-hase_sitzt_böse
-  rotate: false
-  xy: 820, 220
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-heilerin_fortitura
-  rotate: false
-  xy: 786, 290
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-held_Cherackter
+player_f_display
   rotate: false
   xy: 2, 2
   size: 390, 484
   orig: 390, 484
   offset: 0, 0
   index: -1
-heldin_Cherackter
+player_m_display
   rotate: false
   xy: 394, 2
   size: 390, 484
   orig: 390, 484
-  offset: 0, 0
-  index: -1
-huhn
-  rotate: false
-  xy: 786, 154
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-huhn_gakernd
-  rotate: false
-  xy: 820, 186
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-kind_maedchen_hinten
-  rotate: false
-  xy: 820, 322
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-kind_maedchen_vorne
-  rotate: false
-  xy: 952, 422
-  size: 32, 64
-  orig: 32, 64
-  offset: 0, 0
-  index: -1
-krabbe_laufen1
-  rotate: false
-  xy: 786, 120
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-krabbe_laufen2
-  rotate: false
-  xy: 820, 152
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-krabbe_laufen3
-  rotate: false
-  xy: 786, 86
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-seeigel
-  rotate: false
-  xy: 820, 118
-  size: 32, 32
-  orig: 32, 32
   offset: 0, 0
   index: -1

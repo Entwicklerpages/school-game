@@ -4,21 +4,21 @@ size: 128,64
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-frosch_seite_springend
+frog_front
   rotate: false
   xy: 2, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-frosch_sitzend_seite
+frog_side
   rotate: false
   xy: 36, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-frosch_sitzend_vone
+frog_side_jump
   rotate: false
   xy: 70, 2
   size: 32, 32
