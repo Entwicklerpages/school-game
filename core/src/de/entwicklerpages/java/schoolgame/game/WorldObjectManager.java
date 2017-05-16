@@ -25,13 +25,23 @@ import de.entwicklerpages.java.schoolgame.game.objects.*;
  */
 public class WorldObjectManager implements Disposable
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     private WorldObjectConfig config;
     private List<WorldObject> worldObjects;
     private Array<Interactable> interactionObjects;
+    private Array<Attackable> attackObjects;
     private Array<UpdateObject> updateObjects;
     private final SchoolGame game;
     private final World physicalWorld;
     private ExtendedOrthogonalTiledMapRenderer renderer;
+    private AttackCallback attackPlayerCallback = null;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Erstellt einen neuen WorldObjectManager.
@@ -45,8 +55,14 @@ public class WorldObjectManager implements Disposable
         this.physicalWorld = physicalWorld;
 
         worldObjects = new ArrayList<WorldObject>();
-        interactionObjects = new Array<Interactable>(false, 8);
+        interactionObjects = new Array<Interactable>(false, 5);
+        attackObjects = new Array<Attackable>(false, 8);
         updateObjects = new Array<UpdateObject>(false, 10);
+    }
+
+    public void setAttackPlayerCallback(AttackCallback attackPlayerCallback)
+    {
+        this.attackPlayerCallback = attackPlayerCallback;
     }
 
     /**
@@ -200,7 +216,8 @@ public class WorldObjectManager implements Disposable
      */
     public void registerForInteraction(Interactable interactable)
     {
-        interactionObjects.add(interactable);
+        if (!interactionObjects.contains(interactable, true))
+            interactionObjects.add(interactable);
     }
 
     /**
@@ -224,14 +241,65 @@ public class WorldObjectManager implements Disposable
     }
 
     /**
+     * Reagiert auf Spielerangriffe.
+     *
+     * @param player Zugriff auf die Spielerinstanz
+     */
+    public void playerAttack(Player player, int damage)
+    {
+        for (Attackable attackObject : attackObjects)
+        {
+            if (attackObject.onPlayerAttack(player, damage))
+                break;
+        }
+    }
+
+    /**
+     * Setzt ein Objekt, das bei einer Spielerattacke *sofort* schaden nehmen soll.
+     * Werden mehrere Objekte hinzugefügt, bekommt nur eins den Schaden.
+     *
+     * @param attackable das Objekt, das gesetzt werden soll
+     */
+    public void registerForAttack(Attackable attackable)
+    {
+        if (!attackObjects.contains(attackable, true))
+            attackObjects.add(attackable);
+    }
+
+    /**
+     * Beachtet das Objekt nicht mehr bei Spielerangriffen.
+     *
+     * @param attackable das Objekt, das nicht mehr beachtet werden soll
+     */
+    public void unregisterForAttack(Attackable attackable)
+    {
+        attackObjects.removeValue(attackable, true);
+    }
+
+    /**
+     * Führt einen Angriff auf den Spieler durch.
+     * @param damage
+     */
+    public void attackPlayer(int damage)
+    {
+        if (attackPlayerCallback == null)
+        {
+            Gdx.app.log("WARNING", "No damage can be applied to the player -> missing callback!");
+            return;
+        }
+
+        attackPlayerCallback.run(damage);
+    }
+
+    /**
      * Entfernt ein Objekt aus der Welt
      *
      * @param object das Objekt, das entfernt werden soll
      */
     public void removeObject(WorldObject object)
     {
-        if (object instanceof Interactable && interactionObjects.contains((Interactable)object, true))
-            interactionObjects.removeValue((Interactable)object, true);
+        if (object instanceof UpdateObject && updateObjects.contains((UpdateObject) object, true))
+            updateObjects.removeValue((UpdateObject) object, true);
 
         if (object instanceof ExtendedMapDisplayObject)
             renderer.removeDisplayObject((ExtendedMapDisplayObject) object);
@@ -316,5 +384,16 @@ public class WorldObjectManager implements Disposable
 
             worldObjects.add(worldObject);
         }
+    }
+
+    /**
+     * Ein spezielles Callback für Angriffe auf den Spieler.
+     * Bei einem Aufruf wird der Schaden übermittelt.
+     *
+     * @author nico
+     */
+    public interface AttackCallback
+    {
+        void run(int damage);
     }
 }

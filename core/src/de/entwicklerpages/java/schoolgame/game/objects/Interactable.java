@@ -3,7 +3,7 @@ package de.entwicklerpages.java.schoolgame.game.objects;
 import de.entwicklerpages.java.schoolgame.game.Player;
 
 /**
- * Interface für Klassen, dessen Objekte sich für Spielerinteraktionen registireren lassen können.
+ * Interface für Klassen, dessen Objekte sich für Spielerinteraktionen registrieren lassen können.
  *
  * @author nico
  */

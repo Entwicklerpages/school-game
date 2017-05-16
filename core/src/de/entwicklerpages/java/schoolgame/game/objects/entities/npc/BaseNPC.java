@@ -19,6 +19,10 @@ import de.entwicklerpages.java.schoolgame.game.objects.entities.BaseEntity;
  */
 public abstract class BaseNPC extends BaseEntity
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     protected String baseName;
 
     protected Body body;
@@ -34,12 +38,22 @@ public abstract class BaseNPC extends BaseEntity
 
     private float animationTime = 0f;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     public BaseNPC(String objectId, String baseName)
     {
         super(objectId);
         this.baseName = baseName;
     }
 
+    /**
+     * Ruft die Y Position als "Tiefe" ab.
+     *
+     * @see de.entwicklerpages.java.schoolgame.game.ExtendedMapDisplayObject
+     * @return die Y Position
+     */
     @Override
     public float getPosY()
     {
@@ -49,6 +63,10 @@ public abstract class BaseNPC extends BaseEntity
             return super.getPosY();
     }
 
+    /**
+     * Inititalisiert den NPC.
+     * Lädt alle Grafiken und Animationen.
+     */
     @Override
     public void onInit()
     {
@@ -64,6 +82,12 @@ public abstract class BaseNPC extends BaseEntity
         npcBackWalk = new Animation<TextureRegion>(1/5f, npcAtlas.findRegions(baseName + "_back_walk"), Animation.PlayMode.LOOP);
     }
 
+    /**
+     * Rendert das Objekt in die Map.
+     *
+     * @param batch der Batch der Map
+     * @param deltaTime die Zeit, die seit dem letzten Frame vergangen ist
+     */
     @Override
     public void render(Batch batch, float deltaTime)
     {
@@ -114,6 +138,9 @@ public abstract class BaseNPC extends BaseEntity
                 0f);                                            // Rotation
     }
 
+    /**
+     * Aufräumarbeiten.
+     */
     @Override
     public void onDispose()
     {

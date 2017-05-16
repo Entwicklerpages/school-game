@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 
+import de.entwicklerpages.java.schoolgame.AudioManager;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.InputManager;
 
@@ -32,6 +33,7 @@ public class IngameMenu {
     private static final float WIDTH = 450f;
     private static final float HEIGHT = 420f;
 
+    private final SchoolGame game;
     private final Level level;
     private final BitmapFont titleFont;
     private final BitmapFont textFont;
@@ -42,6 +44,17 @@ public class IngameMenu {
     private final I18NBundle localeBundle;
     private final Matrix4 projection;
 
+    /**
+     * Sound, der abgespielt wird, wenn ein Menüeintrag bestätigt wird.
+     */
+    private AudioManager.SoundKey selectSound;
+
+    /**
+     * Sound, der abgespielt wird, wenn ein anderer Menüeintrag ausgewählt wird.
+     */
+    private AudioManager.SoundKey changeSound;
+
+    private boolean deathMode = false;
     private int activeEntry = 0;
     private MenuMode menuMode = MenuMode.MODE_PAUSE;
 
@@ -57,11 +70,15 @@ public class IngameMenu {
      */
     public IngameMenu(SchoolGame game, Level level)
     {
+        this.game = game;
         this.level = level;
 
         titleFont = game.getTitleFont();
         textFont = game.getDefaultFont();
         smallFont = game.getLongTextFont();
+
+        selectSound = game.getAudioManager().createSound("menu", "select.wav", true);
+        changeSound = game.getAudioManager().createSound("menu", "change.wav", true);
 
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
@@ -71,6 +88,14 @@ public class IngameMenu {
         fontLayout = new GlyphLayout();
 
         projection = new Matrix4();
+    }
+
+    /**
+     * Verhindert, dass das Menü einfach geschlossen werden kann. Stattdessen kann das Level neu gestartet werden.
+     */
+    public void setPlayerDead()
+    {
+        deathMode = true;
     }
 
     /**
@@ -99,6 +124,8 @@ public class IngameMenu {
             if (menuMode == MenuMode.MODE_PAUSE && activeEntry < 0) activeEntry = ENTRIES.length - 1;
             if (menuMode != MenuMode.MODE_PAUSE && activeEntry < 0) activeEntry = 1;
 
+            game.getAudioManager().playSound(changeSound);
+
             return true;
         }
 
@@ -109,15 +136,22 @@ public class IngameMenu {
             if (menuMode == MenuMode.MODE_PAUSE && activeEntry >= ENTRIES.length) activeEntry = 0;
             if (menuMode != MenuMode.MODE_PAUSE && activeEntry >= 2) activeEntry = 0;
 
+            game.getAudioManager().playSound(changeSound);
+
             return true;
         }
 
         if (action == InputManager.Action.MENU_SELECT)
         {
+            game.getAudioManager().playSound(selectSound);
+
             if (menuMode == MenuMode.MODE_PAUSE) {
                 switch (activeEntry) {
                     case 0:
-                        level.setPlaying();
+                        if (deathMode)
+                            level.reloadLevel();
+                        else
+                            level.setPlaying();
                         break;
                     case 1:
                         menuMode = MenuMode.MODE_MAIN_MENU;
@@ -216,7 +250,7 @@ public class IngameMenu {
 
         y -= 45;
 
-        fontLayout.setText(titleFont, localeBundle.get("menu"), Color.CORAL, WIDTH, Align.center, false);
+        fontLayout.setText(titleFont, localeBundle.get(deathMode ? "gestorben" : "menu"), Color.CORAL, WIDTH, Align.center, false);
         titleFont.draw(batch, fontLayout, x, y);
 
         y -= 125f;
@@ -229,7 +263,7 @@ public class IngameMenu {
                 entryColor = Color.YELLOW;
             }
 
-            fontLayout.setText(textFont, localeBundle.get(ENTRIES[i]), entryColor, WIDTH, Align.center, false);
+            fontLayout.setText(textFont, localeBundle.get((i == 0 && deathMode) ? "neustart" : ENTRIES[i]), entryColor, WIDTH, Align.center, false);
             textFont.draw(batch, fontLayout, x, y);
 
             y -= 75f;

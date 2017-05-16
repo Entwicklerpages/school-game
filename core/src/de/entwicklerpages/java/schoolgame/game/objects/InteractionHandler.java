@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;
+import com.badlogic.gdx.utils.Disposable;
 
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.game.Physics;
@@ -26,7 +27,7 @@ import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
  *
  * @author nico
  */
-public class InteractionHandler implements Interactable, PhysicsListener
+public class InteractionHandler implements Interactable, PhysicsListener, Disposable
 {
     protected WorldObjectManager manager;
     protected int priority;
@@ -205,6 +206,14 @@ public class InteractionHandler implements Interactable, PhysicsListener
     public void setActionCallback(ActionCallback actionCallback)
     {
         this.actionCallback = actionCallback;
+    }
+
+    /**
+     * Entfernt den Handler als Listener.
+     */
+    public void dispose()
+    {
+        manager.unregisterForInteraction(this);
     }
 
     /**

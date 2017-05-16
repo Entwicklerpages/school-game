@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="cave" tilewidth="32" tileheight="32" tilecount="48" columns="8">
- <image source="cave_map.png" width="256" height="192"/>
+<tileset name="cave" tilewidth="32" tileheight="32" tilecount="56" columns="8">
+ <image source="cave_map.png" width="256" height="224"/>
  <terraintypes>
   <terrain name="Wasser" tile="39"/>
   <terrain name="Boden" tile="25"/>
@@ -94,17 +94,25 @@
    <frame tileid="39" duration="300"/>
   </animation>
  </tile>
- <tile id="42" terrain="1,1,1,1"/>
- <tile id="45" terrain="1,1,0,0">
-  <animation>
-   <frame tileid="44" duration="300"/>
-   <frame tileid="45" duration="300"/>
-  </animation>
- </tile>
+ <tile id="42" terrain=",,,2"/>
+ <tile id="43" terrain=",,2,"/>
+ <tile id="44" terrain="1,1,1,2"/>
+ <tile id="45" terrain="1,1,2,1"/>
  <tile id="47" terrain="0,0,1,1">
   <animation>
    <frame tileid="47" duration="300"/>
    <frame tileid="46" duration="300"/>
+  </animation>
+ </tile>
+ <tile id="48" terrain="1,1,1,1"/>
+ <tile id="50" terrain=",2,,"/>
+ <tile id="51" terrain="2,,,"/>
+ <tile id="52" terrain="1,2,1,1"/>
+ <tile id="53" terrain="2,1,1,1"/>
+ <tile id="55" terrain="1,1,0,0">
+  <animation>
+   <frame tileid="54" duration="300"/>
+   <frame tileid="55" duration="300"/>
   </animation>
  </tile>
 </tileset>
