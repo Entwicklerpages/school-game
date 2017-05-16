@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="2">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="142" height="142" tilewidth="32" tileheight="32" nextobjectid="2">
  <tileset firstgid="1" source="../tilemap/forest.tsx"/>
  <tileset firstgid="57" source="../tilemap/painful_decoration.tsx"/>
- <layer name="Hintergrund" width="50" height="50">
+ <layer name="Hintergrund" width="142" height="142">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztmstq3EAUBRuczMbZeBWHvIa8CGSTZf7/yyJhN1FkaWYktfrc06oDhTHIcB9Fj6RxSm3nYSHkmFnqCd6QPngTI25zxhttXOe81ZuofbnEdd54o8nD4KfjvPHm/9Tq133u7vWXzt79lpq3eu6t9LE0qj5Lz1s9f9e61wZvysS17muJtp/WvMlxrXsu0faDNzHrz4m6n73rUs3fte5xou4Fb2LV77KPWnW6++NWL95si0v9bvPHmxj1u80fb2L04Tb32t6oPIpet/uc8aZu/VHrWpra3tTuO1qdbvO7JS16U7o3dR3RonQGb+LMaW3wJqY30YMneLMleIM3a+J27rjUq55T7UTdw971qX1x9yfqXlo/Z9y9yYm2l6jeRK1LlVrziEbUOblFvceo3qjrjO6Tei5R96CuM7o3Oer5KPehrsXZI/U8VPNX1+HuTY56LuDpkXoOgDdwHH/U/QPewHH8UfcNeAPH8UfdL3h5o+4T8Ab07B11f4A3EIe9ou6rBe46/jzzKkA9eBOb7Mu54+czn1Msh0pH3Y8rw7PlnP75MsUpQL2lo+7Hjamz5RoRzp5SUc/fjTW+RDp7SkW9Byd6Z85pmy/Ds0dx5myNegduXHLmbcfvAY8z1yndKRX1Htx4neZ9edPxseNrx6eZa9WfV1ujnr8rUy70O8++fOn41fFh5top5x5THW9KRD1/R+Y+o/qdv09PvmRu9ab/2/v0dFZF9kY9e2fmPBh6867jW8ePC9ernqe2RD17d655058ztz6j959RNc6Zrc6kSjW2zNQzUu/N97TsnHFyJlWqs2WGTuR72vz+Nz9L36fLz+BDZ+7Sfu+NS0Q971YYenMa/T78/uCcXvo1vqcZ3meXvs8pFfW8WyF7ks+MW8+WKb/O6aVLkZxJBWs6Or0n+R3f2KVLz0uX/Cp9r1My6nm3zCVvht8hjK8bvmcuWU/JqGfbMvkMmvte6jRz3R7PU6Wjnu2RyH5kf2r/r0TJqGd5RKbuhdzcUc8QPL3JUfcDnu6oewFPd9R9AN6AD6Wi7gM83VH3AJ7ejKPuCTzdUfcDnt6Mo+4PPL3JUfcJeANxqB11v4A3cBxvxlH3D3gDx/EmRz0HwBs4jjc56nkA3kD7vuSo5wJ4A+17o54H4A2070uOei6AN4AvgC9TUc8HvPxRzwPwBtr1Rt0/4A205426T8AbiMNeUfcFeANxKRV1H4A3EJ+tUdcPeAM+bI26fsAb8GFt1HUD3oAPW6OuH/AG4lMq6j4AbyAupaLuA/AG4lI66n4AbyAee0XdF+BNi7jOtVbUfUZkS5xrXxJ1n1HYO651X4t6b2r2jmvd16Lem5racat3Luq9qakdt3rnot7bUXxpNeo94o1n1HvEF++o94o3nlHvFV/aiHrfeOMZ9b7xxTPqvS91BG+OEc4XsiZ4Q0oGT8ia4A0hhLSdvzxmkWA=
   </data>
  </layer>
- <layer name="Dekoration" width="50" height="50">
+ <layer name="Hintergrund_Baum" width="142" height="142">
   <data encoding="base64" compression="zlib">
-   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
+   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
+  </data>
+ </layer>
+ <layer name="Dekoration" width="142" height="142">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC+DTsfAAE=
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="1" name="Spielerstart" type="Start" x="10" y="10" width="10" height="10">
+  <object id="1" name="Spielerstart" type="Start" x="329.615" y="314.065" width="10" height="10">
    <ellipse/>
   </object>
  </objectgroup>
  <objectgroup name="Kollisionen"/>
- <layer name="Vordergrund" width="50" height="50">
+ <layer name="Vordergrund" width="142" height="142">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC+DTsfAAE=
   </data>
  </layer>
 </map>
