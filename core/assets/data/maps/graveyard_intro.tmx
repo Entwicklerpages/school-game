@@ -3,7 +3,7 @@
  <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
  <layer name="Hintergrund" width="24" height="19">
   <data encoding="base64" compression="zlib">
-   eJxjYWBgYBnFgw4zD3H76O1+cjEHDjwc/EZL99IzDIZaeBNy91D1z0jEALuDBzA=
+   eJxjYWBgYBnFgw4zD3H76O1+cjEHDjwc/EZL99IzDIZaeBNy91D1Dz5MTj4aChgAztMHSA==
   </data>
  </layer>
  <layer name="Hintergrund2" width="24" height="19">
@@ -13,7 +13,7 @@
  </layer>
  <layer name="Dekoration" width="24" height="19">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFlABOIOZBYsMAFxBz0985Aw74GBDhAQKcRLBJAYJAzI/FzqEKYOHAw4CZfkY6wBcmQzV8qJlWQWbhChN6hY8IlObAgYc6AAB2kAFm
+   eJxjYBgFlABOIOZBYsMAFxBz0985Aw74GBDhAQKcRLBJAYJAzI/FzqEKYOHAw4CZfkY6wBcmQzV8qJlWQWbhChN6hY8InewZKAAAT/ABNg==
   </data>
  </layer>
  <objectgroup name="Objekte">
