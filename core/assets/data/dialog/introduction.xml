@@ -32,7 +32,7 @@
             </statement>
         </dialog>
         <dialog name="bett">
-            <statement talking="">
+            <statement talking="#player#">
                 <player position="left"/>
                 <sound></sound>
                 <texts>
@@ -72,7 +72,9 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>ZAHRIM |br|MASCHTISCHADDU|br||br|ADDU|br|KOKODAMMU|br|Was das wohl bedeutet ...</text>
+                    <text>ZAHRIM |br|MASCHTISCHADDU</text>
+                    <text>ADDU|br|KOKODAMMU </text>
+                    <text>Was das wohl bedeutet ...</text>
                 </texts>
             </statement>
         </dialog>
@@ -131,15 +133,16 @@
             </statement>
         </dialog>
         <dialog name="intro2">
-            <statement talking="heilerin">
+            <statement talking="heilerin_unbekannt">
                 <player position="left"/>
-                <display position="right">heilerin</display>
+                <display position="right">heilerin_unbekannt</display>
                 <sound></sound>
                 <texts>
                     <text>Wir haben dich am Strand gefunden ...</text>
                     <text>Anscheinend hattest du ein Schiffsunglück ...</text>
                     <text>Ich hab mir schon Sorgen gemacht du würdest gar nicht mehr aufwachen ...</text>
                     <text>Aber nun ist ja alles gut.</text>
+                    <text>Ich heiße übrigens Fortitudora </text>
                 </texts>
             </statement>
             <statement talking="#player#">
