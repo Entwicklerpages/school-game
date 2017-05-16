@@ -9,6 +9,7 @@
  <tileset firstgid="280" source="../tilemap/painful_decoration.tsx"/>
  <tileset firstgid="283" source="../tilemap/village_mayor.tsx"/>
  <tileset firstgid="284" source="../tilemap/village_houses.tsx"/>
+ <tileset firstgid="286" source="../tilemap/villager.tsx"/>
  <layer name="Hintergrund" width="100" height="20">
   <data encoding="base64" compression="zlib">
    eJztmLlLQ0EQh1ctvMATPFHwKryqqI1prD0aDwQbS0ELS8HCo9FKCzUWijY2ihaKf6C/kDdkGHeS3XclgQgfvjzeKjsfv515GTXGjCZIB+gEXeCoQqx4sAh2wZLnurhI0kXdR91H3Udp+kA/GChTs0Pl/qnl3kndRyzka3Ms8PUTRz4y4MDCQo35GARDHgyDBtAImix1cnUTtw+quWQpBR858BWQY9A9Hx9jYNyDCdAK2kB7mZqFcXIofmuuZU2Wwb6FrIMP+ul0RPPBHXDC+JgEM2Aqgo9SNdTy4wJfa8vHOtgEG0q9yVVW8eDrQ3qRPmRGwviYMG558clHHGeYi49VsAfWFB+lMhHFBznRPFSDD8qIbYbiuM5Tmkte222wBXYq5IP3DnmdC+ljzhT69XxEH2nhM19l2HUS5xXvFbKHhPWhIftKtfqIMl/5+pC93DZTRT2vNGRuqskH7+NR5quoc65tvuKO0px303z35Pj0cVcfvJ5n4BecKzWWn23ZCJOPaVM4j1yZTcFHgym8b9I7Z1o+eB0vwBu4VOqd5x28KHywv9cc0CL2pkF7dnk2z0jCPsh3qf+RlA/KxXPg48kUcyJz8Q1uLNyCB/Yc9Z0usTcN2rPLs7Z1cdMNegJ6U/ZBuZBQTrT3cH5uPQof/ab4/Svfmwbt2eVZ27pK9Q/X9w6f/nEFPsF94OEu+Hxt/vcFrZeQjzDfl9QqPnOQb//gOZH9g19r/eOV+fCdr2qVJHzwc4hycm1xUa5/5Plh6/4Am7sSYw==
@@ -21,7 +22,7 @@
  </layer>
  <layer name="Dekoration" width="100" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt2FsKgCAQBVBbhNFzZ22iN0GrbgX99DGYSkalY/f8JBIyzCWVhAAArjrfBVxQJ74rEKLxXQChy6z9vIozSXIqDZnJALLkJrX0jPazcugtlxxGzdxAxhMZ94Y1tuO5PFJR/Ex9VK031g5hn3JRMPlOYpYHngGHO9Rf6c4PFT1PZst73PYu8C8LfO8CAAAAeIPt/5UJ7k0AELsd/JUJ1g==
+   eJzt2EsOgyAQBmA8hI3aVjdueicvoX0YE0/tCdpFFxOEiRojM/h/GwkQMmEyQDQGALTqQgewwD0JHYExTegACFfO2sOjmEtJnq6enKUCcqnNhdmzmozdmHkPa0xLHt6Ovhdpf0j76Vlj+n+HXSKKn28fbeOGtSWcU2sUSuokZrnwHGh4Q52V6/6w0fukZ+ZpO7sgvEz42QVwtPJXExXqAgAgetz/Kx+8mwAgdl/3rgpO
   </data>
  </layer>
  <objectgroup name="Objekte">
