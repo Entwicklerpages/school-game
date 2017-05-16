@@ -10,17 +10,12 @@
  </layer>
  <layer name="Hintergrund2" width="12" height="16">
   <data encoding="base64" compression="zlib">
-   eJxjYCANuANxCBCHItEeUDkPLHL+QBwDxLFIdAAQx0NpdDlaAx8g9qODPYRAHBTTAlgisSOIVA/DCVjkQWHmi4b90OwZqgAAzj8Mpw==
+   eJxjYCANuANxCBCHItEeUDkPLHL+QBwDxLFIdAAQx0NpdDlSgQsQu5Gg3geI/ciwh9ogDoppDSKwiIHCzBUNw8IwAYt6UJj5ouHBEIbUAACQ1Q2y
   </data>
  </layer>
  <layer name="Dekoration" width="12" height="16">
   <data encoding="base64" compression="zlib">
-   eJxjYBjawAWI3SjQb0dAPgiIg/HQMBAGxfQCmQTkLfHIgcLMFQ27EdAzXAEALJIGgg==
-  </data>
- </layer>
- <layer name="Dekoration2" width="12" height="16">
-  <data encoding="base64" compression="zlib">
-   eJxjYBjawBmInQbaEUMQ2ENpByA2gdIjEQAAH34BeQ==
+   eJxjYBjawAmInSnQb0dAPgiIg/HQMBAGxfQCmRTqt4fSDkBsAqXpBWyIVGdLU1dAAAAytwXZ
   </data>
  </layer>
  <objectgroup name="Objekte">
@@ -36,9 +31,9 @@
   <object id="60" name="Wassereimer" type="Welt" x="328.5" y="399.5" width="56" height="48.5"/>
   <object id="64" name="Zauberkessel" type="Welt" x="106" y="142.5" width="74.5" height="59"/>
   <object id="68" name="Eimer" type="Welt" x="21" y="400.5" width="57.5" height="60"/>
-  <object id="69" name="Bett" type="Welt" x="-19" y="308.5" width="73" height="83"/>
+  <object id="69" name="Bett" type="Welt" x="-19" y="308.5" width="80" height="83"/>
   <object id="70" name="Ausgang" type="Welt" x="117" y="453" width="52" height="34.5"/>
-  <object id="71" name="Heilerin" type="Welt" x="58.5" y="311.5" width="43" height="44"/>
+  <object id="71" name="Heilerin" type="Welt" x="68.5" y="311.5" width="33" height="30.5"/>
   <object id="74" x="-108.5" y="253.5"/>
  </objectgroup>
  <objectgroup name="Kollisionen">
