@@ -2,10 +2,158 @@
 <level atlas="">
     <characters>
         <character>
-            <id>default</id>
-            <title>Default</title>
+            <id>buergermeister</id>
+            <title>Bürgermeister</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>wache1</id>
+            <title>Crasus</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>wache2</id>
+            <title>Staltus</title>
             <image>no</image>
         </character>
     </characters>
-    <dialogs/>
+    <dialogs>
+        <dialog name="schild_crasus">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Hier Wohnt Crasus |br|Dorfwache</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_stultus">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Hier Wohnt Stultus |br|Dorfwache</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_schmied">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Schmiede von Cicero </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_hexe">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Tränkebrauerei Fortidora |br|Geöfnet wenn ich da bin </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_krieger ">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Pugnato</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_paerchen">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Hier leben Avira und Tiborn</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_buergermeister ">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Haus des Bürgermeisters |br|Irgendwo im Dorf werd ich schon sein</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="brunnen">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ein Brunnen mit so vielen Details war sicher aufwendig zu Bauen ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="legendenstein">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Die Legende dieses Dorfes ...</text>
+                    <text>Leider kann man den letzten Teil der Legende nicht mehr lesen.|br|Der Stein ist schon zu kaputt</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="bürgermeister">
+            <statement talking="buergermeister">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Da bist du ja. </text>
+                    <text>Und dazu noch sehr munter wie ich sehe.</text>
+                    <text>Also hat die der Trank unserer kleinen Hexe geholfen wie mir scheint.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text></text>
+                </texts>
+            </statement>
+            <statement talking="buergermeister">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Nun denn </text>
+                    <text>Ich muss dir wohl sagen das ich glaube das es kein Zufall ist, |br|das du hier gestrandet bist.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Warum?</text>
+                </texts>
+            </statement>
+            <statement talking="buergermeister">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Nun ja, es gibt hier im Dorf so eine Legende ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="wache">
+            <statement talking="wache1">
+                <display position="left">wache1</display>
+                <display position="right">wache2</display>
+                <sound></sound>
+                <texts>
+                    <text>Unbewafnet solltest du nicht weiter gehen!|br|Das ist viel zu gefährlich!</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
 </level>
