@@ -4,25 +4,25 @@ import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
 
 /**
- * Fünftes Friedhof Level
+ * Ende pro-Dorf Level
  *
  * LEVEL INFO
  * -----
- * Story
+ * Story - Drache ist besiegt.
  *
  * @author nico
  */
-public class GraveyardBossLevel extends Level
+public class EndingVillageLevel extends Level
 {
-    public static final String LEVEL_NAME = "graveyard_boss";
+    public static final String LEVEL_NAME = "ending_village";
 
-    public GraveyardBossLevel() {
+    public EndingVillageLevel() {
         super(LEVEL_NAME);
     }
 
     @Override
     public String getTitle() {
-        return "Friedhof: Bosskampf";
+        return "Ende: Dorf";
     }
 
     @Override
