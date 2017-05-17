@@ -36,7 +36,7 @@ Levels:
 |
 |--Forest Boss √
 |
-|--Forest Village √√
+|--Forest Village √√√
 |
 |--Forest Crossing √
 |

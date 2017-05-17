@@ -32,7 +32,7 @@
         </dialog>
         <dialog name="sperre">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Seltsam.|br|Diese Bäume wachsen hier mitten auf dem Weg.</text>
@@ -46,8 +46,9 @@
                 <sound></sound>
                 <texts>
                     <text>Seiten aus dem Tagebuch eines Abenteuerers.|br|Ein Buch von Argo Zackhoff</text>
-                    <text>Tag 1|br|Heute begebe ich mich auf meine große Reise!|br|Ich werde jeden Fleck hier erkunden.</text>
+                    <text>Eintrag 1|br|Heute begebe ich mich auf meine große Reise!|br|Ich werde jeden Fleck hier erkunden.</text>
                     <text>Zuerst werde ich mir die Höhle genauer ansehen.|br|Es gibt zwar dort einige Gefahren, allerdings werde ich das|br|sicher packen!</text>
+                    <text>Man hat mich nur vor den Seeigeln gewarnt.|br|Die sollen da wohl überall rum liegen.|br|Naja, egal. Wird schon gehen.</text>
                     <text>[Die restlichen Seiten fehlen.]</text>
                 </texts>
             </statement>
