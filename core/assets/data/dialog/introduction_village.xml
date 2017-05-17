@@ -217,6 +217,16 @@
                 </texts>
             </statement>
         </dialog>
+        <dialog name="buergermeister_fertig">
+            <statement talking="buergermeister">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Geh nun aus dem Dorf.|br|Die Höhle ist dann links.</text>
+                </texts>
+            </statement>
+        </dialog>
         <dialog name="wache">
             <statement talking="wache1">
                 <display position="left">wache1</display>

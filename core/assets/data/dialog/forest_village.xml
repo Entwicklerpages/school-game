@@ -130,130 +130,12 @@
                 </texts>
             </statement>
         </dialog>
-        <dialog name="buergermeister">
-            <statement talking="buergermeister">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>Da bist du ja. </text>
-                    <text>Und dazu noch sehr munter wie ich sehe.</text>
-                    <text>Also hat die der Trank unserer kleinen Hexe geholfen wie mir scheint.</text>
-                </texts>
-            </statement>
+        <dialog name="bett">
             <statement talking="#player#">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
+                <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text></text>
-                </texts>
-            </statement>
-            <statement talking="buergermeister">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>Nun denn </text>
-                    <text>Ich muss dir wohl sagen das ich glaube das es kein Zufall ist, |br|das du hier gestrandet bist.</text>
-                </texts>
-            </statement>
-            <statement talking="#player#">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>Warum?</text>
-                </texts>
-            </statement>
-            <statement talking="buergermeister">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>Nun ja, es gibt hier im Dorf so eine Legende ...</text>
-                    <text>Es soll drei Kristalle auf dieser Insel geben,|br|die für den fortbestand dieser Insel und dieses Dorfen sorgen.|br|Doch die Kristall können nur von Magischen Wesen berürt werden. </text>
-                    <text>Es gibt einen Wasser Kristall, |br|der für sauberes Wasser sorgt. </text>
-                    <text>Er soll in der Höhle am Strand sein.</text>
-                    <text>Dann gibt es noch Kristall, der im Wald sein soll.</text>
-                    <text>Dieser sorgt für den Wachstum der Pflanzen auf dieser Insel</text>
-                    <text>Und als letztes gibt es noch den Kristall des Lebens.</text>
-                    <text>Dieser soll laut der Legende die Insel am Leben erhalten |br|und dazu auch Krankheiten heilen können.</text>
-                    <text>Und wenn alles am Ende erscheint, |br|wird ein Fremder der anders ist als anderen,|br|erscheinen und die Insel retten.</text>
-                    <text>Er wird gegen die Bösen Wesen auf dieser Insel kämpfen. </text>
-                    <text>Und dieser Insel entlich wieder Frieden bringen.</text>
-                    <text>Und nun da wir in Not sind|br|strandet ein Halbelf an unserem Strand. </text>
-                    <text>Wir sind alle der festen Überzeugung das du der besagte Fremde bist, |br|der uns allen den Frieden bringen wird.</text>
-                    <text>Auch glauben wir das du als Halbelf, |br|der einzige bist der gegen die Bösen Wesen eine Chance hat.</text>
-                    <text>Also bitte ich dich als der Bürgermeister dieses Dorfes,</text>
-                    <text>bitte rette unser Dorf. </text>
-                </texts>
-            </statement>
-            <statement talking="#player#">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>Aber wie soll ich denn das Dorf retten?</text>
-                    <text>Ich kann mich doch an nichts Erinner und|br| ob ich Kämpfen kann weis ich auch nicht.</text>
-                </texts>
-            </statement>
-            <statement talking="buergermeister">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>Ich bin mir sicher das du kämpfen kannst.</text>
-                    <text>Neben dir im Sand lag ein Elfen Schwert das du festhielst. </text>
-                    <text>Ich persönlich kennen mich nicht wirklich damit aus,|br|aber Pugnato unser Krieger ist sich sehr sicher, |br|das dieses Schwert das eines Kriegers ist. </text>
-                    <text>Und da es deins ist bist du wohl ein Krieger,|br|der zu uns kam um uns zu retten.</text>
-                </texts>
-            </statement>
-            <statement talking="#player#">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>Aber wie soll ich dieses Dorf den retten? |br|Und warum kann das der Krieger nicht?</text>
-                </texts>
-            </statement>
-            <statement talking="buergermeister">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>Wir bitten dich die Kristall ins Dorf zu bringen, |br|damit wir nicht mehr in angst vor dem Leben müssen was auserhalb des Dorfen lauert.</text>
-                    <text>Und nur du kannst die Kristelle holen, |br|da wir sie nicht berüren können.  </text>
-                    <text>Es heist, das wenn ein Mensch die Kristalle berürt,|br|dieser durch die Magie in den Kristalle fürchterlichen schaden nimmt. </text>
-                    <text>Da du ein halb Magisches Wesen bist sollte dies für dich kein Problem sein.</text>
-                </texts>
-            </statement>
-            <statement talking="#player#">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>In Ordnung ich werde euch helfen.</text>
-                </texts>
-            </statement>
-            <statement talking="buergermeister">
-                <player position="left"></player>
-                <display position="right">buergermeister</display>
-                <sound></sound>
-                <texts>
-                    <text>Ich danke dir! |br|Der erste Kristall ist in der Wasser Höhle.</text>
-                    <text>Die Höhle ist wenn du aus dem Dorf gehst links.</text>
-                    <text>Ich bin mir sicher das du das schaffen wirst.</text>
-                </texts>
-            </statement>
-        </dialog>
-        <dialog name="wache">
-            <statement talking="wache1">
-                <display position="left">wache1</display>
-                <display position="right">wache2</display>
-                <sound></sound>
-                <texts>
-                    <text>Unbewafnet solltest du nicht weiter gehen!|br|Das ist viel zu gefährlich!</text>
+                    <text>Das Bett ist echt nicht das bequemste...</text>
                 </texts>
             </statement>
         </dialog>
@@ -263,6 +145,89 @@
                 <sound></sound>
                 <texts>
                     <text>Das Bett sieht um einiges bquemer aus als das, worin ich aufgewacht bin</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="eimer">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ein leerer Eimer ... vielleicht für Müll.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="briefe">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Liebe Fortitudora, ... |br|Der Name ist eigentlich schon etwas seltasm ... </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="pergamentrolle">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>ZAHRIM |br|MASCHTISCHADDU</text>
+                    <text>ADDU|br|KOKODAMMU </text>
+                    <text>Was das wohl bedeutet ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="wassereimer">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Klares Wasser in einem Eimer.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="zauberkessel">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ob in dem Kessel auch normale Suppen gekockt werden ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="pulver">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Rotes und Grünes Pulver ... |br|Wozu das wohl gut ist ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="trank_schrank1">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ein Schrank voll mit Zaubertränken und verschiedensten Substanzen ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="trank_schrank2">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Was für eine Wirkung die ganzen Tränke wohl haben ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="zauberbuch">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Abdul Alhazred - Der Wahnsinnige Araber ...|br|Worum es sich wohl dabei handelt ...</text>
                 </texts>
             </statement>
         </dialog>
@@ -280,7 +245,7 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Der ist wohl nur zum sauber machen ...</text>
+                    <text>Der ist wohl nur zum sauber machen.</text>
                 </texts>
             </statement>
         </dialog>
@@ -298,8 +263,8 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Bürgermeister für dumme</text>
-                    <text>Ob da wohl was hilfreiches drin steht</text>
+                    <text>"Bürgermeister für Dumme"</text>
+                    <text>Ob da wohl was hilfreiches drin steht?</text>
                 </texts>
             </statement>
         </dialog>
@@ -308,7 +273,8 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Lieber Bürgermeister, |br|Leider scheint der Schutztrank seine Wirkung zu verliere. |br|Bitte neuen anfordern.|br|Crasus</text>
+                    <text>Lieber Bürgermeister, |br|Leider scheint der Schutztrank seine Wirkung zu verlieren. |br|Bitte neuen anfordern.</text>
+                    <text>gezeichnet Crasus</text>
                 </texts>
             </statement>
         </dialog>
@@ -380,7 +346,7 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Wie offt soll ich euch noch sagen das ihr den Schokoladen Kuchen |br|nur an eurem Geburstag bekommt!</text>
+                    <text>Wie oft soll ich euch noch sagen das ihr den Schokoladen Kuchen |br|nur an eurem Geburstag bekommt!</text>
                     <text>Und ihr müsst auch nicht in meinem Rezeptebuch danach suchen.|br|Eure Oma Avia</text>
                 </texts>
             </statement>
@@ -391,11 +357,11 @@
                 <display position="right">krieger</display>
                 <sound></sound>
                 <texts>
-                    <text>Ich bin nicht davon überzeugt das ein Fremder wie du,|br|unser Dorf wirklich retten kann ...</text>
+                    <text>Ich bin nicht davon überzeugt, das ein Fremder wie du|br|unser Dorf wirklich retten kann ...</text>
                 </texts>
             </statement>
         </dialog>
-        <dialog name="kinder ">
+        <dialog name="kinder">
             <statement talking="sina">
                 <player position="left"/>
                 <display position="right">sina</display>
@@ -432,7 +398,7 @@
                 </texts>
             </statement>
         </dialog>
-        <dialog name="wachen">
+        <dialog name="wache">
             <statement talking="wache1">
                 <player position="left"/>
                 <display position="right">wache1</display>
@@ -441,11 +407,11 @@
                     <text>Du bist wirklich sehr mutig ...</text>
                     <text>Ich würde mich nie in den Wald trauen!</text>
                     <text>Und jetzt willst du wirklich noch auf den Verfluchten Friedhof?</text>
-                    <text>Du bist echt Verückt!</text>
+                    <text>Du bist echt Verrückt!</text>
                 </texts>
             </statement>
         </dialog>
-        <dialog name="buegermeister ">
+        <dialog name="buergermeister">
             <statement talking="buergermeister">
                 <player position="left"/>
                 <display position="right">buergermeister</display>
@@ -455,7 +421,7 @@
                     <text>Du hast unserem Dorf schon so viel geholfen ...</text>
                     <text>Ich wieis gar nicht wie ich dir für all das, was du schon für uns getahn hast|br|danken soll ...</text>
                     <text>Jetzt fehlt nur noch der letzte Kristall.</text>
-                    <text>Wenn wir den auch noch haben, sind wi vor allem was außerhalb des Dorfen lauert sicher. </text>
+                    <text>Wenn wir den auch noch haben, sind wir vor allem was außerhalb des Dorfen lauert sicher. </text>
                     <text>Der Letzte Kristall soll versteckt in der dunkelsten ecke sein |br|und von verfluchten toten beschützt werden.</text>
                     <text>Bitte pass auf dich auf wenn du auf den Friedhof gehst.</text>
                     <text>Die Wesen die dort auf dich lauern solltst du nicht unterschätzen!</text>

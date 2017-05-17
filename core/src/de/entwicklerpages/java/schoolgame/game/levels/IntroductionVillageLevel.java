@@ -109,8 +109,13 @@ public class IntroductionVillageLevel extends Level
             @Override
             public void run()
             {
-                startDialog("buergermeister");
-                exitActive = true;
+                if (!exitActive)
+                {
+                    startDialog("buergermeister");
+                    exitActive = true;
+                } else {
+                    startDialog("buergermeister_fertig");
+                }
             }
         });
 
