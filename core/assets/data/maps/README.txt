@@ -4,13 +4,13 @@ tilemap Verzeichnis zeigt.
 
 Levels:
 |
-|--Tutorial √√
+|--Tutorial √√√
 |
 |--Introduction √√√
 |
-|--Introduction Village √√
+|--Introduction Village √√√
 |
-|--Introduction Crossing √
+|--Introduction Crossing √√√
 |
 |>>>>>>>>>>>>>>>>>>>>>>>>>
 |
@@ -36,7 +36,7 @@ Levels:
 |
 |--Forest Boss √
 |
-|--Forest Village √
+|--Forest Village √√
 |
 |--Forest Crossing √
 |
