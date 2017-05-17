@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<level atlas="">
+    <characters>
+        <character>
+            <id>schild</id>
+            <title>Schild</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>hilfe_pilz</id>
+            <title>Pilz</title>
+            <image>no</image>
+        </character>
+    </characters>
+    <dialogs>
+        <dialog name="schild1">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>In diesem Wald leben Gefährliche Tiere!|br|Betreten auf eigene Gefahr</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild2">
+            <statement talking="">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Nicht alles ist so wie es zu sein scheint. </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild3">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Bitte die Tiere nicht füttern.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild4">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ja ich bin ein Schild.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild5">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Angeblich können die Tiere auf dieser Insel Sprechen.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="pilz1">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Der Wald ist gefhrlich ...|br|Hoffentlich hast du es dir gut überlegt ob du wirklich in diesen Wald willst ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="pilz2">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Auch die kleinensten und unscheinbarsten Tiere|br|können sehr gefährlich sein|br|also gib aucht was für Wesen du dich näherst ! </text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
+</level>

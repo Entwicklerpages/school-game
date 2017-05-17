@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="58" height="42" tilewidth="32" tileheight="32" nextobjectid="105">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="58" height="42" tilewidth="32" tileheight="32" nextobjectid="109">
  <tileset firstgid="1" source="../tilemap/forest.tsx"/>
  <tileset firstgid="57" source="../tilemap/lawn_map.tsx"/>
  <layer name="Hintergrund" width="58" height="42">
@@ -26,6 +26,18 @@
   <object id="81" name="KampfBarriere" type="Welt" x="1067" y="1169" width="40" height="62"/>
   <object id="103" name="Kampf" type="Welt" x="1217.33" y="319" width="192" height="31.3333"/>
   <object id="104" name="Kampf Fertig" type="Welt" x="1288.25" y="1160.33" width="28.8333" height="79.3333"/>
+  <object id="105" name="Kampf Dummy 1" type="Welt" x="1022.66" y="705.333" width="28" height="26.6667">
+   <ellipse/>
+  </object>
+  <object id="106" name="Kampf Dummy 2" type="Welt" x="1226" y="714.667" width="28" height="26.6667">
+   <ellipse/>
+  </object>
+  <object id="107" name="Kampf Dummy 3" type="Welt" x="1170" y="856" width="28" height="26.6667">
+   <ellipse/>
+  </object>
+  <object id="108" name="Kampf Dummy 4" type="Welt" x="831.333" y="833.333" width="28" height="26.6667">
+   <ellipse/>
+  </object>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="37" x="516" y="562">

@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<level atlas="">
+    <characters>
+        <character>
+            <id>buergermeister</id>
+            <title>Bürgermeister</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>wache1</id>
+            <title>Crasus</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>wache2</id>
+            <title>Staltus</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>sina</id>
+            <title>Sina</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>fina</id>
+            <title>Fina</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>schmied</id>
+            <title>Cicero</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>krieger</id>
+            <title>Pugnato</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>heilerin</id>
+            <title>Fortitudora</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>avia</id>
+            <title>Avia</title>
+            <image>no</image>
+        </character>
+    </characters>
+    <dialogs>
+        <dialog name="schild_crasus">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Hier Wohnt Crasus |br|Dorfwache</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_stultus">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Hier Wohnt Stultus |br|Dorfwache</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_schmied">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Schmiede von Cicero </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_hexe">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Tränkebrauerei Fortidora |br|Geöfnet wenn ich da bin </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_krieger">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Pugnato</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_paerchen">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Hier leben Avira und Tiborn</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_buergermeister">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Haus des Bürgermeisters |br|Irgendwo im Dorf werd ich schon sein</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="brunnen">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Ein Brunnen mit so vielen Details war sicher aufwendig zu Bauen ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="legendenstein">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Die Legende dieses Dorfes ...</text>
+                    <text>Leider kann man den letzten Teil der Legende nicht mehr lesen.|br|Der Stein ist schon zu kaputt</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="bett">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Das Bett ist echt nicht das bequemste...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="bett2">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Das Bett sieht um einiges bquemer aus als das, worin ich aufgewacht bin</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="eimer">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ein leerer Eimer ... vielleicht für Müll.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="briefe">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Liebe Fortitudora, ... |br|Der Name ist eigentlich schon etwas seltasm ... </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="pergamentrolle">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>ZAHRIM |br|MASCHTISCHADDU</text>
+                    <text>ADDU|br|KOKODAMMU </text>
+                    <text>Was das wohl bedeutet ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="wassereimer">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Klares Wasser in einem Eimer.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="zauberkessel">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ob in dem Kessel auch normale Suppen gekockt werden ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="pulver">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Rotes und Grünes Pulver ... |br|Wozu das wohl gut ist ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="trank_schrank1">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ein Schrank voll mit Zaubertränken und verschiedensten Substanzen ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="trank_schrank2">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Was für eine Wirkung die ganzen Tränke wohl haben ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="zauberbuch">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Abdul Alhazred - Der Wahnsinnige Araber ...|br|Worum es sich wohl dabei handelt ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="besen">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ob man mit dem fliegen kann ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="besen2">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Der ist wohl nur zum sauber machen.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schraenke">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Was da wohl alles drin ist?</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="buch">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>"Bürgermeister für Dumme"</text>
+                    <text>Ob da wohl was hilfreiches drin steht?</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="brief1">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Lieber Bürgermeister, |br|Leider scheint der Schutztrank seine Wirkung zu verlieren. |br|Bitte neuen anfordern.</text>
+                    <text>gezeichnet Crasus</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schreibtisch">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Das Buch ist voiller Notizen und im Eimer sind viele zerissene Zettel.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schreibtisch2">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ein Märechenbuch wie es scheint.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="brief_fina">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Liebe Fina, |br|ich glaube leider das dein Vater etwas dagegen hat wenn ich dir zeige wie man Tränke braut.|br|Fortitudora</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="brief_sina">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Liebe Sina,|br|kleine Mädchen wie du haben in einer Schmide nichts zu suchen!|br|Cicero</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="kleiderschrank">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Schränke die wohl voll mit Kleidern sind ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="brief2">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Die neuen Tränke sind in Arbeit. |br|Fortitudora</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="brief3">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Auf dem Brief ist wohl etwas verschüttet worden ...|br|man kann wirklich nichts mehr erkennen ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="brief4">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Wie oft soll ich euch noch sagen das ihr den Schokoladen Kuchen |br|nur an eurem Geburstag bekommt!</text>
+                    <text>Und ihr müsst auch nicht in meinem Rezeptebuch danach suchen.|br|Eure Oma Avia</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="krieger">
+            <statement talking="krieger">
+                <player position="left"/>
+                <display position="right">krieger</display>
+                <sound></sound>
+                <texts>
+                    <text>Ich bin nicht davon überzeugt, das ein Fremder wie du|br|unser Dorf wirklich retten kann ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="kinder">
+            <statement talking="sina">
+                <player position="left"/>
+                <display position="right">sina</display>
+                <sound></sound>
+                <texts>
+                    <text>Warum will Oma uns nicht das Rezept für den Schoko Kuchen geben?</text>
+                </texts>
+            </statement>
+            <statement talking="fina">
+                <player position="left"/>
+                <display position="right">fina</display>
+                <sound></sound>
+                <texts>
+                    <text>Das ist  wirklich total unfair ...</text>
+                </texts>
+            </statement>
+            <statement talking="sina">
+                <player position="left"/>
+                <display position="right">sina</display>
+                <sound></sound>
+                <texts>
+                    <text>Wüuderst du für uns das Rezept für Omas berüchtigten Schoko Kuchen orgenisieren? |br|Du würdest auch ein kleines Stück davon abbekommen. </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schmied">
+            <statement talking="schmied">
+                <player position="left"/>
+                <display position="right">schmied</display>
+                <sound></sound>
+                <texts>
+                    <text>Eigentlich sind die beiden Mädchen das einzige was das Dorf am Leben erhält.</text>
+                    <text>auch wenn sie als zwillinge manchmal echt anstrengend sind ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="wache">
+            <statement talking="wache1">
+                <player position="left"/>
+                <display position="right">wache1</display>
+                <sound></sound>
+                <texts>
+                    <text>Du bist wirklich sehr mutig ...</text>
+                    <text>Ich würde mich nie in den Wald trauen!</text>
+                    <text>Und jetzt willst du wirklich noch auf den Verfluchten Friedhof?</text>
+                    <text>Du bist echt Verrückt!</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="buergermeister">
+            <statement talking="buergermeister">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Ich bin wirklich erstaunt darüber wie gut du dich durch den Wald schlagen konntest!</text>
+                    <text>Du hast unserem Dorf schon so viel geholfen ...</text>
+                    <text>Ich wieis gar nicht wie ich dir für all das, was du schon für uns getahn hast|br|danken soll ...</text>
+                    <text>Jetzt fehlt nur noch der letzte Kristall.</text>
+                    <text>Wenn wir den auch noch haben, sind wir vor allem was außerhalb des Dorfen lauert sicher. </text>
+                    <text>Der Letzte Kristall soll versteckt in der dunkelsten ecke sein |br|und von verfluchten toten beschützt werden.</text>
+                    <text>Bitte pass auf dich auf wenn du auf den Friedhof gehst.</text>
+                    <text>Die Wesen die dort auf dich lauern solltst du nicht unterschätzen!</text>
+                    <text>Der Friedhof liegt auf der rechten Seite der Kreuzung.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="paerchen">
+            <statement talking="avia">
+                <player position="left"/>
+                <display position="right">avia</display>
+                <sound></sound>
+                <texts>
+                    <text>Fina und Sina haben immer nur schabernack im Kopf ...</text>
+                    <text>Aber das Rezept für ihren geliebten Schoko Kuchen finden sie nie!</text>
+                    <text>Das ist nämlich sehr gut versteckt musst du wissen. </text>
+                    <text>Das beste kommt nämlich immer zum schluss. </text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
+</level>

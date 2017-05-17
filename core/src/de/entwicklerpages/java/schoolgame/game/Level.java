@@ -145,7 +145,7 @@ public abstract class Level implements Disposable {
     /**
      * Repräsentiert den Spieler, wird auch für die Kamerasteuerung verwendet.
      */
-    private Player player;
+    protected Player player;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
@@ -480,7 +480,22 @@ public abstract class Level implements Disposable {
     {
         activeCutScene = this.getOutroCutScene();
         if (activeCutScene == null)
-            levelManager.changeLevel(newLevel);
+        {
+            if (physicalWorld.isLocked())
+            {
+                Gdx.app.postRunnable(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        levelManager.changeLevel(newLevel);
+                    }
+                });
+            } else
+            {
+                levelManager.changeLevel(newLevel);
+            }
+        }
         else {
             levelState = LevelState.OUTRO;
 

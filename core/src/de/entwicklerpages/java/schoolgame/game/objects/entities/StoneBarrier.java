@@ -121,7 +121,8 @@ public class StoneBarrier extends BaseEntity
     public void onDispose()
     {
         super.onDispose();
-        worldObjectManager.getPhysicalWorld().destroyBody(body);
         stoneAtlas.dispose();
+
+        worldObjectManager.getPhysicalWorld().destroyBody(body);
     }
 }
