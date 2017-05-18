@@ -132,7 +132,7 @@
         </dialog>
         <dialog name="bett">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Das Bett ist echt nicht das Bequemste ...</text>
@@ -141,7 +141,7 @@
         </dialog>
         <dialog name="bett2">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Das Bett sieht um einiges bequemer aus, als das, worin ich aufgewacht bin.</text>
@@ -150,7 +150,7 @@
         </dialog>
         <dialog name="eimer">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Ein leerer Eimer. Vielleicht für Müll?</text>
@@ -159,7 +159,7 @@
         </dialog>
         <dialog name="briefe">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Liebe Fortitudora, ... |br|Der Name ist eigentlich schon etwas seltsam ...</text>
@@ -168,7 +168,7 @@
         </dialog>
         <dialog name="pergamentrolle">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>ZAHRIM |br|MASCHTISCHADDU</text>
@@ -179,7 +179,7 @@
         </dialog>
         <dialog name="wassereimer">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Klares Wasser in einem Eimer.</text>
@@ -188,7 +188,7 @@
         </dialog>
         <dialog name="zauberkessel">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Ob in dem Kessel auch normale Suppen gekocht werden?</text>
@@ -197,7 +197,7 @@
         </dialog>
         <dialog name="pulver">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Rotes und grünes Pulver ... |br|Wozu das wohl gut ist?</text>
@@ -206,7 +206,7 @@
         </dialog>
         <dialog name="trank_schrank1">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Ein Schrank voll mit Zaubertränken und verschiedensten Substanzen ...</text>
@@ -215,7 +215,7 @@
         </dialog>
         <dialog name="trank_schrank2">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Was für eine Wirkung die ganzen Tränke wohl haben?</text>
@@ -224,7 +224,7 @@
         </dialog>
         <dialog name="zauberbuch">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Abdul Alhazred - Der Wahnsinnige Araber ...|br|Worum es sich wohl dabei handelt?</text>
@@ -233,7 +233,7 @@
         </dialog>
         <dialog name="besen">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Ob man mit dem fliegen kann ...</text>
@@ -242,7 +242,7 @@
         </dialog>
         <dialog name="besen2">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Der ist wohl nur zum Saubermachen.</text>
@@ -251,7 +251,7 @@
         </dialog>
         <dialog name="schraenke">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Was da wohl alles drin ist?</text>
@@ -260,7 +260,7 @@
         </dialog>
         <dialog name="buch">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>"Bürgermeister für Dumme"</text>
@@ -270,7 +270,7 @@
         </dialog>
         <dialog name="brief1">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Lieber Bürgermeister, |br|Leider scheint der Schutztrank seine Wirkung zu verlieren. |br|Bitte neuen anfordern.</text>
@@ -280,7 +280,7 @@
         </dialog>
         <dialog name="schreibtisch">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Das Buch ist voiller Notizen und im Eimer sind viele zerissene Zettel.</text>
@@ -289,7 +289,7 @@
         </dialog>
         <dialog name="schreibtisch2">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Ein Märchenbuch wie es scheint.</text>
@@ -298,7 +298,7 @@
         </dialog>
         <dialog name="brief_fina">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Liebe Fina, |br|ich glaube leider, dass dein Vater etwas dagegen hat, wenn ich dir zeige, wie man Tränke braut.|br|Fortitudora</text>
@@ -307,7 +307,7 @@
         </dialog>
         <dialog name="brief_sina">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Liebe Sina,|br|kleine Mädchen wie du haben in einer Schmiede nichts zu suchen!|br|Cicero</text>
@@ -316,7 +316,7 @@
         </dialog>
         <dialog name="kleiderschrank">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Schränke, die voll mit Kleidern sind ...</text>
@@ -325,7 +325,7 @@
         </dialog>
         <dialog name="brief2">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Die neuen Tränke sind in Arbeit.|br|Fortitudora</text>
@@ -334,7 +334,7 @@
         </dialog>
         <dialog name="brief3">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Auf dem Brief ist etwas verschüttet worden ...|br|Man kann wirklich nichts mehr erkennen ...</text>
@@ -343,7 +343,7 @@
         </dialog>
         <dialog name="brief4">
             <statement talking="#player#">
-                <player position="left"/>
+                <player position="left"></player>
                 <sound></sound>
                 <texts>
                     <text>Wie oft soll ich euch noch sagen, dass ihr den Schokoladenkuchen |br|nur an eurem Geburstag bekommt!</text>
@@ -353,7 +353,7 @@
         </dialog>
         <dialog name="krieger">
             <statement talking="krieger">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">krieger</display>
                 <sound></sound>
                 <texts>
@@ -363,93 +363,93 @@
         </dialog>
         <dialog name="heilerin">
             <statement talking="heilerin">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">heilerin</display>
                 <sound></sound>
                 <texts>
-                    <text>Auf dem Friedhof gibt es viele seltene Zutaten.</text>
-                    <text>Vielleicht sollte ich da auch mal hingehen.</text>
+                    <text>Du hast es Wirklich geschaft ...</text>
+                    <text>Du hast alle magischen Wesen auf dieser Insel zum tot verdonnert ...</text>
                 </texts>
             </statement>
         </dialog>
         <dialog name="kinder">
             <statement talking="sina">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">sina</display>
                 <sound></sound>
                 <texts>
-                    <text>Warum will Oma uns nicht das Rezept für den Schokokuchen geben?</text>
+                    <text>Jetzt wo alle gefahren weg sind dürfen wir raus aus dem Dorf!</text>
                 </texts>
             </statement>
             <statement talking="fina">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">fina</display>
                 <sound></sound>
                 <texts>
-                    <text>Das ist  wirklich total unfair ...</text>
+                    <text>Ja, jetzt müssen wir uns endlich nicht mehr raus schleichen.</text>
                 </texts>
             </statement>
             <statement talking="sina">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">sina</display>
                 <sound></sound>
                 <texts>
-                    <text>Würdest du das Rezept für Omas berüchtigten Schokokuchen besorgen?|br|Du würdest auch ein kleines Stück davon abbekommen.</text>
+                    <text>Danke das du dafür gesorgt hast, das wir überall spielen dürfen.</text>
                 </texts>
             </statement>
         </dialog>
         <dialog name="schmied">
             <statement talking="schmied">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">schmied</display>
                 <sound></sound>
                 <texts>
-                    <text>Eigentlich sind die beiden Mädchen das einzige, was das Dorf am Leben erhält.</text>
-                    <text>Auch wenn sie als Zwillinge manchmal echt anstrengend sind ...</text>
+                    <text>Auch wenn die Geschichte des Bürgermeisters tragisch ist ...</text>
+                    <text>Eigentlich haben uns die Wesen erst angegriffen, nachdem er sie angegriffen hat ...</text>
                 </texts>
             </statement>
         </dialog>
         <dialog name="wache">
             <statement talking="wache1">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">wache1</display>
                 <sound></sound>
                 <texts>
-                    <text>Du bist wirklich sehr mutig ...</text>
-                    <text>Ich würde mich nie in den Wald trauen!</text>
-                    <text>Und jetzt willst du wirklich noch auf den verfluchten Friedhof?</text>
-                    <text>Du bist echt verrückt!</text>
+                    <text>Du hast es wirklich geschafft alle Kristalle zu besorgen.</text>
+                    <text>Nun sind wir endlich sicher vor den bösen Wesen!</text>
+                    <text>Er war so voller Hoffnung das du den Kristall holst, |br|das er den Stein mit der Legende weg geschaft hat.</text>
+                    <text>Vielleicht lässt er dir ja an dem Platz ein Denkmal bauen.</text>
                 </texts>
             </statement>
         </dialog>
         <dialog name="buergermeister">
             <statement talking="buergermeister">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">buergermeister</display>
                 <sound></sound>
                 <texts>
-                    <text>Ich bin erstaunt darüber, wie gut du dich durch den Wald schlagen konntest!</text>
-                    <text>Du hast unserem Dorf schon so viel geholfen ...</text>
+                    <text>Ich wusste das du es schaffen Würdest!</text>
+                    <text>Du hast es wirklich geschaft unser Dorf zu retten!</text>
                     <text>Ich weiß gar nicht, wie ich dir für all das, was du schon für uns getan hast,|br|danken soll ...</text>
-                    <text>Jetzt fehlt nur noch der letzte Kristall.</text>
-                    <text>Wenn wir den auch noch haben, sind wir vor allem was außerhalb des Dorfen lauert, sicher. </text>
-                    <text>Der letzte Kristall soll versteckt in der dunkelsten Ecke sein|br|und von verfluchten Toten beschützt werden.</text>
-                    <text>Bitte pass auf dich auf, wenn du auf den Friedhof gehst.</text>
-                    <text>Die Wesen, die dort auf dich lauern, solltst du nicht unterschätzen!</text>
-                    <text>Der Friedhof liegt auf der rechten Seite der Kreuzung.</text>
+                    <text>Du hast uns von den bösen Wesen befreit und dafür werden wir dir ewig danken!</text>
+                    <text>Den Stein der Legende brauchen wir nun nicht mehr.</text>
+                    <text>Schließlich ist die Legende wahr geworden.</text>
+                    <text>Und das haben wir nur dir zu verdanken!</text>
+                    <text>Wir werden dir ein Haus bauen, damit du fortan auch hier leben kannst.|br|Egal wohin du es stehen haben möchtes.</text>
+                    <text>Denn nun herschen wir über die Insel!|br|Denn wir haben nun alle Kräfte für uns allein!</text>
                 </texts>
             </statement>
         </dialog>
         <dialog name="paerchen">
             <statement talking="avia">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">avia</display>
                 <sound></sound>
                 <texts>
-                    <text>Fina und Sina haben immer nur Schabernack im Kopf ...</text>
-                    <text>Aber das Rezept für ihren geliebten Schokokuchen finden sie nie!</text>
-                    <text>Das ist nämlich sehr gut versteckt, musst du wissen. </text>
-                    <text>Das Beste kommt nämlich immer zum Schluss.</text>
+                    <text>Mein Sohn verlor nicht nur außerhalb des Dorfes sein eines Auge ...</text>
+                    <text>Auch die Mutter von Sina und Fina starb dort.</text>
+                    <text>Das ist der Grund warum er so unermütlich verucht|br|,alle Wesen außerhalb des Dorfes aus den weg zu räumen ...</text>
+                    <text>Ob er dies tat um seine Töchter zu beschützen |br|oder aus schuldgefühlen wegen dem tod seiner Frau, |br|hab ich nie raus gefunden ... </text>
                 </texts>
             </statement>
         </dialog>

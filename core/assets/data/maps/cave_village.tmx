@@ -18,7 +18,7 @@
  </layer>
  <layer name="Dekoration" width="80" height="200">
   <data encoding="base64" compression="zlib">
-   eJzt2stOg0AUANB+k7pUa/QHjCbua3wmvv9/IYs2sYQitDDPc5IJhUK4c2egTIfFAvjrs2PbV/AoAAB2W8UOAAr12Fo/mvk4AOpV2vPcPvUpLQfs7yl2ACQj9n3hJ/L5c5P6uCd2f0qZ3FAD/Tx/2pChau4rNdcdACjPW+wAMuD5bz6vrfX7kcc/N+VlxP7td0w4TIj/qr0XNI3v2AEAvTxryEHKutqmr720Jcxv13U2dvt/3+2z31TH5azGOgPpc29KnzaanpzCYUJdQ1Oex3UP9SphDrike1iIuqSar1hz2Q8d28yrQ5pSvX+lRp7kgHLp29tyycfHenncs08udWkbM8eeax3HKr2epdcPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgPBOYweQoevYAVRkGTuAjAztl137yTOh+M2hBJdNuYodREHOYweQmZum3PYsN+7WBdi2HPB5bu8Bz1WDTdtdNOVkvYQ+xr9xDB0Lns0axTjGrwDh/QKtFCIx
+   eJzt2stOg0AUANB+k7pUa/QHjCbua3wmvv9/IYuStA0l0MI8z0kmFBjKnTsDhcJiAWz67lj2EzwKAID9VrEDgEI978yfzLwdAPUq7XrukPaUlgMO9xI7AJIR+7zwF3n/uUn9vif2eEqZ3FAD4zx/+pChah4rNbcdACjPR+wAMuD6bz7vO/OPI7d/bcrbiPq775hwnBD/VXsvCKiBaw05SFlX3/T1l76E+W0eZ797lu+rP2bdIfWm2i5nNbYZmM7XTN/r3JQ+fTQ9OYXjhDqGptyP4x7qVcIz4JLOYSHakmq+Yj3LfupY5rk6pCnV81dq5EkOKJexvS23fJz2rMutLa0xz9hzbeNYpbez9PYBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEN557AAydBs7gIosYweQkaHjsquePBOK3xxKcN2UmwH1PucOpBCXsQPIzF1T7numrYd1AbYtB3wmL23fXTXlbD2FPo73OIbeC17MGsU47l8BwvsHipsiMQ==
   </data>
  </layer>
  <objectgroup name="Objekte">
@@ -47,7 +47,7 @@
   <object id="179" name="Eimer5" type="Welt" x="115.833" y="6224.5" width="57.5" height="60"/>
   <object id="181" name="Ausgang_Hexe" type="Welt" x="211.833" y="6277" width="52" height="34.5"/>
   <object id="183" name="Zauberkessel" type="Welt" x="200.833" y="5966.5" width="74.5" height="59"/>
-  <object id="188" name="Heilerin" type="Welt" x="163.333" y="6135.5" width="33" height="30.5"/>
+  <object id="188" name="Heilerin" type="Welt" x="414.333" y="5973.5" width="33" height="30.5"/>
   <object id="189" name="Trank_schrank1" type="Welt" x="140.667" y="5902.5" width="112.667" height="40.5"/>
   <object id="215" name="Besen" type="Welt" x="97.3333" y="5902" width="35.3333" height="40"/>
   <object id="276" name="Bett4" type="Welt" x="2441" y="5694" width="55" height="81"/>
@@ -73,10 +73,10 @@
   <object id="303" name="Brief4" type="Welt" x="1643" y="6043" width="66" height="62"/>
   <object id="304" name="Brief3" type="Welt" x="1740" y="6044" width="66" height="62"/>
   <object id="305" name="Brief2" type="Welt" x="1846" y="6052" width="66" height="62"/>
-  <object id="307" name="Krieger" type="Welt" x="1407" y="2350" width="69" height="78"/>
+  <object id="307" name="Krieger" type="Welt" x="1962" y="1732" width="69" height="78"/>
   <object id="310" name="Paerchen" type="Welt" x="1610" y="1239" width="100" height="59"/>
   <object id="311" name="Kinder" type="Welt" x="1085" y="1183" width="104" height="103"/>
-  <object id="312" name="Schmied" type="Welt" x="433" y="1346" width="60" height="68"/>
+  <object id="312" name="Schmied" type="Welt" x="240" y="1610" width="60" height="68"/>
   <object id="313" name="Ausgang_Buergermeister" type="Welt" x="1823" y="6281" width="65" height="47"/>
   <object id="314" name="Haus_Buergermeister" type="Welt" x="1851" y="583" width="59" height="41"/>
   <object id="315" name="Haus_Hexe" type="Welt" x="559" y="2107" width="44" height="30"/>
@@ -193,7 +193,7 @@
   <object id="218" x="261.333" y="6274.67" width="220" height="25.3333"/>
   <object id="219" x="96.6667" y="6143.33" width="30" height="62.6667"/>
   <object id="220" x="132.667" y="6264.67" width="23.3333" height="6.66667"/>
-  <object id="221" x="166" y="6133.33" width="21.3333" height="11.3333"/>
+  <object id="221" x="419" y="5971.33" width="21.3333" height="11.3333"/>
   <object id="222" x="256" y="6143.33" width="188.667" height="64"/>
   <object id="223" x="453.333" y="6259.33" width="22.6667" height="12.6667"/>
   <object id="224" x="96.6667" y="6030.67" width="252.667" height="48.6667"/>
@@ -204,8 +204,8 @@
   <object id="229" x="1635" y="1254.5" width="60.5" height="25"/>
   <object id="230" x="1127.33" y="1203.33" width="18" height="12.6667"/>
   <object id="231" x="1124.67" y="1268.67" width="20.6667" height="12"/>
-  <object id="232" x="1444.67" y="2391.33" width="22" height="11.3333"/>
-  <object id="233" x="446" y="1360" width="32" height="16.6667"/>
+  <object id="232" x="1988.67" y="1747.33" width="22" height="11.3333"/>
+  <object id="233" x="254" y="1617" width="32" height="16.6667"/>
   <object id="234" x="1570" y="5743" width="24" height="16"/>
   <object id="235" x="1631" y="5718" width="95" height="13"/>
   <object id="236" x="1536" y="5630" width="28" height="648"/>
