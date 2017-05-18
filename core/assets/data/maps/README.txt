@@ -16,7 +16,7 @@ Levels:
 |
 |--Cave Intro √√√
 |
-|--Cave Puzzle √√
+|--Cave Puzzle √√√
 |
 |--Cave Boss √√
 |

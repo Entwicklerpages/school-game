@@ -305,6 +305,7 @@ public class WorldObjectManager implements Disposable
             renderer.removeDisplayObject((ExtendedMapDisplayObject) object);
 
         object.onDispose();
+        worldObjects.remove(object);
     }
 
     /**
