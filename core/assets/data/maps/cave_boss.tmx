@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="31">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="34">
  <tileset firstgid="1" source="../tilemap/cave.tsx"/>
  <layer name="Hintergrund" width="50" height="50">
   <data encoding="base64" compression="zlib">
@@ -49,7 +49,7 @@
    <ellipse/>
   </object>
   <object id="29" name="Kristall_interaktion" type="Welt" x="773.333" y="1420" width="126.667" height="137.333"/>
-  <object id="30" x="86" y="1134"/>
+  <object id="33" name="Stein2" type="Welt" x="767.333" y="286.667" width="65.3333" height="64.6667"/>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="3" x="716" y="-1.33333" width="37.3333" height="369.333"/>
@@ -68,7 +68,6 @@
   <object id="16" name="Kristall" type="Welt" x="817.333" y="1478.67" width="33.3333" height="29.3333">
    <ellipse/>
   </object>
-  <object id="17" name="Stein2" type="Welt" x="764.833" y="303" width="65" height="66"/>
  </objectgroup>
  <layer name="Vordergrund" width="50" height="50">
   <data encoding="base64" compression="zlib">
