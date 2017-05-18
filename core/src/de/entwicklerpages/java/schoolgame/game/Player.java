@@ -20,6 +20,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
@@ -39,7 +40,7 @@ public class Player implements ExtendedMapDisplayObject {
     private static final float RUN_FACTOR = 2f;
     private static final float DIAGONAL_SWITCH_TIME = 0.4f;
     private static final float CAGE_THICKNESS = 20f;
-    private static final long LONG_ATTACK_TIME = 1300L;
+    private static final long LONG_ATTACK_TIME = 1100L;
 
     private final Body playerBody;
     private final CheatManager cheatManager;
@@ -54,6 +55,7 @@ public class Player implements ExtendedMapDisplayObject {
     private boolean cageBuilt = false;
 
     private long attackStart = -1;
+    private float attackSword = -1f;
 
     private EntityOrientation orientation;
     private float diagonalSwitchTimer = 0f;
@@ -66,6 +68,8 @@ public class Player implements ExtendedMapDisplayObject {
     private final Animation<TextureRegion> playerFrontWalk;
     private final Animation<TextureRegion> playerSideWalk;
     private final Animation<TextureRegion> playerBackWalk;
+
+    private final Array<TextureAtlas.AtlasRegion> playerAttack;
 
     private final SpriteBatch interfaceBatch;
     private final ShapeRenderer interfaceRenderer;
@@ -105,6 +109,8 @@ public class Player implements ExtendedMapDisplayObject {
         playerFrontWalk = new Animation<TextureRegion>(1/7f, playerAtlas.findRegions(player + "_front_walk"), Animation.PlayMode.LOOP);
         playerSideWalk = new Animation<TextureRegion>(1/7f, playerAtlas.findRegions(player + "_side_walk"), Animation.PlayMode.LOOP);
         playerBackWalk = new Animation<TextureRegion>(1/7f, playerAtlas.findRegions(player + "_back_walk"), Animation.PlayMode.LOOP);
+
+        playerAttack = playerAtlas.findRegions(player + "_sword");
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -409,6 +415,12 @@ public class Player implements ExtendedMapDisplayObject {
             deltaY *= 2.4f;
         }
 
+        if (attackStart != -1)
+        {
+            deltaX = 0f;
+            deltaY = 0f;
+        }
+
         if (!MathUtils.isZero(deltaX) && !MathUtils.isZero(deltaY))
         {
             diagonalSwitchTimer += deltaTime;
@@ -467,22 +479,45 @@ public class Player implements ExtendedMapDisplayObject {
             animationTime += deltaTime;
         }
 
-        switch (orientation)
+        if (attackStart == -1 && attackSword <= 0)
         {
-            case LOOK_FORWARD:
-                region = notMoving ? playerFront : playerFrontWalk.getKeyFrame(animationTime);
-                break;
-            case LOOK_LEFT:
-                region = notMoving ? playerSide : playerSideWalk.getKeyFrame(animationTime);
-                scaleX = -1f;
-                break;
-            case LOOK_BACKWARD:
-                region = notMoving ? playerBack : playerBackWalk.getKeyFrame(animationTime);
-                scaleX = -1f;
-                break;
-            case LOOK_RIGHT:
-                region = notMoving ? playerSide : playerSideWalk.getKeyFrame(animationTime);
-                break;
+            switch (orientation)
+            {
+                case LOOK_FORWARD:
+                    region = notMoving ? playerFront : playerFrontWalk.getKeyFrame(animationTime);
+                    break;
+                case LOOK_LEFT:
+                    region = notMoving ? playerSide : playerSideWalk.getKeyFrame(animationTime);
+                    scaleX = -1f;
+                    break;
+                case LOOK_BACKWARD:
+                    region = notMoving ? playerBack : playerBackWalk.getKeyFrame(animationTime);
+                    scaleX = -1f;
+                    break;
+                case LOOK_RIGHT:
+                    region = notMoving ? playerSide : playerSideWalk.getKeyFrame(animationTime);
+                    break;
+            }
+        } else {
+            switch (orientation)
+            {
+                case LOOK_LEFT:
+                case LOOK_BACKWARD:
+                    scaleX = -1f;
+                    break;
+            }
+            if (attackSword > 0f)
+            {
+                attackSword -= deltaTime;
+                if (attackSword <= 0f)
+                    attackSword = -1f;
+
+                region = playerAttack.get(2);
+            }
+            else
+            {
+                region = playerAttack.get(1);
+            }
         }
 
         if (!MathUtils.isZero(damageTime))
@@ -492,15 +527,15 @@ public class Player implements ExtendedMapDisplayObject {
                 Color oldColor = batch.getColor();
                 batch.setColor(Color.RED);
 
-                batch.draw(region,                                      // TextureRegion (front, back, side)
-                        pos.x - playerSide.getRegionWidth() / 2,        // Offset to the X position (character center)
-                        pos.y,                                          // Y position is at the foots
-                        playerSide.getRegionWidth() / 2,                // Origin X (important for flipping)
-                        playerSide.getRegionHeight(),                   // Origin Y
-                        playerSide.getRegionWidth(),                    // Width
-                        playerSide.getRegionHeight(),                   // Height
-                        scaleX,                                         // Scale X (-1 to flip)
-                        1f,                                             // Scale Y
+                batch.draw(region,                                  // TextureRegion (front, back, side)
+                        pos.x - region.getRegionWidth() / 2,        // Offset to the X position (character center)
+                        pos.y,                                      // Y position is at the foots
+                        region.getRegionWidth() / 2,                // Origin X (important for flipping)
+                        region.getRegionHeight(),                   // Origin Y
+                        region.getRegionWidth(),                    // Width
+                        region.getRegionHeight(),                   // Height
+                        scaleX,                                     // Scale X (-1 to flip)
+                        1f,                                         // Scale Y
                         0f);
 
                 batch.setColor(oldColor);
@@ -508,16 +543,16 @@ public class Player implements ExtendedMapDisplayObject {
         }
         else
         {
-            batch.draw(region,                                      // TextureRegion (front, back, side)
-                    pos.x - playerSide.getRegionWidth() / 2,        // Offset to the X position (character center)
-                    pos.y,                                          // Y position is at the foots
-                    playerSide.getRegionWidth() / 2,                // Origin X (important for flipping)
-                    playerSide.getRegionHeight(),                   // Origin Y
-                    playerSide.getRegionWidth(),                    // Width
-                    playerSide.getRegionHeight(),                   // Height
-                    scaleX,                                         // Scale X (-1 to flip)
-                    1f,                                             // Scale Y
-                    0f);                                            // Rotation
+            batch.draw(region,                                  // TextureRegion (front, back, side)
+                    pos.x - region.getRegionWidth() / 2,        // Offset to the X position (character center)
+                    pos.y,                                      // Y position is at the foots
+                    region.getRegionWidth() / 2,                // Origin X (important for flipping)
+                    region.getRegionHeight(),                   // Origin Y
+                    region.getRegionWidth(),                    // Width
+                    region.getRegionHeight(),                   // Height
+                    scaleX,                                     // Scale X (-1 to flip)
+                    1f,                                         // Scale Y
+                    0f);                                        // Rotation
         }
     }
 
@@ -579,13 +614,13 @@ public class Player implements ExtendedMapDisplayObject {
     {
         InputManager.Action action = InputManager.checkGameAction(keycode);
 
-        if (action == InputManager.Action.ATTACK)
+        if (action == InputManager.Action.ATTACK && attackSword <= 0f)
         {
             // Attacke
             attackStart = TimeUtils.millis();
             return true;
         }
-        else if (action == InputManager.Action.INTERACTION)
+        else if (action == InputManager.Action.INTERACTION && attackStart == -1)
         {
             // Interaktion
             if (interactionCallback != null)
@@ -629,11 +664,11 @@ public class Player implements ExtendedMapDisplayObject {
             long attackTime = TimeUtils.timeSinceMillis(attackStart);
             if (attackTime >= LONG_ATTACK_TIME)
             {
-                Gdx.app.log("INFO", "Stop Long Attack");
                 attackCallback.run((int)(attackTime/400));
+                attackSword = 0.4f;
             } else {
-                Gdx.app.log("INFO", "Stop Short Attack");
                 attackCallback.run(1);
+                attackSword = 0.2f;
             }
 
             attackStart = -1;

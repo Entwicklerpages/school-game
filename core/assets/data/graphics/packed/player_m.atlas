@@ -1,40 +1,40 @@
 
 player_m.png
-size: 512,128
+size: 256,256
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 player_m_back
   rotate: false
-  xy: 274, 4
+  xy: 104, 4
   size: 32, 62
   orig: 32, 62
   offset: 0, 0
   index: -1
 player_m_back_walk
   rotate: false
-  xy: 308, 4
+  xy: 138, 4
   size: 32, 62
   orig: 32, 62
   offset: 0, 0
   index: 1
 player_m_back_walk
   rotate: false
-  xy: 342, 4
+  xy: 202, 70
   size: 32, 62
   orig: 32, 62
   offset: 0, 0
   index: 2
 player_m_back_walk
   rotate: false
-  xy: 376, 4
+  xy: 172, 4
   size: 32, 62
   orig: 32, 62
   offset: 0, 0
   index: 3
 player_m_back_walk
   rotate: false
-  xy: 410, 4
+  xy: 206, 6
   size: 32, 62
   orig: 32, 62
   offset: 0, 0
@@ -48,50 +48,71 @@ player_m_front
   index: -1
 player_m_front_walk
   rotate: false
-  xy: 36, 2
+  xy: 100, 68
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: 1
 player_m_front_walk
   rotate: false
-  xy: 70, 2
+  xy: 166, 134
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: 2
 player_m_front_walk
   rotate: false
-  xy: 104, 2
+  xy: 36, 2
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: 3
 player_m_front_walk
   rotate: false
-  xy: 138, 2
+  xy: 134, 68
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: 4
 player_m_side
   rotate: false
-  xy: 172, 2
+  xy: 200, 134
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: -1
 player_m_side_walk
   rotate: false
-  xy: 206, 2
+  xy: 70, 2
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: 1
 player_m_side_walk
   rotate: false
-  xy: 240, 2
+  xy: 168, 68
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: 2
+player_m_sword
+  rotate: false
+  xy: 2, 134
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: 2
+player_m_sword
+  rotate: false
+  xy: 2, 68
+  size: 96, 64
+  orig: 96, 64
+  offset: 0, 0
+  index: 3
+player_m_sword
+  rotate: false
+  xy: 100, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
