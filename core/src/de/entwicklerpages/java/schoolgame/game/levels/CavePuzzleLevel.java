@@ -4,7 +4,7 @@ import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
 
 /**
- * Drittes Höhlen Level
+ * Zweites Höhlen Level
  *
  * LEVEL INFO
  * Rätsellevel

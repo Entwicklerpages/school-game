@@ -4,7 +4,7 @@ import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
 
 /**
- * Viertes Höhlen Level
+ * Drittes Höhlen Level
  *
  * LEVEL INFO
  * Bosskampf

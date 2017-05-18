@@ -4,7 +4,7 @@ import de.entwicklerpages.java.schoolgame.game.Level;
 import de.entwicklerpages.java.schoolgame.game.WorldObjectManager;
 
 /**
- * Viertes Wald Level
+ * Drittes Wald Level
  *
  * LEVEL INFO
  * Bosskampf.
