@@ -72,8 +72,8 @@ public class ForestIntroLevel extends Level
 
     private InteractionZone createSign(final int id)
     {
-        InteractionZone graveInteraction = new InteractionZone("Schild" + id);
-        graveInteraction.setActionCallback(new ActionCallback()
+        InteractionZone signInteraction = new InteractionZone("Schild" + id);
+        signInteraction.setActionCallback(new ActionCallback()
         {
             @Override
             public void run()
@@ -82,6 +82,6 @@ public class ForestIntroLevel extends Level
             }
         });
 
-        return graveInteraction;
+        return signInteraction;
     }
 }

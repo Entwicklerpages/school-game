@@ -2,10 +2,31 @@
 <level atlas="">
     <characters>
         <character>
-            <id>default</id>
-            <title>Default</title>
+            <id>schild</id>
+            <title>Schild</title>
             <image>no</image>
         </character>
     </characters>
-    <dialogs/>
+    <dialogs>
+        <dialog name="intro">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ganz schön dunkel hier.</text>
+                    <text>Ich frag mich nur wer die ganzen Fackeln angezündet hat ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <sound></sound>
+                <texts>
+                    <text>Tipp: Über Seeigel kann man laufen.</text>
+                    <text>Es tut nur etwas weh ...</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
 </level>

@@ -14,13 +14,13 @@ Levels:
 |
 |>>>>>>>>>>>>>>>>>>>>>>>>>
 |
-|--Cave Intro √
+|--Cave Intro √√√
 |
 |--Cave Puzzle √
 |
 |--Cave Boss √
 |
-|--Cave Village √√
+|--Cave Village √√√
 |
 |--Cave Crossing √√√
 |
@@ -28,7 +28,7 @@ Levels:
 |
 |--Forest Intro √√√
 |
-|--Forest Battle √
+|--Forest Battle √√
 |
 |--Forest Boss √
 |
@@ -54,4 +54,4 @@ Levels:
         |                                           |
         |                                           |
         V                                           V
-    Ending Village √√                         Ending Forest √
+    Ending Village √√√                        Ending Forest √
