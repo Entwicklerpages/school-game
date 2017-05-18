@@ -18,7 +18,7 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>In diesem Wald leben Gefährliche Tiere!|br|Betreten auf eigene Gefahr</text>
+                    <text>In diesem Wald leben gefährliche Tiere!|br|Betreten auf eigene Gefahr!</text>
                 </texts>
             </statement>
         </dialog>
@@ -27,7 +27,7 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Nicht alles ist so wie es zu sein scheint. </text>
+                    <text>Nicht alles ist so, wie es zu sein scheint.</text>
                 </texts>
             </statement>
         </dialog>
@@ -45,7 +45,7 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Ja ich bin ein Schild.</text>
+                    <text>Ja, ich bin ein Schild.</text>
                 </texts>
             </statement>
         </dialog>
@@ -54,7 +54,7 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Angeblich können die Tiere auf dieser Insel Sprechen.</text>
+                    <text>Angeblich können die Tiere auf dieser Insel sprechen.</text>
                 </texts>
             </statement>
         </dialog>
@@ -63,7 +63,7 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Der Wald ist gefhrlich ...|br|Hoffentlich hast du es dir gut überlegt ob du wirklich in diesen Wald willst ...</text>
+                    <text>Der Wald ist gefährlich ...|br|Hoffentlich hast du es dir gut überlegt, das du wirklich in diesen Wald willst ...</text>
                 </texts>
             </statement>
         </dialog>
@@ -72,7 +72,7 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Auch die kleinensten und unscheinbarsten Tiere|br|können sehr gefährlich sein|br|also gib aucht was für Wesen du dich näherst ! </text>
+                    <text>Auch die kleinsten und unscheinbarsten Tiere|br|können sehr gefährlich sein.|br|Also gib acht, was für Wesen du dich annäherst!</text>
                 </texts>
             </statement>
         </dialog>

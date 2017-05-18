@@ -45,7 +45,7 @@
                 <player position="left"></player>
                 <sound></sound>
                 <texts>
-                    <text>Hmmm.|br|Schon wieder Bäume die auf einem Weg stehen.</text>
+                    <text>Hmmm.|br|Schon wieder Bäume, die auf einem Weg stehen.</text>
                     <text>Das ist doch nicht normal ...</text>
                 </texts>
             </statement>
@@ -59,10 +59,10 @@
                     <text>Eintrag 2|br|Die Reise in die Höhle war ein voller Erfolg!</text>
                     <text>Ich hab allerdings seit dem einen gebrochenen Arm.|br|Aber das wird mich nicht aufhalten!|br|Meine Tour ist längst nicht vorbei.</text>
                     <text>In den Höhlen habe ich viele interessante Gänge entdeckt.|br|Für jeden Hobbyabenteuerer eine wahre Empfehlung!</text>
-                    <text>Ich wünschte nur es gäbe nicht überall diese Seeigel.|br|Ich kann nicht zählen in wieviele ich getreten bin.</text>
+                    <text>Ich wünschte nur, es gäbe nicht überall diese Seeigel.|br|Ich kann nicht zählen, in wieviele ich getreten bin.</text>
                     <text>Aber egal!|br|Denn die Reise ist noch nicht vorbei.</text>
                     <text>Als nächstes werde ich mich in den Wald wagen.|br|Die Dorfbewohner meiden ihn.|br|Die Tiere dort sind aggressiv.</text>
-                    <text>Manche sagen, sogar die Hasen wären blutrünstige Kreaturen.|br|Ich bin gespannt was ich finden werde!</text>
+                    <text>Manche sagen, sogar die Hasen wären blutrünstige Kreaturen.|br|Ich bin gespannt, was ich finden werde!</text>
                     <text>[Die restlichen Seiten fehlen.]</text>
                 </texts>
             </statement>
@@ -83,7 +83,7 @@
                 <texts>
                     <text>WAS ZUR HÖLLE?!</text>
                     <text>Ich bin doch gerade erst hier durch gegangen!|br|Die Bäume waren da nicht!</text>
-                    <text>Es ist vollkommen unmöglich das die da plötzlich gewachsen sind.</text>
+                    <text>Es ist vollkommen unmöglich, dass die da plötzlich gewachsen sind.</text>
                     <text>Was geht hier nur vor?</text>
                 </texts>
             </statement>
@@ -102,7 +102,7 @@
                 <display position="right">kind2</display>
                 <sound></sound>
                 <texts>
-                    <text>Fina, Halt doch den Mund.|br|Jetzt sind wir endgültig aufgeflogen.</text>
+                    <text>Fina, halt doch den Mund!|br|Jetzt sind wir endgültig aufgeflogen.</text>
                 </texts>
             </statement>
             <statement talking="kind1">
@@ -110,7 +110,7 @@
                 <display position="right">kind1</display>
                 <sound></sound>
                 <texts>
-                    <text>Bitte erzähl nicht im Dorf, das du uns hier gesehen hast.|br|Wir dürfen hier eigentlich nicht sein.|br|Aber es ist sooo schön hier.</text>
+                    <text>Bitte erzähl nicht im Dorf, dass du uns hier gesehen hast.|br|Wir dürfen hier eigentlich nicht sein.|br|Aber es ist sooo schön hier.</text>
                     <text>Bitte, bitte, bitte.</text>
                 </texts>
             </statement>

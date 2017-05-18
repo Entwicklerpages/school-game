@@ -84,7 +84,7 @@
                 <texts>
                     <text>Weiter gehts.</text>
                     <text>Dieses Spiel erfodert es, mit Gegnern zu kämpfen.</text>
-                    <text>Dazu musst du nur die LEERTASTE drücken.|br|Des so länger du sie hälst,|br|desso mehr Schaden verursachst du beim Gegner.</text>
+                    <text>Dazu musst du nur die LEERTASTE drücken.|br|Je länger du sie hälst,|br|desto mehr Schaden verursachst du beim Gegner.</text>
                     <text>Aber Vorsicht!|br|Manche Gegner schlagen auch zurück!|br|Achte immer auf deine Lebensanzeige oben links.</text>
                     <text>Es gibt auch Gegner, die du nicht besiegen kannst.|br|In dem Fall: LAUF!</text>
                 </texts>
@@ -99,7 +99,7 @@
                     <text>Das hast du richtig gut gemeistert.</text>
                     <text>Damit kennst du alle wichtigen Mechaniken im Spiel.</text>
                     <text>Um das Tutorial zu beenden, laufe einfach weiter nach rechts.|br|Dort ist der Ausgang.</text>
-                    <text>Wenn du das Spiel pasuieren oder verlassen willst,|br|kannst du jederzeit ESCAPE drücken.</text>
+                    <text>Wenn du das Spiel pausieren oder verlassen willst,|br|kannst du jederzeit ESCAPE drücken.</text>
                 </texts>
             </statement>
         </dialog>

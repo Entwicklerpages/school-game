@@ -2,10 +2,175 @@
 <level atlas="">
     <characters>
         <character>
-            <id>default</id>
-            <title>Default</title>
+            <id>schild</id>
+            <title>Schild</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>tagebuch</id>
+            <title>Tagebuch</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>heilerin</id>
+            <title>Fortitudora</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>schmied</id>
+            <title>Cicero</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>krieger</id>
+            <title>Pugnato</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>buergermeister</id>
+            <title>Bürgermeister</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>grab</id>
+            <title>Grabstein</title>
             <image>no</image>
         </character>
     </characters>
-    <dialogs/>
+    <dialogs>
+        <dialog name="wegweiser">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <texts>
+                    <text>Nach Links:|br|- Höhle</text>
+                    <text>Nach Oben:|br|- Wald|br|- Friedhof</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="hoehle">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <texts>
+                    <text>Ab hier beginnt die Höhle!|br|Vorsicht ist geboten!</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="tagebuch3">
+            <statement talking="tagebuch">
+                <display position="left">tagebuch</display>
+                <sound></sound>
+                <texts>
+                    <text>Die letzten Seiten aus dem Tagebuch eines Abenteuerers.|br|Ein Buch von Argo Zackhoff</text>
+                    <text>Letzter Eintrag|br|Das alles war ein Fehler.</text>
+                    <text>Ich hätte nie auf diese bescheuerte Idee mit dem Abenteuer kommen sollen.|br|Nun werde ich wohl sterben.</text>
+                    <text>Der Wald, der war schon nicht ohne.|br|Aber der Friedhof ...</text>
+                    <text>Lebende sollten ihn nicht betreten.|br|Die Toten ruhen nicht.</text>
+                    <text>Ich bin nicht mal besonders weit gekommen als ... naja.|br|Ich glaube sie verfolgen mich.|br|Und selbst wenn nicht, werde ich hier verbluten.</text>
+                    <text>Wer auch immer das hier liest.|br|BETRITT NICHT DEN FRIEDHOF!</text>
+                    <text>Ich schreibe diese letzten Worte als Warnung auf!|br|Solltest du den Friedhof doch betreten müssen,|br| dann pass gut auf:</text>
+                    <text>Es gibt wohl einen Trick um die Überlebenschancen auf dem Friedhof zu vergrößern.|br|Leider habe ich erst davon erfahren als es zu spät war.</text>
+                    <text>Es ist ganz einfach:|br|Du musst gleich am Eingang bei den Grabst...</text>
+                    <text>[Hinter dem letzten Wort ist ein Blutfleck. Das Tagebuch endet hier.]</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="wald">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <sound></sound>
+                <texts>
+                    <text>WARNUNG|br|Oben ist der Wald.|br|Achte auf die Tiere des Waldes!</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="neue_sperre">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Woher kommen nur diese neuen Bäume?</text>
+                    <text>Sie sind so dicht, dass ich nicht wieder da hin gehen kann, wo ich längst war.</text>
+                    <text>Ob das die Absicht von irgendwem ist?</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="friedhof">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <sound></sound>
+                <texts>
+                    <text>Friedhof|br|Für lebende Wesen ist das Betreten nicht zu empfehlen.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="krieger">
+            <statement talking="krieger">
+                <player position="left"></player>
+                <display position="right">krieger</display>
+                <sound></sound>
+                <texts>
+                    <text>Ich bezweifle, dass du das überleben wirst.|br|Dreh lieber um solange du noch kannst!</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="heilerin">
+            <statement talking="heilerin">
+                <player position="left"></player>
+                <display position="right">heilerin</display>
+                <sound></sound>
+                <texts>
+                    <text>Pass gut auf dich auf!|br|Der Wald ist gefährlich,|br|aber ich bin mir sicher, dass du das packen wirst!</text>
+                    <text>Ich wünschte nur, ich könnte mitkommen ...|br|die ganzen Kräuter ...</text>
+                    <text>Aber der Bürgermeister hat wohl recht.|br|Im Moment sind die Toten zu aufgewühlt.|br|Für mich wäre es dort zu gefährlich.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="buergermeister">
+            <statement talking="buergermeister">
+                <display position="left">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Da ist ja unser Held!|br|Wir alle wünschen dir viel Erfolg!|br|Das ganze Dorf steht schon jetzt in deiner Schuld.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="grab">
+            <statement talking="grab">
+                <display position="left">grab</display>
+                <sound></sound>
+                <texts>
+                    <text>Hier liegt Argo Zackhoff|br|Ein wahrer Abenteurer</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="anzeige1">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <sound></sound>
+                <texts>
+                    <text>Suchst du nach einem Ort zum Sterben?|br|Dann bist du hier genau richtig!|br|Hier ist genug Platz für jeden.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="anzeige2">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <sound></sound>
+                <texts>
+                    <text>Im Angebot: günstige Gräber!|br|Ein Grab für die Ewigkeit gegen deine Seele.|br|Schlag noch heute zu!</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schmied">
+            <statement talking="schmied">
+                <player position="left"/>
+                <display position="right">schmied</display>
+                <sound></sound>
+                <texts>
+                    <text>Ich wünsche dir viel Glück!|br|Ich würde dir gerne ein Geschenk machen, aber dein Elfenschwert|br|ist schon so viel besser als das, was ich schmieden könnte.</text>
+                    <text>Wenn du zurück kommst,|br|mach ich dir noch einen Schild!</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
 </level>

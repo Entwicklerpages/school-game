@@ -114,7 +114,7 @@ public class CaveCrossingLevel extends Level
             @Override
             public void run()
             {
-                changeLevel("cave_intro");
+                changeLevel("forest_intro");
             }
         });
 

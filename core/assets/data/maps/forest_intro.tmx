@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="2017.05.16" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="103">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="103">
  <tileset firstgid="1" source="../tilemap/forest.tsx"/>
  <tileset firstgid="57" source="../tilemap/cave.tsx"/>
  <layer name="Hintergrund" width="40" height="40">
@@ -25,7 +25,7 @@
   <object id="6" name="Schild5" type="Welt" x="447.333" y="263.333" width="32" height="58"/>
   <object id="7" name="Hilfe_Pilz1" type="Welt" x="834" y="717" width="29.6667" height="51"/>
   <object id="8" name="Hilfe_Pilz2" type="Welt" x="771.333" y="229.333" width="69.6667" height="33.6667"/>
-  <object id="100" name="Start" x="603" y="1205" width="70" height="60">
+  <object id="100" name="Start" x="627" y="1221" width="22" height="28">
    <ellipse/>
   </object>
  </objectgroup>
@@ -117,7 +117,7 @@
  </objectgroup>
  <layer name="Vordergrund" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztlkESgCAIRb1Q3f94tWnTiAn+j9DwZloFCAhIawWC4/7OH52zAsrHnp0I8Wt8GMk+/7ziZN4LS/ctP8rZCl/2ovY32y9rvtE1LdUBg5WzPOdThFmIABGHZCNq30r61jdh12yPNq9Q57LemWj04pyJWSu/4k9WpJ6enVWeb56GqH4VOdDUucf+n6l+kb23S9cTqZaYO2fBJcsOWeipHNuovNm4AP6NHHE=
+   eJztlkESwDAERXOh9v7HazfddCJBfCHjzXRVBEG0Vlhwvd990DkrWPnYsxMhfokPI9nvn1ecyHtB6f7lRzlbYWYvan+j/dbm27qmqTpAMDuL09MeRJiFFljEQdmI2reUvvZN2DXb0fJWaP08pccoenFyYpbKr/iTFaqnubPK882TENWvIgeSOvfY/zPVr2Xv7dL1hKol5M5ZYMmyQxZyKsc6Km86Hh3THSc=
   </data>
  </layer>
 </map>
