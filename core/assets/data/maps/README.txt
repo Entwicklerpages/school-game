@@ -20,7 +20,7 @@ Levels:
 |
 |--Cave Boss √
 |
-|--Cave Village √
+|--Cave Village √√
 |
 |--Cave Crossing √√√
 |
@@ -54,4 +54,4 @@ Levels:
         |                                           |
         |                                           |
         V                                           V
-    Ending Village √                          Ending Forest √
+    Ending Village √√                         Ending Forest √
