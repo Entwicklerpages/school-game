@@ -43,16 +43,6 @@ public class EndingVillageLevel extends Level
             }
         });
 
-        InteractionZone legend = new InteractionZone("Legende");
-        legend.setActionCallback(new ActionCallback()
-        {
-            @Override
-            public void run()
-            {
-                startDialog("legendenstein");
-            }
-        });
-
         InteractionZone warrior = new InteractionZone("Schild_Krieger");
         warrior.setActionCallback(new ActionCallback()
         {
@@ -108,7 +98,14 @@ public class EndingVillageLevel extends Level
             @Override
             public void run()
             {
-                startDialog("buergermeister");
+                startDialog("buergermeister", new ActionCallback()
+                {
+                    @Override
+                    public void run()
+                    {
+                        exitToCredits();
+                    }
+                });
             }
         });
 
@@ -606,18 +603,7 @@ public class EndingVillageLevel extends Level
             }
         });
 
-        final Trigger exitTrigger = new Trigger("Ausgang");
-        exitTrigger.setTriggerEntered(new ActionCallback()
-        {
-            @Override
-            public void run()
-            {
-                exitToCredits();
-            }
-        });
-
         worldConfig.registerObject(witch);
-        worldConfig.registerObject(legend);
         worldConfig.registerObject(warrior);
         worldConfig.registerObject(couple);
         worldConfig.registerObject(smith);
@@ -678,7 +664,5 @@ public class EndingVillageLevel extends Level
         worldConfig.registerObject(house_witch_exit);
         worldConfig.registerObject(house_mayor);
         worldConfig.registerObject(house_mayor_exit);
-
-        worldConfig.registerObject(exitTrigger);
     }
 }
