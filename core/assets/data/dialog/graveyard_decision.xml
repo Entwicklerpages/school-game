@@ -53,5 +53,14 @@
                 </texts>
             </statement>
         </dialog>
+        <dialog name="outro">
+            <statement talking="stimme">
+                <display position="left">stimme</display>
+                <sound></sound>
+                <texts>
+                    <text>Du hast es so gewollt ...</text>
+                </texts>
+            </statement>
+        </dialog>
     </dialogs>
 </level>
