@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 
+import de.entwicklerpages.java.schoolgame.game.EntityOrientation;
 import de.entwicklerpages.java.schoolgame.game.Physics;
 import de.entwicklerpages.java.schoolgame.game.objects.entities.BaseEntity;
 
@@ -32,6 +33,8 @@ public abstract class BaseNPC extends BaseEntity
     private TextureRegion npcSide = null;
     private TextureRegion npcBack = null;
 
+    protected EntityOrientation orientation;
+
     private Animation<TextureRegion> npcFrontWalk = null;
     private Animation<TextureRegion> npcSideWalk = null;
     private Animation<TextureRegion> npcBackWalk = null;
@@ -46,6 +49,7 @@ public abstract class BaseNPC extends BaseEntity
     {
         super(objectId);
         this.baseName = baseName;
+        orientation = EntityOrientation.LOOK_FORWARD;
     }
 
     /**

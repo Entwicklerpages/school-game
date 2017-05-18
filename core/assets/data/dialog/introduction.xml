@@ -15,7 +15,7 @@
     <dialogs>
         <dialog name="intro">
             <statement talking="heilerin_unbekannt">
-                <player position="left"/>
+                <player position="left"></player>
                 <display position="right">heilerin_unbekannt</display>
                 <sound></sound>
                 <texts>
@@ -23,11 +23,182 @@
                 </texts>
             </statement>
             <statement talking="#player#">
+                <player position="left"></player>
+                <display position="right">heilerin_unbekannt</display>
+                <sound></sound>
+                <texts>
+                    <text>Wo ... wo bin ich?</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="bett">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Das Bett ist echt nicht das Bequemste ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="heilerin">
+            <statement talking="heilerin">
+                <display position="left">heilerin</display>
+                <sound></sound>
+                <texts>
+                    <text>Bitte geh zum Bürgermeister.|br|Er wohnt vom Brunnen aus oben rechts.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="eimer">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ein leerer Eimer. Vielleicht für Müll?</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="briefe">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Liebe Fortitudora, ... |br|Der Name ist eigentlich schon etwas seltsam ... </text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="pergamentrolle">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>ZAHRIM |br|MASCHTISCHADDU</text>
+                    <text>ADDU|br|KOKODAMMU </text>
+                    <text>Was das wohl bedeutet ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="wassereimer">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Klares Wasser in einem Eimer.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="zauberkessel">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ob in dem Kessel auch normale Suppen gekocht werden?</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="pulver">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Rotes und grünes Pulver. |br|Wozu das wohl gut ist?</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="trank_schrank1">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Ein Schrank voll mit Zaubertränken und verschiedensten Substanzen ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="trank_schrank2">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Was für eine Wirkung die ganzen Tränke wohl haben?</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="zauberbuch">
+            <statement talking="#player#">
+                <player position="left"/>
+                <sound></sound>
+                <texts>
+                    <text>Abdul Alhazred - Der Wahnsinnige Araber ...|br|Worum es sich wohl dabei handelt?</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="intro2">
+            <statement talking="heilerin_unbekannt">
                 <player position="left"/>
                 <display position="right">heilerin_unbekannt</display>
                 <sound></sound>
                 <texts>
-                    <text>Wo... wo bin ich?</text>
+                    <text>Wir haben dich am Strand gefunden.</text>
+                    <text>Anscheinend hattest du ein Schiffsunglück.</text>
+                    <text>Ich hab mir schon Sorgen gemacht, du würdest gar nicht mehr aufwachen ...</text>
+                    <text>Aber nun ist ja alles gut.</text>
+                    <text>Ich heiße übrigens Fortitudora.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"/>
+                <display position="right">heilerin</display>
+                <sound></sound>
+                <texts>
+                    <text>Gestrandet?</text>
+                    <text>Ich weiß nichts mehr ...</text>
+                </texts>
+            </statement>
+            <statement talking="heilerin">
+                <player position="left"/>
+                <display position="right">heilerin</display>
+                <sound></sound>
+                <texts>
+                    <text>Ach, die Erinnerungen kommen schon wieder, mach dir da keine Sorgen.</text>
+                    <text>Ansonnsten siehst du ja ganz munter aus.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"/>
+                <display position="right">heilerin</display>
+                <sound></sound>
+                <texts>
+                    <text>Dafür, dass ich anscheinend gerade gestrandet bin, |br|fühle ich mich auch erstaunlich gut.</text>
+                </texts>
+            </statement>
+            <statement talking="heilerin">
+                <player position="left"/>
+                <display position="right">heilerin</display>
+                <sound></sound>
+                <texts>
+                    <text>Hihi, dann scheint der Trank ja geholfen zu haben ...</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"/>
+                <display position="right">heilerin</display>
+                <sound></sound>
+                <texts>
+                    <text>Der Trank?</text>
+                    <text>Bist du etwa eine Hexe?</text>
+                </texts>
+            </statement>
+            <statement talking="heilerin">
+                <player position="left"/>
+                <display position="right">heilerin</display>
+                <sound></sound>
+                <texts>
+                    <text>Warum denn so erschrocken?</text>
+                    <text>Ich hab dir schließlich nur geholfen.</text>
+                    <text>Auch wenn das alles andere als leicht war.</text>
+                    <text>Schließlich bist du ein Halbelf und damit immun gegen die meisten Tränke.</text>
+                    <text>Was mich daran erinnert, das der Bürgermeister dich sehen wollte, sobald du aufwachst.</text>
+                    <text>Um zum Haus des Bürgermeisters zu gelangen, musst du nur |br|dem kleinen Weg folgen bis zum Brunnen.|br|Oben rechts von ihm steht das Haus des Bürgermeisters.</text>
                 </texts>
             </statement>
         </dialog>

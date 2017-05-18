@@ -22,19 +22,12 @@ import de.entwicklerpages.java.schoolgame.game.objects.WorldObject;
 public abstract class BaseEntity extends WorldObject implements ExtendedMapDisplayObject, UpdateObject
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    protected EntityOrientation orientation;
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public BaseEntity(String objectId)
     {
         super(objectId);
-        orientation = EntityOrientation.LOOK_FORWARD;
     }
 
     /**
@@ -123,10 +116,23 @@ public abstract class BaseEntity extends WorldObject implements ExtendedMapDispl
      */
     protected Body createEntityBody(Vector2 position, Shape shape)
     {
+        return createEntityBody(position, shape, BodyDef.BodyType.DynamicBody);
+    }
+
+    /**
+     * Erlaubt es den Unterklassen möglichst einfach einen beliebigen Box2D Körper zu erstellen.
+     *
+     * @param position die Startposition des Body
+     * @param shape die Form, die für dne Body verwendet werden soll
+     * @param type der Typ des Körpers
+     * @return ein Box2D Körper
+     */
+    protected Body createEntityBody(Vector2 position, Shape shape, BodyDef.BodyType type)
+    {
         position.scl(Physics.MPP);
 
         BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.type = type;
         bodyDef.position.set(position);
         bodyDef.fixedRotation = true;
 

@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.I18NBundle;
 
+import java.util.Arrays;
 import java.util.Set;
 
 import de.entwicklerpages.java.schoolgame.SchoolGame;
@@ -33,6 +34,8 @@ public class CheatLevelSelection extends LevelManager {
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    private static final int MAX_ROWS = 16;
+
     private SpriteBatch batch;
     private BitmapFont font;
     private BitmapFont smallFont;
@@ -40,6 +43,7 @@ public class CheatLevelSelection extends LevelManager {
     private I18NBundle localeBundle;
 
     private int selection = -1;
+    private int cols = 1;
     private String[] levelIds;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,6 +91,14 @@ public class CheatLevelSelection extends LevelManager {
 
         Set<String> levelIdSet = levelMap.keySet();
         levelIds = levelIdSet.toArray(new String[levelIdSet.size()]);
+
+        Arrays.sort(levelIds);
+
+
+        cols = (levelIds.length - (levelIds.length % MAX_ROWS)) / MAX_ROWS;
+        if (levelIds.length % MAX_ROWS > 0)
+            cols++;
+
     }
 
     /**
@@ -103,10 +115,17 @@ public class CheatLevelSelection extends LevelManager {
         fontLayout.setText(font, localeBundle.get("zurueck"), selection == -1 ? Color.YELLOW : Color.WHITE, camera.viewportWidth, Align.center, false);
         font.draw(batch, fontLayout, -camera.viewportWidth / 2, camera.viewportHeight / 2 - 20);
 
-        for (int i = 0; i < levelIds.length; i++)
+        float width = camera.viewportWidth / ((float)cols);
+
+        for (int j = 0; j < cols; j++)
         {
-            fontLayout.setText(smallFont, levelIds[i], selection == i ? Color.GREEN : Color.WHITE, camera.viewportWidth, Align.center, false);
-            smallFont.draw(batch, fontLayout, -camera.viewportWidth / 2, camera.viewportHeight / 2 - (i * 30 + 100));
+            for (int i = 0; i < MAX_ROWS && (j * MAX_ROWS) + i < levelIds.length; i++)
+            {
+                int index = (j * MAX_ROWS) + i;
+
+                fontLayout.setText(smallFont, levelIds[index], selection == index ? Color.GREEN : Color.WHITE, width, Align.center, false);
+                smallFont.draw(batch, fontLayout, -camera.viewportWidth / 2 + width * j, camera.viewportHeight / 2 - (i * 30 + 100));
+            }
         }
 
         batch.end();

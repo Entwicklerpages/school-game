@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="69">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="58" height="42" tilewidth="32" tileheight="32" nextobjectid="109">
  <tileset firstgid="1" source="../tilemap/forest.tsx"/>
- <layer name="Hintergrund" width="80" height="50">
+ <tileset firstgid="57" source="../tilemap/lawn_map.tsx"/>
+ <layer name="Hintergrund" width="58" height="42">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
- <layer name="Hintergrund2" width="80" height="50">
+ <layer name="Dekoration" width="58" height="42">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
-  </data>
- </layer>
- <layer name="Dekoration" width="80" height="50">
-  <data encoding="base64" compression="zlib">
-   eJztzgENAAAIA6AHsn8+Y3w6SEACAABwz7QDAAAAAAAAAAAAAAAADy3J6AAt
+   eJzt1oEJwCAMBEAHcq7S/SdwgQpCo7bmbgAJIX5SCvAn9+4CWObaXUAS+ky0GvCGuZzPPgV6evkgm8/3djdknxG7FWL5U3xZ9p03w8qeyhfIQ14DnEOmPxu9bbPewA20EAdr
   </data>
  </layer>
  <objectgroup name="Objekte">
@@ -22,8 +18,24 @@
   </object>
   <object id="5" name="Bewegen Fertig" type="Welt" x="517.667" y="747.834" width="28.8333" height="71.3333"/>
   <object id="65" name="Interaktion" type="Welt" x="582.667" y="664" width="114.667" height="31.3333"/>
-  <object id="67" name="Ausgang" type="Welt" x="968.667" y="230.667" width="31.3333" height="82.6667"/>
+  <object id="67" name="Ausgang" type="Welt" x="1809" y="1156.34" width="31.3333" height="90.6667"/>
   <object id="68" name="Pilz" type="Welt" x="601.333" y="311.333" width="44" height="68">
+   <ellipse/>
+  </object>
+  <object id="78" name="InteraktionBarriere" type="Welt" x="1159.67" y="240" width="40" height="62"/>
+  <object id="81" name="KampfBarriere" type="Welt" x="1067" y="1169" width="40" height="62"/>
+  <object id="103" name="Kampf" type="Welt" x="1217.33" y="319" width="192" height="31.3333"/>
+  <object id="104" name="Kampf Fertig" type="Welt" x="1288.25" y="1160.33" width="28.8333" height="79.3333"/>
+  <object id="105" name="Kampf Dummy 1" type="Welt" x="1022.66" y="705.333" width="28" height="26.6667">
+   <ellipse/>
+  </object>
+  <object id="106" name="Kampf Dummy 2" type="Welt" x="1226" y="714.667" width="28" height="26.6667">
+   <ellipse/>
+  </object>
+  <object id="107" name="Kampf Dummy 3" type="Welt" x="1170" y="856" width="28" height="26.6667">
+   <ellipse/>
+  </object>
+  <object id="108" name="Kampf Dummy 4" type="Welt" x="831.333" y="833.333" width="28" height="26.6667">
    <ellipse/>
   </object>
  </objectgroup>
@@ -35,7 +47,7 @@
    <polygon points="0,0 -1,-129 96,-128 104,-124 44.5,37 33,29.5 21,26.5"/>
   </object>
   <object id="41" x="223.5" y="560.5" width="199.5" height="126"/>
-  <object id="43" x="462.5" y="817" width="158.5" height="125.5"/>
+  <object id="43" x="462.5" y="817" width="223.5" height="125.5"/>
   <object id="45" x="219.333" y="642" width="52" height="107.333"/>
   <object id="46" x="187.333" y="686.667" width="54" height="256.667"/>
   <object id="48" x="238.667" y="913.333" width="244" height="36.6667"/>
@@ -48,16 +60,53 @@
   <object id="56" x="462.667" y="69.3333" width="66" height="106.667"/>
   <object id="57" x="522" y="-0.666667" width="36.6667" height="114.667"/>
   <object id="58" x="548" y="6.66667" width="208" height="40.6667"/>
-  <object id="59" x="947.333" y="-24" width="57.3333" height="262"/>
+  <object id="59" x="947.333" y="175.333" width="431.333" height="62.6667"/>
   <object id="60" x="714.667" y="36.6667" width="138" height="42"/>
   <object id="61" x="810.667" y="71.3333" width="110.667" height="40.6667"/>
   <object id="62" x="845.333" y="107.333" width="116.667" height="40"/>
   <object id="63" x="877.333" y="140" width="86" height="66"/>
-  <object id="64" x="884" y="308" width="108" height="57.3333"/>
+  <object id="64" x="880.5" y="304.5" width="354.5" height="61.8333"/>
+  <object id="69" x="656" y="753" width="63" height="122"/>
+  <object id="70" x="687" y="657" width="64.3333" height="99"/>
+  <object id="71" x="660" y="594.5" width="91.5" height="63"/>
+  <object id="72" x="687" y="562" width="97.5" height="34.5"/>
+  <object id="73" x="718.5" y="496" width="125" height="63.5"/>
+  <object id="75" x="847.5" y="336.5" width="96.5" height="124"/>
+  <object id="76" x="764.5" y="502.5">
+   <polygon points="0,0 89,-98.5 165,-46 73.5,56"/>
+  </object>
+  <object id="82" x="1309" y="232">
+   <polygon points="0,0 83,115 124,66 51,-16"/>
+  </object>
+  <object id="83" x="1389" y="309.5" width="45.5" height="135"/>
+  <object id="84" x="1393.5" y="385">
+   <polygon points="0,0 -66.5,54.5 -66,105.5 21.5,37"/>
+  </object>
+  <object id="85" x="1261.5" y="489" width="68" height="135"/>
+  <object id="86" x="1328" y="462.5" width="61.5" height="195"/>
+  <object id="87" x="1358.67" y="645.333" width="125.333" height="44.6667"/>
+  <object id="88" x="1420.67" y="677.333" width="46.6667" height="193.333"/>
+  <object id="89" x="1394" y="850" width="46" height="126"/>
+  <object id="90" x="1361.33" y="946" width="53.3333" height="188"/>
+  <object id="91" x="1040" y="1101.33" width="324" height="62.6667"/>
+  <object id="93" x="1191.33" y="1100">
+   <polygon points="0,0 20,-29.3333 80.6667,-28 112.667,-59.3333 164.667,-67.3333 182,-74 173.333,9.33333"/>
+  </object>
+  <object id="94" x="1413" y="1091" width="111" height="42"/>
+  <object id="95" x="1513" y="1062" width="188" height="40"/>
+  <object id="96" x="1674" y="1091" width="130" height="43"/>
+  <object id="97" x="1771" y="1125" width="94" height="41"/>
+  <object id="98" x="985.333" y="1228" width="877.333" height="36"/>
+  <object id="99" x="911.333" y="1195.33" width="76" height="74.6667"/>
+  <object id="100" x="825.333" y="1074" width="51.3333" height="54"/>
+  <object id="101" x="868" y="1097.33" width="45.3333" height="138.667"/>
+  <object id="102" x="681.333" y="924.667">
+   <polygon points="0,0 163.333,161.333 136.667,209.333 -44.6667,11.3333"/>
+  </object>
  </objectgroup>
- <layer name="Vordergrund" width="80" height="50">
+ <layer name="Vordergrund" width="58" height="42">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAGo+gAAB
+   eJztwQENAAAAwqD3T20PBxQAAAAAAAAAAAAPBiYQAAE=
   </data>
  </layer>
 </map>

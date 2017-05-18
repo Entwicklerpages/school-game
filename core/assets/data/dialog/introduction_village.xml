@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<level atlas="">
+    <characters>
+        <character>
+            <id>buergermeister</id>
+            <title>Bürgermeister</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>wache1</id>
+            <title>Crasus</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>wache2</id>
+            <title>Staltus</title>
+            <image>no</image>
+        </character>
+    </characters>
+    <dialogs>
+        <dialog name="schild_crasus">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Hier wohnt Crasus|br|Dorfwache</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_stultus">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Hier wohnt Stultus|br|Dorfwache</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_schmied">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Schmiede von Cicero</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_hexe">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Tränkebrauerei Fortidora|br|Geöffnet, wenn ich da bin.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_krieger">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Pugnato</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_paerchen">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Hier leben Avira und Tiborn.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild_buergermeister">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Haus des Bürgermeisters|br|Irgendwo im Dorf werd ich schon zu finden sein.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="brunnen">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Ein Brunnen mit so vielen Details war sicher aufwendig zu Bauen ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="legendenstein">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Die Legende dieses Dorfes ...</text>
+                    <text>Leider kann man die Legende nicht mehr lesen.|br|Der Stein ist schon zu kaputt.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="buergermeister">
+            <statement talking="buergermeister">
+                <player position="left"></player>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Da bist du ja.</text>
+                    <text>Und dazu noch sehr munter, wie ich sehe.</text>
+                    <text>Also hat dich der Trank unserer kleinen Hexe geholfen.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"></player>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>...</text>
+                </texts>
+            </statement>
+            <statement talking="buergermeister">
+                <player position="left"></player>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Nun denn.</text>
+                    <text>Ich muss dir wohl sagen, dass ich glaube, dass es kein Zufall ist, |br|dass du hier gestrandet bist.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"></player>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Warum?</text>
+                </texts>
+            </statement>
+            <statement talking="buergermeister">
+                <player position="left"></player>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Nun ja, es gibt hier im Dorf so eine Legende ...</text>
+                    <text>Es soll drei Kristalle auf dieser Insel geben,|br|die für den Fortbestand dieser Insel und dieses Dorfes sorgen.|br|Doch die Kristalle können nur von magischen Wesen berührt werden.</text>
+                    <text>Es gibt einen Wasserkristall,|br|der für sauberes Wasser sorgt.</text>
+                    <text>Er soll in der Höhle am Strand sein.</text>
+                    <text>Dann gibt es noch den Naturkristall, der im Wald sein soll.</text>
+                    <text>Dieser sorgt für das Wachstum der Pflanzen auf dieser Insel</text>
+                    <text>Und als letztes gibt es noch den Kristall des Lebens.</text>
+                    <text>Dieser soll laut der Legende die Insel am Leben erhalten|br|und dazu auch Krankheiten heilen können.</text>
+                    <text>Und wenn alles hoffnungslos erscheint,|br|wird ein Fremder, der anders ist,|br|aufkreuzen und die Insel retten.</text>
+                    <text>Er wird gegen die bösen Wesen auf dieser Insel kämpfen.</text>
+                    <text>Und der Insel endlich wieder Frieden bringen.</text>
+                    <text>Und nun, da wir in Not sind,|br|strandet ein Halbelf an unserer Küste.</text>
+                    <text>Wir sind alle der festen Überzeugung, dass du der besagte Fremde bist, |br|der uns allen den Frieden bringen wird.</text>
+                    <text>Auch glauben wir, dass du als Halbelf|br|der einzige bist, der gegen die bösen Wesen eine Chance hat.</text>
+                    <text>Also bitte ich dich, als Bürgermeister,|br|rette unser Dorf.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Aber wie soll ich denn das Dorf retten?</text>
+                    <text>Ich kann mich doch an nichts erinnern und|br| ob ich kämpfen kann, weiß ich auch nicht.</text>
+                </texts>
+            </statement>
+            <statement talking="buergermeister">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Ich bin mir sicher, dass du kämpfen kannst.</text>
+                    <text>Neben dir im Sand lag ein Elfenschwert, das du fest umklammert hast.</text>
+                    <text>Ich persönlich kennen mich nicht wirklich damit aus,|br|aber Pugnato, unser Krieger, ist sich sehr sicher,|br|dass dieses Schwert, das eines Kriegers ist.</text>
+                    <text>Und da es deins ist, musst du wohl ein Krieger sein.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Aber wie soll ich dieses Dorf denn retten?|br|Und warum kann das der Krieger nicht selbst?</text>
+                </texts>
+            </statement>
+            <statement talking="buergermeister">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Wir bitten dich, die Kristalle ins Dorf zu bringen, |br|damit wir nicht mehr in Angst vor dem, was auserhalb des Dorfen lauert, leben müssen.</text>
+                    <text>Und nur du kannst die Kristalle holen,|br|da wir sie nicht berühren können.</text>
+                    <text>Es heißt, dass wenn ein Mensch die Kristalle berührt,|br|er oder sie durch die Magie der Kristalle fürchterlichen Schaden nimmt.</text>
+                    <text>Da du ein halb-magisches Wesen bist, sollte das für dich kein Problem sein.</text>
+                </texts>
+            </statement>
+            <statement talking="#player#">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>In Ordnung, ich werde euch helfen.</text>
+                </texts>
+            </statement>
+            <statement talking="buergermeister">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Ich danke dir! |br|Der erste Kristall ist in der Wasserhöhle.</text>
+                    <text>Die Höhle befindet sich links,  wenn du aus dem Dorf gehst.</text>
+                    <text>Ich bin mir sicher, dass du das schaffen wirst.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="buergermeister_fertig">
+            <statement talking="buergermeister">
+                <player position="left"/>
+                <display position="right">buergermeister</display>
+                <sound></sound>
+                <texts>
+                    <text>Geh nun aus dem Dorf.|br|Die Höhle ist dann links.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="wache">
+            <statement talking="wache1">
+                <display position="left">wache1</display>
+                <display position="right">wache2</display>
+                <sound></sound>
+                <texts>
+                    <text>Unbewaffnet solltest du nicht weiter gehen!|br|Das ist viel zu gefährlich!</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
+</level>

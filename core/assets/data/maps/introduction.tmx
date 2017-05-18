@@ -1,39 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" nextobjectid="38">
- <tileset firstgid="1" source="../tilemap/test.tsx"/>
- <tileset firstgid="49" source="../tilemap/forest.tsx"/>
- <tileset firstgid="105" source="../tilemap/graveyard.tsx"/>
- <tileset firstgid="125" source="../tilemap/cave.tsx"/>
- <tileset firstgid="181" source="../tilemap/village.tsx"/>
- <tileset firstgid="277" source="../tilemap/village_deco.tsx"/>
- <tileset firstgid="280" source="../tilemap/painful_decoration.tsx"/>
- <tileset firstgid="283" source="../tilemap/village_mayor.tsx"/>
- <tileset firstgid="284" source="../tilemap/village_houses.tsx"/>
- <tileset firstgid="286" source="../tilemap/villager.tsx"/>
- <layer name="Hintergrund" width="30" height="30">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="12" height="16" tilewidth="32" tileheight="32" nextobjectid="77">
+ <tileset firstgid="1" source="../tilemap/village.tsx"/>
+ <tileset firstgid="97" source="../tilemap/village_houses.tsx"/>
+ <tileset firstgid="99" source="../tilemap/villager.tsx"/>
+ <layer name="Hintergrund" width="12" height="16">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+   eJzzYmBg8CIBR5KILYc4JgTQ1UcBcTQeeqD9M9RwIBrGJoaMSQUAY8sqrQ==
   </data>
  </layer>
- <layer name="Hintergrund2" width="30" height="30">
+ <layer name="Hintergrund2" width="12" height="16">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+   eJxjYCANuANxCBCHItEeUDkPLHL+QBwDxLFIdAAQx0NpdDlSgQsQu5Gg3geI/ciwh9ogDoppDSKwiIHCzBUNw8IwAYt6UJj5ouHBEIbUAACQ1Q2y
   </data>
  </layer>
- <layer name="Dekoration" width="30" height="30">
+ <layer name="Dekoration" width="12" height="16">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+   eJxjYBjawAmInSnQb0dAPgiIg/HQMBAGxfQCmRTqt4fSDkBsAqXpBWyIVGdLU1dAAAAytwXZ
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="10" name="Spielerstart" type="Start" x="380.948" y="292" width="20.1047" height="20">
+  <object id="10" name="Spielerstart" type="Start" x="40.448" y="352" width="20.1047" height="20">
    <ellipse/>
   </object>
+  <object id="52" name="Trank_schrank1" type="Welt" x="30.5" y="78.5" width="128" height="40.5"/>
+  <object id="53" name="Trank_schrank2" type="Welt" x="256.5" y="86" width="127.5" height="33"/>
+  <object id="55" name="Zauberbuch" type="Welt" x="186.5" y="80" width="43.5" height="39"/>
+  <object id="57" name="Pulver" type="Welt" x="0.5" y="124" width="80" height="43"/>
+  <object id="58" name="Pergamentrolle" type="Welt" x="253.5" y="301" width="104" height="46"/>
+  <object id="59" name="Briefe" type="Welt" x="182.5" y="300" width="47.5" height="48.5"/>
+  <object id="60" name="Wassereimer" type="Welt" x="328.5" y="399.5" width="56" height="48.5"/>
+  <object id="64" name="Zauberkessel" type="Welt" x="106" y="142.5" width="74.5" height="59"/>
+  <object id="68" name="Eimer" type="Welt" x="21" y="400.5" width="57.5" height="60"/>
+  <object id="69" name="Bett" type="Welt" x="-19" y="308.5" width="80" height="83"/>
+  <object id="70" name="Ausgang" type="Welt" x="117" y="453" width="52" height="34.5"/>
+  <object id="71" name="Heilerin" type="Welt" x="68.5" y="311.5" width="33" height="30.5"/>
  </objectgroup>
- <objectgroup name="Kollisionen"/>
- <layer name="Vordergrund" width="30" height="30">
+ <objectgroup name="Kollisionen">
+  <object id="38" x="1" y="60.5" width="385" height="35"/>
+  <object id="43" x="159" y="319.5" width="189" height="64"/>
+  <object id="44" x="2" y="321" width="28.5" height="61"/>
+  <object id="45" x="2" y="210.5" width="254.5" height="44.5"/>
+  <object id="46" x="320.5" y="210.5" width="63" height="46"/>
+  <object id="47" x="354.5" y="434.5" width="27.5" height="13.5"/>
+  <object id="48" x="33" y="429.5" width="27.5" height="18"/>
+  <object id="49" x="1.5" y="127.5" width="60.5" height="64"/>
+  <object id="63" x="130.5" y="184" width="26.5" height="8"/>
+  <object id="72" x="66.5" y="312.5" width="25" height="6.5"/>
+  <object id="75" x="-22.5" y="449.5" width="147" height="29.5"/>
+  <object id="76" x="162" y="449" width="225.5" height="31"/>
+ </objectgroup>
+ <layer name="Vordergrund" width="12" height="16">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAPBoDhAAAQ==
+   eJxjYBgFo4C+wIZIdbY0dQUEAAA7pAB6
+  </data>
+ </layer>
+ <layer name="Vordergrund2" width="12" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DkAgADAAAB
   </data>
  </layer>
 </map>

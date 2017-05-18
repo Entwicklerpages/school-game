@@ -4,59 +4,59 @@ size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Drache_Hinten1
+dragon_back
   rotate: false
   xy: 2, 100
   size: 128, 96
   orig: 128, 96
   offset: 0, 0
-  index: -1
-Drache_Hinten2
+  index: 1
+dragon_back
   rotate: false
   xy: 2, 2
   size: 128, 96
   orig: 128, 96
   offset: 0, 0
-  index: -1
-Drache_Hinten3
+  index: 2
+dragon_back
   rotate: false
   xy: 132, 100
   size: 128, 96
   orig: 128, 96
   offset: 0, 0
-  index: -1
-Drache_Seite
+  index: 3
+dragon_front
+  rotate: false
+  xy: 132, 2
+  size: 128, 96
+  orig: 128, 96
+  offset: 0, 0
+  index: 1
+dragon_front
+  rotate: false
+  xy: 262, 100
+  size: 128, 96
+  orig: 128, 96
+  offset: 0, 0
+  index: 2
+dragon_side
   rotate: false
   xy: 262, 2
   size: 128, 96
   orig: 128, 96
   offset: 0, 0
   index: 1
-Drache_Seite2
-  rotate: false
-  xy: 132, 2
-  size: 128, 96
-  orig: 128, 96
-  offset: 0, 0
-  index: -1
-Drache_Seite3
-  rotate: false
-  xy: 262, 100
-  size: 128, 96
-  orig: 128, 96
-  offset: 0, 0
-  index: -1
-Drache_Vorne1
+dragon_side
   rotate: false
   xy: 392, 100
   size: 128, 96
   orig: 128, 96
   offset: 0, 0
-  index: -1
-Drache_Vorne2
+  index: 2
+dragon_side
   rotate: false
   xy: 392, 2
   size: 128, 96
   orig: 128, 96
   offset: 0, 0
-  index: -1
+  index: 3

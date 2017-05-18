@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<level atlas="">
+    <characters>
+        <character>
+            <id>schild</id>
+            <title>Schild</title>
+            <image>no</image>
+        </character>
+        <character>
+            <id>tagebuch</id>
+            <title>Tagebuch</title>
+            <image>no</image>
+        </character>
+    </characters>
+    <dialogs>
+        <dialog name="wegweiser">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <texts>
+                    <text>Nach Links:|br|- Höhle</text>
+                    <text>Nach Oben:|br|- Wald|br|- Friedhof</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="hoehle">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <texts>
+                    <text>Ab hier beginnt die Höhle!|br|Vorsicht ist geboten!</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="sperre">
+            <statement talking="#player#">
+                <player position="left"></player>
+                <sound></sound>
+                <texts>
+                    <text>Seltsam.|br|Diese Bäume wachsen hier mitten auf dem Weg.</text>
+                    <text>Wird wohl seinen Grund haben ...</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="tagebuch1">
+            <statement talking="tagebuch">
+                <display position="left">tagebuch</display>
+                <sound></sound>
+                <texts>
+                    <text>Seiten aus dem Tagebuch eines Abenteuerers.|br|Ein Buch von Argo Zackhoff</text>
+                    <text>Eintrag 1|br|Heute begebe ich mich auf meine große Reise!|br|Ich werde jeden Fleck hier erkunden.</text>
+                    <text>Zuerst werde ich mir die Höhle genauer ansehen.|br|Es gibt dort zwar einige Gefahren, allerdings werde ich das|br|sicher bewältigen!</text>
+                    <text>Man hat mich nur vor den Seeigeln gewarnt.|br|Die sollen da wohl überall rum liegen.|br|Naja, egal. Wird schon gehen.</text>
+                    <text>[Die restlichen Seiten fehlen.]</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
+</level>
