@@ -26,7 +26,7 @@ Levels:
 |
 |>>>>>>>>>>>>>>>>>>>>>>>>>>
 |
-|--Forest Intro √√
+|--Forest Intro √√√
 |
 |--Forest Battle √
 |

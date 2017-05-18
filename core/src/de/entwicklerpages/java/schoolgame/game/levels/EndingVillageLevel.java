@@ -612,7 +612,7 @@ public class EndingVillageLevel extends Level
             @Override
             public void run()
             {
-                changeLevel("forest_crossing");
+                exitToCredits();
             }
         });
 

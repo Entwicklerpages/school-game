@@ -463,7 +463,38 @@ public abstract class Level implements Disposable {
      */
     public final void exitToCredits()
     {
-        levelManager.exitToCredits();
+        activeCutScene = this.getOutroCutScene();
+        if (activeCutScene == null)
+        {
+            if (physicalWorld.isLocked())
+            {
+                Gdx.app.postRunnable(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        levelManager.exitToCredits();
+                    }
+                });
+            } else
+            {
+                levelManager.exitToCredits();
+            }
+        }
+        else {
+            levelState = LevelState.OUTRO;
+
+            dialogManager.setFinishedCallback(new ActionCallback()
+            {
+                @Override
+                public void run()
+                {
+                    levelManager.exitToCredits();
+                }
+            });
+
+            dialogManager.startDialog(activeCutScene.getDialogId());
+        }
     }
 
     /**
