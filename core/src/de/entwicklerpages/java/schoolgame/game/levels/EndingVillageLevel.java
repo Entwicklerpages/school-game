@@ -31,6 +31,12 @@ public class EndingVillageLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "celtic_impulse";
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
         InteractionZone witch = new InteractionZone("Schild_Hexe");

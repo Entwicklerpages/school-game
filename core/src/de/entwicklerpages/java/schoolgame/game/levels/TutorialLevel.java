@@ -42,6 +42,12 @@ public class TutorialLevel extends Level {
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "birds";
+    }
+
+    @Override
     public CutScene getIntroCutScene()
     {
         return new CutScene(null, "intro");

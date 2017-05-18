@@ -26,6 +26,12 @@ public class GraveyardBattleLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "myst_on_the_moor";
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
     }

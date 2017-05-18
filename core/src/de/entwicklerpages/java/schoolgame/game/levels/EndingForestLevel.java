@@ -30,6 +30,12 @@ public class EndingForestLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "skye_cuillin";
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
         InteractionZone witch = new InteractionZone("Heilerin");

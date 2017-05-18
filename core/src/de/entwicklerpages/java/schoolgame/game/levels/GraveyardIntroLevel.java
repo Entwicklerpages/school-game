@@ -32,6 +32,12 @@ public class GraveyardIntroLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "myst_on_the_moor";
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
         InteractionZone signInteraction = new InteractionZone("Schild");

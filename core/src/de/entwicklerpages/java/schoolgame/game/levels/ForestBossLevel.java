@@ -25,6 +25,12 @@ public class ForestBossLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "future_gladiator";
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
     }

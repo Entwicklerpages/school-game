@@ -30,6 +30,12 @@ public class CaveIntroLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "the_pyre";
+    }
+
+    @Override
     protected CutScene getIntroCutScene()
     {
         return new CutScene(null, "intro");

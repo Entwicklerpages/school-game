@@ -26,6 +26,12 @@ public class ForestBattle extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "skye_cuillin";
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
     }

@@ -35,6 +35,12 @@ public class GraveyardDecisionLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "myst_on_the_moor";
+    }
+
+    @Override
     protected CutScene getOutroCutScene()
     {
         return crystalTaken ? new CutScene(null, "outro") : null;

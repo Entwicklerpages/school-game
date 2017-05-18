@@ -181,7 +181,7 @@ public abstract class Level implements Disposable {
         this.game = game;
         this.levelManager = manager;
 
-        this.game.getAudioManager().selectMusic(null);
+        this.game.getAudioManager().selectMusic(getMusicName());
 
         try {
             this.dialogManager = new DialogManager(game, mapName, saveData.getPlayerName());
@@ -404,6 +404,16 @@ public abstract class Level implements Disposable {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // ÜBERSCHREIBBARE METHODEN
+
+    /**
+     * Erlaubt einem abgeleitetem Level ein Lied zu starten oder für Stille zu sorgen.
+     *
+     * @return der Name des Liedes oder null für Stille
+     */
+    protected String getMusicName()
+    {
+        return null;
+    }
 
     /**
      * Erlaubt einem abgeleitetem Level eine Intro CutScene festzulegen.

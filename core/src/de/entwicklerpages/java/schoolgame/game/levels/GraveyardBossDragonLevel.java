@@ -26,6 +26,12 @@ public class GraveyardBossDragonLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "netherworld_shanty";
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
     }

@@ -29,6 +29,12 @@ public class CavePuzzleLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "the_pyre";
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
         for (int i = 1; i <= 6; i++)
