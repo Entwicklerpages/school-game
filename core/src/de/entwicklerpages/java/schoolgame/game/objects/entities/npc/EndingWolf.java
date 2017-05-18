@@ -30,7 +30,7 @@ public class EndingWolf extends WorldObject implements ExtendedMapDisplayObject
     public void onInit()
     {
         wolfAtlas = new TextureAtlas(Gdx.files.internal("data/graphics/packed/wolf.atlas"));
-        wolf = wolfAtlas.findRegion("wolf_side_4");
+        wolf = wolfAtlas.findRegion("wolf_side", 4);
 
         if (rawObject instanceof EllipseMapObject)
         {
@@ -38,6 +38,7 @@ public class EndingWolf extends WorldObject implements ExtendedMapDisplayObject
             position = new Vector2(ellipseMapObject.getEllipse().x + ellipseMapObject.getEllipse().width / 2f, ellipseMapObject.getEllipse().y + ellipseMapObject.getEllipse().height / 2f);
         } else {
             Gdx.app.log("WARNING", "EndingWolf " + objectId + " must be an EllipseMapObject.");
+            worldObjectManager.removeObject(this);
         }
     }
 
@@ -50,15 +51,15 @@ public class EndingWolf extends WorldObject implements ExtendedMapDisplayObject
     @Override
     public void render(Batch batch, float deltaTime)
     {
-        batch.draw(wolf,                                        // TextureRegion (front, back, side)
-                position.x - wolf.getRegionWidth() / 2,           // Offset to the X position (character center)
-                position.y,                                          // Y position is at the foots
+        batch.draw(wolf,                                     // TextureRegion (front, back, side)
+                position.x - wolf.getRegionWidth() / 2,      // Offset to the X position (character center)
+                position.y,                                  // Y position is at the foots
                 wolf.getRegionWidth() / 2,                   // Origin X (important for flipping)
                 wolf.getRegionHeight(),                      // Origin Y
                 wolf.getRegionWidth(),                       // Width
                 wolf.getRegionHeight(),                      // Height
-                1f,                                         // Scale X (-1 to flip)
-                1f,                                             // Scale Y
+                2f,                                          // Scale X (-1 to flip)
+                2f,                                          // Scale Y
                 0f);
     }
 
