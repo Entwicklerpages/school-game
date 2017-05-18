@@ -2,10 +2,56 @@
 <level atlas="">
     <characters>
         <character>
-            <id>default</id>
-            <title>Default</title>
+            <id>stimme</id>
+            <title>Stimme</title>
             <image>no</image>
         </character>
     </characters>
-    <dialogs/>
+    <dialogs>
+        <dialog name="stimme1">
+            <statement talking="stimme">
+                <display position="left">stimme</display>
+                <sound></sound>
+                <texts>
+                    <text>Sie nutzen dich nur aus.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="stimme2">
+            <statement talking="stimme">
+                <display position="left">stimme</display>
+                <sound></sound>
+                <texts>
+                    <text>Du wirst hier alle töten.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="stimme3">
+            <statement talking="stimme">
+                <display position="left">stimme</display>
+                <sound></sound>
+                <texts>
+                    <text>Du musst dich entscheiden.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="stimme4">
+            <statement talking="stimme">
+                <display position="left">stimme</display>
+                <sound></sound>
+                <texts>
+                    <text>Nimm den Kristall oder geh zurück und lass ihn hier.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="stimme5">
+            <statement talking="stimme">
+                <display position="left">stimme</display>
+                <sound></sound>
+                <texts>
+                    <text>Du musst entscheiden ob deine Wahl die richtige ist.</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
 </level>
