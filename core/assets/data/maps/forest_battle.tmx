@@ -21,223 +21,223 @@
   <object id="1" name="Spielerstart" type="Start" x="329.615" y="314.065" width="10" height="10">
    <ellipse/>
   </object>
-  <object id="20" name="Bear" type="Welt" x="557.333" y="564">
+  <object id="20" name="Bear61" type="Welt" x="557.333" y="564">
    <ellipse/>
   </object>
-  <object id="23" name="Bear" type="Welt" x="630.667" y="634.667">
+  <object id="23" name="Bear60" type="Welt" x="630.667" y="634.667">
    <ellipse/>
   </object>
-  <object id="24" name="Bear" type="Welt" x="498.667" y="697.333">
+  <object id="24" name="Bear59" type="Welt" x="498.667" y="697.333">
    <ellipse/>
   </object>
-  <object id="25" name="Bear" type="Welt" x="629.333" y="758.667">
+  <object id="25" name="Bear58" type="Welt" x="629.333" y="758.667">
    <ellipse/>
   </object>
-  <object id="26" name="Bear" type="Welt" x="1005.33" y="1361.33">
+  <object id="26" name="Bear57" type="Welt" x="1005.33" y="1361.33">
    <ellipse/>
   </object>
-  <object id="27" name="Bear" type="Welt" x="913.333" y="1422.67">
+  <object id="27" name="Bear56" type="Welt" x="913.333" y="1422.67">
    <ellipse/>
   </object>
-  <object id="28" name="Bear" type="Welt" x="457.333" y="1969.33">
+  <object id="28" name="Bear55" type="Welt" x="457.333" y="1969.33">
    <ellipse/>
   </object>
-  <object id="29" name="Bear" type="Welt" x="594.667" y="2033.33">
+  <object id="29" name="Bear54" type="Welt" x="594.667" y="2033.33">
    <ellipse/>
   </object>
-  <object id="30" name="Bear" type="Welt" x="465.333" y="2133.33">
+  <object id="30" name="Bear53" type="Welt" x="465.333" y="2133.33">
    <ellipse/>
   </object>
-  <object id="31" name="Bear" type="Welt" x="1144" y="2520">
+  <object id="31" name="Bear52" type="Welt" x="1144" y="2520">
    <ellipse/>
   </object>
-  <object id="32" name="Bear" type="Welt" x="1137.33" y="2710.67">
+  <object id="32" name="Bear51" type="Welt" x="1137.33" y="2710.67">
    <ellipse/>
   </object>
-  <object id="33" name="Bear" type="Welt" x="1305.33" y="2645.33">
+  <object id="33" name="Bear50" type="Welt" x="1305.33" y="2645.33">
    <ellipse/>
   </object>
-  <object id="34" name="Bear" type="Welt" x="621.333" y="3477.33">
+  <object id="34" name="Bear49" type="Welt" x="621.333" y="3477.33">
    <ellipse/>
   </object>
-  <object id="35" name="Bear" type="Welt" x="625.333" y="3637.33">
+  <object id="35" name="Bear48" type="Welt" x="625.333" y="3637.33">
    <ellipse/>
   </object>
-  <object id="36" name="Bear" type="Welt" x="653.333" y="3985.33">
+  <object id="36" name="Bear47" type="Welt" x="653.333" y="3985.33">
    <ellipse/>
   </object>
-  <object id="37" name="Bear" type="Welt" x="656" y="4117.33">
+  <object id="37" name="Bear46" type="Welt" x="656" y="4117.33">
    <ellipse/>
   </object>
-  <object id="38" name="Bear" type="Welt" x="1489.33" y="4205.33">
+  <object id="38" name="Bear45" type="Welt" x="1489.33" y="4205.33">
    <ellipse/>
   </object>
-  <object id="39" name="Bear" type="Welt" x="1586.67" y="4180">
+  <object id="39" name="Bear44" type="Welt" x="1586.67" y="4180">
    <ellipse/>
   </object>
-  <object id="40" name="Bear" type="Welt" x="1649.33" y="4246.67">
+  <object id="40" name="Bear43" type="Welt" x="1649.33" y="4246.67">
    <ellipse/>
   </object>
-  <object id="41" name="Bear" type="Welt" x="1745.33" y="4177.33">
+  <object id="41" name="Bear42" type="Welt" x="1745.33" y="4177.33">
    <ellipse/>
   </object>
-  <object id="42" name="Bear" type="Welt" x="1810.67" y="4245.33">
+  <object id="42" name="Bear41" type="Welt" x="1810.67" y="4245.33">
    <ellipse/>
   </object>
-  <object id="43" name="Bear" type="Welt" x="1846.67" y="4141.33">
+  <object id="43" name="Bear40" type="Welt" x="1846.67" y="4141.33">
    <ellipse/>
   </object>
-  <object id="44" name="Bear" type="Welt" x="1941.33" y="4212">
+  <object id="44" name="Bear39" type="Welt" x="1941.33" y="4212">
    <ellipse/>
   </object>
-  <object id="45" name="Bear" type="Welt" x="2674.67" y="3601.33">
+  <object id="45" name="Bear38" type="Welt" x="2674.67" y="3601.33">
    <ellipse/>
   </object>
-  <object id="46" name="Bear" type="Welt" x="2673.33" y="3637.33">
+  <object id="46" name="Bear37" type="Welt" x="2673.33" y="3637.33">
    <ellipse/>
   </object>
-  <object id="47" name="Bear" type="Welt" x="2676" y="3668">
+  <object id="47" name="Bear36" type="Welt" x="2676" y="3668">
    <ellipse/>
   </object>
-  <object id="48" name="Bear" type="Welt" x="2673.33" y="3702.67">
+  <object id="48" name="Bear35" type="Welt" x="2673.33" y="3702.67">
    <ellipse/>
   </object>
-  <object id="49" name="Bear" type="Welt" x="3532" y="3892">
+  <object id="49" name="Bear34" type="Welt" x="3532" y="3892">
    <ellipse/>
   </object>
-  <object id="50" name="Bear" type="Welt" x="3632" y="3790.67">
+  <object id="50" name="Bear33" type="Welt" x="3632" y="3790.67">
    <ellipse/>
   </object>
-  <object id="51" name="Bear" type="Welt" x="3700" y="3893.33">
+  <object id="51" name="Bear32" type="Welt" x="3700" y="3893.33">
    <ellipse/>
   </object>
-  <object id="52" name="Bear" type="Welt" x="3917.33" y="2933.33">
+  <object id="52" name="Bear31" type="Welt" x="3917.33" y="2933.33">
    <ellipse/>
   </object>
-  <object id="53" name="Bear" type="Welt" x="4086.67" y="2865.33">
+  <object id="53" name="Bear30" type="Welt" x="4086.67" y="2865.33">
    <ellipse/>
   </object>
-  <object id="54" name="Bear" type="Welt" x="3981.33" y="3120">
+  <object id="54" name="Bear29" type="Welt" x="3981.33" y="3120">
    <ellipse/>
   </object>
-  <object id="55" name="Bear" type="Welt" x="3634.67" y="2348">
+  <object id="55" name="Bear28" type="Welt" x="3634.67" y="2348">
    <ellipse/>
   </object>
-  <object id="56" name="Bear" type="Welt" x="3920" y="2421.33">
+  <object id="56" name="Bear27" type="Welt" x="3920" y="2421.33">
    <ellipse/>
   </object>
-  <object id="57" name="Bear" type="Welt" x="3116" y="2772">
+  <object id="57" name="Bear26" type="Welt" x="3116" y="2772">
    <ellipse/>
   </object>
-  <object id="58" name="Bear" type="Welt" x="3112" y="2648">
+  <object id="58" name="Bear25" type="Welt" x="3112" y="2648">
    <ellipse/>
   </object>
-  <object id="59" name="Bear" type="Welt" x="1584" y="3576">
+  <object id="59" name="Bear24" type="Welt" x="1584" y="3576">
    <ellipse/>
   </object>
-  <object id="60" name="Bear" type="Welt" x="1648" y="3664">
+  <object id="60" name="Bear23" type="Welt" x="1648" y="3664">
    <ellipse/>
   </object>
-  <object id="61" name="Bear" type="Welt" x="1740" y="3512">
+  <object id="61" name="Bear22" type="Welt" x="1740" y="3512">
    <ellipse/>
   </object>
-  <object id="62" name="Bear" type="Welt" x="2176" y="2056">
+  <object id="62" name="Bear21" type="Welt" x="2176" y="2056">
    <ellipse/>
   </object>
-  <object id="63" name="Bear" type="Welt" x="2320" y="2072">
+  <object id="63" name="Bear20" type="Welt" x="2320" y="2072">
    <ellipse/>
   </object>
-  <object id="64" name="Bear" type="Welt" x="2836" y="1328">
+  <object id="64" name="Bear19" type="Welt" x="2836" y="1328">
    <ellipse/>
   </object>
-  <object id="65" name="Bear" type="Welt" x="2992" y="1316">
+  <object id="65" name="Bear18" type="Welt" x="2992" y="1316">
    <ellipse/>
   </object>
-  <object id="66" name="Bear" type="Welt" x="1896" y="252">
+  <object id="66" name="Bear17" type="Welt" x="1896" y="252">
    <ellipse/>
   </object>
-  <object id="67" name="Bear" type="Welt" x="2020" y="232">
+  <object id="67" name="Bear16" type="Welt" x="2020" y="232">
    <ellipse/>
   </object>
-  <object id="68" name="Bear" type="Welt" x="1964" y="328">
+  <object id="68" name="Bear15" type="Welt" x="1964" y="328">
    <ellipse/>
   </object>
-  <object id="69" name="Bear" type="Welt" x="2064" y="320">
+  <object id="69" name="Bear14" type="Welt" x="2064" y="320">
    <ellipse/>
   </object>
-  <object id="70" name="Bear" type="Welt" x="2020" y="412">
+  <object id="70" name="Bear13" type="Welt" x="2020" y="412">
    <ellipse/>
   </object>
-  <object id="71" name="Bear" type="Welt" x="2108" y="400">
+  <object id="71" name="Bear12" type="Welt" x="2108" y="400">
    <ellipse/>
   </object>
-  <object id="72" name="Bear" type="Welt" x="4032" y="1708">
+  <object id="72" name="Bear11" type="Welt" x="4032" y="1708">
    <ellipse/>
   </object>
-  <object id="73" name="Bear" type="Welt" x="4072" y="1784">
+  <object id="73" name="Bear10" type="Welt" x="4072" y="1784">
    <ellipse/>
   </object>
-  <object id="74" name="Bear" type="Welt" x="4132" y="1828">
+  <object id="74" name="Bear9" type="Welt" x="4132" y="1828">
    <ellipse/>
   </object>
-  <object id="75" name="Bear" type="Welt" x="4180" y="1776">
+  <object id="75" name="Bear8" type="Welt" x="4180" y="1776">
    <ellipse/>
   </object>
-  <object id="76" name="Bear" type="Welt" x="4148" y="1704">
+  <object id="76" name="Bear7" type="Welt" x="4148" y="1704">
    <ellipse/>
   </object>
-  <object id="77" name="Bear" type="Welt" x="4088" y="1608">
+  <object id="77" name="Bear6" type="Welt" x="4088" y="1608">
    <ellipse/>
   </object>
-  <object id="78" name="Bear" type="Welt" x="3328" y="904">
+  <object id="78" name="Bear5" type="Welt" x="3328" y="904">
    <ellipse/>
   </object>
-  <object id="79" name="Bear" type="Welt" x="3932" y="392">
+  <object id="79" name="Bear4" type="Welt" x="3932" y="392">
    <ellipse/>
   </object>
-  <object id="80" name="Bear" type="Welt" x="3556" y="536">
+  <object id="80" name="Bear3" type="Welt" x="3556" y="536">
    <ellipse/>
   </object>
-  <object id="81" name="Bear" type="Welt" x="3784" y="492">
+  <object id="81" name="Bear2" type="Welt" x="3784" y="492">
    <ellipse/>
   </object>
-  <object id="82" name="Bear" type="Welt" x="3416" y="668">
+  <object id="82" name="Bear1" type="Welt" x="3416" y="668">
    <ellipse/>
   </object>
-  <object id="92" name="Rabbit" type="Welt" x="944" y="976">
+  <object id="92" name="Rabbit12" type="Welt" x="944" y="976">
    <ellipse/>
   </object>
-  <object id="93" name="Rabbit" type="Welt" x="832" y="2388">
+  <object id="93" name="Rabbit11" type="Welt" x="832" y="2388">
    <ellipse/>
   </object>
-  <object id="94" name="Rabbit" type="Welt" x="2164" y="3144">
+  <object id="94" name="Rabbit10" type="Welt" x="2164" y="3144">
    <ellipse/>
   </object>
-  <object id="95" name="Rabbit" type="Welt" x="3736" y="1292">
+  <object id="95" name="Rabbit9" type="Welt" x="3736" y="1292">
    <ellipse/>
   </object>
-  <object id="96" name="Rabbit" type="Welt" x="1134.16" y="3148.46" rotation="-246.968">
+  <object id="96" name="Rabbit8" type="Welt" x="1134.16" y="3148.46" rotation="-246.968">
    <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
   </object>
-  <object id="98" name="Rabbit" type="Welt" x="1065.94" y="3244.9" rotation="9.92096">
+  <object id="98" name="Rabbit7" type="Welt" x="1065.94" y="3244.9" rotation="9.92096">
    <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
   </object>
-  <object id="99" name="Rabbit" type="Welt" x="2348.76" y="2500.81" rotation="-8.79053">
+  <object id="99" name="Rabbit6" type="Welt" x="2348.76" y="2500.81" rotation="-8.79053">
    <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
   </object>
-  <object id="100" name="Rabbit" type="Welt" x="2409.48" y="2591.73" rotation="-30.6571">
+  <object id="100" name="Rabbit5" type="Welt" x="2409.48" y="2591.73" rotation="-30.6571">
    <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
   </object>
-  <object id="101" name="Rabbit" type="Welt" x="2267.9" y="1609.1" rotation="305.661">
+  <object id="101" name="Rabbit4" type="Welt" x="2267.9" y="1609.1" rotation="305.661">
    <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
   </object>
-  <object id="102" name="Rabbit" type="Welt" x="2455.62" y="1515.66" rotation="222.521">
+  <object id="102" name="Rabbit3" type="Welt" x="2455.62" y="1515.66" rotation="222.521">
    <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
   </object>
-  <object id="103" name="Rabbit" type="Welt" x="3213.72" y="1245.28" rotation="326.159">
+  <object id="103" name="Rabbit2" type="Welt" x="3213.72" y="1245.28" rotation="326.159">
    <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
   </object>
-  <object id="104" name="Rabbit" type="Welt" x="3168.57" y="1206.36" rotation="350.634">
+  <object id="104" name="Rabbit1" type="Welt" x="3168.57" y="1206.36" rotation="350.634">
    <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
   </object>
  </objectgroup>
