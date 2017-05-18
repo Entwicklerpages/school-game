@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
+import de.entwicklerpages.java.schoolgame.AudioManager;
 import de.entwicklerpages.java.schoolgame.SchoolGame;
 import de.entwicklerpages.java.schoolgame.common.ActionCallback;
 import de.entwicklerpages.java.schoolgame.common.InputManager;
@@ -41,6 +42,7 @@ public class Player implements ExtendedMapDisplayObject {
     private static final float DIAGONAL_SWITCH_TIME = 0.4f;
     private static final float CAGE_THICKNESS = 20f;
     private static final long LONG_ATTACK_TIME = 1100L;
+    private static final float SOUND_PAUSE = 0.8f;
 
     private final Body playerBody;
     private final CheatManager cheatManager;
@@ -59,6 +61,8 @@ public class Player implements ExtendedMapDisplayObject {
 
     private EntityOrientation orientation;
     private float diagonalSwitchTimer = 0f;
+    private float soundTimer = 0f;
+    private boolean stepSide = false;
 
     private final TextureAtlas playerAtlas;
     private final TextureRegion playerFront;
@@ -70,6 +74,9 @@ public class Player implements ExtendedMapDisplayObject {
     private final Animation<TextureRegion> playerBackWalk;
 
     private final Array<TextureAtlas.AtlasRegion> playerAttack;
+
+    private final AudioManager.SoundKey leftStep;
+    private final AudioManager.SoundKey rightStep;
 
     private final SpriteBatch interfaceBatch;
     private final ShapeRenderer interfaceRenderer;
@@ -111,6 +118,9 @@ public class Player implements ExtendedMapDisplayObject {
         playerBackWalk = new Animation<TextureRegion>(1/7f, playerAtlas.findRegions(player + "_back_walk"), Animation.PlayMode.LOOP);
 
         playerAttack = playerAtlas.findRegions(player + "_sword");
+
+        leftStep = game.getAudioManager().createSound("walk", "grass_left", true);
+        rightStep = game.getAudioManager().createSound("walk", "grass_right", true);
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
