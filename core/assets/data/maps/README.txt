@@ -44,7 +44,7 @@ Levels:
 |
 |--Graveyard Puzzle √
 |
-|--Graveyard Decision √
+|--Graveyard Decision √√
    |
    |________________________________________________
         |                                           |
@@ -54,4 +54,4 @@ Levels:
         |                                           |
         |                                           |
         V                                           V
-    Ending Village √√√                        Ending Forest √
+    Ending Village √√√                        Ending Forest √√√

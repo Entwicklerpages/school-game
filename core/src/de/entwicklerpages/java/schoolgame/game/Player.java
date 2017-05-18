@@ -42,7 +42,7 @@ public class Player implements ExtendedMapDisplayObject {
     private static final float DIAGONAL_SWITCH_TIME = 0.4f;
     private static final float CAGE_THICKNESS = 20f;
     private static final long LONG_ATTACK_TIME = 1100L;
-    private static final float SOUND_PAUSE = 0.8f;
+    //private static final float SOUND_PAUSE = 0.2f;
 
     private final Body playerBody;
     private final CheatManager cheatManager;
@@ -61,8 +61,8 @@ public class Player implements ExtendedMapDisplayObject {
 
     private EntityOrientation orientation;
     private float diagonalSwitchTimer = 0f;
-    private float soundTimer = 0f;
-    private boolean stepSide = false;
+    //private float soundTimer = SOUND_PAUSE;
+    //private boolean stepSide = false;
 
     private final TextureAtlas playerAtlas;
     private final TextureRegion playerFront;
@@ -75,8 +75,9 @@ public class Player implements ExtendedMapDisplayObject {
 
     private final Array<TextureAtlas.AtlasRegion> playerAttack;
 
+    /*private final AudioManager audioManager;
     private final AudioManager.SoundKey leftStep;
-    private final AudioManager.SoundKey rightStep;
+    private final AudioManager.SoundKey rightStep;*/
 
     private final SpriteBatch interfaceBatch;
     private final ShapeRenderer interfaceRenderer;
@@ -119,8 +120,9 @@ public class Player implements ExtendedMapDisplayObject {
 
         playerAttack = playerAtlas.findRegions(player + "_sword");
 
-        leftStep = game.getAudioManager().createSound("walk", "grass_left", true);
-        rightStep = game.getAudioManager().createSound("walk", "grass_right", true);
+        /*audioManager = game.getAudioManager();
+        leftStep = audioManager.createSound("walk", "grass_left.wav", true);
+        rightStep = audioManager.createSound("walk", "grass_right.wav", true);*/
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -431,6 +433,19 @@ public class Player implements ExtendedMapDisplayObject {
             deltaY = 0f;
         }
 
+        /*if (!MathUtils.isZero(deltaX) || !MathUtils.isZero(deltaY))
+        {
+            soundTimer -= deltaTime;
+
+            if (soundTimer <= 0f)
+            {
+                soundTimer = SOUND_PAUSE;
+
+                audioManager.playSound(stepSide ? leftStep : rightStep, 0.3f);
+                stepSide = !stepSide;
+            }
+        }*/
+
         if (!MathUtils.isZero(deltaX) && !MathUtils.isZero(deltaY))
         {
             diagonalSwitchTimer += deltaTime;
@@ -468,7 +483,7 @@ public class Player implements ExtendedMapDisplayObject {
     /**
      * Zeigt die Spielfigur an. Dabei wird die Ausrichtung und der Zustand der Figur beachtet.
      *
-     * Zustände: Stehen, Laufen, TODO Attacke
+     * Zustände: Stehen, Laufen, Attacke
      *
      * @param batch der Batch, in den gerendert werden soll
      * @param deltaTime die Zeit, die seit dem letztem Frame vergangen ist
