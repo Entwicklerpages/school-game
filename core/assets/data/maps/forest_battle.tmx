@@ -204,71 +204,59 @@
   <object id="82" name="Bear_61" type="Welt" x="3416" y="668">
    <ellipse/>
   </object>
-  <object id="92" name="Rabbit_1" type="Welt" x="944" y="976">
-   <ellipse/>
+  <object id="96" name="Rabbit_5" type="Welt" x="1008.83" y="3299.13">
+   <polygon points="-52,46.6667 168.485,-120.121 271.758,87.1515"/>
   </object>
-  <object id="93" name="Rabbit_2" type="Welt" x="832" y="2388">
-   <ellipse/>
+  <object id="98" name="Rabbit_6" type="Welt" x="1032.1" y="3274.04">
+   <polygon points="-34.6667,0 151.151,-181.455 231.758,145.818"/>
   </object>
-  <object id="94" name="Rabbit_3" type="Welt" x="2164" y="3144">
-   <ellipse/>
+  <object id="99" name="Rabbit_7" type="Welt" x="2372.76" y="2527.48">
+   <polygon points="-19,54 147.818,-239.788 244.091,-49.1818"/>
   </object>
-  <object id="95" name="Rabbit_4" type="Welt" x="3736" y="1292">
-   <ellipse/>
+  <object id="100" name="Rabbit_8" type="Welt" x="2477.48" y="2573.06">
+   <polygon points="-52,-77 -42.182,-322.788 245.091,-16.1818"/>
   </object>
-  <object id="96" name="Rabbit_5" type="Welt" x="1134.16" y="3148.46" rotation="-246.968">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="101" name="Rabbit_9" type="Welt" x="2247.9" y="1538.43">
+   <polygon points="-29,47 76.818,-261.788 131.091,4.8182"/>
   </object>
-  <object id="98" name="Rabbit_6" type="Welt" x="1065.94" y="3244.9" rotation="9.92096">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="102" name="Rabbit_10" type="Welt" x="2172.95" y="1477.66">
+   <polygon points="76.9705,37.6625 90.798,-221.779 300.497,-20.8949"/>
   </object>
-  <object id="99" name="Rabbit_7" type="Welt" x="2348.76" y="2500.81" rotation="-8.79053">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="103" name="Rabbit_11" type="Welt" x="3233.72" y="1274.61">
+   <polygon points="-114,-5 71.818,-142.788 366.091,-43.1818"/>
   </object>
-  <object id="100" name="Rabbit_8" type="Welt" x="2409.48" y="2591.73" rotation="-30.6571">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
-  </object>
-  <object id="101" name="Rabbit_9" type="Welt" x="2267.9" y="1609.1" rotation="305.661">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
-  </object>
-  <object id="102" name="Rabbit_10" type="Welt" x="2455.62" y="1515.66" rotation="222.521">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
-  </object>
-  <object id="103" name="Rabbit_11" type="Welt" x="3213.72" y="1245.28" rotation="326.159">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
-  </object>
-  <object id="104" name="Rabbit_12" type="Welt" x="3168.57" y="1206.36" rotation="350.634">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="104" name="Rabbit_12" type="Welt" x="3169.9" y="1209.03">
+   <polygon points="21,-21 155.818,-234.788 246.091,20.8182"/>
   </object>
   <object id="140" name="Ausgang" type="Welt" x="4459" y="255" width="83" height="217"/>
   <object id="142" name="Dornen52" type="Welt" x="2080" y="562" width="30" height="15"/>
   <object id="143" name="Dornen51" type="Welt" x="2112" y="592" width="30" height="16"/>
   <object id="144" name="Dornen50" type="Welt" x="2116" y="1207" width="25" height="7"/>
   <object id="145" name="Dornen49" type="Welt" x="2149" y="1235" width="24" height="14"/>
-  <object id="146" name="Dornen48" type="Welt " x="2560" y="1426" width="30" height="16"/>
+  <object id="146" name="Dornen48" type="Welt" x="2560" y="1426" width="30" height="16"/>
   <object id="147" name="Dornen47" type="Welt" x="2594" y="1391" width="31" height="18"/>
-  <object id="148" name="Dornen46" type="Welt " x="2178" y="1680" width="34" height="13"/>
+  <object id="148" name="Dornen46" type="Welt" x="2178" y="1680" width="34" height="13"/>
   <object id="149" name="Dornen45" type="Welt" x="2148" y="1712" width="22" height="14"/>
   <object id="150" name="Dornen44" type="Welt" x="2242" y="2137" width="32" height="8"/>
   <object id="151" name="Dornen43" type="Welt" x="2272" y="2170" width="35" height="7"/>
-  <object id="152" name="Dornen42" type="Welt " x="2084" y="3347" width="30" height="16"/>
+  <object id="152" name="Dornen42" type="Welt" x="2084" y="3347" width="30" height="16"/>
   <object id="153" name="Dornen41" type="Welt" x="2046" y="3375" width="34" height="17"/>
   <object id="154" name="Dornen40" type="Welt" x="1345" y="3510" width="28" height="10"/>
   <object id="155" name="Dornen39" type="Welt" x="1376" y="3542" width="31" height="10"/>
   <object id="157" name="Dornen38" type="Welt" x="798" y="3379" width="34" height="13"/>
-  <object id="158" name="Dornen37" type="Wlet" x="764" y="3409" width="38" height="15"/>
+  <object id="158" name="Dornen37" type="Welt" x="764" y="3409" width="38" height="15"/>
   <object id="159" name="Dornen36" type="Welt" x="382" y="3889" width="33" height="14"/>
   <object id="160" name="Dornen35" type="Welt" x="417" y="3924" width="32" height="10"/>
-  <object id="161" name="Dornen34" type="Welt " x="896" y="4146" width="33" height="14"/>
+  <object id="161" name="Dornen34" type="Welt" x="896" y="4146" width="33" height="14"/>
   <object id="162" name="Dornen33" type="Welt" x="862" y="4175" width="32" height="16"/>
   <object id="163" name="Dornen32" type="Welt" x="1278" y="4048" width="34" height="18"/>
-  <object id="164" name="Dornen31" type="Welt" x="1311" y="4077" width="36" height="15"/>
+  <object id="164" name="Dornen53" type="Welt" x="1311" y="4077" width="36" height="15"/>
   <object id="165" name="Dornen31" type="Welt" x="2048" y="4047" width="27" height="18"/>
   <object id="166" name="Dornen30" type="Welt" x="2078" y="4083" width="36" height="14"/>
   <object id="167" name="Dornen29" type="Welt" x="2366" y="3731" width="31" height="15"/>
   <object id="168" name="Dornen28" type="Welt" x="2400" y="3697" width="33" height="15"/>
   <object id="169" name="Dornen27" type="Welt" x="3103" y="3668" width="34" height="14"/>
-  <object id="170" name="Dornen26" type="Welt " x="3073" y="3699" width="29" height="14"/>
+  <object id="170" name="Dornen26" type="Welt" x="3073" y="3699" width="29" height="14"/>
   <object id="171" name="Dornen25" type="Welt" x="3071" y="3788" width="28" height="20"/>
   <object id="172" name="Dornen24" type="Welt" x="3106" y="3827" width="29" height="16"/>
   <object id="173" name="Dornen23" type="Welt" x="4066" y="3315" width="29" height="10"/>

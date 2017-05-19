@@ -28,7 +28,7 @@ Levels:
 |
 |--Forest Intro √√√
 |
-|--Forest Battle √√
+|--Forest Battle √√√
 |
 |--Forest Boss √√√
 |
