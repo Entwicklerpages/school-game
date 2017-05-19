@@ -49,7 +49,7 @@
                 <display position="left">stimme</display>
                 <sound></sound>
                 <texts>
-                    <text>Du musst entscheiden ob deine Wahl die richtige ist.</text>
+                    <text>Du musst entscheiden, ob deine Wahl die richtige ist.</text>
                 </texts>
             </statement>
         </dialog>

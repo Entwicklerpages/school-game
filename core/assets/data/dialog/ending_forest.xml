@@ -22,9 +22,9 @@
                     <text>Du hast die Magie auf dieser Insel gerettet. </text>
                     <text>Auch wenn die Leute im Dorf darüber nicht so glücklich sind ...</text>
                     <text>Aber der Bürgemeister war so voller Hass auf die Wesen außerhalb des Dorfes,  |br|dass er vor all den Jahren deshalb das Leben seiner Frau aufs Spiel setzte ...</text>
-                    <text>Du musst wissen das sie eigentlich sehr gerne in den Wald ging und sich auch keine Sorgen machen musste das die Wesen sie angriffen, |br|da sie ihr gegenüber immer sehr friedlich wahren ...</text>
-                    <text>Bis zu dem Tag an dem der Bürgermeister sah das ihr ein Bär sehr nahe kam und er dachte das er sie angreifen würde ...</text>
-                    <text>Er griff die Wesen an und zerstörte damit den Frieden der einst herrschte ...</text>
+                    <text>Du musst wissen, dass sie eigentlich sehr gerne in den Wald ging und sich auch keine Sorgen machen musste, dass die Wesen sie angriffen, |br|da sie ihr gegenüber immer sehr friedlich waren ...</text>
+                    <text>Bis zu dem Tag, an dem der Bürgermeister sah, dass ihr ein Bär sehr nahe kam und er dachte, dass er sie angreifen würde ...</text>
+                    <text>Er attackierte die Wesen und zerstörte damit den Frieden der einst herrschte ...</text>
                     <text>Seine Frau wollte den Kampf verhindern und ging dazwischen ...</text>
                     <text>Dabei verlor Sie ihr Leben ...</text>
                 </texts>
@@ -37,15 +37,15 @@
                 <sound></sound>
                 <texts>
                     <text>Du hast dich also letzten Endes doch noch für die Magie in dir entschieden.</text>
-                    <text>Das die Menschen ein Wesen mit Magischem Blut ausnutzen konnten ...</text>
-                    <text>Aber naja so weit ich weis haben sie dir auch nur die halbe Legende erzählt ...</text>
-                    <text>Was die Menschen nämlich nicht verstanden haben ist, das das Dorf auch ein Teil der Insel ist |br|und das die Kristalle die ganze Insel am Leben erhalten.</text>
-                    <text>Währe der Kristall des Lebens von seinem Platz entfernt worden,|br|währe nach einiger Zeit alles außer das Dorf abgestorben ...</text>
-                    <text>Alles währe zu einer trockenen Einöde geworden und das Leben, für alle außer die Menschen währe beendet.</text>
-                    <text>Dank dir haben wir noch eine Chance das Gleichgewicht wieder herzustellen.</text>
+                    <text>Erschreckend, dass die Menschen ein Wesen mit magischem Blut ausnutzen konnten ...</text>
+                    <text>Aber naja, so weit ich weiß, haben sie dir auch nur die halbe Legende erzählt ...</text>
+                    <text>Was die Menschen nämlich nicht verstanden haben ist, dass das Dorf auch ein Teil der Insel ist |br|und dass die Kristalle die ganze Insel am Leben erhalten.</text>
+                    <text>Wäre der Kristall des Lebens von seinem Platz entfernt worden,|br|wäre nach einiger Zeit alles außer dem Dorf abgestorben ...</text>
+                    <text>Alles wäre zu einer trockenen Einöde geworden und das Leben, für alle, außer den Menschen wäre beendet.</text>
+                    <text>Dank dir haben wir noch eine Chance, das Gleichgewicht wieder herzustellen.</text>
                     <text>Aber dafür darf dem Kristall des Lebens keiner mehr zu nahe kommen.</text>
-                    <text>Darum bite ich dich von nun an über den Kristall zu wachen und ihn mit allem was du hast zu beschützen.</text>
-                    <text>Vieleicht ist es dann noch irgendwann möglich, |br|wieder einen Frieden zwischen den Magischen Wesen und den Menschen zu erreichen.</text>
+                    <text>Darum bite ich dich, von nun an über den Kristall zu wachen und ihn mit allem, was du hast zu beschützen.</text>
+                    <text>Vieleicht ist es dann noch irgendwann möglich, |br|wieder einen Frieden zwischen den magischen Wesen und den Menschen zu erreichen.</text>
                 </texts>
             </statement>
         </dialog>

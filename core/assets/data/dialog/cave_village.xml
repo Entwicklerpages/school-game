@@ -367,7 +367,7 @@
                 <display position="right">heilerin</display>
                 <sound></sound>
                 <texts>
-                    <text>Die Kreuter draußen hab ich selbst angebaut.|br|So kann ich so viel herum experimentieren wie ich will.</text>
+                    <text>Die Kräuter draußen hab ich selbst angebaut.|br|So kann ich so viel herum experimentieren, wie ich will.</text>
                 </texts>
             </statement>
         </dialog>
@@ -377,7 +377,7 @@
                 <display position="right">sina</display>
                 <sound></sound>
                 <texts>
-                    <text>Papa sagt immer das wir das Dorf nicht verlassen dürfen...</text>
+                    <text>Papa sagt immer, dass wir das Dorf nicht verlassen dürfen ...</text>
                 </texts>
             </statement>
             <statement talking="fina">
@@ -385,7 +385,7 @@
                 <display position="right">fina</display>
                 <sound></sound>
                 <texts>
-                    <text>Das ist zu gefährlich sagt er immer ...</text>
+                    <text>Das ist zu gefährlich, sagt er immer ...</text>
                 </texts>
             </statement>
             <statement talking="sina">
@@ -412,7 +412,7 @@
                 <sound></sound>
                 <texts>
                     <text>Es soll viele Erze in der Höhle geben ...</text>
-                    <text>Aber bis jetzt war es immer zu gefährlich die Höhlen zu betreten.</text>
+                    <text>Aber bis jetzt war es immer zu gefährlich, die Höhlen zu betreten.</text>
                 </texts>
             </statement>
         </dialog>
@@ -422,7 +422,7 @@
                 <display position="right">wache1</display>
                 <sound></sound>
                 <texts>
-                    <text>Unglaublich das du die Höhle überlebt hast ...</text>
+                    <text>Unglaublich, dass du die Höhle überlebt hast ...</text>
                     <text>Ich würde mich nie da rein trauen!</text>
                     <text>Und jetzt willst du wirklich noch in den Wald?</text>
                     <text>Du bist echt verrückt!</text>
@@ -435,13 +435,13 @@
                 <display position="right">buergermeister</display>
                 <sound></sound>
                 <texts>
-                    <text>Ich wuste doch das du kämpfen kannst!</text>
-                    <text>Es ist so schön das sich die Legende bewarheitet ...</text>
-                    <text>Du bist wirklich die rettung für unser Dorf!</text>
-                    <text>Ich bin mir sicher das du die letzten beiden Kristalle |br|auch noch aus den Klauen der Waldmonster befreien kannst!</text>
-                    <text>Wenn wir die dann haben, sind wir vor allem was außerhalb des Dorfen lauert, sicher. </text>
+                    <text>Ich wusste doch, dass du kämpfen kannst!</text>
+                    <text>Es ist so schön, dass sich die Legende bewahrheitet ...</text>
+                    <text>Du bist wirklich die Rettung für unser Dorf!</text>
+                    <text>Ich bin mir sicher, dass du die letzten beiden Kristalle |br|auch noch aus den Klauen der Waldmonster befreien kannst!</text>
+                    <text>Wenn wir die dann haben, sind wir vor allem sicher,was außerhalb des Dorfen lauert. </text>
                     <text>Der nächste Kristall soll tief im Wald versteckt sein.</text>
-                    <text>Bitte pass auf dich auf, wenn du auf den Wald gehst.</text>
+                    <text>Bitte pass auf dich auf, wenn du in den Wald gehst.</text>
                     <text>Die Wesen, die dort auf dich lauern, solltst du nicht unterschätzen!</text>
                     <text>Der Wald liegt genau gegenüber des Dorfes.</text>
                 </texts>
@@ -453,7 +453,7 @@
                 <display position="right">avia</display>
                 <sound></sound>
                 <texts>
-                    <text>Das Dorf war noch nie groß...</text>
+                    <text>Das Dorf war noch nie groß ...</text>
                     <text>Aber trotzdem finde ich es hier sehr schön.</text>
                 </texts>
             </statement>
