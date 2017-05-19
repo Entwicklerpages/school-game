@@ -63,7 +63,7 @@
                 <player position="left"/>
                 <sound></sound>
                 <texts>
-                    <text>Der Wald ist gefährlich ...|br|Hoffentlich hast du es dir gut überlegt, das du wirklich in diesen Wald willst ...</text>
+                    <text>Der Wald ist gefährlich ...|br|Hoffentlich hast du es dir gut überlegt, dass du wirklich in diesen Wald willst ...</text>
                 </texts>
             </statement>
         </dialog>

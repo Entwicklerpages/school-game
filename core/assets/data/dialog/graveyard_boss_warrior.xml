@@ -18,7 +18,7 @@
                 <display position="left">krieger</display>
                 <sound></sound>
                 <texts>
-                    <text>Ich wusste das du es nicht schaffen wirst!</text>
+                    <text>Ich wusste, dass du es nicht schaffen wirst!</text>
                 </texts>
             </statement>
             <statement talking="stimme">
