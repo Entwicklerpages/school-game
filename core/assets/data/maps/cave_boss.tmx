@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="34">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="42">
  <tileset firstgid="1" source="../tilemap/cave.tsx"/>
  <layer name="Hintergrund" width="50" height="50">
   <data encoding="base64" compression="zlib">
@@ -21,9 +21,6 @@
    <ellipse/>
   </object>
   <object id="2" name="Stein1" type="Welt" x="798" y="1310" width="65" height="66"/>
-  <object id="18" name="Boss_Krabbe" type="Welt" x="793.333" y="1176">
-   <ellipse/>
-  </object>
   <object id="19" name="Krabbe8" type="Welt" x="672" y="1116">
    <ellipse/>
   </object>
@@ -50,6 +47,24 @@
   </object>
   <object id="29" name="Kristall_interaktion" type="Welt" x="773.333" y="1420" width="126.667" height="137.333"/>
   <object id="33" name="Stein2" type="Welt" x="767.333" y="286.667" width="65.3333" height="64.6667"/>
+  <object id="34" name="Trigger_start2" type="Welt" x="895.333" y="370.666" width="65.3333" height="126.667"/>
+  <object id="35" name="Trigger_start3" type="Welt" x="636.666" y="366.666" width="66.6667" height="121.333"/>
+  <object id="36" name="Trigger_start1" type="Welt" x="635.333" y="426.666" width="322.667" height="70.6667"/>
+  <object id="37" name="Krabbe9" type="Welt" x="659" y="907">
+   <ellipse/>
+  </object>
+  <object id="38" name="Krabbe10" type="Welt" x="944" y="795">
+   <ellipse/>
+  </object>
+  <object id="39" name="Krabbe11" type="Welt" x="997" y="921">
+   <ellipse/>
+  </object>
+  <object id="40" name="Krabbe12" type="Welt" x="502" y="873">
+   <ellipse/>
+  </object>
+  <object id="41" name="Kristall" type="Welt" x="819.333" y="1499.33" width="33.3333" height="29.3333">
+   <ellipse/>
+  </object>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="3" x="716" y="-1.33333" width="37.3333" height="369.333"/>
@@ -65,9 +80,6 @@
   <object id="13" x="716" y="1389.33" width="36" height="190.667"/>
   <object id="14" x="912" y="1393.33" width="52" height="197.333"/>
   <object id="15" x="720" y="1568" width="200" height="25.3333"/>
-  <object id="16" name="Kristall" type="Welt" x="817.333" y="1478.67" width="33.3333" height="29.3333">
-   <ellipse/>
-  </object>
  </objectgroup>
  <layer name="Vordergrund" width="50" height="50">
   <data encoding="base64" compression="zlib">

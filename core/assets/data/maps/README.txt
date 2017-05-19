@@ -18,7 +18,7 @@ Levels:
 |
 |--Cave Puzzle √√√
 |
-|--Cave Boss √√
+|--Cave Boss √√√
 |
 |--Cave Village √√√
 |

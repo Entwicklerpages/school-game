@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.Shape;
 
 import de.entwicklerpages.java.schoolgame.game.Physics;
 
@@ -31,13 +32,23 @@ public class StoneBarrier extends BaseEntity
 
     private Vector2 position;
 
+    private boolean activate;
+    private Vector2 startPosition;
+    private Shape rectShape;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// METHODEN /////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public StoneBarrier(String objectId)
     {
+        this(objectId, true);
+    }
+
+    public StoneBarrier(String objectId, boolean activate)
+    {
         super(objectId);
+        this.activate = activate;
     }
 
     /**
@@ -73,8 +84,11 @@ public class StoneBarrier extends BaseEntity
             Rectangle rect = rectObject.getRectangle();
 
             position = new Vector2(rect.getX() + rect.getWidth() / 2f, rect.getY());
+            startPosition = new Vector2(rect.getX(), rect.getY());
+            rectShape = Physics.createRectangle(rect.getWidth(), rect.getHeight(), new Vector2(rect.getWidth() / 2f, rect.getHeight() / 2f));
 
-            body = createEntityBody(new Vector2(rect.getX(), rect.getY()), Physics.createRectangle(rect.getWidth(), rect.getHeight(), new Vector2(rect.getWidth() / 2f, rect.getHeight() / 2f)), BodyDef.BodyType.KinematicBody);
+            if (activate)
+                body = createEntityBody(startPosition, rectShape, BodyDef.BodyType.KinematicBody);
 
         } else {
             Gdx.app.log("WARNING", "Stone Barrier " + objectId + " must have an RectangleMapObject!");
@@ -114,6 +128,26 @@ public class StoneBarrier extends BaseEntity
         worldObjectManager.removeObject(this);
     }
 
+    public void create()
+    {
+        if (activate)
+        {
+            Gdx.app.log("WARNING", "Cannot create StoneBarrier " + objectId + ": already created.");
+            return;
+        }
+
+        activate = true;
+
+        Gdx.app.postRunnable(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                body = createEntityBody(startPosition, rectShape, BodyDef.BodyType.KinematicBody);
+            }
+        });
+    }
+
     /**
      * Aufräumarbeiten.
      */
@@ -123,6 +157,10 @@ public class StoneBarrier extends BaseEntity
         super.onDispose();
         stoneAtlas.dispose();
 
-        worldObjectManager.getPhysicalWorld().destroyBody(body);
+        if (body != null)
+        {
+            worldObjectManager.getPhysicalWorld().destroyBody(body);
+            body = null;
+        }
     }
 }

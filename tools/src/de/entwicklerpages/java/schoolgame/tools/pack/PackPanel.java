@@ -116,7 +116,7 @@ public class PackPanel extends JPanel implements ActionListener
         editor.add(new JLabel("Executable Name:"), gbc);
 
         gbc.gridx++;
-        executableTextField = new JTextField("schoolgame");
+        executableTextField = new JTextField("Legende der Kristalle");
         editor.add(executableTextField, gbc);
 
         gbc.gridx = 0;
