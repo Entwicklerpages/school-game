@@ -60,13 +60,13 @@ von Kevin MacLeod
 # Schokokuchen Fortsetzung
 Eier trennen.
 Zucker und Eigelb schäumig rühren.
-Mehr und Backpulver hinzugeben.
+Mehl und Backpulver hinzugeben.
 Flüssige Butter und Schokolade auflösen
 und hinzugeben.
 Zuletzt den Eisschnee unterheben.
 
-Bei 180° Umluft
-ca.60 minuten 
+Bei 180°C Umluft
+ca. 60 minuten
 
 # Schriftart
 Cormorant Upright (OFL, Google Fonts)
@@ -74,6 +74,7 @@ von Christian Thalmann
 
 VT323 (OFL, Google Fonts)
 von Peter Hull
+
 
 
 

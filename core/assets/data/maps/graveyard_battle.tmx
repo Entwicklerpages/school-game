@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="85" tilewidth="32" tileheight="32" nextobjectid="294">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="85" tilewidth="32" tileheight="32" nextobjectid="306">
  <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
  <layer name="Hintergrund" width="68" height="85">
   <data encoding="base64" compression="zlib">
@@ -20,116 +20,44 @@
   <object id="41" name="Spielerstart" type="Start" x="27.0027" y="638.51">
    <ellipse/>
   </object>
-  <object id="146" name="Skelett_1" type="Welt" x="721.435" y="627.193">
-   <ellipse/>
-  </object>
-  <object id="148" name="Skelett_2" type="Welt" x="75.3326" y="919.862">
-   <ellipse/>
-  </object>
-  <object id="149" name="Skelett_3" type="Welt" x="459.208" y="917.457">
-   <ellipse/>
-  </object>
-  <object id="150" name="Skelett_4" type="Welt" x="298.188" y="1421.55">
-   <ellipse/>
-  </object>
-  <object id="151" name="Skelett_5" type="Welt" x="572.931" y="1397.68">
-   <ellipse/>
-  </object>
-  <object id="152" name="Skelett_6" type="Welt" x="238.075" y="1513.66">
-   <ellipse/>
-  </object>
-  <object id="153" name="Skelett_7" type="Welt" x="436.571" y="1455.53">
-   <ellipse/>
-  </object>
-  <object id="154" name="Skelett_8" type="Welt" x="579.732" y="1492.47">
-   <ellipse/>
-  </object>
-  <object id="155" name="Skelett_9" type="Welt" x="340.458" y="1526.45">
-   <ellipse/>
-  </object>
-  <object id="156" name="Skelett_10" type="Welt" x="428.684" y="1576.31">
-   <ellipse/>
-  </object>
-  <object id="157" name="Skelett_13" type="Welt" x="572.797" y="1591.36">
-   <ellipse/>
-  </object>
-  <object id="158" name="Skelett_12" type="Welt" x="424.571" y="1651.22">
-   <ellipse/>
-  </object>
-  <object id="159" name="Skelett_11" type="Welt" x="314.21" y="1631.76">
-   <ellipse/>
-  </object>
-  <object id="176" name="Skelett_14" type="Welt" x="161.671" y="1873.36">
-   <ellipse/>
-  </object>
-  <object id="178" name="Skelett_15" type="Welt" x="575.671" y="2030.27">
-   <ellipse/>
-  </object>
-  <object id="179" name="Skelett_16" type="Welt" x="348.989" y="2184.85">
-   <ellipse/>
-  </object>
-  <object id="180" name="Skelett_17" type="Welt" x="830.671" y="2176.76">
-   <ellipse/>
-  </object>
-  <object id="181" name="Skelett_18" type="Welt" x="557.671" y="2412.7">
-   <ellipse/>
-  </object>
-  <object id="182" name="Skelett_19" type="Welt" x="162.671" y="2467.93">
-   <ellipse/>
-  </object>
-  <object id="183" name="Skelett_20" type="Welt" x="1038.31" y="2517.51">
-   <ellipse/>
-  </object>
-  <object id="184" name="Skelett_22" type="Welt" x="1579.79" y="1976.51">
-   <ellipse/>
-  </object>
-  <object id="185" name="Skelett_23" type="Welt" x="1659.84" y="2116.45">
-   <ellipse/>
-  </object>
-  <object id="188" name="Skelett_24" type="Welt" x="1515.99" y="2164.24">
-   <ellipse/>
-  </object>
-  <object id="189" name="Skelett_25" type="Welt" x="1337.12" y="2166.8">
-   <ellipse/>
-  </object>
-  <object id="200" name="Skelett_26" type="Welt" x="1967.26" y="935.329">
-   <ellipse/>
-  </object>
-  <object id="201" name="Skelett_27" type="Welt" x="1697.37" y="903.599">
-   <ellipse/>
-  </object>
-  <object id="202" name="Skelett_28" type="Welt" x="1458.31" y="954.12">
-   <ellipse/>
-  </object>
-  <object id="203" name="Skelett_29" type="Welt" x="1595.15" y="853.733">
-   <ellipse/>
-  </object>
-  <object id="205" name="Skelett_30" type="Welt" x="1859.18" y="827.463">
-   <ellipse/>
-  </object>
-  <object id="206" name="Skelett_31" type="Welt" x="2021.88" y="860.4">
-   <ellipse/>
-  </object>
-  <object id="207" name="Skelett_32" type="Welt" x="1467.07" y="765.076">
-   <ellipse/>
-  </object>
-  <object id="208" name="Skelett_33" type="Welt" x="1719.94" y="753.076">
-   <ellipse/>
-  </object>
-  <object id="209" name="Skelett_34" type="Welt" x="2039.04" y="732.138">
-   <ellipse/>
-  </object>
-  <object id="211" name="Skelett_35" type="Welt" x="1535.92" y="665.605">
-   <ellipse/>
-  </object>
-  <object id="212" name="Skelett_36" type="Welt" x="1657.32" y="658.272">
-   <ellipse/>
-  </object>
-  <object id="213" name="Skelett_37" type="Welt" x="1903.26" y="669.876">
-   <ellipse/>
-  </object>
   <object id="219" name="Stein1" type="Welt" x="1722.41" y="224.558" width="74.0564" height="66.8896"/>
   <object id="247" name="Ausgang" type="Welt" x="1671.17" y="7.16667" width="183" height="95"/>
+  <object id="294" name="Skelett_1" type="Welt" x="560" y="652">
+   <polygon points="0,0 -176,-2 -182,154 -22,156"/>
+  </object>
+  <object id="295" name="Skelett_2" type="Welt" x="210" y="886">
+   <polygon points="0,0 -60,-190 -24,68 68,32"/>
+  </object>
+  <object id="296" name="Skelett_3" type="Welt" x="373.333" y="1145.33">
+   <polygon points="0,0 -4,209.333 182.667,222.667 193.333,-12 93.3333,-81.3333"/>
+  </object>
+  <object id="297" name="Skelett_4" type="Welt" x="208" y="1876">
+   <polygon points="0,0 132,-54.6667 212,52 170.667,182.667 -48,236 -82.6667,60"/>
+  </object>
+  <object id="298" name="Skelett_5" type="Welt" x="578.667" y="1997.33">
+   <polygon points="0,0 117.333,60 21.3333,369.333 -148,548 -345.333,442.667 -193.333,138.667"/>
+  </object>
+  <object id="299" name="Skelett_6" type="Welt" x="206.667" y="2258.67">
+   <polygon points="0,0 361.333,266.667 360,-138.667 216,36"/>
+  </object>
+  <object id="300" name="Skelett_7" type="Welt" x="852" y="2550.67">
+   <polygon points="0,0 82.6667,70.6667 473.333,-60 322.667,-138.667 154.667,-98.6667"/>
+  </object>
+  <object id="301" name="Skelett_8" type="Welt" x="1357.33" y="1945.33">
+   <polygon points="0,0 132,420 428,277.333 221.333,130.667 190.667,-88"/>
+  </object>
+  <object id="302" name="Skelett_9" type="Welt" x="1309.33" y="2113.33">
+   <polygon points="0,0 466.667,-145.333 474.667,26.6667 194.667,13.3333 130.667,249.333"/>
+  </object>
+  <object id="303" name="Skelett_10" type="Welt" x="1541.33" y="2449.33">
+   <polygon points="0,0 333.333,-226.667 450.667,-104 112,120 -10.6667,113.333"/>
+  </object>
+  <object id="304" name="Skelett_11" type="Welt" x="1592" y="820">
+   <polygon points="0,0 106.667,50.6667 304,-24 420,173.333 333.333,214.667 325.333,282.667 8,258.667 -38.6667,150.667 25.3333,64"/>
+  </object>
+  <object id="305" name="Skelett_12" type="Welt" x="1448" y="1441.33">
+   <polygon points="0,0 169.333,8 285.333,-150.667 533.333,44 602.667,250.667 202.667,238.667 -1.33333,165.333"/>
+  </object>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="3" x="-2.4426" y="544" width="1716.92" height="63.5076"/>

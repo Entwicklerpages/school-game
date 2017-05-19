@@ -40,7 +40,7 @@ Levels:
 |
 |--Graveyard Intro √√√
 |
-|--Graveyard Battle √√
+|--Graveyard Battle √√√
 |
 |--Graveyard Decision √√√
    |
