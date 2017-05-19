@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="85" tilewidth="32" tileheight="32" nextobjectid="247">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="85" tilewidth="32" tileheight="32" nextobjectid="294">
  <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
  <layer name="Hintergrund" width="68" height="85">
   <data encoding="base64" compression="zlib">
@@ -29,34 +29,34 @@
   <object id="149" name="Skelett_3" type="Welt" x="459.208" y="917.457">
    <ellipse/>
   </object>
-  <object id="150" name="Skelett_4" type="Welt" x="334.188" y="1425.55">
+  <object id="150" name="Skelett_4" type="Welt" x="298.188" y="1421.55">
    <ellipse/>
   </object>
-  <object id="151" name="Skelett_5" type="Welt" x="528.931" y="1426.35">
+  <object id="151" name="Skelett_5" type="Welt" x="572.931" y="1397.68">
    <ellipse/>
   </object>
-  <object id="152" name="Skelett_6" type="Welt" x="270.075" y="1489.66">
+  <object id="152" name="Skelett_6" type="Welt" x="238.075" y="1513.66">
    <ellipse/>
   </object>
-  <object id="153" name="Skelett_7" type="Welt" x="399.904" y="1488.86">
+  <object id="153" name="Skelett_7" type="Welt" x="436.571" y="1455.53">
    <ellipse/>
   </object>
-  <object id="154" name="Skelett_8" type="Welt" x="529.732" y="1490.47">
+  <object id="154" name="Skelett_8" type="Welt" x="579.732" y="1492.47">
    <ellipse/>
   </object>
-  <object id="155" name="Skelett_9" type="Welt" x="335.791" y="1553.78">
+  <object id="155" name="Skelett_9" type="Welt" x="340.458" y="1526.45">
    <ellipse/>
   </object>
-  <object id="156" name="Skelett_10" type="Welt" x="464.017" y="1552.98">
+  <object id="156" name="Skelett_10" type="Welt" x="428.684" y="1576.31">
    <ellipse/>
   </object>
-  <object id="157" name="Skelett_13" type="Welt" x="528.13" y="1618.69">
+  <object id="157" name="Skelett_13" type="Welt" x="572.797" y="1591.36">
    <ellipse/>
   </object>
-  <object id="158" name="Skelett_12" type="Welt" x="399.904" y="1617.89">
+  <object id="158" name="Skelett_12" type="Welt" x="424.571" y="1651.22">
    <ellipse/>
   </object>
-  <object id="159" name="Skelett_11" type="Welt" x="270.877" y="1617.09">
+  <object id="159" name="Skelett_11" type="Welt" x="314.21" y="1631.76">
    <ellipse/>
   </object>
   <object id="176" name="Skelett_14" type="Welt" x="161.671" y="1873.36">
@@ -80,55 +80,56 @@
   <object id="183" name="Skelett_20" type="Welt" x="1038.31" y="2517.51">
    <ellipse/>
   </object>
-  <object id="184" name="Skelett_22" type="Welt" x="1486.46" y="1998.51">
+  <object id="184" name="Skelett_22" type="Welt" x="1579.79" y="1976.51">
    <ellipse/>
   </object>
-  <object id="185" name="Skelett_23" type="Welt" x="1679.84" y="2065.78">
+  <object id="185" name="Skelett_23" type="Welt" x="1659.84" y="2116.45">
    <ellipse/>
   </object>
-  <object id="188" name="Skelett_24" type="Welt" x="1583.99" y="2193.57">
+  <object id="188" name="Skelett_24" type="Welt" x="1515.99" y="2164.24">
    <ellipse/>
   </object>
-  <object id="189" name="Skelett_25" type="Welt" x="1296.45" y="2257.47">
+  <object id="189" name="Skelett_25" type="Welt" x="1337.12" y="2166.8">
    <ellipse/>
   </object>
-  <object id="200" name="Skelett_26" type="Welt" x="1933.26" y="978.662">
+  <object id="200" name="Skelett_26" type="Welt" x="1967.26" y="935.329">
    <ellipse/>
   </object>
-  <object id="201" name="Skelett_27" type="Welt" x="1681.37" y="980.266">
+  <object id="201" name="Skelett_27" type="Welt" x="1697.37" y="903.599">
    <ellipse/>
   </object>
-  <object id="202" name="Skelett_28" type="Welt" x="1485.64" y="975.453">
+  <object id="202" name="Skelett_28" type="Welt" x="1458.31" y="954.12">
    <ellipse/>
   </object>
-  <object id="203" name="Skelett_29" type="Welt" x="1549.82" y="882.4">
+  <object id="203" name="Skelett_29" type="Welt" x="1595.15" y="853.733">
    <ellipse/>
   </object>
-  <object id="205" name="Skelett_30" type="Welt" x="1806.51" y="880.796">
+  <object id="205" name="Skelett_30" type="Welt" x="1859.18" y="827.463">
    <ellipse/>
   </object>
-  <object id="206" name="Skelett_31" type="Welt" x="2063.21" y="882.4">
+  <object id="206" name="Skelett_31" type="Welt" x="2021.88" y="860.4">
    <ellipse/>
   </object>
-  <object id="207" name="Skelett_32" type="Welt" x="1423.07" y="787.743">
+  <object id="207" name="Skelett_32" type="Welt" x="1467.07" y="765.076">
    <ellipse/>
   </object>
-  <object id="208" name="Skelett_33" type="Welt" x="1743.94" y="787.743">
+  <object id="208" name="Skelett_33" type="Welt" x="1719.94" y="753.076">
    <ellipse/>
   </object>
-  <object id="209" name="Skelett_34" type="Welt" x="1999.04" y="786.138">
+  <object id="209" name="Skelett_34" type="Welt" x="2039.04" y="732.138">
    <ellipse/>
   </object>
-  <object id="211" name="Skelett_35" type="Welt" x="1487.25" y="688.272">
+  <object id="211" name="Skelett_35" type="Welt" x="1535.92" y="665.605">
    <ellipse/>
   </object>
-  <object id="212" name="Skelett_36" type="Welt" x="1613.99" y="688.272">
+  <object id="212" name="Skelett_36" type="Welt" x="1657.32" y="658.272">
    <ellipse/>
   </object>
-  <object id="213" name="Skelett_37" type="Welt" x="1933.26" y="689.876">
+  <object id="213" name="Skelett_37" type="Welt" x="1903.26" y="669.876">
    <ellipse/>
   </object>
   <object id="219" name="Stein1" type="Welt" x="1722.41" y="224.558" width="74.0564" height="66.8896"/>
+  <object id="247" name="Ausgang" type="Welt" x="1671.17" y="7.16667" width="183" height="95"/>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="3" x="-2.4426" y="544" width="1716.92" height="63.5076"/>
@@ -218,8 +219,33 @@
   <object id="239" x="1524" y="1164" width="20" height="5.33333"/>
   <object id="242" x="1860" y="1050.67" width="20" height="5.33333"/>
   <object id="243" x="1989.33" y="1050.67" width="20" height="5.33333"/>
-  <object id="244" name="Ausgang" type="Welt" x="1668" y="20" width="183" height="95"/>
   <object id="246" x="1411" y="1048" width="23" height="7.5"/>
+  <object id="261" x="1790.67" y="869.333" width="33.3333" height="24"/>
+  <object id="263" x="1664.67" y="966" width="33.3333" height="24"/>
+  <object id="264" x="1920" y="966" width="33.3333" height="24"/>
+  <object id="265" x="2046.67" y="866.667" width="33.3333" height="24"/>
+  <object id="266" x="1982.67" y="773.333" width="33.3333" height="24"/>
+  <object id="267" x="1920" y="676" width="33.3333" height="24"/>
+  <object id="268" x="1728.67" y="774" width="33.3333" height="24"/>
+  <object id="269" x="1471.33" y="966" width="33.3333" height="24"/>
+  <object id="270" x="1535.33" y="868" width="33.3333" height="24"/>
+  <object id="271" x="1407.33" y="773.333" width="33.3333" height="24"/>
+  <object id="272" x="1470.67" y="673.333" width="33.3333" height="24"/>
+  <object id="273" x="1600.67" y="678" width="33.3333" height="24"/>
+  <object id="279" x="1471.33" y="1988.67" width="33.3333" height="24"/>
+  <object id="280" x="1565.33" y="2180.67" width="33.3333" height="24"/>
+  <object id="281" x="1664" y="2051.33" width="33.3333" height="24"/>
+  <object id="282" x="1279.33" y="2246.67" width="33.3333" height="24"/>
+  <object id="284" x="320" y="1541.33" width="33.3333" height="24"/>
+  <object id="285" x="254.667" y="1477.33" width="33.3333" height="24"/>
+  <object id="286" x="320" y="1412" width="33.3333" height="24"/>
+  <object id="287" x="383.333" y="1478" width="33.3333" height="24"/>
+  <object id="288" x="512.667" y="1411.33" width="33.3333" height="24"/>
+  <object id="289" x="514.667" y="1476" width="33.3333" height="24"/>
+  <object id="290" x="450.667" y="1540.67" width="33.3333" height="24"/>
+  <object id="291" x="512" y="1606.67" width="33.3333" height="24"/>
+  <object id="292" x="382" y="1604" width="33.3333" height="24"/>
+  <object id="293" x="256.667" y="1604.67" width="33.3333" height="24"/>
  </objectgroup>
  <layer name="Vordergrund" width="68" height="85">
   <data encoding="base64" compression="zlib">
