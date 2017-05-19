@@ -19,9 +19,9 @@ import de.entwicklerpages.java.schoolgame.game.objects.AttackHandler;
 import de.entwicklerpages.java.schoolgame.game.objects.entities.BaseEntity;
 
 /**
- * Bossgegner Krieger
+ * Endboss Drache.
  */
-public class Warrior extends BaseEntity
+public class Dragon extends BaseEntity
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////// EIGENSCHAFTEN ////////////////////////////////////////////
@@ -113,7 +113,7 @@ public class Warrior extends BaseEntity
      *
      * @param objectId die ID des MapObjects
      */
-    public Warrior(String objectId)
+    public Dragon(String objectId)
     {
         super(objectId);
     }
@@ -141,11 +141,11 @@ public class Warrior extends BaseEntity
     {
         super.onInit();
 
-        npcAtlas = new TextureAtlas(Gdx.files.internal("data/graphics/packed/mutated_warrior.atlas"));
+        npcAtlas = new TextureAtlas(Gdx.files.internal("data/graphics/packed/dragon.atlas"));
 
-        npcFrontWalk = new Animation<TextureRegion>(1/5f, npcAtlas.findRegions("warrior_front"), Animation.PlayMode.LOOP);
-        npcSideWalk = new Animation<TextureRegion>(1/5f, npcAtlas.findRegions("warrior_side"), Animation.PlayMode.LOOP);
-        npcBackWalk = new Animation<TextureRegion>(1/5f, npcAtlas.findRegions("warrior_back"), Animation.PlayMode.LOOP);
+        npcFrontWalk = new Animation<TextureRegion>(1/5f, npcAtlas.findRegions("dragon_front"), Animation.PlayMode.LOOP);
+        npcSideWalk = new Animation<TextureRegion>(1/5f, npcAtlas.findRegions("dragon_side"), Animation.PlayMode.LOOP);
+        npcBackWalk = new Animation<TextureRegion>(1/5f, npcAtlas.findRegions("dragon_back"), Animation.PlayMode.LOOP);
 
         float[] vertices;
 
@@ -200,7 +200,7 @@ public class Warrior extends BaseEntity
                     if (deathCallback != null)
                         deathCallback.run();
 
-                    worldObjectManager.removeObject(Warrior.this);
+                    worldObjectManager.removeObject(Dragon.this);
                 } else {
                     hitTimer += 0.6f;
                 }
@@ -381,7 +381,6 @@ public class Warrior extends BaseEntity
                 break;
             case LOOK_LEFT:
                 region = npcSideWalk.getKeyFrame(animationTime);
-                scaleX = -1f;
                 break;
             case LOOK_BACKWARD:
                 region = npcBackWalk.getKeyFrame(animationTime);
@@ -389,6 +388,7 @@ public class Warrior extends BaseEntity
                 break;
             case LOOK_RIGHT:
                 region = npcSideWalk.getKeyFrame(animationTime);
+                scaleX = -1f;
                 break;
         }
 
