@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="85" tilewidth="32" tileheight="32" nextobjectid="221">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="68" height="85" tilewidth="32" tileheight="32" nextobjectid="306">
  <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
  <layer name="Hintergrund" width="68" height="85">
   <data encoding="base64" compression="zlib">
@@ -13,133 +13,55 @@
  </layer>
  <layer name="Dekoration" width="68" height="85">
   <data encoding="base64" compression="zlib">
-   eJztmumKwzAMhP130xwU9v2fdQms2NmplKM5bKr5wLgRSZvII8m1U4oQQgghhBBCCCGEEEIcY6h9A5WYNpwzXn4Xr3S//RcdWz8Fdj5/y/N5v9mRvYPvRjvbPoWnY6uhg5p0gc2zM7MuJjh/yzXvEMXHENjHwM7xI9bhMV3KB1nryzvsydl7WdN9FB98PcdX9Dtb7wlrjrSSg6W6ENWNK2uJB8+zCh1b3ET1hq87s75cmSdaAsfcm4PdqQexTKR7g+OJ6w3HUbY5t7iHh2MbwT73WfLrA9pIx2zLgI09+qArr37JgKeF2Rff5b9P+lo3WIHIJ9m0gXCeyO6Pnpr5JlOcMJhT+5JTFwauL2OMeOvOIg/Pjb3IifQhlpA+xBYiHUgfQggR461pZP0vy+tgkS0TuH6Ma2K4v5AB84Gt9VhjexY4LtAv+DkTnj5a3HO64x0D88UEPfrHjjMR7UnW0sbeena2brxnbyVOvP3yO+r/0We3XFyTVt555H2rzFjuHco1c5VozFt7n83bx7QaVYNa7+VYnrDe2jyOZ2mjtbGPwDqEPjFdHPXH2hi39G6W54eh/OWNbHmU48Q0gba75ys11yFQH9hambfVwGIi83/fCPlCCCGEEEKcxQ8EtQ+D
+   eJztmtuOwyAMRHlNmsvL/v+3rpDWWu/UTkhzMVrPkVAKpQ0xg02AUgghhBBCCCGEEEIIIeQcc3QDglgb6iy3t+Kdced7aTfWG6C85fnwngP87/iTBqM+lv1nInQQiaXB0SlHqi5WVb/lN59gabIyQ17w+lBrn7SBtt3yB1njyycc8dlH2RuHrT7OG1+t98G6OuZQKznYigte3Lgzllh48yzMo2a9Nl4ZX+70Ez2h+9zyT0/qgWxz9L1lgTzGlWxzbvIML6NsUeX1msW/vlRaII9lGZC+1zYYy7tdMmBpodriq/y1yRTVwAA8m2TThgb9RHZ7TJDENpnGCaJ96lRy6sIi6xghhBBCCCGEkN6x3teyvr/hOphXlgm9fqzXxPT+QgbEBrLWIwnLs4DjQttFf86EpY8e95yeOGMgtljVVdtH8pnw9iSjtHE0nl2tG+vZexkn1n75E/H/7LOLL46klzOPuG+VGfG9c7lnruL1eW/n2ax9TIlREUSdyxE/IVdJtR+v0kZvfe+h45C2iejirD32+rins1mWHeby6zey+VEcJ6IJXfb0fCVyHULrQ6de5m0RyJjI/O7rQVsQQgghhJCr+AY6KA1+
   </data>
  </layer>
  <objectgroup name="Objekte">
   <object id="41" name="Spielerstart" type="Start" x="27.0027" y="638.51">
    <ellipse/>
   </object>
-  <object id="83" name="Schild_Start" type="Welt" x="137.333" y="661.333" width="104" height="129.333">
-   <ellipse/>
+  <object id="219" name="Stein1" type="Welt" x="1722.41" y="224.558" width="74.0564" height="66.8896"/>
+  <object id="247" name="Ausgang" type="Welt" x="1671.17" y="7.16667" width="183" height="95"/>
+  <object id="294" name="Skelett_1" type="Welt" x="560" y="652">
+   <polygon points="0,0 -176,-2 -182,154 -22,156"/>
   </object>
-  <object id="146" name="Skelett_1" type="Welt" x="721.435" y="627.193">
-   <ellipse/>
+  <object id="295" name="Skelett_2" type="Welt" x="210" y="886">
+   <polygon points="0,0 -60,-190 -24,68 68,32"/>
   </object>
-  <object id="148" name="Skelett_2" type="Welt" x="75.3326" y="919.862">
-   <ellipse/>
+  <object id="296" name="Skelett_3" type="Welt" x="373.333" y="1145.33">
+   <polygon points="0,0 -4,209.333 182.667,222.667 193.333,-12 93.3333,-81.3333"/>
   </object>
-  <object id="149" name="Skelett_3" type="Welt" x="459.208" y="917.457">
-   <ellipse/>
+  <object id="297" name="Skelett_4" type="Welt" x="208" y="1876">
+   <polygon points="0,0 132,-54.6667 212,52 170.667,182.667 -48,236 -82.6667,60"/>
   </object>
-  <object id="150" name="Skelett_4" type="Welt" x="334.188" y="1425.55">
-   <ellipse/>
+  <object id="298" name="Skelett_5" type="Welt" x="578.667" y="1997.33">
+   <polygon points="0,0 117.333,60 21.3333,369.333 -148,548 -345.333,442.667 -193.333,138.667"/>
   </object>
-  <object id="151" name="Skelett_5" type="Welt" x="528.931" y="1426.35">
-   <ellipse/>
+  <object id="299" name="Skelett_6" type="Welt" x="206.667" y="2258.67">
+   <polygon points="0,0 361.333,266.667 360,-138.667 216,36"/>
   </object>
-  <object id="152" name="Skelett_6" type="Welt" x="270.075" y="1489.66">
-   <ellipse/>
+  <object id="300" name="Skelett_7" type="Welt" x="852" y="2550.67">
+   <polygon points="0,0 82.6667,70.6667 473.333,-60 322.667,-138.667 154.667,-98.6667"/>
   </object>
-  <object id="153" name="Skelett_7" type="Welt" x="399.904" y="1488.86">
-   <ellipse/>
+  <object id="301" name="Skelett_8" type="Welt" x="1357.33" y="1945.33">
+   <polygon points="0,0 132,420 428,277.333 221.333,130.667 190.667,-88"/>
   </object>
-  <object id="154" name="Skelett_8" type="Welt" x="529.732" y="1490.47">
-   <ellipse/>
+  <object id="302" name="Skelett_9" type="Welt" x="1309.33" y="2113.33">
+   <polygon points="0,0 466.667,-145.333 474.667,26.6667 194.667,13.3333 130.667,249.333"/>
   </object>
-  <object id="155" name="Skelett_9" type="Welt" x="335.791" y="1553.78">
-   <ellipse/>
+  <object id="303" name="Skelett_10" type="Welt" x="1541.33" y="2449.33">
+   <polygon points="0,0 333.333,-226.667 450.667,-104 112,120 -10.6667,113.333"/>
   </object>
-  <object id="156" name="Skelett_10" type="Welt" x="464.017" y="1552.98">
-   <ellipse/>
+  <object id="304" name="Skelett_11" type="Welt" x="1592" y="820">
+   <polygon points="0,0 106.667,50.6667 304,-24 420,173.333 333.333,214.667 325.333,282.667 8,258.667 -38.6667,150.667 25.3333,64"/>
   </object>
-  <object id="157" name="Skelett_13" type="Welt" x="528.13" y="1618.69">
-   <ellipse/>
+  <object id="305" name="Skelett_12" type="Welt" x="1448" y="1441.33">
+   <polygon points="0,0 169.333,8 285.333,-150.667 533.333,44 602.667,250.667 202.667,238.667 -1.33333,165.333"/>
   </object>
-  <object id="158" name="Skelett_12" type="Welt" x="399.904" y="1617.89">
-   <ellipse/>
-  </object>
-  <object id="159" name="Skelett_11" type="Welt" x="270.877" y="1617.09">
-   <ellipse/>
-  </object>
-  <object id="162" name="Skelett_21" type="Welt" x="719.691" y="2094.36">
-   <polyline points="-8.4076,6.72608 -267.362,181.604 -274.088,282.495 -131.159,331.259 1.68152,235.413 40.3565,70.6238 -8.4076,10.0891"/>
-  </object>
-  <object id="176" name="Skelett_14" type="Welt" x="830.671" y="2094.36">
-   <ellipse/>
-  </object>
-  <object id="178" name="Skelett_15" type="Welt" x="830.671" y="2121.27">
-   <ellipse/>
-  </object>
-  <object id="179" name="Skelett_16" type="Welt" x="828.989" y="2149.85">
-   <ellipse/>
-  </object>
-  <object id="180" name="Skelett_17" type="Welt" x="830.671" y="2176.76">
-   <ellipse/>
-  </object>
-  <object id="181" name="Skelett_18" type="Welt" x="830.671" y="2208.7">
-   <ellipse/>
-  </object>
-  <object id="182" name="Skelett_19" type="Welt" x="830.671" y="2233.93">
-   <ellipse/>
-  </object>
-  <object id="183" name="Skelett_20" type="Welt" x="827.308" y="2262.51">
-   <ellipse/>
-  </object>
-  <object id="184" name="Skelett_22" type="Welt" x="1486.46" y="1998.51">
-   <ellipse/>
-  </object>
-  <object id="185" name="Skelett_23" type="Welt" x="1679.84" y="2065.78">
-   <ellipse/>
-  </object>
-  <object id="188" name="Skelett_24" type="Welt" x="1583.99" y="2193.57">
-   <ellipse/>
-  </object>
-  <object id="189" name="Skelett_25" type="Welt" x="1296.45" y="2257.47">
-   <ellipse/>
-  </object>
-  <object id="200" name="Skelett_26" type="Welt" x="1933.26" y="978.662">
-   <ellipse/>
-  </object>
-  <object id="201" name="Skelett_27" type="Welt" x="1681.37" y="980.266">
-   <ellipse/>
-  </object>
-  <object id="202" name="Skelett_28" type="Welt" x="1485.64" y="975.453">
-   <ellipse/>
-  </object>
-  <object id="203" name="Skelett_29" type="Welt" x="1549.82" y="882.4">
-   <ellipse/>
-  </object>
-  <object id="205" name="Skelett_30" type="Welt" x="1806.51" y="880.796">
-   <ellipse/>
-  </object>
-  <object id="206" name="Skelett_31" type="Welt" x="2063.21" y="882.4">
-   <ellipse/>
-  </object>
-  <object id="207" name="Skelett_32" type="Welt" x="1423.07" y="787.743">
-   <ellipse/>
-  </object>
-  <object id="208" name="Skelett_33" type="Welt" x="1743.94" y="787.743">
-   <ellipse/>
-  </object>
-  <object id="209" name="Skelett_34" type="Welt" x="1999.04" y="786.138">
-   <ellipse/>
-  </object>
-  <object id="211" name="Skelett_35" type="Welt" x="1487.25" y="688.272">
-   <ellipse/>
-  </object>
-  <object id="212" name="Skelett_36" type="Welt" x="1613.99" y="688.272">
-   <ellipse/>
-  </object>
-  <object id="213" name="Skelett_37" type="Welt" x="1933.26" y="689.876">
-   <ellipse/>
-  </object>
-  <object id="219" name="Blockade" type="Welt" x="1722.41" y="224.558" width="74.0564" height="66.8896"/>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="3" x="-2.4426" y="544" width="1716.92" height="63.5076"/>
   <object id="8" x="0.000158494" y="673.704" width="59.5445" height="2037.83"/>
-  <object id="11" x="191.574" y="727.073" width="34.4234" height="8.17784"/>
   <object id="12" x="292.463" y="696.01" width="55.5834" height="8.24864"/>
   <object id="14" x="226.075" y="698.462" width="26.1448" height="7.33286"/>
   <object id="15" x="98.4361" y="761.391" width="26.1448" height="7.5218"/>
@@ -177,25 +99,6 @@
   <object id="92" x="741.333" y="2344" width="125.333" height="113.333"/>
   <object id="93" x="808" y="2282.67" width="58.6667" height="60"/>
   <object id="94" x="805.333" y="2016" width="61.3333" height="60"/>
-  <object id="96" x="324.928" y="1398.3" width="26.1448" height="8.50198"/>
-  <object id="97" x="516.126" y="1398.3" width="26.1448" height="9.04095"/>
-  <object id="98" x="516.928" y="1460.81" width="26.1448" height="8.65862"/>
-  <object id="99" x="452.928" y="1461.62" width="26.1448" height="8.52388"/>
-  <object id="100" x="388.928" y="1462.42" width="26.1448" height="8.38914"/>
-  <object id="101" x="324.261" y="1464.02" width="26.1448" height="7.45298"/>
-  <object id="102" x="260.261" y="1463.22" width="26.1448" height="6.25439"/>
-  <object id="103" x="260.261" y="1529.73" width="26.1448" height="8.40399"/>
-  <object id="104" x="260.928" y="1589.84" width="26.1448" height="7.63154"/>
-  <object id="105" x="322.928" y="1591.44" width="26.1448" height="10.0287"/>
-  <object id="106" x="324.928" y="1527.33" width="26.1448" height="8.80822"/>
-  <object id="107" x="388.261" y="1528.13" width="26.1448" height="10.0068"/>
-  <object id="108" x="389.594" y="1589.84" width="26.1448" height="7.63154"/>
-  <object id="109" x="324.261" y="1654.75" width="26.1448" height="8.05062"/>
-  <object id="110" x="452.928" y="1528.13" width="26.1448" height="7.34014"/>
-  <object id="111" x="452.261" y="1589.84" width="26.1448" height="8.2982"/>
-  <object id="112" x="516.261" y="1528.13" width="26.1448" height="8.67348"/>
-  <object id="113" x="514.928" y="1589.84" width="26.1448" height="8.96487"/>
-  <object id="114" x="515.928" y="1654.75" width="26.1448" height="8.05062"/>
   <object id="127" x="1369" y="606" width="65" height="60.3031"/>
   <object id="129" x="1371" y="1060" width="61" height="313"/>
   <object id="131" x="1335" y="1366" width="63" height="66"/>
@@ -225,6 +128,52 @@
   <object id="216" x="1665.95" y="2041.08" width="26.1448" height="8.05062"/>
   <object id="217" x="1569.37" y="2169.57" width="26.1448" height="8.05062"/>
   <object id="218" x="1280.91" y="2232.52" width="26.1448" height="8.05062"/>
+  <object id="221" x="1478.67" y="665.333" width="14.6667" height="6.66667"/>
+  <object id="222" x="1414.67" y="761.333" width="18" height="8"/>
+  <object id="223" x="1539.33" y="759.333" width="22" height="13.3333"/>
+  <object id="224" x="1667.33" y="759.333" width="20" height="9.33333"/>
+  <object id="225" x="1411.33" y="857.333" width="20.6667" height="6.66667"/>
+  <object id="227" x="1476" y="953.333" width="22.6667" height="5.33333"/>
+  <object id="228" x="1603.33" y="954" width="22" height="5.33333"/>
+  <object id="229" x="1798" y="664.667" width="18" height="7.33333"/>
+  <object id="230" x="1927.33" y="664.667" width="19.3333" height="6.66667"/>
+  <object id="232" x="1989.33" y="664" width="20" height="6.66667"/>
+  <object id="233" x="1986.67" y="760" width="20" height="8"/>
+  <object id="234" x="2055.33" y="762" width="18.6667" height="6"/>
+  <object id="235" x="2052" y="858.667" width="20" height="6.66667"/>
+  <object id="236" x="2053.33" y="954.667" width="25.3333" height="6.66667"/>
+  <object id="237" x="1859.33" y="952.667" width="24" height="7.33333"/>
+  <object id="238" x="1732" y="1048.67" width="20" height="5.33333"/>
+  <object id="239" x="1524" y="1164" width="20" height="5.33333"/>
+  <object id="242" x="1860" y="1050.67" width="20" height="5.33333"/>
+  <object id="243" x="1989.33" y="1050.67" width="20" height="5.33333"/>
+  <object id="246" x="1411" y="1048" width="23" height="7.5"/>
+  <object id="261" x="1790.67" y="869.333" width="33.3333" height="24"/>
+  <object id="263" x="1664.67" y="966" width="33.3333" height="24"/>
+  <object id="264" x="1920" y="966" width="33.3333" height="24"/>
+  <object id="265" x="2046.67" y="866.667" width="33.3333" height="24"/>
+  <object id="266" x="1982.67" y="773.333" width="33.3333" height="24"/>
+  <object id="267" x="1920" y="676" width="33.3333" height="24"/>
+  <object id="268" x="1728.67" y="774" width="33.3333" height="24"/>
+  <object id="269" x="1471.33" y="966" width="33.3333" height="24"/>
+  <object id="270" x="1535.33" y="868" width="33.3333" height="24"/>
+  <object id="271" x="1407.33" y="773.333" width="33.3333" height="24"/>
+  <object id="272" x="1470.67" y="673.333" width="33.3333" height="24"/>
+  <object id="273" x="1600.67" y="678" width="33.3333" height="24"/>
+  <object id="279" x="1471.33" y="1988.67" width="33.3333" height="24"/>
+  <object id="280" x="1565.33" y="2180.67" width="33.3333" height="24"/>
+  <object id="281" x="1664" y="2051.33" width="33.3333" height="24"/>
+  <object id="282" x="1279.33" y="2246.67" width="33.3333" height="24"/>
+  <object id="284" x="320" y="1541.33" width="33.3333" height="24"/>
+  <object id="285" x="254.667" y="1477.33" width="33.3333" height="24"/>
+  <object id="286" x="320" y="1412" width="33.3333" height="24"/>
+  <object id="287" x="383.333" y="1478" width="33.3333" height="24"/>
+  <object id="288" x="512.667" y="1411.33" width="33.3333" height="24"/>
+  <object id="289" x="514.667" y="1476" width="33.3333" height="24"/>
+  <object id="290" x="450.667" y="1540.67" width="33.3333" height="24"/>
+  <object id="291" x="512" y="1606.67" width="33.3333" height="24"/>
+  <object id="292" x="382" y="1604" width="33.3333" height="24"/>
+  <object id="293" x="256.667" y="1604.67" width="33.3333" height="24"/>
  </objectgroup>
  <layer name="Vordergrund" width="68" height="85">
   <data encoding="base64" compression="zlib">

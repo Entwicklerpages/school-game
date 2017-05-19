@@ -2,10 +2,20 @@
 <level atlas="">
     <characters>
         <character>
-            <id>default</id>
-            <title>Default</title>
+            <id>drache</id>
+            <title>Drache</title>
             <image>no</image>
         </character>
     </characters>
-    <dialogs/>
+    <dialogs>
+        <dialog name="drache">
+            <statement talking="drache">
+                <display position="left">drache</display>
+                <sound></sound>
+                <texts>
+                    <text>Damit hast du uns alle zum tot verurteilt ...</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
 </level>

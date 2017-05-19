@@ -1,24 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="2">
- <layer name="Hintergrund" width="50" height="50">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="50" tilewidth="32" tileheight="32" nextobjectid="34">
+ <tileset firstgid="1" source="../tilemap/forest.tsx"/>
+ <tileset firstgid="57" source="../tilemap/villager.tsx"/>
+ <layer name="Hintergrund" width="80" height="50">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztwwENAAAMw6BamH+zF3JIWDVVVVVVVVVVVVVVVVVVVVXfPwBfCbA=
   </data>
  </layer>
- <layer name="Dekoration" width="50" height="50">
+ <layer name="Hintergrund2" width="80" height="50">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztmWuKwzAMhH2GtLu36P7b3v9oXdgYXFeWHFvJWEgDYSA4pZW+jh95pJR+0qce+/1w3n//ridRv3w/nPdcx1rovlrx4C/4W4m/2+7ovlpx7/xJOsLfVjyH7utVLin4G+Outx5e59+jCv7GuJPq4o2/Xm2N+175O6ItvdfvRozxxl8tqiZZLfao+gR/Y2rxl2uP5gU930oK/ubkPf9mFfx9zrNH1OLvvjual6v4o2r4xYzPOos/Lzor/0bErcVWlTZ/38WzW3VJustDlhPF38z5X0szGc2J+9ye/JoVxV/5fazm3VVZoJV/XqWVf5LQ677V9x+lqDxCr/u4/wmXy1IO1PzV4z3wp7n/qOunlX9o7nrWB70q11mRf//S3v9meeFvVGfyV2YBmjtL8y8lNHca/HHrCmr/qik0dxoccvsyzXxYef3H/U7pXRx3LlDXc2RNRJ2foDnT4LDnPIDqj8aZCZoz7TxsfU6rrj3v4CmhudLmUHpee75Cc6XNofQ8uv/WHd1/647un3VH98+6o/tn3dH9s+7o/ll3dP+sO7p/1h3dP+v+AtPTLtA=
+  </data>
+ </layer>
+ <layer name="Dekoration" width="80" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzjEBAAAMAiCbrX+rHYbwgQQkAAAAAABQtw4AAAAAAAAAAAAAUw8pygBA
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="1" name="Spielerstart" type="Start" x="10" y="10" width="10" height="10">
+  <object id="1" name="Spielerstart" type="Start" x="124" y="30" width="10" height="10">
    <ellipse/>
   </object>
+  <object id="2" name="Wolf" type="Welt" x="2369.33" y="740.667" width="24" height="24">
+   <ellipse/>
+  </object>
+  <object id="32" name="Heilerin" type="Welt" x="1928.67" y="522.667" width="72" height="111.333"/>
+  <object id="33" name="Wolf_interaktion" type="Welt" x="2217.33" y="704" width="194.667" height="102.667"/>
  </objectgroup>
- <objectgroup name="Kollisionen"/>
- <layer name="Vordergrund" width="50" height="50">
+ <objectgroup name="Kollisionen">
+  <object id="3" x="194" y="0" width="1662" height="632"/>
+  <object id="4" x="192" y="634" width="320" height="458"/>
+  <object id="5" x="-8" y="-2" width="70" height="1282"/>
+  <object id="7" x="0" y="1302" width="2554" height="292"/>
+  <object id="9" x="770" y="854" width="1086" height="472"/>
+  <object id="10" x="1842" y="0" width="716" height="192"/>
+  <object id="11" x="2496" y="182" width="66" height="1120"/>
+  <object id="12" x="2434" y="1118" width="64" height="182"/>
+  <object id="13" x="2382" y="1172" width="48" height="140"/>
+  <object id="14" x="2310" y="1236" width="62" height="70"/>
+  <object id="15" x="1854" y="1104" width="56" height="216"/>
+  <object id="16" x="1918" y="1170" width="58" height="146"/>
+  <object id="17" x="1974" y="1230" width="70" height="98"/>
+  <object id="18" x="1838" y="202" width="206" height="54"/>
+  <object id="19" x="1854" y="254" width="120" height="56"/>
+  <object id="20" x="1850" y="300" width="64" height="84"/>
+  <object id="22" x="2308" y="186" width="188" height="70"/>
+  <object id="23" x="2372" y="260" width="134" height="56"/>
+  <object id="24" x="2428" y="314" width="110" height="76"/>
+  <object id="25" x="490" y="622" width="82" height="140"/>
+  <object id="26" x="556" y="628" width="86" height="76"/>
+  <object id="27" x="60" y="1164" width="60" height="156"/>
+  <object id="28" x="118" y="1236" width="66" height="102"/>
+  <object id="29" x="634" y="1238" width="128" height="90"/>
+  <object id="30" x="708" y="1174" width="60" height="92"/>
+  <object id="31" x="1951.33" y="563.333" width="33.3333" height="11.3333"/>
+ </objectgroup>
+ <layer name="Vordergrund" width="80" height="50">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJzt2MEJACEMBEAbOvsv764EUQ+yOgPid5N8QloDAAAAAAAAAKjt+V4v8AMAcJdde6B98h+7+1p1TrO5qtZzmtU+p8xpNGdKPeluvXuk5wcAgCQvEOwO7w==
   </data>
  </layer>
 </map>

@@ -28,6 +28,12 @@ public class ForestCrossingLevel extends Level
     }
 
     @Override
+    protected String getMusicName()
+    {
+        return "birds";
+    }
+
+    @Override
     protected void onPrepare(WorldObjectManager.WorldObjectConfig worldConfig)
     {
         InteractionZone sign_direction = new InteractionZone("Schild Wegweiser");

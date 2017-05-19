@@ -37,14 +37,36 @@ Tiled
 Gimp
 LMMS
 
+# Schokokuchen
+250g Zucker
+250g Butter oder Margarine
+125g Mehl
+1Tl Backpulver
+5 Eier
+100g Schokolade
+
 # Musik
 Onion
 von Skiessi
 
-# Rezept #1
-4cl Tequila
-Orangensaft zum Auffüllen
-2cl Grenadine
+Skye Cuillin,
+Celtic Impulse,
+Myst on the Moor,
+The Pyre,
+Netherworld Shanty,
+Future Gladiator
+von Kevin MacLeod
+
+# Schokokuchen Fortsetzung
+Eier trennen.
+Zucker und Eigelb schäumig rühren.
+Mehl und Backpulver hinzugeben.
+Flüssige Butter und Schokolade auflösen
+und hinzugeben.
+Zuletzt den Eisschnee unterheben.
+
+Bei 180°C Umluft
+ca. 60 minuten
 
 # Schriftart
 Cormorant Upright (OFL, Google Fonts)
@@ -52,6 +74,7 @@ von Christian Thalmann
 
 VT323 (OFL, Google Fonts)
 von Peter Hull
+
 
 
 

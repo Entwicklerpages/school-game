@@ -19,7 +19,7 @@ public class AttackZone extends WorldObject implements UpdateObject
      */
     public AttackZone(String objectId)
     {
-        this(objectId, 0);
+        this(objectId, 5);
     }
 
     /**

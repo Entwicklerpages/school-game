@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="2">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="12">
+ <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
  <layer name="Hintergrund" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztw8EJAAAMA6F7ZP+ZO0dBwVVTVVVVVVVVVVXV5w+SZScR
+  </data>
+ </layer>
+ <layer name="Hintergrund2" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2TsKgDAQANHEQu9/Y21sFsRfPrMwA2E7BV/lppZSluPUxjPW+vlxrsfZOsxYr/ecs9f30UMPPfTQQw899NBDj0wes2rtMatWHpT+elD66kHtrQe1px5ZuvPI0pVH1qJH1vRgpQcrPVjpwUoPVnqw0oOV/4OM3Jcwcp/IyH07w2X2fdTo2fueaNTcAeo/EZE=
   </data>
  </layer>
  <layer name="Dekoration" width="50" height="50">
@@ -11,8 +17,16 @@
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="1" name="Spielerstart" type="Start" x="10" y="10" width="10" height="10">
+  <object id="1" name="Spielerstart" type="Start" x="758" y="173" width="10" height="10">
    <ellipse/>
+  </object>
+  <object id="3" name="Stein1" type="Welt" x="704" y="448" width="64.6667" height="64.6667"/>
+  <object id="4" name="Stein2" type="Welt" x="768.667" y="447.333" width="63.3333" height="64.6667"/>
+  <object id="5" name="Trigger_start3" type="Welt" x="639" y="511" width="64" height="131"/>
+  <object id="8" name="Trigger_start2" type="Welt" x="834" y="513.5" width="64" height="131"/>
+  <object id="9" name="Trigger_start1" type="Welt" x="685" y="575" width="165" height="69"/>
+  <object id="11" name="Krieger" type="Welt" x="389" y="796">
+   <polygon points="0,0 722,-137 886,498 9,534 1000,102 114,-187 393,242 -110,283 560,651 544,102 -269,101 -71,478"/>
   </object>
  </objectgroup>
  <objectgroup name="Kollisionen"/>

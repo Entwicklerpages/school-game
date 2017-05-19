@@ -2,10 +2,38 @@
 <level atlas="">
     <characters>
         <character>
-            <id>default</id>
-            <title>Default</title>
+            <id>schild</id>
+            <title>Schild</title>
             <image>no</image>
         </character>
     </characters>
-    <dialogs/>
+    <dialogs>
+        <dialog name="leben_schild">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <sound></sound>
+                <texts>
+                    <text>Hier musst du lang.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="schild">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <sound></sound>
+                <texts>
+                    <text>Manche Dinge sollte man sich einfach Merken.</text>
+                </texts>
+            </statement>
+        </dialog>
+        <dialog name="tot_schild">
+            <statement talking="schild">
+                <display position="left">schild</display>
+                <sound></sound>
+                <texts>
+                    <text>Verloren.</text>
+                </texts>
+            </statement>
+        </dialog>
+    </dialogs>
 </level>

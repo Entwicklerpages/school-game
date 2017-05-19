@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="142" height="142" tilewidth="32" tileheight="32" nextobjectid="105">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="142" height="142" tilewidth="32" tileheight="32" nextobjectid="201">
  <tileset firstgid="1" source="../tilemap/forest.tsx"/>
  <tileset firstgid="57" source="../tilemap/painful_decoration.tsx"/>
  <layer name="Hintergrund" width="142" height="142">
@@ -9,7 +9,7 @@
  </layer>
  <layer name="Hintergrund_Baum" width="142" height="142">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <layer name="Dekoration" width="142" height="142">
@@ -18,232 +18,274 @@
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="1" name="Spielerstart" type="Start" x="329.615" y="314.065" width="10" height="10">
+  <object id="1" name="Spielerstart" type="Start" x="62.615" y="319.065" width="10" height="10">
    <ellipse/>
   </object>
-  <object id="20" name="Bear" type="Welt" x="557.333" y="564">
+  <object id="20" name="Bear_1" type="Welt" x="557.333" y="564">
    <ellipse/>
   </object>
-  <object id="23" name="Bear" type="Welt" x="630.667" y="634.667">
+  <object id="23" name="Bear_2" type="Welt" x="630.667" y="634.667">
    <ellipse/>
   </object>
-  <object id="24" name="Bear" type="Welt" x="498.667" y="697.333">
+  <object id="24" name="Bear_3" type="Welt" x="498.667" y="697.333">
    <ellipse/>
   </object>
-  <object id="25" name="Bear" type="Welt" x="629.333" y="758.667">
+  <object id="25" name="Bear_4" type="Welt" x="629.333" y="758.667">
    <ellipse/>
   </object>
-  <object id="26" name="Bear" type="Welt" x="1005.33" y="1361.33">
+  <object id="26" name="Bear_5" type="Welt" x="1005.33" y="1361.33">
    <ellipse/>
   </object>
-  <object id="27" name="Bear" type="Welt" x="913.333" y="1422.67">
+  <object id="27" name="Bear_6" type="Welt" x="913.333" y="1422.67">
    <ellipse/>
   </object>
-  <object id="28" name="Bear" type="Welt" x="457.333" y="1969.33">
+  <object id="28" name="Bear_7" type="Welt" x="457.333" y="1969.33">
    <ellipse/>
   </object>
-  <object id="29" name="Bear" type="Welt" x="594.667" y="2033.33">
+  <object id="29" name="Bear_8" type="Welt" x="594.667" y="2033.33">
    <ellipse/>
   </object>
-  <object id="30" name="Bear" type="Welt" x="465.333" y="2133.33">
+  <object id="30" name="Bear_9" type="Welt" x="465.333" y="2133.33">
    <ellipse/>
   </object>
-  <object id="31" name="Bear" type="Welt" x="1144" y="2520">
+  <object id="31" name="Bear_10" type="Welt" x="1144" y="2520">
    <ellipse/>
   </object>
-  <object id="32" name="Bear" type="Welt" x="1137.33" y="2710.67">
+  <object id="32" name="Bear_11" type="Welt" x="1137.33" y="2710.67">
    <ellipse/>
   </object>
-  <object id="33" name="Bear" type="Welt" x="1305.33" y="2645.33">
+  <object id="33" name="Bear_12" type="Welt" x="1305.33" y="2645.33">
    <ellipse/>
   </object>
-  <object id="34" name="Bear" type="Welt" x="621.333" y="3477.33">
+  <object id="34" name="Bear_13" type="Welt" x="621.333" y="3477.33">
    <ellipse/>
   </object>
-  <object id="35" name="Bear" type="Welt" x="625.333" y="3637.33">
+  <object id="35" name="Bear_14" type="Welt" x="625.333" y="3637.33">
    <ellipse/>
   </object>
-  <object id="36" name="Bear" type="Welt" x="653.333" y="3985.33">
+  <object id="36" name="Bear_15" type="Welt" x="653.333" y="3985.33">
    <ellipse/>
   </object>
-  <object id="37" name="Bear" type="Welt" x="656" y="4117.33">
+  <object id="37" name="Bear_16" type="Welt" x="656" y="4117.33">
    <ellipse/>
   </object>
-  <object id="38" name="Bear" type="Welt" x="1489.33" y="4205.33">
+  <object id="38" name="Bear_17" type="Welt" x="1489.33" y="4205.33">
    <ellipse/>
   </object>
-  <object id="39" name="Bear" type="Welt" x="1586.67" y="4180">
+  <object id="39" name="Bear_18" type="Welt" x="1586.67" y="4180">
    <ellipse/>
   </object>
-  <object id="40" name="Bear" type="Welt" x="1649.33" y="4246.67">
+  <object id="40" name="Bear_19" type="Welt" x="1649.33" y="4246.67">
    <ellipse/>
   </object>
-  <object id="41" name="Bear" type="Welt" x="1745.33" y="4177.33">
+  <object id="41" name="Bear_20" type="Welt" x="1745.33" y="4177.33">
    <ellipse/>
   </object>
-  <object id="42" name="Bear" type="Welt" x="1810.67" y="4245.33">
+  <object id="42" name="Bear_21" type="Welt" x="1810.67" y="4245.33">
    <ellipse/>
   </object>
-  <object id="43" name="Bear" type="Welt" x="1846.67" y="4141.33">
+  <object id="43" name="Bear_22" type="Welt" x="1846.67" y="4141.33">
    <ellipse/>
   </object>
-  <object id="44" name="Bear" type="Welt" x="1941.33" y="4212">
+  <object id="44" name="Bear_23" type="Welt" x="1941.33" y="4212">
    <ellipse/>
   </object>
-  <object id="45" name="Bear" type="Welt" x="2674.67" y="3601.33">
+  <object id="45" name="Bear_24" type="Welt" x="2674.67" y="3601.33">
    <ellipse/>
   </object>
-  <object id="46" name="Bear" type="Welt" x="2673.33" y="3637.33">
+  <object id="46" name="Bear_25" type="Welt" x="2673.33" y="3637.33">
    <ellipse/>
   </object>
-  <object id="47" name="Bear" type="Welt" x="2676" y="3668">
+  <object id="47" name="Bear_26" type="Welt" x="2676" y="3668">
    <ellipse/>
   </object>
-  <object id="48" name="Bear" type="Welt" x="2673.33" y="3702.67">
+  <object id="48" name="Bear_27" type="Welt" x="2673.33" y="3702.67">
    <ellipse/>
   </object>
-  <object id="49" name="Bear" type="Welt" x="3532" y="3892">
+  <object id="49" name="Bear_28" type="Welt" x="3532" y="3892">
    <ellipse/>
   </object>
-  <object id="50" name="Bear" type="Welt" x="3632" y="3790.67">
+  <object id="50" name="Bear_29" type="Welt" x="3632" y="3790.67">
    <ellipse/>
   </object>
-  <object id="51" name="Bear" type="Welt" x="3700" y="3893.33">
+  <object id="51" name="Bear_30" type="Welt" x="3700" y="3893.33">
    <ellipse/>
   </object>
-  <object id="52" name="Bear" type="Welt" x="3917.33" y="2933.33">
+  <object id="52" name="Bear_31" type="Welt" x="3917.33" y="2933.33">
    <ellipse/>
   </object>
-  <object id="53" name="Bear" type="Welt" x="4086.67" y="2865.33">
+  <object id="53" name="Bear_32" type="Welt" x="4086.67" y="2865.33">
    <ellipse/>
   </object>
-  <object id="54" name="Bear" type="Welt" x="3981.33" y="3120">
+  <object id="54" name="Bear_33" type="Welt" x="3981.33" y="3120">
    <ellipse/>
   </object>
-  <object id="55" name="Bear" type="Welt" x="3634.67" y="2348">
+  <object id="55" name="Bear_34" type="Welt" x="3634.67" y="2348">
    <ellipse/>
   </object>
-  <object id="56" name="Bear" type="Welt" x="3920" y="2421.33">
+  <object id="56" name="Bear_35" type="Welt" x="3920" y="2421.33">
    <ellipse/>
   </object>
-  <object id="57" name="Bear" type="Welt" x="3116" y="2772">
+  <object id="57" name="Bear_36" type="Welt" x="3116" y="2772">
    <ellipse/>
   </object>
-  <object id="58" name="Bear" type="Welt" x="3112" y="2648">
+  <object id="58" name="Bear_37" type="Welt" x="3112" y="2648">
    <ellipse/>
   </object>
-  <object id="59" name="Bear" type="Welt" x="1584" y="3576">
+  <object id="59" name="Bear_38" type="Welt" x="1584" y="3576">
    <ellipse/>
   </object>
-  <object id="60" name="Bear" type="Welt" x="1648" y="3664">
+  <object id="60" name="Bear_39" type="Welt" x="1648" y="3664">
    <ellipse/>
   </object>
-  <object id="61" name="Bear" type="Welt" x="1740" y="3512">
+  <object id="61" name="Bear_40" type="Welt" x="1740" y="3512">
    <ellipse/>
   </object>
-  <object id="62" name="Bear" type="Welt" x="2176" y="2056">
+  <object id="62" name="Bear_41" type="Welt" x="2176" y="2056">
    <ellipse/>
   </object>
-  <object id="63" name="Bear" type="Welt" x="2320" y="2072">
+  <object id="63" name="Bear_42" type="Welt" x="2320" y="2072">
    <ellipse/>
   </object>
-  <object id="64" name="Bear" type="Welt" x="2836" y="1328">
+  <object id="64" name="Bear_43" type="Welt" x="2836" y="1328">
    <ellipse/>
   </object>
-  <object id="65" name="Bear" type="Welt" x="2992" y="1316">
+  <object id="65" name="Bear_44" type="Welt" x="2992" y="1316">
    <ellipse/>
   </object>
-  <object id="66" name="Bear" type="Welt" x="1896" y="252">
+  <object id="66" name="Bear_45" type="Welt" x="1896" y="252">
    <ellipse/>
   </object>
-  <object id="67" name="Bear" type="Welt" x="2020" y="232">
+  <object id="67" name="Bear_46" type="Welt" x="2020" y="232">
    <ellipse/>
   </object>
-  <object id="68" name="Bear" type="Welt" x="1964" y="328">
+  <object id="68" name="Bear_47" type="Welt" x="1964" y="328">
    <ellipse/>
   </object>
-  <object id="69" name="Bear" type="Welt" x="2064" y="320">
+  <object id="69" name="Bear_48" type="Welt" x="2064" y="320">
    <ellipse/>
   </object>
-  <object id="70" name="Bear" type="Welt" x="2020" y="412">
+  <object id="70" name="Bear_49" type="Welt" x="2020" y="412">
    <ellipse/>
   </object>
-  <object id="71" name="Bear" type="Welt" x="2108" y="400">
+  <object id="71" name="Bear_50" type="Welt" x="2108" y="400">
    <ellipse/>
   </object>
-  <object id="72" name="Bear" type="Welt" x="4032" y="1708">
+  <object id="72" name="Bear_51" type="Welt" x="4032" y="1708">
    <ellipse/>
   </object>
-  <object id="73" name="Bear" type="Welt" x="4072" y="1784">
+  <object id="73" name="Bear_52" type="Welt" x="4072" y="1784">
    <ellipse/>
   </object>
-  <object id="74" name="Bear" type="Welt" x="4132" y="1828">
+  <object id="74" name="Bear_53" type="Welt" x="4132" y="1828">
    <ellipse/>
   </object>
-  <object id="75" name="Bear" type="Welt" x="4180" y="1776">
+  <object id="75" name="Bear_54" type="Welt" x="4180" y="1776">
    <ellipse/>
   </object>
-  <object id="76" name="Bear" type="Welt" x="4148" y="1704">
+  <object id="76" name="Bear_55" type="Welt" x="4148" y="1704">
    <ellipse/>
   </object>
-  <object id="77" name="Bear" type="Welt" x="4088" y="1608">
+  <object id="77" name="Bear_56" type="Welt" x="4088" y="1608">
    <ellipse/>
   </object>
-  <object id="78" name="Bear" type="Welt" x="3328" y="904">
+  <object id="78" name="Bear_57" type="Welt" x="3328" y="904">
    <ellipse/>
   </object>
-  <object id="79" name="Bear" type="Welt" x="3932" y="392">
+  <object id="79" name="Bear_58" type="Welt" x="3932" y="392">
    <ellipse/>
   </object>
-  <object id="80" name="Bear" type="Welt" x="3556" y="536">
+  <object id="80" name="Bear_59" type="Welt" x="3556" y="536">
    <ellipse/>
   </object>
-  <object id="81" name="Bear" type="Welt" x="3784" y="492">
+  <object id="81" name="Bear_60" type="Welt" x="3784" y="492">
    <ellipse/>
   </object>
-  <object id="82" name="Bear" type="Welt" x="3416" y="668">
+  <object id="82" name="Bear_61" type="Welt" x="3416" y="668">
    <ellipse/>
   </object>
-  <object id="92" name="Rabbit" type="Welt" x="944" y="976">
-   <ellipse/>
-  </object>
-  <object id="93" name="Rabbit" type="Welt" x="832" y="2388">
-   <ellipse/>
-  </object>
-  <object id="94" name="Rabbit" type="Welt" x="2164" y="3144">
-   <ellipse/>
-  </object>
-  <object id="95" name="Rabbit" type="Welt" x="3736" y="1292">
-   <ellipse/>
-  </object>
-  <object id="96" name="Rabbit" type="Welt" x="1134.16" y="3148.46" rotation="-246.968">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="96" name="Rabbit_5" type="Welt" x="1008.83" y="3299.13">
+   <polygon points="-52,46.6667 168.485,-120.121 271.758,87.1515"/>
   </object>
-  <object id="98" name="Rabbit" type="Welt" x="1065.94" y="3244.9" rotation="9.92096">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="98" name="Rabbit_6" type="Welt" x="1032.1" y="3274.04">
+   <polygon points="-34.6667,0 151.151,-181.455 231.758,145.818"/>
   </object>
-  <object id="99" name="Rabbit" type="Welt" x="2348.76" y="2500.81" rotation="-8.79053">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="99" name="Rabbit_7" type="Welt" x="2372.76" y="2527.48">
+   <polygon points="-19,54 147.818,-239.788 244.091,-49.1818"/>
   </object>
-  <object id="100" name="Rabbit" type="Welt" x="2409.48" y="2591.73" rotation="-30.6571">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="100" name="Rabbit_8" type="Welt" x="2477.48" y="2573.06">
+   <polygon points="-52,-77 -42.182,-322.788 245.091,-16.1818"/>
   </object>
-  <object id="101" name="Rabbit" type="Welt" x="2267.9" y="1609.1" rotation="305.661">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="101" name="Rabbit_9" type="Welt" x="2247.9" y="1538.43">
+   <polygon points="-29,47 76.818,-261.788 131.091,4.8182"/>
   </object>
-  <object id="102" name="Rabbit" type="Welt" x="2455.62" y="1515.66" rotation="222.521">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="102" name="Rabbit_10" type="Welt" x="2172.95" y="1477.66">
+   <polygon points="76.9705,37.6625 90.798,-221.779 300.497,-20.8949"/>
   </object>
-  <object id="103" name="Rabbit" type="Welt" x="3213.72" y="1245.28" rotation="326.159">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="103" name="Rabbit_11" type="Welt" x="3233.72" y="1274.61">
+   <polygon points="-114,-5 71.818,-142.788 366.091,-43.1818"/>
   </object>
-  <object id="104" name="Rabbit" type="Welt" x="3168.57" y="1206.36" rotation="350.634">
-   <polygon points="0,0 181.818,-178.788 209.091,81.8182"/>
+  <object id="104" name="Rabbit_12" type="Welt" x="3169.9" y="1209.03">
+   <polygon points="21,-21 155.818,-234.788 246.091,20.8182"/>
   </object>
+  <object id="140" name="Ausgang" type="Welt" x="4459" y="255" width="83" height="217"/>
+  <object id="142" name="Dornen52" type="Welt" x="2080" y="562" width="30" height="15"/>
+  <object id="143" name="Dornen51" type="Welt" x="2112" y="592" width="30" height="16"/>
+  <object id="144" name="Dornen50" type="Welt" x="2116" y="1207" width="25" height="7"/>
+  <object id="145" name="Dornen49" type="Welt" x="2149" y="1235" width="24" height="14"/>
+  <object id="146" name="Dornen48" type="Welt" x="2560" y="1426" width="30" height="16"/>
+  <object id="147" name="Dornen47" type="Welt" x="2594" y="1391" width="31" height="18"/>
+  <object id="148" name="Dornen46" type="Welt" x="2178" y="1680" width="34" height="13"/>
+  <object id="149" name="Dornen45" type="Welt" x="2148" y="1712" width="22" height="14"/>
+  <object id="150" name="Dornen44" type="Welt" x="2242" y="2137" width="32" height="8"/>
+  <object id="151" name="Dornen43" type="Welt" x="2272" y="2170" width="35" height="7"/>
+  <object id="152" name="Dornen42" type="Welt" x="2084" y="3347" width="30" height="16"/>
+  <object id="153" name="Dornen41" type="Welt" x="2046" y="3375" width="34" height="17"/>
+  <object id="154" name="Dornen40" type="Welt" x="1345" y="3510" width="28" height="10"/>
+  <object id="155" name="Dornen39" type="Welt" x="1376" y="3542" width="31" height="10"/>
+  <object id="157" name="Dornen38" type="Welt" x="798" y="3379" width="34" height="13"/>
+  <object id="158" name="Dornen37" type="Welt" x="764" y="3409" width="38" height="15"/>
+  <object id="159" name="Dornen36" type="Welt" x="382" y="3889" width="33" height="14"/>
+  <object id="160" name="Dornen35" type="Welt" x="417" y="3924" width="32" height="10"/>
+  <object id="161" name="Dornen34" type="Welt" x="896" y="4146" width="33" height="14"/>
+  <object id="162" name="Dornen33" type="Welt" x="862" y="4175" width="32" height="16"/>
+  <object id="163" name="Dornen32" type="Welt" x="1278" y="4048" width="34" height="18"/>
+  <object id="164" name="Dornen53" type="Welt" x="1311" y="4077" width="36" height="15"/>
+  <object id="165" name="Dornen31" type="Welt" x="2048" y="4047" width="27" height="18"/>
+  <object id="166" name="Dornen30" type="Welt" x="2078" y="4083" width="36" height="14"/>
+  <object id="167" name="Dornen29" type="Welt" x="2366" y="3731" width="31" height="15"/>
+  <object id="168" name="Dornen28" type="Welt" x="2400" y="3697" width="33" height="15"/>
+  <object id="169" name="Dornen27" type="Welt" x="3103" y="3668" width="34" height="14"/>
+  <object id="170" name="Dornen26" type="Welt" x="3073" y="3699" width="29" height="14"/>
+  <object id="171" name="Dornen25" type="Welt" x="3071" y="3788" width="28" height="20"/>
+  <object id="172" name="Dornen24" type="Welt" x="3106" y="3827" width="29" height="16"/>
+  <object id="173" name="Dornen23" type="Welt" x="4066" y="3315" width="29" height="10"/>
+  <object id="174" name="Dornen22" type="Welt" x="4034" y="3348" width="33" height="12"/>
+  <object id="175" name="Dornen21" type="Welt" x="3683" y="2447" width="32" height="25"/>
+  <object id="176" name="Dornen20" type="Welt" x="3647" y="2478" width="30" height="18"/>
+  <object id="177" name="Dornen19" type="Welt" x="2973" y="2614" width="37" height="9"/>
+  <object id="178" name="Dornen18" type="Welt" x="2945" y="2576" width="34" height="19"/>
+  <object id="179" name="Dornen17" type="Welt" x="3069" y="1197" width="35" height="19"/>
+  <object id="180" name="Dornen16" type="Welt" x="3108" y="1171" width="26" height="13"/>
+  <object id="181" name="Dornen15" type="Welt" x="3296" y="755" width="25" height="12"/>
+  <object id="182" name="Dornen14" type="Welt" x="3329" y="715" width="35" height="22"/>
+  <object id="183" name="Dornen13" type="Welt" x="3678" y="465" width="65" height="14"/>
+  <object id="184" name="Dornen12" type="Welt" x="4097" y="1393" width="66" height="17"/>
+  <object id="185" name="Dornen11" type="Welt" x="3971" y="1460" width="62" height="17"/>
+  <object id="186" name="Dornen10" type="Welt" x="1374" y="2964" width="35" height="13"/>
+  <object id="187" name="Dornen9" type="Welt" x="1411" y="2929" width="31" height="16"/>
+  <object id="188" name="Dornen8" type="Welt" x="541" y="2324" width="30" height="11"/>
+  <object id="189" name="Dornen7" type="Welt" x="546" y="1840" width="38" height="15"/>
+  <object id="190" name="Dornen6" type="Welt" x="898" y="1681" width="32" height="15"/>
+  <object id="191" name="Dornen5" type="Welt" x="964" y="1616" width="25" height="14"/>
+  <object id="192" name="Dornen4" type="Welt" x="798" y="1648" width="35" height="17"/>
+  <object id="193" name="Dornen3" type="Welt" x="833" y="1583" width="35" height="18"/>
+  <object id="194" name="Dornen2" type="Welt" x="1120" y="1326" width="34" height="19"/>
+  <object id="195" name="Dornen1" type="Welt" x="1153" y="1269" width="28" height="11"/>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="2" x="187.45" y="256.974">
-   <polyline points="0,0 -1.7601,149.608 65.1236,149.608 63.3635,278.976 129.367,278.976 128.487,345.859 198.011,347.619 198.011,387.222"/>
+   <polyline points="-185,151 -1.7601,149.608 65.1236,149.608 63.3635,278.976 129.367,278.976 128.487,345.859 198.011,347.619 198.011,387.222"/>
   </object>
   <object id="3" x="385.462" y="643.316">
    <polyline points="0,0 0,18.481 58.9633,19.3611 59.8434,78.3244 126.727,77.4443 125.847,139.928 248.174,139.928 249.934,212.092 315.938,211.212"/>
@@ -270,7 +312,7 @@
    <polyline points="0,0 0,-62 192,-64 194,-126 256,-126 258,-190 320,-190 322,-254 384,-254 386,-316 514,-320 514,-384 638,-384 638,-322 700,-322 702,-258 768,-256 766,-98 706,-100 704,32 642,30 640,156 576,158 576,382 638,382 638,448 704,448 704,512 766,514 770,602 704,608 706,734 642,734 642,806 508,802 510,854 128,858 128,804 -2,798 0,736 -194,736 -192,674 -320,672 -320,608 -516,608 -516,668 -644,670 -642,732 -832,736 -834,796 -896,796 -896,860 -1024,862 -1026,926 -1088,924 -1090,986 -1214,988 -1216,1058 -1282,1056 -1282,1122 -1344,1120 -1346,1182 -1406,1180 -1406,1246 -1730,1248 -1730,1186 -1854,1186 -1856,1120 -1918,1118 -1920,1060 -1984,1056 -1986,992 -2046,990 -2048,1052 -2304,1054 -2306,1116 -2496,1118 -2496,1056 -2560,1056 -2560,990 -2622,992 -2624,962 -2564,962 -2560,834 -2498,832 -2498,768 -2436,768 -2432,706 -2306,706 -2304,636 -2242,640 -2238,578 -1988,578 -1984,640 -1920,640 -1922,704 -1858,700 -1858,770 -1666,766 -1666,828 -1536,832 -1534,768 -1408,768 -1408,706 -1278,704 -1280,638 -1154,640 -1154,576 -1090,576 -1088,450 -1030,450 -1028,384 -962,382 -964,252 -896,254 -896,192 -834,188 -832,0 -770,-2 -768,-196 -704,-194 -704,-254 -578,-256 -578,-194 -514,-194 -514,-132 -324,-132 -320,-66 -192,-66 -194,-2 0,0"/>
   </object>
   <object id="15" x="188" y="254">
-   <polyline points="0,0 68,0 70,-28 198,-30 198,96 258,96 262,156 324,160 326,292 388,290 388,352 516,352 516,418 646,416 646,474 710,476 712,544 772,542 774,610 834,606 838,668 900,672 902,732 966,736 964,862 1030,864 1028.5,1153.5 965.5,1154"/>
+   <polyline points="-188,4 68,0 70,-28 198,-30 198,96 258,96 262,156 324,160 326,292 388,290 388,352 516,352 516,418 646,416 646,474 710,476 712,544 772,542 774,610 834,606 838,668 900,672 902,732 966,736 964,862 1030,864 1028.5,1153.5 965.5,1154"/>
   </object>
   <object id="16" x="1153.33" y="1408">
    <polyline points="0,0 -1.33333,130 -61.3333,130 -63.3333,188 -127.333,190 -129.333,250 -191.333,256 -191.333,316 -255.333,316 -255.333,382 -319.333,384 -319.333,382 -319.333,448 -385.333,448 -385.333,514 -445.333,510 -449.333,640 -511.333,638 -511.333,736 -447.333,734 -447.333,798 -385.333,800 -385.333,864 -257.333,864 -257.333,922 -129.333,924 -129.333,990 2.66667,992 2.66667,1056 60.6667,1054 62.6667,1118 130.667,1120 128.667,1178 190.667,1182 190.667,1310 254.667,1312 256.667,1438 316.667,1438 320.667,1600 258.667,1600 258.667,1724 190.667,1724 192.667,1790 126.667,1790 126.667,1888 192.667,1890 192.667,1950 256.667,1950 254.667,2014 318.667,2016 320.667,2074 510.667,2076 512.667,2016 640.667,2016 638.667,1952 704.667,1950 704.667,1890 766.667,1888 768.667,1824 830.667,1820 830.667,1760 896.667,1758 896.667,1698 958.667,1698 958.667,1634 1024.67,1634 1024,1441.33 1086.67,1438.67 1086.67,1118.67 1150.67,1118.67 1152,990.667 1213.33,992 1216,897.333 1152,897.333 1152,832 1085.33,833.333 1086.67,769.333 1022.67,769.333 1024,704 960,705.333 960,576 894.667,577.333 896,352 961.333,350.667 960,224 1021.33,222.667 1024,-62.6667 960,-61.3333 958.667,-353.333 1024,-353.333"/>
@@ -284,6 +326,40 @@
   <object id="19" x="1792" y="130.667">
    <polyline points="0,0 258.667,-2.66667"/>
   </object>
+  <object id="110" x="194" y="364" width="27" height="12"/>
+  <object id="111" x="260" y="234" width="115" height="13"/>
+  <object id="112" x="294" y="270" width="49" height="9"/>
+  <object id="114" x="648" y="617" width="58" height="8"/>
+  <object id="115" x="1187" y="1126" width="20" height="86"/>
+  <object id="116" x="386" y="1921" width="28" height="119"/>
+  <object id="117" x="612" y="2054" width="24" height="53"/>
+  <object id="118" x="1315" y="2598" width="29" height="119"/>
+  <object id="119" x="1218" y="2819" width="22" height="147"/>
+  <object id="120" x="967" y="3401" width="51" height="21"/>
+  <object id="121" x="452" y="3553" width="23" height="116"/>
+  <object id="122" x="1026" y="3939" width="117" height="19"/>
+  <object id="123" x="1701" y="4135" width="87" height="17"/>
+  <object id="124" x="2435" y="3812" width="125" height="21"/>
+  <object id="125" x="3197" y="3691" width="88" height="15"/>
+  <object id="126" x="3272" y="3712" width="18" height="24"/>
+  <object id="127" x="3909" y="3513" width="19" height="101"/>
+  <object id="128" x="3972" y="2620" width="21" height="162"/>
+  <object id="129" x="3398" y="2369" width="120" height="21"/>
+  <object id="130" x="2695" y="2690" width="180" height="24"/>
+  <object id="131" x="2238" y="2656" width="29" height="124"/>
+  <object id="132" x="2400" y="2084" width="32" height="81"/>
+  <object id="133" x="2433" y="1348" width="59" height="20"/>
+  <object id="134" x="2185" y="450" width="56" height="25"/>
+  <object id="135" x="1799" y="134" width="17" height="70"/>
+  <object id="136" x="3203" y="1318" width="123" height="21"/>
+  <object id="137" x="3868" y="1164" width="95" height="12"/>
+  <object id="138" x="4200" y="1677" width="15" height="109"/>
+  <object id="139" x="3332" y="609" width="23" height="92"/>
+  <object id="141" x="3719" y="390" width="119" height="17"/>
+  <object id="156" x="1702" y="3421" width="85" height="31"/>
+  <object id="197" x="4241.5" y="185" width="322.5" height="72"/>
+  <object id="198" x="4283" y="421" width="8.5" height="54"/>
+  <object id="200" x="4275.5" y="459" width="295" height="24"/>
  </objectgroup>
  <layer name="Vordergrund" width="142" height="142">
   <data encoding="base64" compression="zlib">

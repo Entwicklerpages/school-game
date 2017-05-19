@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="2">
- <layer name="Hintergrund" width="50" height="50">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="80" tilewidth="32" tileheight="32" nextobjectid="33">
+ <tileset firstgid="1" source="../tilemap/graveyard.tsx"/>
+ <layer name="Hintergrund" width="40" height="80">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztwzENAAAMBKEb3r/m2ugACaumqqqqqqqqqqqqqqrq2wffPjIB
   </data>
  </layer>
- <layer name="Dekoration" width="50" height="50">
+ <layer name="Hintergrund2" width="40" height="80">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJztmu1ugzAMRdOp2t7/jdc/1SKakGvf6+B2PhJCQlDskw9Twq219vXYbkn334/tJ/Hemg9LtD+WKH9q1P7UlD+O8sdR85+P6Prh9bi7/lrZVX9Rn9meX1S+yp/W34iRE7U/hlHsan99DkpYfz0RtZP1twurv91Y/SGscvWg/M1Vrh6Q37yqjc/u/Tx+b3+x3h2b9/5PVv48MVniW7U94i8yPm/8K39o/Cxef2j7s+zuf9a5YHf/s86FV4/fFag/i8/+XBbUn8Vnfy7Lp85/6viszym7/Vmffap+YFT9GOeNkmX8zsgyfmcg/phYWZT/P0Z5sCj73+galk/of5b2zDR+kRyYGFrLMf9Z37X2x9+5/yEb++4m2h/7XhP1542XBfXnbW+WDOP3DGX/U9TfYzzZ6u8xnv8+/7GUv1eQmmJdPzobo9b4kJpiXT86G6PK9mXXL6P7H7t+GRWfev38GMfsOIp6/RypHUh80d9vsO0b/f3GKj7V9yvs9bO4VN+vsNfP+qM1zyh/s701zyh/s335K39X+vsFSe8dKQ==
+  </data>
+ </layer>
+ <layer name="Dekoration" width="40" height="80">
+  <data encoding="base64" compression="zlib">
+   eJzt1UEOgCAMBMBe/f+HPRivRIkV0s7cCXa3xAgAAABGjqZ333b4hhW6zr2Tih1UnKmjNz3qvJ9OnXeadQfyZpb/1jry/MeXOetsDbnnm8346TkdwqXyW6g8GzlmdsaekcVu5RrlK3sy2CuAiBPmnwD9
   </data>
  </layer>
  <objectgroup name="Objekte">
-  <object id="1" name="Spielerstart" type="Start" x="10" y="10" width="10" height="10">
+  <object id="1" name="Spielerstart" type="Start" x="634" y="2474" width="10" height="10">
    <ellipse/>
   </object>
+  <object id="4" name="Stimme1" type="Welt" x="515.152" y="2121.21" width="263.636" height="154.545"/>
+  <object id="10" name="Stimme5" type="Welt" x="369.697" y="275.758" width="533.333" height="209.091"/>
+  <object id="13" name="Stimme4" type="Welt" x="490.909" y="615.152" width="290.909" height="139.394"/>
+  <object id="14" name="Stimme3" type="Welt" x="536.364" y="1084.85" width="209.091" height="109.091"/>
+  <object id="16" name="Stimme2" type="Welt" x="536.364" y="1500" width="233.333" height="124.242"/>
+  <object id="17" name="Ausgang" type="Welt" x="536.364" y="2484.85" width="190.909" height="84.8485"/>
+  <object id="18" name="Kristall" type="Welt" x="632" y="110.667" width="14" height="14">
+   <ellipse/>
+  </object>
+  <object id="20" name="Kristall_interaktion" type="Welt" x="571.333" y="99.3333" width="132.667" height="68.6667"/>
  </objectgroup>
- <objectgroup name="Kollisionen"/>
- <layer name="Vordergrund" width="50" height="50">
+ <objectgroup name="Kollisionen">
+  <object id="21" x="422" y="471" width="155" height="2109"/>
+  <object id="22" x="702.5" y="466.5" width="155" height="2109"/>
+  <object id="24" x="43" y="-4" width="273" height="564"/>
+  <object id="25" x="960" y="4" width="324" height="571"/>
+  <object id="26" x="831" y="415" width="126" height="111"/>
+  <object id="27" x="899" y="350" width="131" height="124"/>
+  <object id="28" x="899" y="4" width="82" height="122"/>
+  <object id="29" x="308" y="-7" width="75" height="135"/>
+  <object id="30" x="309" y="331" width="76" height="117"/>
+  <object id="31" x="370" y="408" width="78" height="108"/>
+  <object id="32" x="379" y="1" width="527" height="59"/>
+ </objectgroup>
+ <layer name="Vordergrund" width="40" height="80">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+   eJzt0MEGACAQQMGt///ounSJRKTSDHtaln0RALBPqpMvuvOq1f9/79ZrPUZdZnsAAAAAAAAAAACAUwofXAAZ
   </data>
  </layer>
 </map>

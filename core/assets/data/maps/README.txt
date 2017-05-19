@@ -14,23 +14,23 @@ Levels:
 |
 |>>>>>>>>>>>>>>>>>>>>>>>>>
 |
-|--Cave Intro √
+|--Cave Intro √√√
 |
-|--Cave Puzzle √
+|--Cave Puzzle √√√
 |
-|--Cave Boss √
+|--Cave Boss √√√
 |
-|--Cave Village √
+|--Cave Village √√√
 |
 |--Cave Crossing √√√
 |
 |>>>>>>>>>>>>>>>>>>>>>>>>>>
 |
-|--Forest Intro √√
+|--Forest Intro √√√
 |
-|--Forest Battle √
+|--Forest Battle √√√
 |
-|--Forest Boss √
+|--Forest Boss √√√
 |
 |--Forest Village √√√
 |
@@ -40,18 +40,16 @@ Levels:
 |
 |--Graveyard Intro √√√
 |
-|--Graveyard Battle √√
+|--Graveyard Battle √√√
 |
-|--Graveyard Puzzle √
-|
-|--Graveyard Decision √
+|--Graveyard Decision √√√
    |
    |________________________________________________
         |                                           |
         |                                           |
         V                                           V
-    Graveyard Boss Dragon √                  Graveyard Boss Warrior √
+    Graveyard Boss Dragon √√√                Graveyard Boss Warrior √√√
         |                                           |
         |                                           |
         V                                           V
-    Ending Village √                          Ending Forest √
+    Ending Village √√√                        Ending Forest √√√
