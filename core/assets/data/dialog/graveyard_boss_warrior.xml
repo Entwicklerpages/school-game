@@ -38,5 +38,16 @@
                 </texts>
             </statement>
         </dialog>
+        <dialog name="outro">
+            <statement talking="stimme">
+                <display position="left">stimme</display>
+                <sound></sound>
+                <texts>
+                    <text>Der Mutierte Krieger wurde besiegt... </text>
+                    <text>Doch ins Dorf zurück zu gehen war keine option ...</text>
+                    <text>Aber eine Stimme versprach Schutz im Wald zu bieten.</text>
+                </texts>
+            </statement>
+        </dialog>
     </dialogs>
 </level>
