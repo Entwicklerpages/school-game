@@ -30,7 +30,7 @@ Levels:
 |
 |--Forest Battle √√
 |
-|--Forest Boss √√
+|--Forest Boss √√√
 |
 |--Forest Village √√√
 |

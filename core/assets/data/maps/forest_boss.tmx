@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="49">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="54">
  <tileset firstgid="1" source="../tilemap/forest.tsx"/>
  <layer name="Hintergrund" width="50" height="50">
   <data encoding="base64" compression="zlib">
@@ -24,28 +24,28 @@
   <object id="33" name="Stein2" type="Welt" x="832.667" y="767.333" width="62" height="64.6667"/>
   <object id="34" name="Stein1" type="Welt" x="897.333" y="768" width="61.3333" height="64"/>
   <object id="35" name="Stein_ausgang" type="Welt" x="1408.67" y="1280.67" width="63.3333" height="63.3333"/>
-  <object id="36" name="Wolf1" type="Welt" x="164" y="1220" width="18.6667" height="21.3333">
-   <ellipse/>
-  </object>
-  <object id="37" name="Wolf2" type="Welt" x="1429.33" y="1026.67" width="18.6667" height="20">
-   <ellipse/>
-  </object>
-  <object id="38" name="Wolf3" type="Welt" x="841.333" y="1412">
-   <ellipse/>
-  </object>
-  <object id="39" name="Wolf4" type="Welt" x="532" y="1201.33" width="14.6667" height="17.3333">
-   <ellipse/>
-  </object>
-  <object id="40" name="Wolf5" type="Welt" x="1128" y="1200">
-   <ellipse/>
-  </object>
   <object id="41" name="Kristall" type="Welt" x="1432" y="1453.33" width="22.6667" height="20">
    <ellipse/>
   </object>
-  <object id="42" name="Kristal_interaktion" type="Welt" x="1372" y="1404" width="140" height="118.667"/>
+  <object id="42" name="Kristall_interaktion" type="Welt" x="1372" y="1404" width="140" height="118.667"/>
   <object id="45" name="Trigger_start3" type="Welt" x="700" y="829.333" width="66.6667" height="121.333"/>
   <object id="47" name="Trigger_start2" type="Welt" x="958.667" y="833.333" width="65.3333" height="126.667"/>
   <object id="48" name="Trigger_start1" type="Welt" x="698.667" y="889.333" width="322.667" height="70.6667"/>
+  <object id="49" name="Wolf1" type="Welt" x="334.667" y="1018.67">
+   <polygon points="0,0 4,420 748,424 965.333,4"/>
+  </object>
+  <object id="50" name="Wolf2" type="Welt" x="465.333" y="949.333">
+   <polygon points="0,0 -217.333,217.333 206.667,556 572,188"/>
+  </object>
+  <object id="51" name="Wolf3" type="Welt" x="1130.67" y="909.333">
+   <polygon points="0,0 188,2.66667 338.667,137.333 338.667,297.333 -280,306.667"/>
+  </object>
+  <object id="52" name="Wolf4" type="Welt" x="124" y="1105.33">
+   <polygon points="0,0 216,-202.667 464,-213.333 637.333,16 1014.67,-8 776,388 166.667,277.333"/>
+  </object>
+  <object id="53" name="Wolf5" type="Welt" x="437.333" y="1285.33">
+   <polygon points="0,0 216,-206.667 916,-166.667 422.667,113.333"/>
+  </object>
  </objectgroup>
  <objectgroup name="Kollisionen">
   <object id="4" x="0" y="216" width="766" height="610"/>
