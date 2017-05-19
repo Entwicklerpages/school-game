@@ -99,7 +99,7 @@ public class ForestBossLevel extends Level
             @Override
             public void run()
             {
-                changeLevel("cave_village");
+                changeLevel("forest_village");
             }
         });
         worldConfig.registerObject(crystalInteraction);

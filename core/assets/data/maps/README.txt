@@ -48,7 +48,7 @@ Levels:
         |                                           |
         |                                           |
         V                                           V
-    Graveyard Boss Dragon √√                 Graveyard Boss Warrior √√
+    Graveyard Boss Dragon √√                 Graveyard Boss Warrior √√√
         |                                           |
         |                                           |
         V                                           V
